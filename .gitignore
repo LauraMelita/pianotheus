@@ -4,6 +4,9 @@
 .pnp.js
 .prettierrc.json
 
+# api keys
+.env
+
 # testing
 /coverage
 

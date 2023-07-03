@@ -1,0 +1,21 @@
+.composers-container {
+  padding: 50px;
+
+  .composers {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+
+    .composer {
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+
+      .name {
+        color: #fff;
+        padding-top: 7px;
+      }
+    }
+  }
+}
