@@ -1,13 +1,15 @@
 import React from 'react';
 
-import MidiDownload from './MidiDownload';
+import MidiFileDownload from './MidiFileDownload';
+import PdfFileDownload from './PdfFileDownload';
 
 const Track = ({ movie, title, difficultyLevel }) => {
   return (
     <div>
       <h3>{title}</h3>
       <h5>Difficulty level: {difficultyLevel}</h5>
-      <MidiDownload movie={movie} title={title} />
+      <MidiFileDownload movie={movie} title={title} />
+      <PdfFileDownload movie={movie} title={title} />
     </div>
   );
 };
