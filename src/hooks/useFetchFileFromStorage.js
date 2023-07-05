@@ -15,7 +15,7 @@ const useFetchFile = (artWorkTitle, fileExtension, fileTitle) => {
   const storageRef = ref(storage, folderPath);
 
   useEffect(() => {
-    const getFileFromFirebaseStorage = async () => {
+    const getFilesFromFirebaseStorage = async () => {
       const response = await listAll(storageRef);
 
       response.items.forEach(async (file) => {
@@ -32,7 +32,7 @@ const useFetchFile = (artWorkTitle, fileExtension, fileTitle) => {
       });
     };
 
-    getFileFromFirebaseStorage();
+    getFilesFromFirebaseStorage();
   }, []);
 
   if (!files || (Array.isArray(files) && files.length === 0)) return;

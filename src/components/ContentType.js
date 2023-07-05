@@ -1,10 +1,11 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 import Card from './Card';
 
-import './../styles/components/Genres.scss';
+import './../styles/components/ContentType.scss';
 
-const Genres = () => {
+const ContentType = () => {
   const musicGenres = [
     {
       genre: 'Movies',
@@ -44,17 +45,23 @@ const Genres = () => {
     },
   ];
   return (
-    <div className='genres-container'>
-      <div className='genres'>
+    <div className='content-types-container'>
+      <div className='content-types'>
         {musicGenres.map(({ genre, path, image }, index) => (
-          <li className='genre' key={index}>
+          <motion.li
+            className='type'
+            key={index}
+            whileHover={{
+              textShadow: '0px 0px 8px rgb(255, 255, 255)',
+            }}
+          >
             <Card feature={genre} path={path} image={image} />
-            <span className='type'>{genre}</span>
-          </li>
+            <span>{genre}</span>
+          </motion.li>
         ))}
       </div>
     </div>
   );
 };
 
-export default Genres;
+export default ContentType;

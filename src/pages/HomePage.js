@@ -1,8 +1,8 @@
 import React from 'react';
-import Genres from '../components/Genres';
+import ContentType from '../components/ContentType';
 
 const HomePage = () => {
-  return <Genres />;
+  return <ContentType />;
 };
 
 export default HomePage;

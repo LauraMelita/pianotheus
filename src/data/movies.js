@@ -349,7 +349,7 @@ export const movies = [
     works: [],
   },
   {
-    id: 10,
+    id: 11,
     composerName: 'James Horner',
     path: 'james-horner',
     profilePicture:
@@ -357,7 +357,7 @@ export const movies = [
     works: [],
   },
   {
-    id: 11,
+    id: 12,
     composerName: 'James Newton Howard',
     path: 'james-newton-howard',
     profilePicture:
@@ -365,7 +365,7 @@ export const movies = [
     works: [],
   },
   {
-    id: 12,
+    id: 13,
     composerName: 'John Powell',
     path: 'john-powell',
     profilePicture:
@@ -418,7 +418,7 @@ export const movies = [
     ],
   },
   {
-    id: 13,
+    id: 14,
     composerName: 'John Williams',
     path: 'john-williams',
     profilePicture:
@@ -426,7 +426,7 @@ export const movies = [
     works: [],
   },
   {
-    id: 14,
+    id: 15,
     composerName: 'Marc Shaiman',
     path: 'marc-shaiman',
     profilePicture:
@@ -434,7 +434,7 @@ export const movies = [
     works: [],
   },
   {
-    id: 15,
+    id: 16,
     composerName: 'Philip Glass',
     path: 'philip-glass',
     profilePicture:
@@ -442,7 +442,7 @@ export const movies = [
     works: [],
   },
   {
-    id: 16,
+    id: 17,
     composerName: 'Rachel Portman',
     path: 'rachel-portman',
     profilePicture:
@@ -450,7 +450,7 @@ export const movies = [
     works: [],
   },
   {
-    id: 17,
+    id: 18,
     composerName: 'Randy Newman',
     path: 'randy-newman',
     profilePicture:
@@ -458,7 +458,7 @@ export const movies = [
     works: [],
   },
   {
-    id: 18,
+    id: 19,
     composerName: 'Stephen Flaherty',
     path: 'stephen-flaherty',
     profilePicture:
@@ -466,7 +466,7 @@ export const movies = [
     works: [],
   },
   {
-    id: 19,
+    id: 20,
     composerName: 'Thomas Newman',
     path: 'thomas-newman',
     profilePicture:
@@ -474,7 +474,7 @@ export const movies = [
     works: [],
   },
   {
-    id: 20,
+    id: 21,
     composerName: 'Vangelis',
     path: 'vangelis',
     profilePicture:
@@ -482,7 +482,7 @@ export const movies = [
     works: [],
   },
   {
-    id: 21,
+    id: 22,
     composerName: 'Wendy Carlos',
     path: 'wendy-carlos',
     profilePicture:
@@ -490,7 +490,7 @@ export const movies = [
     works: [],
   },
   {
-    id: 22,
+    id: 23,
     composerName: 'Wojciech Kilar',
     path: 'wojciech-kilar',
     profilePicture:

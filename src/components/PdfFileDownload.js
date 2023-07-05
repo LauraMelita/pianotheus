@@ -1,10 +1,10 @@
 import React from 'react';
-import useFetchFile from '../hooks/useFetchFile';
+import useFetchFileFromStorage from '../hooks/useFetchFileFromStorage';
 
 import Icons from './../assets/icons.svg';
 
 const PdfFileDownload = ({ movie, title }) => {
-  const file = useFetchFile(movie, '.pdf', title);
+  const file = useFetchFileFromStorage(movie, '.pdf', title);
 
   if (!file) return;
 
