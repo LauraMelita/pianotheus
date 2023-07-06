@@ -1,8 +1,16 @@
 .composer-page-wrapper {
   .composer-container {
     display: flex;
-    flex-direction: row;
-    width: 100%;
+    flex-direction: column;
+
+    .composer-info {
+    }
+
+    .composer-works {
+      border: 5px solid orange;
+      width: 55%;
+      align-self: center;
+    }
 
     button {
     }

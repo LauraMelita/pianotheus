@@ -1,8 +1,8 @@
 import React from 'react';
 import { v4 as createId } from 'uuid';
 
-import Track from './Track';
 import useFetchImdbData from '../hooks/useFetchImdbData';
+import Track from './Track';
 
 import Icons from '../assets/icons.svg';
 import './../styles/components/Movie.scss';
@@ -11,35 +11,53 @@ const Movie = ({ movie, year, tracks }) => {
   const [imdbData] = useFetchImdbData(movie, year);
 
   if (!imdbData) return;
-  console.log(imdbData);
-
-  // const directors = imdbData.top_credits[0].map((director) =>
-  //   console.log(director)
-  // );
-
-  console.log(imdbData.top_credits[0].value.join(', '));
 
   return (
     <div className='movie-container'>
-      <h3 className='movie-title'>{movie}</h3>
-
-      <ul>
-        <li>{year}</li>
-        <li>{imdbData.contentRating}</li>
-        <li>{imdbData.runtime}</li>
-      </ul>
+      <div className='movie-info'>
+        <div className='header'>
+          <h3 className='title'>{movie}</h3>
+          <div className='rating-container'>
+            <svg>
+              <use href={`${Icons}#imdb-star-icon`} />
+            </svg>
+            <span className='rating'>{imdbData.rating.star}</span>
+            <span className='number'>/10</span>
+          </div>
+        </div>
+        <ul className='presentation'>
+          <li className='releaseYear'>{year}</li>
+          <li className='content-rating'>{imdbData.contentRating}</li>
+          <li className='runtime'>{imdbData.runtime}</li>
+        </ul>
+        <div className='inner-movie-container'>
+          <div className='poster'>
+            <img src={imdbData.image} alt={movie} />
+          </div>
+          <div className='tracks-container'>
+            {tracks.map((track) => (
+              <Track
+                key={createId()}
+                movie={movie}
+                title={track.title}
+                difficultyLevel={track.difficultyLevel}
+              />
+            ))}
+          </div>
+        </div>
+        <ul className='genres'>
+          {imdbData.genre.map((genre, index) => (
+            <li key={index}>{genre}</li>
+          ))}
+        </ul>
+        <p className='plot'>{imdbData.plot}</p>
+      </div>
 
       <div className='rating'>
         <span></span>
       </div>
 
-      <div className='genre'>
-        {imdbData.genre.map((genre, index) => (
-          <li key={index}>{genre}</li>
-        ))}
-      </div>
-
-      <div className='images'>
+      {/* <div className='images'>
         {imdbData.images.map((url, index) => (
           <img
             key={index}
@@ -49,12 +67,10 @@ const Movie = ({ movie, year, tracks }) => {
             height='200'
           />
         ))}
-      </div>
-
-      <p className='plot'>{imdbData.plot}</p>
+      </div> */}
 
       <div className='imdb-rating'>
-        <span>{imdbData.rating.star}/10</span>
+        <span></span>
         <br />
         <span>{(imdbData.rating.count * 0.001).toFixed(0)}K</span>
       </div>
@@ -68,22 +84,11 @@ const Movie = ({ movie, year, tracks }) => {
         </div>
       </div>
 
-      <img src={imdbData.image} alt={movie} width='200' height='200' />
-
       <a href={imdbData.imdb} target='_blank' rel='noreferrer'>
         <svg>
           <use href={`${Icons}#imdb-icon`} />
         </svg>
       </a>
-
-      {tracks.map((track) => (
-        <Track
-          key={createId()}
-          movie={movie}
-          title={track.title}
-          difficultyLevel={track.difficultyLevel}
-        />
-      ))}
     </div>
   );
 };

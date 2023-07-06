@@ -22,7 +22,7 @@ const NavigationBar = () => {
           <NavLink to='/movies/composers'>Movies</NavLink>
         </li>
         <li>
-          <NavLink to='/series/composers'>Series</NavLink>
+          <NavLink to='/tv-shows/composers'>TV Shows</NavLink>
         </li>
         <li>
           <NavLink to='/video-games/composers'>Video Games</NavLink>

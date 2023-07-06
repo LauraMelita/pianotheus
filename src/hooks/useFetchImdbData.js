@@ -38,7 +38,6 @@ const useFetchImdbData = (movieTitle, releaseYear) => {
         setError(null);
       } catch (error) {
         if (error.name === 'AbortError') {
-          console.log('Request cancelled');
         } else {
           console.error(error);
           setError(error.message);

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { v4 as createId } from 'uuid';
 
-import ComposerInfo from '../components/ComposerInfo.js';
-import ComposerWorksList from '../components/ComposerWorksList.js';
+import Movie from '../components/Movie';
 
 import './../styles/pages/ComposerPage.scss';
 
@@ -24,8 +24,21 @@ const ComposerPage = () => {
   return (
     <div className='composer-page-wrapper'>
       <div className='composer-container'>
-        <ComposerWorksList data={works} />
-        <ComposerInfo name={composerName} image={profilePicture} />
+        <div className='composer-info'>
+          <h3>{composerName}</h3>
+          <img
+            src={profilePicture}
+            alt={composerName}
+            width='150'
+            height='150'
+          />
+        </div>
+
+        <div className='composer-works'>
+          {works.map(({ movie, year, tracks }) => (
+            <Movie key={createId()} movie={movie} year={year} tracks={tracks} />
+          ))}
+        </div>
       </div>
       <button onClick={goToPrevPageHandler}>Back To Composers</button>
     </div>
