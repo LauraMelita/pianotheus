@@ -1,4 +1,5 @@
 import React from 'react';
+
 import useFetchFileFromStorage from '../hooks/useFetchFileFromStorage';
 
 import Icons from './../assets/icons.svg';
@@ -11,8 +12,8 @@ const MidiFileDownload = ({ movie, title }) => {
   return (
     <>
       <a href={file.url} download>
-        <svg>
-          <use href={`${Icons}#download-icon`} />
+        <svg className='test'>
+          <use href={`${Icons}#icon-download`} />
         </svg>
       </a>
     </>

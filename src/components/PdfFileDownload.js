@@ -12,7 +12,7 @@ const PdfFileDownload = ({ movie, title }) => {
     <>
       <a href={file.url} download target='_blank' rel='noreferrer'>
         <svg>
-          <use href={`${Icons}#pdf-icon`} />
+          <use href={`${Icons}#icon-file`} />
         </svg>
       </a>
     </>

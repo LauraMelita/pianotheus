@@ -1,40 +1,34 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-import SearchBar from './../components/SearchBar';
+import SearchBar from './SearchBar';
 
-// import Logo from './../assets/logo.svg';
+import Logo from './../assets/logo.png';
 import './../styles/components/NavigationBar.scss';
 
 const NavigationBar = () => {
   return (
     <nav className='navbar'>
       <div className='logo-container'>
-        {/* <Link to='/'>
+        <Link to='/'>
           <img className='logo' src={Logo} alt='logo' />
-        </Link> */}
+        </Link>
       </div>
       <ul className='navigation-links'>
         <li>
           <NavLink to='/'>Home</NavLink>
         </li>
         <li>
-          <NavLink to='/movies/composers'>Movies</NavLink>
+          <NavLink to='movies'>Movies</NavLink>
         </li>
         <li>
-          <NavLink to='/tv-shows/composers'>TV Shows</NavLink>
+          <NavLink to='tv-shows'>TV Shows</NavLink>
         </li>
         <li>
-          <NavLink to='/video-games/composers'>Video Games</NavLink>
+          <NavLink to='video-games'>Video Games</NavLink>
         </li>
         <li>
-          <NavLink to='/classical/composers'>Classical Music</NavLink>
-        </li>
-        <li>
-          <NavLink to='/soul/composers'>Soul</NavLink>
-        </li>
-        <li>
-          <NavLink to='/ragtime/composers'>Ragtime</NavLink>
+          <NavLink to='classical'>Classical Music</NavLink>
         </li>
       </ul>
       <SearchBar />

@@ -2,16 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
+import { convertToPath } from '../utils/helper';
+
 import './../styles/components/CardCharacterPopOut.scss';
 
-const CardCharacterPopOut = ({
-  contentType,
-  path,
-  backgroundImage,
-  popOutImage,
-}) => {
+const CardCharacterPopOut = ({ contentType, backgroundImage, popOutImage }) => {
   return (
-    <Link to={path}>
+    <Link to={`/${convertToPath(contentType)}`}>
       <motion.div
         className='character-popout-card'
         whileHover={{

@@ -1,10 +1,24 @@
 import React from 'react';
-import ComposersList from '../components/ComposersList';
-
-import { movies } from './../data/movies.js'; // To remove
+import { Link, useNavigate } from 'react-router-dom';
 
 const MoviesPage = () => {
-  return <ComposersList musicGenre={'movies'} data={movies} />;
+  const navigate = useNavigate();
+
+  const goToHomePageHandler = () => {
+    navigate(-1);
+  };
+
+  return (
+    <>
+      <Link to='/movies/composers'>
+        <h1>Search by composer</h1>
+      </Link>
+      <Link to='/movies/search'>
+        <h1>Search by title</h1>
+      </Link>
+      <button onClick={goToHomePageHandler}>Back to Home</button>
+    </>
+  );
 };
 
 export default MoviesPage;

@@ -8,9 +8,7 @@ const useFetchFile = (artWorkTitle, fileExtension, fileTitle) => {
   const [files, setFiles] = useState([]);
   const { pathname } = useLocation();
 
-  const folderPath = `${pathname
-    .slice(1)
-    .replace('-', ' ')}/${artWorkTitle.toLowerCase()}`;
+  const folderPath = `${pathname.slice(1).replaceAll('-', ' ')}`;
 
   const storageRef = ref(storage, folderPath);
 

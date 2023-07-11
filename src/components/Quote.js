@@ -8,7 +8,7 @@ const Quote = () => {
     <div className='quote-container'>
       <div className='quote-icon-container'>
         <svg>
-          <use href={`${Icons}#quote-icon`} />
+          <use href={`${Icons}#icon-quote`} />
         </svg>
       </div>
       <div className='quote-text-container'>

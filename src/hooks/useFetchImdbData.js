@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { IMDB_URL } from '../lib/config';
+import { IMDB_URL } from '../utils/config';
 
 const useFetchImdbData = (movieTitle, releaseYear) => {
   const [imdbData, setImdbData] = useState(null);

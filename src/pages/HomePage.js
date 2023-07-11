@@ -1,12 +1,12 @@
 import React from 'react';
-import ContentType from '../components/ContentType';
+import ContentTypes from '../components/ContentTypes';
 import Quote from '../components/Quote';
 
 const HomePage = () => {
   return (
     <>
       <Quote />
-      <ContentType />
+      <ContentTypes />
     </>
   );
 };

@@ -21,7 +21,6 @@ const useFetch = (url, options) => {
         setError(null);
       } catch (error) {
         if (error.name === 'AbortError') {
-          console.log('Request cancelled');
         } else {
           setError(error.message);
         }
