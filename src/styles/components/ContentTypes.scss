@@ -1,16 +1,10 @@
 .content-types-container {
-  // padding: 35px 0;
-  // background-color: #000;
-
   .content-types {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    padding: 35px 0;
+    padding: 20px 0;
     gap: 30px;
-    // background-image: url('./../../assets/content-type-background.jpg');
-    // background-size: cover;
-    // background-repeat: no-repeat;
-    // background-position: 0px -58px;
+    background-image: linear-gradient(to right bottom, #2e3238, #2e3238);
 
     .type {
       flex-direction: column;

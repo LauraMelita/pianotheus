@@ -12,7 +12,7 @@ const MidiFileDownload = ({ movie, title }) => {
   return (
     <>
       <a href={file.url} download>
-        <svg className='test'>
+        <svg>
           <use href={`${Icons}#icon-download`} />
         </svg>
       </a>

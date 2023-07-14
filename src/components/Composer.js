@@ -1,51 +1,48 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import MoviesList from './MoviesList';
 import NotFoundPage from '../pages/NotFoundPage';
+import GoToPrevPageButton from './GoToPrevPageButton';
 import { convertToPath } from '../utils/helper';
 
 import './../styles/components/Composer.scss';
 
 const Composer = ({ data }) => {
   const { composer } = useParams();
-  const navigate = useNavigate();
 
   const composerData = data.find(({ composerName }) => {
     return convertToPath(composerName) === composer;
   });
 
-  const goToPrevPageHandler = () => {
-    navigate(-1);
-  };
-
   return (
     <>
       {composerData ? (
         <div className='composer-page-wrapper'>
-          <div className='composer-container'>
-            <div className='composer-info'>
-              <h3>{composerData.composerName}</h3>
-              <img
-                src={composerData.profilePicture}
-                alt={composerData.composerName}
-                width='150'
-                height='150'
-              />
-            </div>
-            <div className='composer-works'>
-              {composerData.works.map(({ movie, year, tracks }, index) => (
-                <MoviesList
-                  key={index}
-                  composerName={composerData.composerName}
-                  movie={movie}
-                  year={year}
-                  tracks={tracks}
+          <div className='composer-badge-container'>
+            <div className='composer-badge'>
+              <div className='composer-image'>
+                <img
+                  src={composerData.profilePicture}
+                  alt={composerData.composerName}
                 />
-              ))}
+              </div>
+              <h3 className='composer-name'>{composerData.composerName}</h3>
             </div>
           </div>
-          <button onClick={goToPrevPageHandler}>Back To Composers</button>
+
+          <div className='composer-works'>
+            {composerData.works.map(({ movie, year, tracks }, index) => (
+              <MoviesList
+                key={index}
+                composerName={composerData.composerName}
+                movie={movie}
+                year={year}
+                tracks={tracks}
+              />
+            ))}
+          </div>
+          <GoToPrevPageButton btnText='Back to Composers' />
         </div>
       ) : (
         <NotFoundPage />

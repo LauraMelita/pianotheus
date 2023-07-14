@@ -8,7 +8,7 @@ import './../styles/components/Card.scss';
 const Card = ({ feature, path, image }) => {
   return (
     <>
-      <Avatar.Root className='card'>
+      <Avatar.Root className='custom-card'>
         <motion.div whileHover={{ scale: 1.1 }}>
           <Link to={path}>
             <Avatar.Image className='card-image' src={image} alt={feature} />

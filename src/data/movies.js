@@ -361,6 +361,16 @@ export const movies = [
           },
         ],
       },
+      {
+        movie: 'The Lord of the Rings: The Return of the King',
+        year: '2003',
+        tracks: [
+          {
+            title: 'The Lighting of the Beacons',
+            difficultyLevel: 'hard',
+          },
+        ],
+      },
     ],
   },
   {

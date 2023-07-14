@@ -2,14 +2,14 @@ import React from 'react';
 
 import CardCharacterPopOut from './CardCharacterPopOut';
 
-import MoviesBg from './../assets/Content Types/movies-bg.jpg';
-import MoviesBgPopOut from './../assets/Content Types/movies-bg-popout.webp';
-import TVShowsBg from './../assets/Content Types/tv-shows-bg.jpg';
-import TvShowBgPopOut from './../assets/Content Types/tv-shows-bg-popout.webp';
-import VideoGamesBg from './../assets/Content Types/video-games-bg.webp';
-import VideoGameBgPopOut from './../assets/Content Types/video-games-bg-popout.png';
-import ClassicalBg from './../assets/Content Types/classical-bg.jpg';
-import ClassicalBgPopOut from './../assets/Content Types/classical-bg-popout.webp';
+import MoviesBg from './../assets/content types/movies-bg.jpg';
+import MoviesBgPopOut from './../assets/content types/movies-bg-popout.webp';
+import TVShowsBg from './../assets/content types/tv-shows-bg.jpg';
+import TvShowBgPopOut from './../assets/content types/tv-shows-bg-popout.webp';
+import VideoGamesBg from './../assets/content types/video-games-bg.webp';
+import VideoGameBgPopOut from './../assets/content types/video-games-bg-popout.png';
+import ClassicalBg from './../assets/content types/classical-bg.jpg';
+import ClassicalBgPopOut from './../assets/content types/classical-bg-popout.webp';
 
 import './../styles/components/ContentTypes.scss';
 
@@ -22,7 +22,7 @@ const CATEGORIES = [
   {
     genre: 'TV Shows',
     backgroundImage: TVShowsBg,
-    popOutImage: TvShowBgPopOut,
+    // popOutImage: TvShowBgPopOut,
   },
   {
     genre: 'Video Games',

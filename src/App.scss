@@ -1,3 +1,5 @@
+@import '~bootstrap/scss/bootstrap';
+
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +21,7 @@ body {
     sans-serif;
   font-weight: 400;
   color: #615551;
-  background-image: linear-gradient(to right bottom, #aaa7af, #aaa7af);
+  background-image: linear-gradient(to right bottom, #22252a, #22252a);
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -32,7 +34,7 @@ body {
 
     .page-content {
       flex-grow: 1;
-      padding: 0 70px;
+      padding: 70px 140px;
     }
   }
 
