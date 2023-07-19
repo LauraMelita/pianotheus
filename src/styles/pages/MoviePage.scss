@@ -1,0 +1,10 @@
+.movies-page {
+  height: calc(100vh - 121px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  div {
+    text-align: center;
+  }
+}

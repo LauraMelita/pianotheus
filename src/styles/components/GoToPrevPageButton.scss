@@ -1,0 +1,82 @@
+@mixin transition(
+  $property: all,
+  $duration: 0.45s,
+  $ease: cubic-bezier(0.65, 0, 0.076, 1)
+) {
+  transition: $property $duration $ease;
+}
+
+.navigation {
+  display: flex;
+  align-self: flex-start;
+
+  .navigation-button {
+    position: relative;
+    width: 275px;
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+
+    .circle {
+      @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
+      display: block;
+      width: 48px;
+      height: 48px;
+      background: #2e3238;
+      border-radius: 26px;
+
+      .icon {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+
+        &.arrow {
+          @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
+          left: 18px;
+          width: 18px;
+          height: 2px;
+
+          &::before {
+            content: '';
+            position: absolute;
+            left: 2px;
+            top: -4px;
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid #f2f2f2;
+            border-right: 2px solid #f2f2f2;
+            transform: rotate(225deg);
+          }
+        }
+      }
+    }
+
+    .button-text {
+      @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 17px;
+      font-weight: 700;
+      color: transparent;
+    }
+
+    &:hover {
+      .circle {
+        width: 100%;
+
+        .icon {
+          &.arrow {
+            background: #f2f2f2;
+            transform: translate(1rem, 0);
+          }
+        }
+      }
+
+      .button-text {
+        color: #f2f2f2;
+      }
+    }
+  }
+}

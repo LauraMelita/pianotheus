@@ -4,7 +4,7 @@ import { ref, getDownloadURL, listAll, getMetadata } from 'firebase/storage';
 
 import { storage } from '../lib/firebase';
 
-const useFetchFile = (artWorkTitle, fileExtension, fileTitle) => {
+const useFetchFile = (fileExtension, fileTitle) => {
   const [files, setFiles] = useState([]);
   const { pathname } = useLocation();
 

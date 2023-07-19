@@ -8,7 +8,7 @@ export const movies = [
       {
         movie: 'Pocahontas',
         year: '1995',
-        tracks: [
+        scores: [
           {
             title: 'Listen With Your Heart Pt. I',
             difficultyLevel: 'medium',
@@ -18,7 +18,7 @@ export const movies = [
       {
         movie: 'The Hunchback of Notre Dame',
         year: '1996',
-        tracks: [{ title: 'The Bells of Notre Dame', difficultyLevel: 'hard' }],
+        scores: [{ title: 'The Bells of Notre Dame', difficultyLevel: 'hard' }],
       },
     ],
   },
@@ -31,12 +31,12 @@ export const movies = [
       {
         movie: 'Back to the Future',
         year: '1985',
-        tracks: [{ title: 'Main Theme', difficultyLevel: 'medium' }],
+        scores: [{ title: 'Main Theme', difficultyLevel: 'medium' }],
       },
       {
         movie: 'Contact',
         year: '1997',
-        tracks: [{ title: 'End Credits', difficultyLevel: 'medium' }],
+        scores: [{ title: 'End Credits', difficultyLevel: 'medium' }],
       },
     ],
   },
@@ -49,7 +49,7 @@ export const movies = [
       {
         movie: 'Les Choristes',
         year: '2004',
-        tracks: [{ title: 'Vois sur ton Chemin', difficultyLevel: 'medium' }],
+        scores: [{ title: 'Vois sur ton Chemin', difficultyLevel: 'medium' }],
       },
     ],
   },
@@ -62,7 +62,7 @@ export const movies = [
       {
         movie: 'Moon',
         year: '2009',
-        tracks: [
+        scores: [
           {
             title: 'Welcome to the Lunar Industries',
             difficultyLevel: 'medium',
@@ -80,7 +80,7 @@ export const movies = [
       {
         movie: 'Drag Me to Hell',
         year: '2009',
-        tracks: [
+        scores: [
           {
             title: 'Concerto to Hell (Introduction)',
             difficultyLevel: 'medium',
@@ -98,7 +98,7 @@ export const movies = [
       {
         movie: 'Batman',
         year: '1989',
-        tracks: [
+        scores: [
           {
             title: 'Clown Attack',
             difficultyLevel: 'medium',
@@ -136,7 +136,7 @@ export const movies = [
       {
         movie: 'Batman Returns',
         year: '1992',
-        tracks: [
+        scores: [
           {
             title: 'Birth of a Penguin',
             difficultyLevel: 'medium',
@@ -158,7 +158,7 @@ export const movies = [
       {
         movie: 'Beetlejuice',
         year: '1988',
-        tracks: [
+        scores: [
           {
             title: 'Main Theme',
             difficultyLevel: 'medium',
@@ -172,7 +172,7 @@ export const movies = [
       {
         movie: 'Big Fish',
         year: '2003',
-        tracks: [
+        scores: [
           {
             title: "Jenny's Theme",
             difficultyLevel: 'medium',
@@ -186,7 +186,7 @@ export const movies = [
       {
         movie: 'Black Beauty',
         year: '1994',
-        tracks: [
+        scores: [
           {
             title: 'Main Theme',
             difficultyLevel: 'medium',
@@ -196,7 +196,7 @@ export const movies = [
       {
         movie: 'Corpse Bride',
         year: '2005',
-        tracks: [
+        scores: [
           {
             title: 'Piano Duet',
             difficultyLevel: 'medium',
@@ -214,7 +214,7 @@ export const movies = [
       {
         movie: 'Edward Scissorhands',
         year: '1990',
-        tracks: [
+        scores: [
           {
             title: 'Ice Dance',
             difficultyLevel: 'medium',
@@ -232,7 +232,7 @@ export const movies = [
       {
         movie: 'Spider-Man',
         year: '2002',
-        tracks: [
+        scores: [
           {
             title: 'Costume Montage',
             difficultyLevel: 'medium',
@@ -254,9 +254,19 @@ export const movies = [
       {
         movie: 'Pride and Prejudice',
         year: '2005',
-        tracks: [
+        scores: [
           {
             title: 'Dawn & Georgiana',
+            difficultyLevel: 'medium',
+          },
+        ],
+      },
+      {
+        movie: 'V for Vendetta',
+        year: '2005',
+        scores: [
+          {
+            title: 'Evey Reborn',
             difficultyLevel: 'medium',
           },
         ],
@@ -272,7 +282,7 @@ export const movies = [
       {
         movie: 'Anastasia',
         year: '1997',
-        tracks: [
+        scores: [
           {
             title: 'Once Upon a December',
             difficultyLevel: 'medium',
@@ -290,7 +300,7 @@ export const movies = [
       {
         movie: 'Pirates of the Caribbean: The Curse of the Black Pearl',
         year: '2003',
-        tracks: [
+        scores: [
           {
             title: "He's a Pirate",
             difficultyLevel: 'medium',
@@ -308,7 +318,7 @@ export const movies = [
       {
         movie: 'The Dark Knight',
         year: '2009',
-        tracks: [
+        scores: [
           {
             title: 'Agent of Chaos',
             difficultyLevel: 'medium',
@@ -322,7 +332,7 @@ export const movies = [
       {
         movie: 'X-men: Dark Phoenix',
         year: '2019',
-        tracks: [
+        scores: [
           {
             title: 'Gap',
             difficultyLevel: 'hard',
@@ -340,7 +350,7 @@ export const movies = [
       {
         movie: 'The Lord of the Rings: The Fellowship of the Ring',
         year: '2001',
-        tracks: [
+        scores: [
           {
             title: 'Concerning Hobbits',
             difficultyLevel: 'medium',
@@ -354,7 +364,7 @@ export const movies = [
       {
         movie: 'The Lord of the Rings: The Two Towers',
         year: '2002',
-        tracks: [
+        scores: [
           {
             title: 'The Last March of the Ents',
             difficultyLevel: 'medium',
@@ -364,7 +374,7 @@ export const movies = [
       {
         movie: 'The Lord of the Rings: The Return of the King',
         year: '2003',
-        tracks: [
+        scores: [
           {
             title: 'The Lighting of the Beacons',
             difficultyLevel: 'hard',
@@ -382,7 +392,7 @@ export const movies = [
       {
         movie: 'A Beautiful Mind',
         year: '2001',
-        tracks: [
+        scores: [
           {
             title: 'Car Chase',
             difficultyLevel: 'easy',
@@ -396,7 +406,7 @@ export const movies = [
       {
         movie: 'Casper',
         year: '1995',
-        tracks: [
+        scores: [
           {
             title: 'One Last Wish',
             difficultyLevel: 'medium',
@@ -406,7 +416,7 @@ export const movies = [
       {
         movie: 'Titanic',
         year: '1997',
-        tracks: [
+        scores: [
           {
             title: 'Full Soundtrack',
             difficultyLevel: 'medium',
@@ -424,7 +434,7 @@ export const movies = [
       {
         movie: 'Atlantis: The Lost Empire',
         year: '2001',
-        tracks: [
+        scores: [
           {
             title: 'Main Theme',
             difficultyLevel: 'medium',
@@ -442,7 +452,7 @@ export const movies = [
       {
         movie: 'Batman Begins',
         year: '2005',
-        tracks: [
+        scores: [
           {
             title: 'Molossus',
             difficultyLevel: 'hard',
@@ -452,7 +462,7 @@ export const movies = [
       {
         movie: 'Signs',
         year: '2002',
-        tracks: [
+        scores: [
           {
             title: 'Baby Monitor',
             difficultyLevel: 'easy',
@@ -466,7 +476,7 @@ export const movies = [
       {
         movie: 'The Hunger Games: Mockingjay - Part 1',
         year: '2014',
-        tracks: [
+        scores: [
           {
             title: 'The Hanging Tree',
             difficultyLevel: 'medium',
@@ -476,7 +486,7 @@ export const movies = [
       {
         movie: 'The Village',
         year: '2004',
-        tracks: [
+        scores: [
           {
             title: 'The Gravel Road',
             difficultyLevel: 'hard',
@@ -494,7 +504,7 @@ export const movies = [
       {
         movie: 'Alien',
         year: '1979',
-        tracks: [
+        scores: [
           {
             title: 'Hyper Sleep',
             difficultyLevel: 'easy',
@@ -512,7 +522,7 @@ export const movies = [
       {
         movie: 'How to Train Your Dragon 2',
         year: '2014',
-        tracks: [
+        scores: [
           {
             title: 'Dragon Racing',
             difficultyLevel: 'medium',
@@ -546,7 +556,7 @@ export const movies = [
       {
         movie: 'Shrek',
         year: '2001',
-        tracks: [
+        scores: [
           {
             title: 'Fairytale',
             difficultyLevel: 'easy',
@@ -564,7 +574,7 @@ export const movies = [
       {
         movie: 'Amistad',
         year: '1997',
-        tracks: [
+        scores: [
           {
             title: 'Dry Your Tears, Africa (Orchestra)',
             difficultyLevel: 'medium',
@@ -574,7 +584,7 @@ export const movies = [
       {
         movie: 'Home Alone',
         year: '1991',
-        tracks: [
+        scores: [
           {
             title: 'Main Theme',
             difficultyLevel: 'medium',
@@ -584,7 +594,7 @@ export const movies = [
       {
         movie: 'Hook',
         year: '1991',
-        tracks: [
+        scores: [
           {
             title: 'Flight to Neverland',
             difficultyLevel: 'medium',
@@ -602,7 +612,7 @@ export const movies = [
       {
         movie: 'Indiana Jones and the Raiders of the Lost Ark',
         year: '1981',
-        tracks: [
+        scores: [
           {
             title: 'Main Theme',
             difficultyLevel: 'medium',
@@ -612,7 +622,7 @@ export const movies = [
       {
         movie: 'Jurassic Park',
         year: '1993',
-        tracks: [
+        scores: [
           {
             title: 'Main Theme',
             difficultyLevel: 'medium',
@@ -622,7 +632,7 @@ export const movies = [
       {
         movie: "Schindler's List",
         year: '1993',
-        tracks: [
+        scores: [
           {
             title: "Jewish Town (Krakow Ghetto, Winter '41)",
             difficultyLevel: 'medium',
@@ -640,7 +650,7 @@ export const movies = [
       {
         movie: 'The Terminal',
         year: '2004',
-        tracks: [
+        scores: [
           {
             title: 'The Tale of Viktor Navorski',
             difficultyLevel: 'hard',
@@ -658,7 +668,7 @@ export const movies = [
       {
         movie: 'The Addams Family',
         year: '1991',
-        tracks: [
+        scores: [
           {
             title: 'Addams Family Waltz',
             difficultyLevel: 'medium',
@@ -667,8 +677,28 @@ export const movies = [
       },
     ],
   },
+
   {
     id: 17,
+    composerName: 'Michael Giacchino',
+    profilePicture:
+      'https://variety.com/wp-content/uploads/2019/10/michael-giacchino-film-composer.jpg',
+    works: [
+      {
+        movie: 'Jurassic World',
+        year: '2015',
+        scores: [
+          {
+            title: 'Pavane for a Dead Apatosaurus',
+            difficultyLevel: 'easy',
+          },
+        ],
+      },
+    ],
+  },
+
+  {
+    id: 18,
     composerName: 'Philip Glass',
     profilePicture:
       'https://www.prsformusic.com/-/media/images/press/philip-glass--dunvagen-1280x720.ashx?w=2400&hash=FC1A1D2826A8860AB64877C5AEDC5612',
@@ -676,7 +706,7 @@ export const movies = [
       {
         movie: 'Candyman',
         year: '1992',
-        tracks: [
+        scores: [
           {
             title: "Helen's Theme",
             difficultyLevel: 'medium',
@@ -686,7 +716,7 @@ export const movies = [
     ],
   },
   {
-    id: 18,
+    id: 19,
     composerName: 'Rachel Portman',
     profilePicture:
       'https://meettheartistsite.files.wordpress.com/2023/02/rachel_portman_by_gregor_hohenberg_02.jpg?w=1200',
@@ -694,7 +724,7 @@ export const movies = [
       {
         movie: 'Chocolat',
         year: '2000',
-        tracks: [
+        scores: [
           {
             title: 'Passage of Time',
             difficultyLevel: 'medium',
@@ -704,7 +734,7 @@ export const movies = [
       {
         movie: 'The Cider House Rules',
         year: '1999',
-        tracks: [
+        scores: [
           {
             title: 'Main Theme',
             difficultyLevel: 'medium',
@@ -714,7 +744,7 @@ export const movies = [
     ],
   },
   {
-    id: 19,
+    id: 20,
     composerName: 'Randy Newman',
     profilePicture:
       'https://i.guim.co.uk/img/media/899cbc46e2481f62fc61fcc5d17af73cfca3723e/0_0_3253_2142/master/3253.jpg?width=700&quality=85&auto=format&fit=max&s=86dbc1c5ad627242bb769f4e71c576bc',
@@ -722,7 +752,7 @@ export const movies = [
       {
         movie: 'Toy Story',
         year: '1995',
-        tracks: [
+        scores: [
           {
             title: "You've Got a Friend in Me",
             difficultyLevel: 'medium',
@@ -732,7 +762,7 @@ export const movies = [
     ],
   },
   {
-    id: 20,
+    id: 21,
     composerName: 'Thomas Newman',
     profilePicture:
       'https://i.scdn.co/image/ab6761610000e5eb57d373e62254d0aba7d663d9',
@@ -740,7 +770,7 @@ export const movies = [
       {
         movie: 'American Beauty',
         year: '1999',
-        tracks: [
+        scores: [
           {
             title: 'American Beauty + Angela Undress',
             difficultyLevel: 'medium',
@@ -758,7 +788,7 @@ export const movies = [
       {
         movie: 'Little Children',
         year: '2006',
-        tracks: [
+        scores: [
           {
             title: '2 Hillcrest',
             difficultyLevel: 'medium',
@@ -780,7 +810,7 @@ export const movies = [
       {
         movie: 'Little Women',
         year: '1994',
-        tracks: [
+        scores: [
           {
             title: 'Orchard House (Main Title)',
             difficultyLevel: 'medium',
@@ -798,7 +828,7 @@ export const movies = [
       {
         movie: 'Meet Joe Black',
         year: '1998',
-        tracks: [
+        scores: [
           {
             title: 'Forbidden Love',
             difficultyLevel: 'medium',
@@ -812,7 +842,7 @@ export const movies = [
       {
         movie: 'Revolutionary Road',
         year: '2008',
-        tracks: [
+        scores: [
           {
             title: 'End Titles',
             difficultyLevel: 'medium',
@@ -822,7 +852,7 @@ export const movies = [
       {
         movie: 'Road to Perdition',
         year: '2002',
-        tracks: [
+        scores: [
           {
             title: 'Road to Chicago',
             difficultyLevel: 'medium',
@@ -832,7 +862,7 @@ export const movies = [
       {
         movie: 'The Shawshank Redemption',
         year: '1994',
-        tracks: [
+        scores: [
           {
             title: 'Brooks Was Here',
             difficultyLevel: 'medium',
@@ -850,7 +880,7 @@ export const movies = [
       {
         movie: 'WALL·E',
         year: '2008',
-        tracks: [
+        scores: [
           {
             title: '72 Degrees and Sunny',
             difficultyLevel: 'medium',
@@ -868,7 +898,7 @@ export const movies = [
     ],
   },
   {
-    id: 21,
+    id: 22,
     composerName: 'Vangelis',
     profilePicture:
       'https://media.npr.org/assets/img/2016/10/17/vangelis-3-_wide-f1e25ac3efd39087b3d2650ef667af071fac1da5-s1100-c50.jpg',
@@ -876,7 +906,7 @@ export const movies = [
       {
         movie: '1492: Conquest of Paradise',
         year: '1992',
-        tracks: [
+        scores: [
           {
             title: 'Conquest of Paradise',
             difficultyLevel: 'medium',
@@ -886,7 +916,7 @@ export const movies = [
     ],
   },
   {
-    id: 22,
+    id: 23,
     composerName: 'Wendy Carlos',
     profilePicture:
       'https://i.guim.co.uk/img/media/384f5ee3d2221ea9f2e5ed378c5b34b5624fbfcf/0_1843_3600_2160/master/3600.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=89f6513c9ae703b2849a5a1825415531',
@@ -894,7 +924,7 @@ export const movies = [
       {
         movie: 'A Clockwork Orange (Orchestra)',
         year: '1971',
-        tracks: [
+        scores: [
           {
             title: 'Main Theme',
             difficultyLevel: 'hard',
@@ -904,7 +934,7 @@ export const movies = [
     ],
   },
   {
-    id: 23,
+    id: 24,
     composerName: 'Wojciech Kilar',
     profilePicture:
       'https://api.culture.pl/sites/default/files/images/imported/muzyka/portrety%20i%20instytucje/kilar%20wojciech/kilar%20wojciech%20portret%20en_4941393.jpg',
@@ -912,7 +942,7 @@ export const movies = [
       {
         movie: "Bram Stoker's Dracula",
         year: '1992',
-        tracks: [
+        scores: [
           {
             title: 'Dracula and Mina (Love Theme)',
             difficultyLevel: 'easy',

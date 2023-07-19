@@ -1,0 +1,11 @@
+.score-actions {
+  border: 5px solid red;
+  display: flex;
+  gap: 20px;
+
+  .btn__download-pdf {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}

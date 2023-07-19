@@ -13,7 +13,7 @@
       transition: 0.25s;
     }
 
-    .track-list-container {
+    .score-list-container {
       position: absolute;
       bottom: -100%;
       width: 100%;
@@ -29,7 +29,7 @@
         margin-bottom: 5px;
       }
 
-      .track-list {
+      .score-list {
         list-style: none;
         display: flex;
         flex-direction: row;

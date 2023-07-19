@@ -6,7 +6,7 @@ import NotFoundPage from '../pages/NotFoundPage';
 import GoToPrevPageButton from './GoToPrevPageButton';
 import { convertToPath } from '../utils/helper';
 
-import './../styles/components/Composer.scss';
+import '../styles/components/Composer.scss';
 
 const Composer = ({ data }) => {
   const { composer } = useParams();
@@ -32,13 +32,13 @@ const Composer = ({ data }) => {
           </div>
 
           <div className='composer-works'>
-            {composerData.works.map(({ movie, year, tracks }, index) => (
+            {composerData.works.map(({ movie, year, scores }, index) => (
               <MoviesList
                 key={index}
                 composerName={composerData.composerName}
                 movie={movie}
                 year={year}
-                tracks={tracks}
+                scores={scores}
               />
             ))}
           </div>

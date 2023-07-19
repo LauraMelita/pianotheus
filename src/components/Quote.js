@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Icons from './../assets/icons.svg';
-import './../styles/components/Quote.scss';
+import Icons from '../assets/icons.svg';
+import '../styles/components/Quote.scss';
 
 const Quote = () => {
   return (
