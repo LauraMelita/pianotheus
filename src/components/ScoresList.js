@@ -1,20 +1,20 @@
 import React from 'react';
 
-import Score from '../components/Score';
+import Score from './Score';
 
-import '../styles/components/ScoresList.scss';
+import './ScoresList.scss';
 
-const ScoresList = ({ scores, imdbData }) => {
+const ScoresList = ({ data }) => {
   return (
     <div className='scores-list-container'>
       <h3>Scores</h3>
       <div className='scores-list'>
-        {scores.map((score, index) => (
+        {data.scores.map((score, index) => (
           <Score
             key={index}
-            movie={imdbData.title}
-            title={score.title}
-            difficultyLevel={score.difficultyLevel}
+            movie={data.title}
+            title={score.score}
+            level={score.level}
           />
         ))}
       </div>

@@ -1,18 +1,18 @@
 import React from 'react';
 
 import Icons from '../assets/icons.svg';
-import '../styles/components/Quote.scss';
+import './Quote.scss';
 
 const Quote = () => {
   return (
-    <div className='quote-container'>
-      <div className='quote-icon-container'>
+    <div className='quote'>
+      <div className='icon'>
         <svg>
           <use href={`${Icons}#icon-quote`} />
         </svg>
       </div>
-      <div className='quote-text-container'>
-        <p className='quote-text'>
+      <div className='text'>
+        <p>
           Prometheus stole fire from the gods. We are each the heirs of that
           divine spark.
           <br />
@@ -21,11 +21,11 @@ const Quote = () => {
           Treated carelessly, the spark consumes its owner and everything in its
           path.
         </p>
-        <div className='quote-author-section'>
-          <span className='quote-line'>― </span>
-          <span className='quote-author'>Thomas Lloyd Qualls</span>
+        <div className='reference'>
+          <span className='line'>― </span>
+          <span className='author'>Thomas Lloyd Qualls</span>
           <br />
-          <span className='quote-source'>Painted Oxen</span>
+          <span className='source'>Painted Oxen</span>
         </div>
       </div>
     </div>

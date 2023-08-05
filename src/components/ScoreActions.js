@@ -1,11 +1,11 @@
 import React from 'react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
-import MidiFileDownload from './MidiFileDownload';
-import PdfFileDownload from './PdfFileDownload';
+import MidiFileDownload from '../features/download/MidiFileDownload';
+import PdfFileDownload from '../features/download/PdfFileDownload';
 
 import Icons from '../assets/icons.svg';
-import '../styles/components/ScoreActions.scss';
+import './ScoreActions.scss';
 
 const ScoreActions = ({ movie, title }) => {
   return (
@@ -16,7 +16,7 @@ const ScoreActions = ({ movie, title }) => {
         pdf
       </div>
 
-      {/* <MidiFileDownload movie={movie} title={title} />
+      <MidiFileDownload movie={movie} title={title} />
       <PdfFileDownload movie={movie} title={title} />
       <svg>
         <use href={`${Icons}#icon-print`} />
@@ -28,7 +28,7 @@ const ScoreActions = ({ movie, title }) => {
       <span>Download PDF</span>
       <svg>
         <use href={`${Icons}#icon-share`} />
-      </svg> */}
+      </svg>
     </div>
   );
 };

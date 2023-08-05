@@ -2,9 +2,9 @@ import React from 'react';
 
 import ScoreActions from './ScoreActions';
 
-import '../styles/components/Score.scss';
+import './Score.scss';
 
-const Score = ({ movie, title, difficultyLevel }) => {
+const Score = ({ movie, title, level }) => {
   return (
     <div className='score'>
       <div className='container'>
@@ -12,7 +12,7 @@ const Score = ({ movie, title, difficultyLevel }) => {
         <ScoreActions movie={movie} title={title} />
       </div>
       <div className='score-metadata'>
-        <span>Difficulty: {difficultyLevel}</span>
+        <span>Difficulty: {level}</span>
       </div>
     </div>
   );

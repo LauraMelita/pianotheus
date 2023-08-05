@@ -1,42 +1,35 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-import Card from './Card.js';
-import { convertToPath } from '../utils/helper.js';
+import { convertToPath, removeAccents } from '../utils/helper';
 
-import '../styles/components/ComposersList.scss';
+import CircleCard from './UI/CircleCard';
 
-const ComposersList = (props) => {
+import './ComposersList.scss';
+
+const ComposersList = ({ data }) => {
+  const { pathname } = useLocation();
+
   return (
-    <motion.div
-      className='composers-container'
-      initial={{ y: '100%' }}
-      animate={{ y: '0%' }}
-      transition={{ duration: 0.75, ease: 'easeOut' }}
-      exit={{ opacity: 1 }}
-    >
-      <ul className='composers'>
-        {props.data.map(({ id, composerName, profilePicture }) => (
-          <li className='composer' key={id}>
-            <Card
-              feature={composerName}
-              path={`/${props.contentType}/composers/${convertToPath(
-                composerName
-              )}`}
-              image={profilePicture}
-            />
-            <motion.span
-              className='name'
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-            >
-              {composerName}
-            </motion.span>
-          </li>
-        ))}
-      </ul>
-    </motion.div>
+    <ul className='composers'>
+      {data.map(({ id, composer, composerImg }) => (
+        <li key={id}>
+          <CircleCard
+            feature={composer}
+            path={`${pathname}/${removeAccents(convertToPath(composer))}`}
+            image={composerImg}
+          />
+          <motion.span
+            initial={{ y: '100%' }}
+            animate={{ y: 0 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+          >
+            {composer}
+          </motion.span>
+        </li>
+      ))}
+    </ul>
   );
 };
 
