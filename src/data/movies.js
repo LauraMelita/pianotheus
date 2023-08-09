@@ -1,5 +1,6 @@
 export const movies = [
   {
+    category: 'movies',
     imdbId: 'tt0114148',
     title: 'Pocahontas',
     year: '1995',
@@ -19,6 +20,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0116583',
     title: 'The Hunchback of Notre Dame',
     year: '1996',
@@ -38,6 +40,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0088763',
     title: 'Back to the Future',
     year: '1985',
@@ -57,6 +60,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0118884',
     title: 'Contact',
     year: '1997',
@@ -76,6 +80,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0372824',
     title: 'Les Choristes',
     year: '2004',
@@ -95,6 +100,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt1182345',
     title: 'Moon',
     year: '2009',
@@ -114,6 +120,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt1127180',
     title: 'Drag Me to Hell',
     year: '2009',
@@ -133,6 +140,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0096895',
     title: 'Batman',
     year: '1989',
@@ -180,6 +188,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0103776',
     title: 'Batman Returns',
     year: '1992',
@@ -211,6 +220,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0094721',
     title: 'Beetlejuice',
     year: '1988',
@@ -234,6 +244,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0319061',
     title: 'Big Fish',
     year: '2003',
@@ -257,6 +268,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0109279',
     title: 'Black Beauty',
     year: '1994',
@@ -276,6 +288,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0121164',
     title: 'Corpse Bride',
     year: '2005',
@@ -303,6 +316,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0099487',
     title: 'Edward Scissorhands',
     year: '1990',
@@ -330,6 +344,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0145487',
     title: 'Spider-Man',
     year: '2002',
@@ -353,6 +368,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0414387',
     title: 'Pride and Prejudice',
     year: '2005',
@@ -372,6 +388,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0434409',
     title: 'V for Vendetta',
     year: '2005',
@@ -391,6 +408,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0118617',
     title: 'Anastasia',
     year: '1997',
@@ -410,6 +428,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0325980',
     title: 'Pirates of the Caribbean: The Curse of the Black Pearl',
     year: '2003',
@@ -437,6 +456,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0468569',
     title: 'The Dark Knight',
     year: '2009',
@@ -460,6 +480,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt6565702',
     title: 'X-men: Dark Phoenix',
     year: '2019',
@@ -479,6 +500,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0120737',
     title: 'The Lord of the Rings: The Fellowship of the Ring',
     year: '2001',
@@ -502,6 +524,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0167261',
     title: 'The Lord of the Rings: The Two Towers',
     year: '2002',
@@ -521,6 +544,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0167260',
     title: 'The Lord of the Rings: The Return of the King',
     year: '2003',
@@ -540,6 +564,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0268978',
     title: 'A Beautiful Mind',
     year: '2001',
@@ -563,6 +588,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0112642',
     title: 'Casper',
     year: '1995',
@@ -582,6 +608,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0120338',
     title: 'Titanic',
     year: '1997',
@@ -601,6 +628,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0230011',
     title: 'Atlantis: The Lost Empire',
     year: '2001',
@@ -628,6 +656,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0372784',
     title: 'Batman Begins',
     year: '2005',
@@ -647,6 +676,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0286106',
     title: 'Signs',
     year: '2002',
@@ -670,6 +700,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt1951265',
     title: 'The Hunger Games: Mockingjay - Part 1',
     year: '2014',
@@ -689,6 +720,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0368447',
     title: 'The Village',
     year: '2004',
@@ -708,6 +740,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0078748',
     title: 'Alien',
     year: '1979',
@@ -727,6 +760,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt1646971',
     title: 'How to Train Your Dragon 2',
     year: '2014',
@@ -770,6 +804,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0126029',
     title: 'Shrek',
     year: '2001',
@@ -789,6 +824,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: '',
     title: '',
     year: '',
@@ -805,6 +841,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0118607',
     title: 'Amistad',
     year: '1997',
@@ -824,6 +861,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0099785',
     title: 'Home Alone',
     year: '1990',
@@ -843,6 +881,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0102057',
     title: 'Hook',
     year: '1991',
@@ -870,6 +909,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0082971',
     title: 'Indiana Jones and the Raiders of the Lost Ark',
     year: '1981',
@@ -889,6 +929,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0107290',
     title: 'Jurassic Park',
     year: '1993',
@@ -908,6 +949,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0108052',
     title: "Schindler's List",
     year: '1993',
@@ -931,6 +973,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0362227',
     title: 'The Terminal',
     year: '2004',
@@ -950,6 +993,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0101272',
     title: 'The Addams Family',
     year: '1991',
@@ -969,6 +1013,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0369610',
     title: 'Jurassic World',
     year: '2015',
@@ -988,6 +1033,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0103919',
     title: 'Candyman',
     year: '1992',
@@ -1007,6 +1053,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0241303',
     title: 'Chocolat',
     year: '2000',
@@ -1026,6 +1073,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0124315',
     title: 'The Cider House Rules',
     year: '1999',
@@ -1045,6 +1093,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0114709',
     title: 'Toy Story',
     year: '1995',
@@ -1064,6 +1113,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0169547',
     title: 'American Beauty',
     year: '1999',
@@ -1091,6 +1141,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0404203',
     title: 'Little Children',
     year: '2006',
@@ -1122,6 +1173,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0110367',
     title: 'Little Women',
     year: '1994',
@@ -1149,6 +1201,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0119643',
     title: 'Meet Joe Black',
     year: '1998',
@@ -1172,6 +1225,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0959337',
     title: 'Revolutionary Road',
     year: '2008',
@@ -1191,6 +1245,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0257044',
     title: 'Road to Perdition',
     year: '2002',
@@ -1210,6 +1265,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0111161',
     title: 'The Shawshank Redemption',
     year: '1994',
@@ -1237,6 +1293,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0910970',
     title: 'WALL·E',
     year: '2008',
@@ -1264,6 +1321,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0103594',
     title: '1492: Conquest of Paradise',
     year: '1992',
@@ -1283,6 +1341,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0066921',
     title: 'A Clockwork Orange',
     year: '1971',
@@ -1302,6 +1361,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0103874',
     title: "Bram Stoker's Dracula",
     year: '1992',
@@ -1325,6 +1385,7 @@ export const movies = [
     ],
   },
   {
+    category: 'movies',
     imdbId: 'tt0108071',
     title: 'The Secret Garden',
     year: '1993',

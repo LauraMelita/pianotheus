@@ -1,32 +1,61 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as Separator from '@radix-ui/react-separator';
 
+import Icons from '../../assets/icons.svg';
 import './Modal.scss';
 
 const portalElement = document.getElementById('overlays');
 
-const Backdrop = (props) => {
-  return <div className='backdrop' onClick={props.close} />;
+const Backdrop = ({ closeModal }) => {
+  return <div className='backdrop' onClick={closeModal} />;
 };
 
-const ModalOverlay = (props) => {
-  return (
-    <div className='modal'>
-      <div className='Content'>{props.children}</div>
-      <button onClick={props.close}>Close</button>
-    </div>
-  );
-};
-
-const Modal = ({ isOpen, close, children }) => {
+const Modal = ({
+  isOpen,
+  title,
+  btnConfirm,
+  btnClose,
+  children,
+  closeModal,
+}) => {
   return (
     <>
       {isOpen
-        ? ReactDOM.createPortal(<Backdrop close={close} />, portalElement)
+        ? ReactDOM.createPortal(
+            <Backdrop closeModal={closeModal} />,
+            portalElement
+          )
         : null}
       {isOpen
         ? ReactDOM.createPortal(
-            <ModalOverlay close={close}>{children}</ModalOverlay>,
+            <div className='modal'>
+              <div className='modal-header'>
+                <h1>{title}</h1>
+                <svg onClick={closeModal}>
+                  <use href={`${Icons}#icon-close`} />
+                </svg>
+              </div>
+              <Separator.Root
+                className='separator'
+                orientation='horizontal'
+                decorative
+              />
+              <div className='modal-content'>{children}</div>
+              <Separator.Root
+                className='separator'
+                orientation='horizontal'
+                decorative
+              />
+              <div className='modal-actions'>
+                <button className='cancel' onClick={closeModal}>
+                  {btnClose}
+                </button>
+                {/* <button type='submit' className='confirm' onClick={onConfirm}>
+                  {btnConfirm}
+                </button> */}
+              </div>
+            </div>,
             portalElement
           )
         : null}

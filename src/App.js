@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { ToastContainer } from 'react-toastify';
 
 import Navbar from './components/layouts/Navbar';
 import Footer from './components/layouts/Footer';
@@ -20,16 +20,15 @@ const App = () => {
     <div className='page-layout'>
       <Navbar />
       <div className='page-content'>
-        <AnimatePresence initial={false} mode='wait'>
-          <Routes location={location} key={location.pathname}>
-            <Route path='/' element={<Home />} />
-            <Route path='movies/*' element={<MovieRoutes />} />
-            <Route path='tv-shows/*' element={<TVShowRoutes />} />
-            <Route path='video-games/*' element={<VideoGameRoutes />} />
-            <Route path='classical/*' element={<ClassicalRoutes />} />
-            <Route path='*' element={<PageNotFound />} />
-          </Routes>
-        </AnimatePresence>
+        <Routes location={location} key={location.pathname}>
+          <Route path='/' element={<Home />} />
+          <Route path='movies/*' element={<MovieRoutes />} />
+          <Route path='tv-shows/*' element={<TVShowRoutes />} />
+          <Route path='video-games/*' element={<VideoGameRoutes />} />
+          <Route path='classical/*' element={<ClassicalRoutes />} />
+          <Route path='*' element={<PageNotFound />} />
+        </Routes>
+        <ToastContainer position='bottom-right' theme='dark' />
       </div>
       <Footer />
     </div>

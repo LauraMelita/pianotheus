@@ -3,12 +3,40 @@
   top: 20vh;
   left: 5%;
   width: 90%;
-  background-color: white;
-  padding: 1rem;
+  background-color: fff;
+  color: #000;
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 0;
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 20px;
+
+    svg {
+      cursor: pointer;
+    }
+  }
+
+  .modal-content {
+    padding: 0 20px;
+  }
+
+  .modal-actions {
+    padding: 0 20px;
+  }
+
+  .separator {
+    //
+  }
 }
 
 @media (min-width: 768px) {

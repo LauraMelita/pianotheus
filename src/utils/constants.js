@@ -1,3 +1,5 @@
+export const DOCUMENTS_PER_PAGE = 8;
+
 export const IMDB_URL = 'https://imdb-api.projects.thetuhin.com';
 export const THEMOVIEDB_URL = 'https://api.themoviedb.org';
 export const OMDB_API = 'https://www.omdbapi.com/';

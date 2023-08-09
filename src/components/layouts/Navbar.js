@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
+import QuickSearch from '../../features/search/QuickSearch';
+
 import Logo from '../../assets/logo.png';
 import './Navbar.scss';
 
@@ -29,6 +31,7 @@ const Navbar = () => {
           <NavLink to='classical'>Classical Music</NavLink>
         </li>
       </ul>
+      <QuickSearch />
     </nav>
   );
 };

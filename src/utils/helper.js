@@ -7,3 +7,6 @@ export const removeAccents = (str) =>
 export const generateNumber = (min, max) => {
   return (Math.random() * (max - min + 1) + min).toFixed(2);
 };
+
+export const stringIncludesWord = (str, word) =>
+  new RegExp('\\b' + word + '\\b', 'i').test(str);
