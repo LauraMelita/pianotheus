@@ -1,0 +1,21 @@
+.fly-in-text {
+  list-style: none;
+
+  li {
+    display: inline-block;
+    opacity: 1;
+    transition: all 5s ease;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:empty {
+      margin-right: 7px;
+    }
+  }
+
+  &.hidden {
+    opacity: 0;
+  }
+}

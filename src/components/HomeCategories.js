@@ -29,7 +29,7 @@ const CATEGORIES = [
     popOutImage: VideoGamePopOut,
   },
   {
-    category: 'Classical Music',
+    category: 'Classical',
     backgroundImage: ClassicalBg,
     popOutImage: ClassicalPopOut,
   },

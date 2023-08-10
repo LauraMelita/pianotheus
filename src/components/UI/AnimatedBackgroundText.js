@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './AnimatedText.scss';
+import './AnimatedBackgroundText.scss';
 
-const AnimatedText = ({
+const AnimatedBackgroundText = ({
   minTextSize,
   idealTextSize,
   maxTextSize,
@@ -22,4 +22,4 @@ const AnimatedText = ({
   );
 };
 
-export default AnimatedText;
+export default AnimatedBackgroundText;
