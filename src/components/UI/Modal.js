@@ -1,65 +1,42 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import * as Separator from '@radix-ui/react-separator';
+import * as Dialog from '@radix-ui/react-dialog';
 
 import Icons from '../../assets/icons.svg';
 import './Modal.scss';
 
-const portalElement = document.getElementById('overlays');
-
-const Backdrop = ({ closeModal }) => {
-  return <div className='backdrop' onClick={closeModal} />;
-};
-
 const Modal = ({
-  isOpen,
+  open,
+  toggleModal,
+  triggerBtnClassName,
+  triggerBtnText,
   title,
-  btnConfirm,
-  btnClose,
+  description,
   children,
-  closeModal,
 }) => {
   return (
-    <>
-      {isOpen
-        ? ReactDOM.createPortal(
-            <Backdrop closeModal={closeModal} />,
-            portalElement
-          )
-        : null}
-      {isOpen
-        ? ReactDOM.createPortal(
-            <div className='modal'>
-              <div className='modal-header'>
-                <h1>{title}</h1>
-                <svg onClick={closeModal}>
-                  <use href={`${Icons}#icon-close`} />
-                </svg>
-              </div>
-              <Separator.Root
-                className='separator'
-                orientation='horizontal'
-                decorative
-              />
-              <div className='modal-content'>{children}</div>
-              <Separator.Root
-                className='separator'
-                orientation='horizontal'
-                decorative
-              />
-              <div className='modal-actions'>
-                <button className='cancel' onClick={closeModal}>
-                  {btnClose}
-                </button>
-                {/* <button type='submit' className='confirm' onClick={onConfirm}>
-                  {btnConfirm}
-                </button> */}
-              </div>
-            </div>,
-            portalElement
-          )
-        : null}
-    </>
+    <Dialog.Root modal={true} open={open} onOpenChange={toggleModal}>
+      <Dialog.Trigger asChild>
+        <button className={triggerBtnClassName}>{triggerBtnText}</button>
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className='overlay' />
+        <Dialog.Content className='modal'>
+          <Dialog.Title className='modal-title'>{title}</Dialog.Title>
+          <Dialog.Description className='modal-description'>
+            {description}
+          </Dialog.Description>
+          {children}
+
+          <Dialog.Close asChild>
+            <button className='close-btn' aria-label='Close'>
+              <svg className='icon-close'>
+                <use href={`${Icons}#icon-close`} />
+              </svg>
+            </button>
+          </Dialog.Close>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 };
 

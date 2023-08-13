@@ -1,58 +1,83 @@
-.modal {
+.overlay {
+  background-color: rgba(0, 0, 0, 0.75);
   position: fixed;
-  top: 20vh;
-  left: 5%;
-  width: 90%;
-  background-color: fff;
-  color: #000;
-  border-radius: 14px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  z-index: 30;
-  animation: slide-down 300ms ease-out forwards;
+  inset: 0;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px 0;
+.modal {
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 450px;
+  max-height: 85vh;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 0 20px;
+  &:focus {
+    outline: none;
+  }
+
+  .modal-title {
+    margin: 0;
+    font-weight: 500;
+    color: #000;
+    font-size: 17px;
+  }
+
+  .modal-description {
+    margin: 10px 0 20px;
+    color: #000;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .close-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 25px;
+    width: 25px;
+    border: none;
+    background-color: transparent;
+    font-family: inherit;
 
     svg {
       cursor: pointer;
+
+      &:hover {
+        color: #000;
+      }
     }
   }
-
-  .modal-content {
-    padding: 0 20px;
-  }
-
-  .modal-actions {
-    padding: 0 20px;
-  }
-
-  .separator {
-    //
-  }
 }
 
-@media (min-width: 768px) {
-  .modal {
-    width: 40rem;
-    left: calc(50% - 20rem);
-  }
-}
-
-@keyframes slide-down {
+@keyframes overlayShow {
   from {
     opacity: 0;
-    transform: translateY(-3rem);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+  }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
 }

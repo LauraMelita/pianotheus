@@ -5,7 +5,12 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // TODO: Change default styles
 import './ContactForm.scss';
 
-const ContactForm = ({ closeModal }) => {
+import { useModal } from '../../hooks/useModal';
+
+import Modal from '../../components/UI/Modal';
+
+const ContactForm = () => {
+  const { modalIsOpen, toggleModal } = useModal();
   const formRef = useRef();
 
   const sendEmailHandler = async (e) => {
@@ -19,7 +24,7 @@ const ContactForm = ({ closeModal }) => {
         process.env.REACT_APP_PUBLIC_KEY
       );
 
-      closeModal();
+      toggleModal();
       if (result.text !== 'OK') throw new Error(`Message could not be send.`);
       toast.success('Thank you for reaching out!', {
         hideProgressBar: true,
@@ -32,15 +37,27 @@ const ContactForm = ({ closeModal }) => {
   };
 
   return (
-    <form ref={formRef} onSubmit={sendEmailHandler}>
-      <label>Name</label>
-      <input type='text' name='from_name' />
-      <label>Email</label>
-      <input type='email' name='from_email' />
-      <label>Message</label>
-      <textarea name='message' />
-      <button type='submit'>Submit</button>
-    </form>
+    <>
+      <Modal
+        open={modalIsOpen}
+        toggleModal={toggleModal}
+        triggerBtnClassName='contact'
+        triggerBtnText='Contact'
+        title='Contact Me'
+        description='How awesome of you to contact'
+      >
+        <form ref={formRef} onSubmit={sendEmailHandler}>
+          <label>Name</label>
+          <input type='text' name='from_name' />
+          <label>Email</label>
+          <input type='email' name='from_email' />
+          <label>Message</label>
+          <textarea name='message' />
+          <button type='submit'>Submit</button>
+          <button onClick={toggleModal}>Cancel</button>
+        </form>
+      </Modal>
+    </>
   );
 };
 
