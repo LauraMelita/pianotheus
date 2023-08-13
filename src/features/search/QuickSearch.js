@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Suggestions from './Suggestions';
 
+import { useComponentVisible } from '../../hooks/useComponentVisible';
 import { convertToPath } from '../../utils/helper';
 
 import Icons from '../../assets/icons.svg';
@@ -13,74 +14,87 @@ import { tvShows } from '../../data/tvShows';
 import { videoGames } from '../../data/videoGames';
 import { classical } from '../../data/classical';
 
-const QuickSearch = () => {
+const QuickSearch = ({ searchKeys }) => {
   const data = [...movies, ...tvShows, ...videoGames, ...classical];
+  const { ref, isComponentVisible } = useComponentVisible(false);
 
-  const [suggestions, setSuggestions] = useState([]);
-  const [suggestionIndex, setSuggestionIndex] = useState(0);
-  const [suggestionsActive, setSuggestionsActive] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
-
+  const [input, setInput] = useState('');
+  const [filtered, setFiltered] = useState([]);
+  const [active, setActive] = useState(0);
+  const [showDropDown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
 
-  const handleSearch = (e) => {
+  const handleInputChange = (e) => {
     const query = e.target.value.toLowerCase();
 
-    setSearchValue(query);
-    if (query.length > 1) {
-      // TO DO: Add search by composer and title
-      const filteredSuggestions = data.filter((suggestion) =>
-        suggestion.title?.toLowerCase().includes(query.trim())
+    setInput(query);
+    if (query.length > 0) {
+      const newFilteredSuggestions = data.filter(
+        (suggestion) =>
+          // Data matches 'composer' and 'title' keys
+          searchKeys.some((searchKey) =>
+            suggestion[searchKey]?.toLowerCase().includes(query.trim())
+          ) ||
+          // Data matches a score title
+          suggestion.scores.some((score) =>
+            score.score?.toLowerCase().includes(query.trim())
+          )
       );
 
-      console.log(filteredSuggestions.length);
-      setSuggestions(filteredSuggestions);
-      setSuggestionsActive(true);
+      setFiltered(newFilteredSuggestions);
+      setShowDropdown(true);
     } else {
-      setSuggestionsActive(false);
+      setShowDropdown(false);
     }
   };
 
   const clearSearchInput = () => {
-    setSuggestions([]);
-    setSearchValue('');
-    setSuggestionsActive(false);
+    setFiltered([]);
+    setInput('');
+    setActive(0);
+    setShowDropdown(false);
   };
 
-  const handleSelectSuggestion = (suggestion) => {
+  const handleClickSuggestion = (suggestion) => {
+    const { category, title, composer } = suggestion;
+
+    const path = `/${convertToPath(category)}/${convertToPath(
+      category === 'classical' ? composer : title
+    )}`;
+
     clearSearchInput();
-    navigate(
-      `/${convertToPath(suggestion.category)}/${convertToPath(
-        suggestion.title
-      )}`
-    );
+    navigate(path);
   };
 
-  const handleKeyDownSuggestion = (e) => {
+  const handleInputKeyDown = (e) => {
+    const selectedSuggestion = filtered[active];
+    const arrowUp = 38;
+    const arrowDown = 40;
+    const enter = 13;
+    const escape = 27;
+
     switch (e.keyCode) {
-      case 38:
-        // ARROW UP
-        if (suggestionIndex === 0) return;
-        setSuggestionIndex(suggestionIndex - 1);
+      case arrowUp:
+        // Prevents the cursor for moving in front of the search input
+        e.preventDefault();
+        if (active === 0) return;
+        setActive(active - 1);
         break;
-      case 40:
-        // ARROW DOWN
-        if (suggestionIndex - 1 === suggestions.length) return;
-        setSuggestionIndex(suggestionIndex + 1);
+      case arrowDown:
+        if (active === filtered?.length - 1) return;
+        setActive(active + 1);
         break;
-      case 13:
-        // ENTER
-        const selectedSuggestion = suggestions[suggestionIndex];
+      case enter:
+        const { category, title, composer } = selectedSuggestion;
+
+        const path = `/${convertToPath(category)}/${convertToPath(
+          category === 'classical' ? composer : title
+        )}`;
 
         clearSearchInput();
-        navigate(
-          `/${convertToPath(selectedSuggestion.category)}/${convertToPath(
-            selectedSuggestion.title
-          )}`
-        );
+        navigate(path);
         break;
-      case 27:
-        // ESCAPE
+      case escape:
         clearSearchInput();
         break;
       default:
@@ -88,8 +102,12 @@ const QuickSearch = () => {
     }
   };
 
-  const noSuggestions = suggestions.length === 0;
-  const searchInputIsEmpty = searchValue.length === 0;
+  const searchInputIsEmpty = input?.length === 0;
+  const noSuggestions = filtered.length === 0;
+
+  const NoSuggestions = () => {
+    return <span className='no-suggestions'>No results found.</span>;
+  };
 
   return (
     <div className='quick-search'>
@@ -97,12 +115,12 @@ const QuickSearch = () => {
         <input
           type='text'
           placeholder='Quick Search'
-          value={searchValue}
-          onChange={handleSearch}
-          onKeyDown={handleKeyDownSuggestion}
+          value={input}
+          onChange={handleInputChange}
+          onKeyDown={handleInputKeyDown}
         />
         <div className='search-icon'>
-          {!suggestionsActive && searchInputIsEmpty ? (
+          {!showDropDown && searchInputIsEmpty ? (
             <svg>
               <use href={`${Icons}#icon-search`} />
             </svg>
@@ -113,16 +131,19 @@ const QuickSearch = () => {
           )}
         </div>
       </div>
-      {suggestionsActive && (
-        <Suggestions
-          suggestions={suggestions}
-          suggestionIndex={suggestionIndex}
-          onSuggestionClick={handleSelectSuggestion}
-        />
-      )}
-      {suggestionsActive && noSuggestions && (
-        <span className='no-suggestions'>No results found.</span>
-      )}
+
+      <div className='dropdown'>
+        {showDropDown && (
+          <Suggestions
+            suggestions={filtered}
+            searchQuery={input}
+            active={active}
+            setActive={setActive}
+            onSuggestionClick={handleClickSuggestion}
+          />
+        )}
+        {showDropDown && noSuggestions && <NoSuggestions />}
+      </div>
     </div>
   );
 };

@@ -31,7 +31,7 @@ const Navbar = () => {
           <NavLink to='classical'>Classical Music</NavLink>
         </li>
       </ul>
-      <QuickSearch />
+      <QuickSearch searchKeys={['title', 'composer']} />
     </nav>
   );
 };
