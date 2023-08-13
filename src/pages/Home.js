@@ -15,7 +15,6 @@ const HomePage = () => {
         idealTextSize='2.5vw'
         maxTextSize='60px'
         backgroundImage={PianoOnFire}
-        fontSize={'80'}
       />
       <Quote />
       <HomeCategories />
