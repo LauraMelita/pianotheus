@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-import { convertToPath, removeAccents } from '../utils/helper';
+import { convertToPath } from '../utils/helper';
 
 import CircleCard from './UI/CircleCard';
 
@@ -17,7 +17,7 @@ const ComposersList = ({ data }) => {
         <li key={id}>
           <CircleCard
             feature={composer}
-            path={`${pathname}/${removeAccents(convertToPath(composer))}`}
+            path={`${pathname}/${convertToPath(composer)}`}
             image={composerImg}
           />
           <motion.span
