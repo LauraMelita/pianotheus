@@ -65,7 +65,7 @@ const Movie = () => {
   }, [movieDetails]);
 
   return (
-    <>
+    <main>
       {isLoading && <h3>Loading...</h3>}
       {movieDetails && !isLoading && !error && (
         <div className='movie-container'>
@@ -151,7 +151,7 @@ const Movie = () => {
         </div>
       )}
       {!isLoading && !movieDetails && <PageNotFound />}
-    </>
+    </main>
   );
 };
 

@@ -21,13 +21,13 @@ const VideoGame = () => {
   );
 
   return (
-    <>
+    <main>
       {isLoading && <h3>Loading...</h3>}
       {videoGameDetails && !isLoading && !error && (
         <h3>{videoGameDetails.title}</h3>
       )}
       {!isLoading && !videoGameDetails && <PageNotFound />}
-    </>
+    </main>
   );
 };
 export default VideoGame;

@@ -19,13 +19,13 @@ const Classical = () => {
   useUpdateDocumentTitle(composerDetails, `${composerDetails?.composer}`);
 
   return (
-    <>
+    <main>
       {isLoading && <h3>Loading...</h3>}
       {composerDetails && !isLoading && !error && (
         <h3>{composerDetails.composer}</h3>
       )}
       {!isLoading && !composerDetails && <PageNotFound />}
-    </>
+    </main>
   );
 };
 

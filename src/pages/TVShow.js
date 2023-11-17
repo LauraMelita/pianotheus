@@ -18,11 +18,11 @@ const TVShow = () => {
   useUpdateDocumentTitle(tvShowDetails, `${tvShowDetails?.title}`);
 
   return (
-    <>
+    <main>
       {isLoading && <h3>Loading...</h3>}
       {tvShowDetails && !isLoading && !error && <h3>{tvShowDetails.title}</h3>}
       {!isLoading && !tvShowDetails && <PageNotFound />}
-    </>
+    </main>
   );
 };
 

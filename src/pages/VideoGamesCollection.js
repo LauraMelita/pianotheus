@@ -11,7 +11,7 @@ const VideoGamesCollection = () => {
   const { data, isLoading, error } = useContext(VideoGamesContext);
 
   return (
-    <>
+    <main>
       <AnimatedBackground
         elements={['circle', 'triangle', 'cross', 'square']}
         repeat={10}
@@ -30,7 +30,7 @@ const VideoGamesCollection = () => {
         {!isLoading && !error && <TitlesList data={data} />}
         {error && <h3>{error}</h3>}
       </div>
-    </>
+    </main>
   );
 };
 
