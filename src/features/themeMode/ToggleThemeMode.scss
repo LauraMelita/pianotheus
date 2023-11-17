@@ -1,0 +1,13 @@
+@import '../../variables.scss';
+
+.toggle-theme-btn {
+  &.icon-btn {
+    > svg {
+      color: $navbar-svg-color;
+    }
+
+    &:hover {
+      background: $navbar-toggle-btn-hover;
+    }
+  }
+}

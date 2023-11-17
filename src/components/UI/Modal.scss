@@ -1,13 +1,22 @@
+@import '../../variables.scss';
+
 .overlay {
-  background-color: rgba(0, 0, 0, 0.75);
   position: fixed;
   inset: 0;
   animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  &[data-theme='light'] {
+    background-color: $overlay-bg-light;
+  }
+
+  &[data-theme='dark'] {
+    background-color: $overlay-bg-dark;
+  }
 }
 
 .modal {
-  z-index: 1;
   position: fixed;
+  z-index: 3;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -15,48 +24,88 @@
   max-width: 450px;
   max-height: 85vh;
   padding: 25px;
-  background-color: #fff;
   border-radius: 6px;
-  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
-    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-
-  &:focus {
-    outline: none;
-  }
 
   .modal-title {
     margin: 0;
     font-weight: 500;
-    color: #000;
-    font-size: 17px;
   }
 
   .modal-description {
     margin: 10px 0 20px;
-    color: #000;
-    font-size: 15px;
-    line-height: 1.5;
   }
 
   .close-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     position: absolute;
     top: 10px;
     right: 10px;
-    height: 25px;
-    width: 25px;
-    border: none;
-    background-color: transparent;
-    font-family: inherit;
+  }
 
-    svg {
-      cursor: pointer;
+  &[data-theme='light'] {
+    background-color: $modal-bg-light;
+    box-shadow: $modal-box-shadow-light;
+    color: $text-color-light;
 
-      &:hover {
-        color: #000;
+    .close-btn {
+      svg {
+        color: $svg-btn-color-light;
+      }
+    }
+
+    input,
+    textarea,
+    select {
+      background: $input-bg-light;
+      color: $text-color-light;
+      caret-color: $input-caret-light;
+      border: 2px solid $border-color-light;
+
+      &:focus {
+        border: $input-focus-light;
+      }
+
+      &::placeholder {
+        color: $input-placeholder-light;
+      }
+
+      &:disabled {
+        background-color: $input-bg-disabled-light;
+        color: $input-text-disabled-light;
+      }
+    }
+  }
+
+  &[data-theme='dark'] {
+    background-color: $modal-bg-dark;
+    box-shadow: $modal-box-shadow-dark;
+    color: $text-color-dark;
+
+    .close-btn {
+      svg {
+        color: $svg-btn-color-dark;
+      }
+    }
+
+    input,
+    textarea,
+    select {
+      background: $input-bg-dark;
+      color: $text-color-dark;
+      caret-color: $input-caret-dark;
+      border: 2px solid $border-color-dark;
+
+      &:focus {
+        border: $input-focus-dark;
+      }
+
+      &::placeholder {
+        color: $input-placeholder-dark;
+      }
+
+      &:disabled {
+        background-color: $input-bg-disabled-dark;
+        color: $input-text-disabled-dark;
       }
     }
   }

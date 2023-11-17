@@ -1,17 +1,13 @@
 .composers {
   display: grid;
-  justify-items: center;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 30px;
+  justify-items: center;
+  gap: 50px;
 
   li {
     flex-direction: column;
     display: flex;
     align-items: center;
-
-    span {
-      color: #fff;
-      padding-top: 7px;
-    }
+    gap: 7px;
   }
 }

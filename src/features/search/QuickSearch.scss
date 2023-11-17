@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .quick-search {
   display: flex;
   flex-direction: column;
@@ -7,13 +9,13 @@
   .search-bar {
     display: flex;
     justify-content: space-between;
-    border: 2px solid #333;
-    border-radius: 20px;
     overflow: hidden;
-    background-color: #23252a;
+    background-color: $qs-bg-color;
+    border: 2px solid $qs-border-color;
+    border-radius: 20px;
 
     &:focus-within {
-      border: 1px solid yellow;
+      border: 1px solid $qs-focus-within-color;
     }
 
     input {
@@ -22,25 +24,26 @@
       border: none;
       background-color: transparent;
       font-size: 14px;
-      color: #fff;
+      color: $qs-input-color;
 
       &:focus {
         outline: none;
       }
 
       &::placeholder {
-        color: #fff;
+        color: $qs-placeholder-color;
       }
     }
 
-    .search-icon {
-      width: 10%;
+    .search-icon,
+    &.icon-btn {
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 10%;
 
-      .icon-close {
-        cursor: pointer;
+      svg {
+        color: $qs-svg-color;
       }
     }
   }

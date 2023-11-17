@@ -73,18 +73,26 @@ const TitlesList = ({ data }) => {
         <AnimatePresence>
           {searchAndFilter(data)
             .slice(0, indexOfLastTitle)
-            .map(({ id, title, poster, scores }, index) => {
-              // if (index === 7) <div key={id} ref={ref} />;
-              return (
-                <PosterCard
-                  key={id}
-                  title={title}
-                  poster={poster}
-                  scores={scores}
-                  path={`${pathname}/${convertToPath(title)}`}
-                />
-              );
-            })}
+            .map(
+              (
+                { id, title, year, poster, composer, composerImg, scores },
+                index
+              ) => {
+                // if (index === 7) <div key={id} ref={ref} />;
+                return (
+                  <PosterCard
+                    key={id}
+                    title={title}
+                    year={year}
+                    poster={poster}
+                    composer={composer}
+                    composerImg={composerImg}
+                    scores={scores}
+                    path={`${pathname}/${convertToPath(title)}`}
+                  />
+                );
+              }
+            )}
         </AnimatePresence>
       </motion.ul>
 

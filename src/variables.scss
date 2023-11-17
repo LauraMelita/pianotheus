@@ -1,0 +1,88 @@
+// ------------------------------------- GENERAL -------------------------------------
+// Fonts
+$primary-font: 'Lato', sans-serif;
+$secondary-font: 'Lustria', serif;
+
+// Colors
+$primary-color: #0160ee;
+$secondary-color: #ff3c00;
+
+// Text
+// $text-danger: #dc3545;
+// $text-hover-danger: #bd2130;
+
+// Navbar
+$navbar-background: #18191b;
+$navbar-box-shadow: 0 2px 3px 0 #ff3c00;
+$navbar-link: #9e9e9e;
+$navbar-link-hover: #0160ee;
+$navbar-link-active: #014cbb;
+$navbar-svg-color: #014cbb;
+$navbar-toggle-btn-hover: #2e3238;
+
+// Footer
+$footer-background: #18191b;
+$footer-text-color: #9e9e9e;
+$footer-text-color-hover: #014cbb;
+
+// Quick Search
+$qs-border-color: #333;
+$qs-bg-color: #23252a;
+$qs-focus-within-color: #ffff00;
+$qs-input-color: #fff;
+$qs-placeholder-color: #fff;
+$qs-svg-color: #ff0000;
+
+// ------------------------------------- LIGHT MODE -------------------------------------
+$text-color-light: #212121;
+
+$bg-primary-light: #f6f7f9;
+$bg-secondary-light: rgb(224, 226, 228);
+
+$border-color-light: #ccc;
+
+$svg-color-light: #8b0000;
+$svg-btn-color-light: #32cd32;
+
+$input-bg-light: #fff;
+$input-caret-light: $secondary-color;
+$input-focus-light: 2px solid #008000;
+$input-placeholder-light: #424242;
+$input-bg-disabled-light: #eeeeee;
+$input-text-disabled-light: #bdbdbd;
+
+$quote-line-color-light: #8b0000;
+
+$badge-border-color-light: #008000;
+
+$overlay-bg-light: rgba(0, 0, 0, 0.75);
+$modal-bg-light: rgb(224, 226, 228);
+$modal-box-shadow-light: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+  hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+
+// ------------------------------------- DARK MODE -------------------------------------
+$text-color-dark: #e0e0e0;
+
+$bg-primary-dark: #22252a;
+$bg-secondary-dark: #2e3238;
+
+$border-color-dark: #4a4c4f;
+
+$svg-color-dark: #ff7f50;
+$svg-btn-color-dark: #ffa500;
+
+$input-bg-dark: #1d1e20;
+$input-caret-dark: $secondary-color;
+$input-focus-dark: 2px solid #ffa500;
+$input-placeholder-dark: #616161;
+$input-bg-disabled-dark: #303236;
+$input-text-disabled-dark: #787e87;
+
+$quote-line-color-dark: #ff7f50;
+
+$badge-border-color-dark: #2e3238;
+
+$overlay-bg-dark: rgba(0, 0, 0, 0.75);
+$modal-bg-dark: #22252a;
+$modal-box-shadow-dark: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+  hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
