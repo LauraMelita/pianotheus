@@ -13,6 +13,7 @@ export const VideoGamesContextProvider = (props) => {
     'video-games',
     'title'
   );
+
   return (
     <VideoGamesContext.Provider value={{ data, isLoading, error }}>
       {props.children}

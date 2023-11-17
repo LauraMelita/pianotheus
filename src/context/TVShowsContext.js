@@ -13,6 +13,7 @@ export const TVShowsContextProvider = (props) => {
     'tv-shows',
     'title'
   );
+
   return (
     <TVShowsContext.Provider value={{ data, isLoading, error }}>
       {props.children}
