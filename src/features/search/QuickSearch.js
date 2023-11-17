@@ -119,17 +119,17 @@ const QuickSearch = ({ searchKeys }) => {
           onChange={handleInputChange}
           onKeyDown={handleInputKeyDown}
         />
-        <div className='search-icon'>
+        <button className='search-icon icon-btn'>
           {!showDropDown && searchInputIsEmpty ? (
             <svg>
               <use href={`${Icons}#icon-search`} />
             </svg>
           ) : (
-            <svg className='icon-close' onClick={clearSearchInput}>
+            <svg onClick={clearSearchInput}>
               <use href={`${Icons}#icon-close`} />
             </svg>
           )}
-        </div>
+        </button>
       </div>
 
       <div className='dropdown'>

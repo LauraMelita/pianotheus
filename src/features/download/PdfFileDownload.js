@@ -22,8 +22,8 @@ const PdfFileDownload = ({ title }) => {
   };
 
   return (
-    <button className='btn__download-pdf' onClick={downloadFileAtUrl}>
-      <svg className='icon__download-pdf'>
+    <button className='icon-btn' onClick={downloadFileAtUrl}>
+      <svg>
         <use href={`${Icons}#icon-pdf`} />
       </svg>
     </button>
