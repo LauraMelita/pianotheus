@@ -13,6 +13,7 @@ export const ClassicalContextProvider = (props) => {
     'classical',
     'composer'
   );
+
   return (
     <ClassicalContext.Provider value={{ data, isLoading, error }}>
       {props.children}

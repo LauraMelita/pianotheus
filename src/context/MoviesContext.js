@@ -13,6 +13,7 @@ export const MoviesContextProvider = (props) => {
     'movies',
     'title'
   );
+
   return (
     <MoviesContext.Provider value={{ data, isLoading, error }}>
       {props.children}
