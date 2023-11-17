@@ -2,7 +2,7 @@
   position: relative;
   z-index: 1;
   width: 200px;
-  height: 200px;
+  height: 200px !important;
 
   .wrapper {
     position: absolute;
@@ -11,23 +11,31 @@
     z-index: -1;
 
     .background-image {
-      width: 100%;
       height: 100%;
-      object-fit: cover;
       border-radius: 100%;
     }
   }
 
   .character {
-    width: 95%;
-    opacity: 0;
-    transition: all 0.5s;
     position: absolute;
     z-index: -1;
+    opacity: 0;
+    transition: all 0.5s;
+    width: 80%;
+    right: 25px;
 
     &:hover {
       opacity: 1;
       transform: translate3d(0%, -15%, 0);
+    }
+  }
+}
+
+.tv-shows {
+  &:has(.popout-card) {
+    .character {
+      width: 62%;
+      right: 45px;
     }
   }
 }
