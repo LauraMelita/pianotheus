@@ -4,16 +4,8 @@ import './AnimatedFlyInText.scss';
 
 import { generateNumber } from '../../utils/helper';
 
-const AnimatedText = ({ text, fontSize, fontWeight, color }) => {
+const AnimatedText = ({ text, fontSize, fontWeight, animationSpeed }) => {
   const [isHidden, setIsHidden] = useState(true);
-
-  const textArrayWithSpaces = text
-    .replaceAll(' ', '*')
-    .split('')
-    .map((letter) => {
-      return letter.replace('*', '');
-    });
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsHidden((prevState) => !prevState);
@@ -25,25 +17,28 @@ const AnimatedText = ({ text, fontSize, fontWeight, color }) => {
   return (
     <ul
       className={`fly-in-text ${isHidden ? 'hidden' : ''}`}
-      style={{ text, fontSize, fontWeight, color }}
+      style={{ text, fontSize, fontWeight }}
     >
-      {textArrayWithSpaces.map((letter, index) => (
-        <li
-          key={index}
-          style={
-            isHidden
-              ? {
-                  transform: `translate(${generateNumber(
-                    -500,
-                    100
-                  )}px) translateY(${generateNumber(-500, 100)}px)`,
-                }
-              : {}
-          }
-        >
-          {letter}
-        </li>
-      ))}
+      {text.split('').map((letter, index) => {
+        if (letter.includes(' ')) letter = '';
+        return (
+          <li
+            key={index}
+            style={
+              isHidden
+                ? {
+                    transform: `translate(${generateNumber(
+                      -500,
+                      100
+                    )}px) translateY(${generateNumber(-500, 100)}px)`,
+                  }
+                : { transition: `all ${animationSpeed}s ease` }
+            }
+          >
+            {letter}
+          </li>
+        );
+      })}
     </ul>
   );
 };

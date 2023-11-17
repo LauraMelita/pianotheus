@@ -5,11 +5,14 @@ import * as Avatar from '@radix-ui/react-avatar';
 
 import './CircleCard.scss';
 
-const CircleCard = ({ feature, path, image }) => {
+const CircleCard = ({ feature, path, image, width, height }) => {
   return (
     <>
       <Avatar.Root className='circle-card'>
-        <motion.div whileHover={{ scale: 1.1 }}>
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          style={{ width: `${width}px`, height: `${height}px` }}
+        >
           <Link to={path}>
             <Avatar.Image className='card-image' src={image} alt={feature} />
           </Link>

@@ -19,6 +19,8 @@ const ComposersList = ({ data }) => {
             feature={composer}
             path={`${pathname}/${convertToPath(composer)}`}
             image={composerImg}
+            width={200}
+            height={200}
           />
           <motion.span
             initial={{ y: '100%' }}

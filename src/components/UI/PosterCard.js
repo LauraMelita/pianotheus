@@ -3,10 +3,20 @@ import { Link } from 'react-router-dom';
 import * as Separator from '@radix-ui/react-separator';
 import { motion } from 'framer-motion';
 
+import Badge from './Badge';
+
 import Icons from '../../assets/icons.svg';
 import './PosterCard.scss';
 
-const PosterCard = ({ title, path, poster, scores }) => {
+const PosterCard = ({
+  title,
+  year,
+  poster,
+  composer,
+  composerImg,
+  scores,
+  path,
+}) => {
   const scoresList = scores.map((score, index) => (
     <div className='score-list' key={index}>
       <svg>
@@ -24,6 +34,10 @@ const PosterCard = ({ title, path, poster, scores }) => {
       exit={{ opacity: 0 }}
       className='poster-card'
     >
+      <h3>
+        {title} ({year})
+      </h3>
+      <Badge image={composerImg} text={composer} height={150} width={150} />
       <Link to={path}>
         <figure>
           <img src={poster} alt={`${title} poster`} />
