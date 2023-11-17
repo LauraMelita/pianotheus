@@ -1,10 +1,11 @@
+@import '../../variables.scss';
+
 .animated-text {
   h1 {
+    font-family: $secondary-font;
     color: rgba(225, 225, 225, 0.01);
     text-transform: uppercase;
-    font-weight: 900;
     -webkit-background-clip: text;
-    animation: animate 15s ease-in-out infinite;
   }
 
   @keyframes animate {
