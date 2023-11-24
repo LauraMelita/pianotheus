@@ -1,0 +1,67 @@
+@import '../../../variables.scss';
+
+.navbar {
+  // border-width: 0 0 1px;
+  // background-color: $navbar-background;
+  // box-shadow: $navbar-box-shadow;
+
+  .navbar__wrapper {
+    position: relative;
+
+    height: 80px;
+    // max-width: 1366px;
+    width: min(90%, 2500px);
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .navbar__logo {
+      margin-right: auto;
+      height: 100%;
+
+      a {
+        height: 100%;
+
+        img {
+          height: 100%;
+          max-width: 200px;
+        }
+      }
+    }
+
+    .navbar__links {
+      display: flex;
+      gap: 35px;
+
+      li {
+        a {
+          color: $navbar-link;
+
+          &:hover {
+            color: $navbar-link-hover;
+          }
+
+          &.active {
+            color: $navbar-link-active;
+          }
+        }
+      }
+    }
+
+    .navbar__actions {
+      margin-left: auto;
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 1056px) {
+    .navbar__wrapper {
+      .navbar__links {
+        display: none;
+      }
+    }
+  }
+}

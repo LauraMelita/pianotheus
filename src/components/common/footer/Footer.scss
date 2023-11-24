@@ -1,0 +1,50 @@
+@import '../../../variables.scss';
+
+footer {
+  bottom: 0;
+  background: $footer-background;
+
+  .wrapper {
+    max-width: 1366px;
+    padding: 20px 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+
+    .footer-top {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .about {
+        .contact-form {
+          background-color: transparent;
+          border: none;
+          color: $footer-text-color;
+
+          &:hover {
+            color: $footer-text-color-hover;
+          }
+        }
+      }
+
+      .social {
+        > div {
+          display: flex;
+          flex-direction: row;
+        }
+      }
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

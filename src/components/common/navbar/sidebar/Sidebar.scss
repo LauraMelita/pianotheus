@@ -1,0 +1,36 @@
+.sidebar {
+  display: flex;
+  align-items: flex-end;
+  margin-left: auto;
+
+  .sidebar__toggle-btn {
+    z-index: 4;
+    display: flex;
+    background-color: transparent;
+    border: none;
+
+    svg {
+      color: #ffff00;
+      position: fixed;
+    }
+  }
+
+  .sidebar__bg {
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 400px;
+    background-color: #9e9e9e;
+
+    .sidebar__links {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+  }
+}

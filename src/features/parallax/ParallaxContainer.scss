@@ -1,0 +1,31 @@
+.parallax {
+  .background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .middleground {
+    position: fixed;
+    left: 0;
+    top: 26vw;
+    width: 100%;
+
+    img {
+      width: 30vw;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+  }
+
+  .foreground {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+  }
+}
