@@ -11,7 +11,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer>
+    <footer className='footer'>
       <div className='wrapper'>
         <div className='footer-top'>
           <ul className='quick-links'>
