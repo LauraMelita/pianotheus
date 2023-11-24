@@ -34,7 +34,10 @@ $qs-placeholder-color: #fff;
 $qs-svg-color: #ff0000;
 
 // ------------------------------------- LIGHT MODE -------------------------------------
-$text-color-light: #212121;
+
+$accent-color-light: #694adc;
+
+$text-color-light: #19191a;
 
 $bg-primary-light: #f6f7f9;
 $bg-secondary-light: rgb(224, 226, 228);
@@ -61,6 +64,9 @@ $modal-box-shadow-light: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
   hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
 
 // ------------------------------------- DARK MODE -------------------------------------
+
+$accent-color-dark: red;
+
 $text-color-dark: #e0e0e0;
 
 $bg-primary-dark: #22252a;
