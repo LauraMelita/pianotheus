@@ -1,6 +1,18 @@
 @import '../../themes/lightTheme.scss';
 @import '../../themes/darkTheme.scss';
 
+@font-face {
+  font-family: 'Right Grotesk Tall Regular';
+  src: local('RightGrotesk-TallRegular'),
+    url('../../assets/fonts/RightGrotesk-TallRegular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Right Grotesk Tight Medium';
+  src: local('RightGrotesk-TightMedium'),
+    url('../../assets/fonts/RightGrotesk-TightMedium.otf') format('opentype');
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -41,6 +53,19 @@ body {
   h6 {
     overflow-wrap: break-word;
     hyphens: auto;
+  }
+
+  .gradient-text {
+    display: inline-block;
+    text-transform: uppercase;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-family: 'Right Grotesk Tight Medium';
+    font-size: 100px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 4px;
   }
 
   a {

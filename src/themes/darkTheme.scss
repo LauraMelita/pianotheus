@@ -6,6 +6,14 @@
     color: $text-color-dark;
 
     main {
+      .gradient-text {
+        background-image: linear-gradient(
+          16deg,
+          $text-color-dark 69%,
+          $accent-color-dark 90%
+        );
+      }
+
       .categories {
         background: $bg-secondary-dark;
       }
