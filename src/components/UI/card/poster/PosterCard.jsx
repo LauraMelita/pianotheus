@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 import Badge from '../../badge/Badge';
 
-import Icons from '../../../../assets/icons.svg';
+import Icons from '../../../../assets/icons/icons.svg';
 import './PosterCard.scss';
 
 const PosterCard = ({

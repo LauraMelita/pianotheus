@@ -4,7 +4,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 import NavigationLinks from '../navbar/NavigationLinks';
 import ContactForm from '../../../features/contact/ContactForm';
 
-import Icons from '../../../assets/icons.svg';
+import Icons from '../../../assets/icons/icons.svg';
 import './Footer.scss';
 
 const Footer = () => {

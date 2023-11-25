@@ -10,7 +10,7 @@ import { convertToPath } from '../utils/helper';
 import PageNotFound from './error/PageNotFound';
 import ScoresList from '../components/ScoresList';
 
-import Icons from '../assets/icons.svg';
+import Icons from '../assets/icons/icons.svg';
 import './Movie.scss';
 
 const Movie = () => {

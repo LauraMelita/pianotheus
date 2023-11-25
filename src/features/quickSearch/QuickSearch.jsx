@@ -6,7 +6,7 @@ import Suggestions from './suggestions/Suggestions';
 import { useComponentVisible } from '../../hooks/useComponentVisible';
 import { convertToPath } from '../../utils/helper';
 
-import Icons from '../../assets/icons.svg';
+import Icons from '../../assets/icons/icons.svg';
 import './QuickSearch.scss';
 
 import { movies } from '../../data/movies';

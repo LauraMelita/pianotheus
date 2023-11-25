@@ -3,7 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 
 import { ThemeContext } from '../../../context/ThemeContext';
 
-import Icons from '../../../assets/icons.svg';
+import Icons from '../../../assets/icons/icons.svg';
 import './Modal.scss';
 
 const Modal = ({

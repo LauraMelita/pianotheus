@@ -5,7 +5,7 @@ import { VideoGamesContext } from '../context/VideoGamesContext';
 import AnimatedBackground from '../components/UI/animation/background/AnimatedBackground';
 import TitlesList from '../components/TitlesList';
 
-import BackWrapImage from '../assets/animatedBackground/backwrap.png';
+import BackWrapImage from '../assets/images/animatedBackground/backwrap.png';
 
 const VideoGamesCollection = () => {
   const { data, isLoading, error } = useContext(VideoGamesContext);

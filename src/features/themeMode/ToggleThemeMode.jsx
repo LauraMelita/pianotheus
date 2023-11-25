@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import { ThemeContext } from '../../context/ThemeContext';
 
-import Icons from '../../assets/icons.svg';
+import Icons from '../../assets/icons/icons.svg';
 import './ToggleThemeMode.scss';
 
 const ToggleThemeMode = () => {

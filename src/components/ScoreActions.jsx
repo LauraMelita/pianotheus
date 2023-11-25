@@ -4,7 +4,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import MidiFileDownload from '../features/download/MidiFileDownload';
 import PdfFileDownload from '../features/download/PdfFileDownload';
 
-import Icons from '../assets/icons.svg';
+import Icons from '../assets/icons/icons.svg';
 import './ScoreActions.scss';
 
 const ScoreActions = ({ movie, title }) => {

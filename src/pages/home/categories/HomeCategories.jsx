@@ -4,14 +4,14 @@ import PopOutCard from '../../../components/UI/card/popout/PopOutCard';
 
 import { convertToPath } from '../../../utils/helper';
 
-import MoviesBg from '../../../assets/contentTypes/movies-bg.jpg';
-import MoviesPopOut from '../../../assets/contentTypes/movies-bg-popout.webp';
-import TVShowsBg from '../../../assets/contentTypes/tv-shows-bg.jpg';
-import TvShowPopOut from '../../../assets/contentTypes/tv-shows-bg-popout.webp';
-import VideoGamesBg from '../../../assets/contentTypes/video-games-bg.webp';
-import VideoGamePopOut from '../../../assets/contentTypes/video-games-bg-popout.png';
-import ClassicalBg from '../../../assets/contentTypes/classical-bg.jpg';
-import ClassicalPopOut from '../../../assets/contentTypes/classical-bg-popout.webp';
+import MoviesBg from '../../../assets/images/contentTypes/movies-bg.jpg';
+import MoviesPopOut from '../../../assets/images/contentTypes/movies-bg-popout.webp';
+import TVShowsBg from '../../../assets/images/contentTypes/tv-shows-bg.jpg';
+import TvShowPopOut from '../../../assets/images/contentTypes/tv-shows-bg-popout.webp';
+import VideoGamesBg from '../../../assets/images/contentTypes/video-games-bg.webp';
+import VideoGamePopOut from '../../../assets/images/contentTypes/video-games-bg-popout.png';
+import ClassicalBg from '../../../assets/images/contentTypes/classical-bg.jpg';
+import ClassicalPopOut from '../../../assets/images/contentTypes/classical-bg-popout.webp';
 import './HomeCategories.scss';
 
 const CATEGORIES = [
