@@ -2,7 +2,7 @@ import React from 'react';
 
 import useFetchFileFromStorage from '../../hooks/useFetchFileFromStorage';
 
-import Icons from '../../assets/icons.svg';
+import Icons from '../../assets/icons/icons.svg';
 
 const MidiFileDownload = ({ title }) => {
   const file = useFetchFileFromStorage('.mid', title);

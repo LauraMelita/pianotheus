@@ -2,9 +2,9 @@ import React from 'react';
 
 import ParallaxLayer from './ParallaxLayer';
 
-import BackgroundImage from '../../assets/parallax/background.jpg';
-import MiddlegroundImage from '../../assets/parallax/middleground.webp';
-import ForegroundImage from '../../assets/parallax/foreground.png';
+import BackgroundImage from '../../assets/images/parallax/background.jpg';
+import MiddlegroundImage from '../../assets/images/parallax/middleground.webp';
+import ForegroundImage from '../../assets/images/parallax/foreground.png';
 import './ParallaxContainer.scss';
 
 const ParallaxContainer = () => {

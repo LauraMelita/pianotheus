@@ -35,7 +35,7 @@ const AnimatedBackground = (props) => {
               key={index}
               className={`floating ${element}`}
               style={{
-                backgroundImage: `url(${require(`../../../../assets/animatedBackground/${element}.png`)})`,
+                backgroundImage: `url(${require(`../../../../assets/images/animatedBackground/${element}.png`)})`,
                 top: `${generateNumber(0, 100)}%`,
                 left: `${generateNumber(0, 100)}%`,
                 animationDelay: `-${generateNumber(0.1, 4)}s`,

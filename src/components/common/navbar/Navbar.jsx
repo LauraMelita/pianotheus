@@ -5,7 +5,7 @@ import NavigationLinks from './NavigationLinks';
 import QuickSearch from '../../../features/quickSearch/QuickSearch';
 import ToggleThemeMode from '../../../features/themeMode/ToggleThemeMode';
 
-import Logo from '../../../assets/logo.svg';
+import Logo from '../../../assets/images/logo.svg';
 import './Navbar.scss';
 
 const Navbar = () => {

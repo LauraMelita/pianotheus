@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icons from '../../../assets/icons.svg';
+import Icons from '../../../assets/icons/icons.svg';
 import './Quote.scss';
 
 const Quote = ({ quoteText, author, source }) => {
