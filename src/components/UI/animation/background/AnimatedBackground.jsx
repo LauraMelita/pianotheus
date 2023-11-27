@@ -1,23 +1,11 @@
 import React from 'react';
 import { shuffle } from 'lodash';
 
-import { generateNumber } from '../../../../utils/helper';
+import { generateNumber } from '../../../../utils/helpers';
 
 import './AnimatedBackground.scss';
 
 const AnimatedBackground = (props) => {
-  // Usage example:
-  /* <AnimatedBackgroundText
-        text='Pianotheus'
-        minTextSize='50px'
-        idealTextSize='2.5vw'
-        maxTextSize='60px'
-        fontWeight='900'
-        backgroundImage={PianoOnFire}
-        animationSpeed='15'
-      /> 
-  */
-
   const generatedElements = props.elements.flatMap((element) => {
     const repeatedElements = [...Array(props.repeat).keys()].map(() => element);
     return shuffle(repeatedElements);

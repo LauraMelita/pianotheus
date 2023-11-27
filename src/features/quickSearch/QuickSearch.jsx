@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Suggestions from './suggestions/Suggestions';
 
 import { useComponentVisible } from '../../hooks/useComponentVisible';
-import { convertToPath } from '../../utils/helper';
+import { convertToPath } from '../../utils/helpers';
 
 import Icons from '../../assets/icons/icons.svg';
 import './QuickSearch.scss';

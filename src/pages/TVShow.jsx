@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { TVShowsContext } from '../context/TVShowsContext';
 import { useUpdateDocumentTitle } from '../hooks/useUpdateDocumentTitle';
-import { convertToPath } from '../utils/helper';
+import { convertToPath } from '../utils/helpers';
 
 import PageNotFound from './error/PageNotFound';
 

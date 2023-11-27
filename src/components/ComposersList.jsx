@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-import { convertToPath } from '../utils/helper';
+import { convertToPath } from '../utils/helpers';
 
 import CircleCard from './UI/card/circle/CircleCard';
 

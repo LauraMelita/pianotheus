@@ -2,7 +2,7 @@ import React from 'react';
 
 import PopOutCard from '../../../components/UI/card/popout/PopOutCard';
 
-import { convertToPath } from '../../../utils/helper';
+import { convertToPath } from '../../../utils/helpers';
 
 import MoviesBg from '../../../assets/images/contentTypes/movies-bg.jpg';
 import MoviesPopOut from '../../../assets/images/contentTypes/movies-bg-popout.webp';

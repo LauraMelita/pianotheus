@@ -7,13 +7,9 @@ import Search from '../features/search/Search';
 import Filter from '../features/filter/Filter';
 import PosterCard from './UI/card/poster/PosterCard';
 
-import { convertToPath } from '../utils/helper';
+import { convertToPath } from '../utils/helpers';
 
 import './TitlesList.scss';
-
-// TODO: Experiment with debouncer to delay fast typing: https://www.youtube.com/watch?v=UmYfEdKFI-E&ab_channel=CarmelleCodes
-// See: https://refine.dev/blog/react-search-bar-and-filtering/#testing-the-app
-// See: https://www.youtube.com/watch?v=NZKUirTtxcg&t=555s&ab_channel=WebDevSimplified
 
 const TitlesList = ({ data }) => {
   const [searchResults, setSearchResults] = useState([]);

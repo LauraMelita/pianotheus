@@ -5,7 +5,7 @@ import * as Separator from '@radix-ui/react-separator';
 
 import { MoviesContext } from '../context/MoviesContext';
 import { useUpdateDocumentTitle } from '../hooks/useUpdateDocumentTitle';
-import { convertToPath } from '../utils/helper';
+import { convertToPath } from '../utils/helpers';
 
 import PageNotFound from './error/PageNotFound';
 import ScoresList from '../components/ScoresList';
