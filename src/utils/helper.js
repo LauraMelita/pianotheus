@@ -10,3 +10,5 @@ export const generateNumber = (min, max) => {
 
 export const stringIncludesWord = (str, word) =>
   new RegExp('\\b' + word + '\\b', 'i').test(str);
+
+export const currentYear = new Date().getFullYear();

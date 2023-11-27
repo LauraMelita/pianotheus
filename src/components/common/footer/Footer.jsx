@@ -1,31 +1,35 @@
 import React from 'react';
-import { HashLink as Link } from 'react-router-hash-link';
+import { HashLink } from 'react-router-hash-link';
 
 import NavigationLinks from '../navbar/NavigationLinks';
 import ContactForm from '../../../features/contact/ContactForm';
+
+import { currentYear } from '../../../utils/helper';
 
 import Icons from '../../../assets/icons/icons.svg';
 import './Footer.scss';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className='footer'>
-      <div className='wrapper'>
-        <div className='footer-top'>
-          <ul className='quick-links'>
-            Quick Links
-            <NavigationLinks />
-          </ul>
-          <ul className='about'>
-            Pianotheus
-            <Link to='/#about'>About</Link>
-            <ContactForm />
-          </ul>
-          <ul className='social'>
-            Get in Touch
-            <div>
+      <div className='footer__wrapper'>
+        <div className='footer__top'>
+          <div className='footer__quick-links'>
+            <span>Quick Links</span>
+            <NavigationLinks className='footer__links' />
+          </div>
+          <div className='footer__about'>
+            <span>Pianotheus</span>
+            <ul>
+              <li>
+                <HashLink to='/#about'>About</HashLink>
+              </li>
+              <ContactForm />
+            </ul>
+          </div>
+          <div className='footer__social'>
+            <span>Get in Touch</span>
+            <ul>
               <li className='github icon-btn'>
                 <a
                   href='https://github.com/LauraMelita'
@@ -48,31 +52,39 @@ const Footer = () => {
                   </svg>
                 </a>
               </li>
-            </div>
-          </ul>
-          <ul className='download'>
-            Download
-            <li>
-              <a
-                href='https://synthesiagame.com/download'
-                target='_blank'
-                rel='noreferrer'
-              >
-                Synthesia
-              </a>
-            </li>
-            <li>
-              <a
-                href='https://musescore.org/en/download'
-                target='_blank'
-                rel='noreferrer'
-              >
-                MuseScore
-              </a>
-            </li>
-          </ul>
+            </ul>
+          </div>
+          <div className='footer__download'>
+            <span>Download</span>
+            <ul>
+              <li>
+                <a
+                  href='https://synthesiagame.com/download'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Synthesia
+                  <svg>
+                    <use href={`${Icons}#icon-external-link`} />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a
+                  href='https://musescore.org/en/download'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  MuseScore
+                  <svg>
+                    <use href={`${Icons}#icon-external-link`} />
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className='footer-bottom'>
+        <div className='footer__bottom'>
           <div className='copyright'>
             <span>© {currentYear} by Pianotheus</span>
           </div>
