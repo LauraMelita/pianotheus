@@ -1,5 +1,4 @@
 import React from 'react';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 import MidiFileDownload from '../features/download/MidiFileDownload';
 import PdfFileDownload from '../features/download/PdfFileDownload';

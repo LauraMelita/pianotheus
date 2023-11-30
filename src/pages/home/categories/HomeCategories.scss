@@ -1,12 +1,10 @@
 .categories-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  padding: 20px 0;
-  gap: 30px;
 
   div {
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 7px;
 
