@@ -30,7 +30,6 @@ const Modal = ({
             {description}
           </Dialog.Description>
           {children}
-
           <Dialog.Close asChild>
             <button className='close-btn icon-btn' aria-label='Close'>
               <svg className='icon-close'>

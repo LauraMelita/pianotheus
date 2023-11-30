@@ -2,9 +2,9 @@ import React from 'react';
 import { HashLink } from 'react-router-hash-link';
 
 import NavigationLinks from '../navbar/NavigationLinks';
-import ContactForm from '../../../features/contact/ContactForm';
+import Contact from '../../../features/contact/Contact';
 
-import { currentYear } from '../../../utils/helper';
+import { currentYear } from '../../../utils/helpers';
 
 import Icons from '../../../assets/icons/icons.svg';
 import './Footer.scss';
@@ -24,7 +24,7 @@ const Footer = () => {
               <li>
                 <HashLink to='/#about'>About</HashLink>
               </li>
-              <ContactForm />
+              <Contact />
             </ul>
           </div>
           <div className='footer__social'>
