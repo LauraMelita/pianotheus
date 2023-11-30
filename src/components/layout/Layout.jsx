@@ -1,5 +1,6 @@
 import React from 'react';
 
+import '../../styles/variables.scss';
 import './Layout.scss';
 
 const Layout = (props) => {

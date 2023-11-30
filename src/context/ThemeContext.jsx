@@ -7,8 +7,18 @@ export const ThemeContextProvider = (props) => {
   const [theme, setTheme] = useState(initialTheme);
 
   useEffect(() => {
-    if (!theme) setTheme('light');
+    if (!theme) setTheme('dark');
     localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark-theme');
+      document.documentElement.classList.remove('light-theme');
+    } else {
+      document.documentElement.classList.add('light-theme');
+      document.documentElement.classList.remove('dark-theme');
+    }
   }, [theme]);
 
   const toggleTheme = () =>
