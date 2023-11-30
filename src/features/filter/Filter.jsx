@@ -1,12 +1,21 @@
 import React from 'react';
 
-const Filter = ({ data, defaultValue, filterBy, ariaLabel, setFilter }) => {
+import './Filter.scss';
+
+const Filter = ({
+  className,
+  data,
+  defaultValue,
+  filterBy,
+  ariaLabel,
+  setFilter,
+}) => {
   const filterOptions = [
     ...new Set(data.map((element) => element[filterBy])),
   ].sort();
 
   return (
-    <div className='select'>
+    <div className={className}>
       <select
         onChange={(e) => setFilter(e.target.value)}
         className='custom-select'

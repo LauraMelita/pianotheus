@@ -58,6 +58,7 @@ const TitlesList = ({ data }) => {
       />
 
       <Filter
+        className='filter'
         data={data}
         defaultValue='All Composers'
         ariaLabel='Filter by Composer'
