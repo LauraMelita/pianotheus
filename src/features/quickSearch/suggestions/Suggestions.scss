@@ -8,7 +8,7 @@
     cursor: pointer;
 
     &.active {
-      background: #d3d3d3;
+      background: var(--highlight-100);
     }
 
     .image {
@@ -31,17 +31,19 @@
       gap: 2px;
 
       .title-suggestion {
-        font-weight: 600;
+        font-weight: var(--fw-semi-bold);
+        color: var(--text-color-primary);
       }
 
       .composer-suggestion {
+        color: var(--text-color-primary);
         &:empty {
           display: none;
         }
       }
 
       .score-suggestion {
-        color: #ff00ff;
+        color: var(--text-color-secondary);
 
         &:empty {
           display: none;

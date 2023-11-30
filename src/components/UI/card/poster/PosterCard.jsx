@@ -34,9 +34,9 @@ const PosterCard = ({
       exit={{ opacity: 0 }}
       className='poster-card'
     >
-      <h3>
+      <h4 className='gradient-text'>
         {title} ({year})
-      </h3>
+      </h4>
       <Badge image={composerImg} text={composer} height={150} width={150} />
       <Link to={path}>
         <figure>

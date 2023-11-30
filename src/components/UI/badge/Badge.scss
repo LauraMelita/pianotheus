@@ -1,6 +1,7 @@
 .badge {
   div {
     border-radius: 50%;
+    border: 5px solid var(--text-color-secondary);
 
     img {
       filter: grayscale(100%) contrast(130%);

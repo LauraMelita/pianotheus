@@ -8,7 +8,7 @@ const Badge = ({ image, text, height, width }) => {
       <div style={{ height: `${height}px`, width: `${width}px` }}>
         <img src={image} alt={`${text} badge`} />
       </div>
-      <h3>{text}</h3>
+      <span>{text}</span>
     </div>
   );
 };

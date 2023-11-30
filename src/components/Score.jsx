@@ -8,7 +8,7 @@ const Score = ({ movie, title, level }) => {
   return (
     <div className='score'>
       <div className='container'>
-        <h3 className='score-title'>{title}</h3>
+        <span className='score-title'>{title}</span>
         <ScoreActions movie={movie} title={title} />
       </div>
       <div className='score-metadata'>

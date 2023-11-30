@@ -1,31 +1,23 @@
-@import '../../../variables.scss';
-
 .navbar {
-  // border-width: 0 0 1px;
-  // background-color: $navbar-background;
-  // box-shadow: $navbar-box-shadow;
+  background-color: var(--gray-900);
 
   .navbar__wrapper {
-    position: relative;
-
-    height: 80px;
-    // max-width: 1366px;
-    width: min(90%, 2500px);
-    margin: auto;
+    width: var(--global-width);
+    min-height: var(--nav-height);
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
 
     .navbar__logo {
       margin-right: auto;
-      height: 100%;
 
       a {
-        height: 100%;
+        display: block;
+        width: 100%;
 
         img {
-          height: 100%;
-          max-width: 200px;
+          height: calc(var(--nav-height) / 3);
         }
       }
     }
@@ -36,14 +28,14 @@
 
       li {
         a {
-          color: $navbar-link;
+          color: var(--text-color-secondary);
 
           &:hover {
-            color: $navbar-link-hover;
+            color: var(--text-color-primary);
           }
 
           &.active {
-            color: $navbar-link-active;
+            color: var(--accent-color-200);
           }
         }
       }
@@ -54,14 +46,6 @@
       display: flex;
       flex-direction: row;
       gap: 20px;
-    }
-  }
-
-  @media (max-width: 1056px) {
-    .navbar__wrapper {
-      .navbar__links {
-        display: none;
-      }
     }
   }
 }

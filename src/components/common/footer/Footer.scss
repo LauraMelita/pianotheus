@@ -1,10 +1,8 @@
-@import '../../../variables.scss';
-
 footer {
-  background: $footer-background;
+  background: var(--gray-900);
 
   .footer__wrapper {
-    width: min(100% - 20%, 1366px);
+    width: var(--global-width);
     margin-inline: auto;
     padding: 20px 0;
 
@@ -20,7 +18,7 @@ footer {
 
         span {
           padding-bottom: 5px;
-          color: $footer-title-color;
+          color: var(--accent-color-200);
         }
 
         ul {
@@ -29,10 +27,10 @@ footer {
 
           li {
             a {
-              color: $footer-text-color;
+              color: var(--text-color-secondary);
 
               &:hover {
-                text-decoration: underline;
+                color: var(--text-color-primary);
               }
             }
           }
@@ -40,10 +38,10 @@ footer {
 
         &.footer__about {
           .contact__btn {
-            color: $footer-text-color;
+            color: var(--text-color-secondary);
 
             &:hover {
-              text-decoration: underline;
+              color: var(--text-color-primary);
             }
           }
         }
@@ -69,10 +67,10 @@ footer {
     .footer__bottom {
       display: flex;
       justify-content: center;
-      color: $footer-text-color;
+      color: var(--text-color-secondary);
 
       span {
-        font-size: 14px;
+        font-size: var(--fs-50);
       }
     }
   }

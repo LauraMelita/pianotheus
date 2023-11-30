@@ -72,7 +72,7 @@ const Movie = () => {
           <div className='movie-header'>
             <div className='left'>
               <div className='title-container'>
-                <h3 className='title'>{movieDetails.title}</h3>
+                <h4 className='title'>{movieDetails.title}</h4>
                 <a
                   className='imdb-link'
                   href={`https://www.imdb.com/title/${movieDetails.imdbId}`}
@@ -96,7 +96,7 @@ const Movie = () => {
                 <svg>
                   <use href={`${Icons}#icon-imdb-star`} />
                 </svg>
-                <span className='rating'>{imdbData.imdbRating}</span>
+                <h4 className='rating'>{imdbData.imdbRating}</h4>
                 <span className='number'>/10</span>
               </div>
             </div>
