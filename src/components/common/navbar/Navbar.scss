@@ -24,7 +24,7 @@
 
     .navbar__links {
       display: flex;
-      gap: 35px;
+      gap: calc(var(--global-gap) * 2);
 
       li {
         a {
@@ -45,7 +45,7 @@
       margin-left: auto;
       display: flex;
       flex-direction: row;
-      gap: 20px;
+      gap: var(--global-gap);
     }
   }
 }
