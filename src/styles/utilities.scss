@@ -40,6 +40,14 @@
   }
 }
 
+svg {
+  &.external-link {
+    margin-left: 4px;
+    height: 10px;
+    width: 10px;
+  }
+}
+
 .separator {
   &[data-orientation='horizontal'],
   &[data-orientation='vertical'] {

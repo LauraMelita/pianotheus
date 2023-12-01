@@ -4,7 +4,7 @@ footer {
   .footer__wrapper {
     width: var(--global-width);
     margin-inline: auto;
-    padding: 20px 0;
+    padding: var(--global-padding) 0;
 
     .footer__top {
       display: flex;
@@ -51,14 +51,6 @@ footer {
 
           ul {
             flex-direction: row;
-          }
-        }
-
-        &.footer__download {
-          svg {
-            margin-left: 4px;
-            height: 10px;
-            width: 10px;
           }
         }
       }

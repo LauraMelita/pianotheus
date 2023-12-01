@@ -30,7 +30,7 @@ const Footer = () => {
           <div className='footer__social'>
             <span>Get in Touch</span>
             <ul>
-              <li className='github icon-btn'>
+              <li className='icon-btn'>
                 <a
                   href='https://github.com/LauraMelita'
                   target='_blank'
@@ -41,7 +41,7 @@ const Footer = () => {
                   </svg>
                 </a>
               </li>
-              <li className='linkedin icon-btn'>
+              <li className='icon-btn'>
                 <a
                   href='https://www.linkedin.com/in/laura-melita-a30086104'
                   target='_blank'
@@ -64,7 +64,7 @@ const Footer = () => {
                   rel='noreferrer'
                 >
                   Synthesia
-                  <svg>
+                  <svg className='external-link'>
                     <use href={`${Icons}#icon-external-link`} />
                   </svg>
                 </a>
@@ -76,7 +76,7 @@ const Footer = () => {
                   rel='noreferrer'
                 >
                   MuseScore
-                  <svg>
+                  <svg className='external-link'>
                     <use href={`${Icons}#icon-external-link`} />
                   </svg>
                 </a>
