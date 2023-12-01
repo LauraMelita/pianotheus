@@ -6,6 +6,7 @@ import './AnimatedFlyInText.scss';
 
 const AnimatedFlyInText = ({ text, fontSize, fontWeight, animationSpeed }) => {
   const [isHidden, setIsHidden] = useState(true);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsHidden((prevState) => !prevState);
