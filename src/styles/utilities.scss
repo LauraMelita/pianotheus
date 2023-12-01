@@ -49,12 +49,17 @@ svg {
 }
 
 .separator {
-  &[data-orientation='horizontal'],
-  &[data-orientation='vertical'] {
+  border: 1px solid var(--text-color-secondary);
+
+  &[data-orientation='horizontal'] {
     height: 1px;
     width: 100%;
   }
-  border: 1px solid var(--text-color-secondary);
+
+  &[data-orientation='vertical'] {
+    height: 100%;
+    width: 1px;
+  }
 }
 
 .required {
