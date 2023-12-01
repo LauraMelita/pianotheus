@@ -4,6 +4,7 @@ import { VideoGamesContext } from '../context/VideoGamesContext';
 
 import AnimatedBackground from '../components/UI/animation/background/AnimatedBackground';
 import TitlesList from '../components/TitlesList';
+import MoveBackButton from '../components/UI/button/MoveBackButton';
 
 import BackWrapImage from '../assets/images/animatedBackground/backwrap.png';
 
@@ -30,6 +31,7 @@ const VideoGamesCollection = () => {
         {!isLoading && !error && <TitlesList data={data} />}
         {error && <h3>{error}</h3>}
       </div>
+      <MoveBackButton />
     </main>
   );
 };
