@@ -12,20 +12,21 @@ const AnimatedBackground = (props) => {
   });
 
   return (
-    <div className='animated-background'>
+    <div className='animated-bg'>
       <div
-        className='backwrap'
+        className='animated-bg__backwrap'
         style={{ backgroundImage: `url(${props.backWrap})` }}
       >
-        <div className='back-shapes'>
+        <div className='animated-bg__back-shapes'>
           {generatedElements.map((element, index) => (
             <span
               key={index}
-              className={`floating ${element}`}
+              className={`animated-bg__floating ${element}`}
               style={{
                 backgroundImage: `url(${require(`../../../../assets/images/animatedBackground/${element}.png`)})`,
                 top: `${generateNumber(0, 100)}%`,
-                left: `${generateNumber(0, 100)}%`,
+                left: `${generateNumber(2, 100)}%`,
+                right: `${generateNumber(-2, 100)}%`,
                 animationDelay: `-${generateNumber(0.1, 4)}s`,
               }}
             />
