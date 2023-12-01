@@ -1,10 +1,10 @@
 import React from 'react';
 
-import useFetchFileFromStorage from '../../hooks/useFetchFileFromStorage';
+import useFetchFileFromStorage from '../../../../hooks/useFetchFileFromStorage';
 
-import Icons from '../../assets/icons/icons.svg';
+import Svg from '../../../../components/UI/svg/Svg';
 
-const PdfFileDownload = ({ title }) => {
+const DownloadPdf = ({ title }) => {
   const file = useFetchFileFromStorage('.pdf', title);
 
   if (!file) return;
@@ -23,11 +23,9 @@ const PdfFileDownload = ({ title }) => {
 
   return (
     <button className='icon-btn' onClick={downloadFileAtUrl}>
-      <svg>
-        <use href={`${Icons}#icon-pdf`} />
-      </svg>
+      <Svg icon='pdf' />
     </button>
   );
 };
 
-export default PdfFileDownload;
+export default DownloadPdf;

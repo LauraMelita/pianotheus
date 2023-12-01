@@ -1,0 +1,29 @@
+.scores {
+  .scores__list {
+    .score {
+      display: flex;
+      align-items: center;
+      gap: var(--global-gap);
+      padding: calc(var(--global-padding) / 2) 0;
+
+      .score__actions {
+        display: flex;
+        gap: calc(var(--global-gap) / 2);
+      }
+
+      .score__metadata {
+        span {
+          font-size: var(--fs-50);
+
+          &:last-of-type {
+            color: var(--accent-color-100);
+          }
+        }
+      }
+
+      .separator {
+        height: 18px;
+      }
+    }
+  }
+}
