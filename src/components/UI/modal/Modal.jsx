@@ -3,7 +3,8 @@ import * as Dialog from '@radix-ui/react-dialog';
 
 import { ThemeContext } from '../../../context/ThemeContext';
 
-import Icons from '../../../assets/icons/icons.svg';
+import Svg from '../svg/Svg';
+
 import './Modal.scss';
 
 const Modal = ({
@@ -31,10 +32,8 @@ const Modal = ({
           </Dialog.Description>
           {children}
           <Dialog.Close asChild>
-            <button className='close-btn icon-btn' aria-label='Close'>
-              <svg className='icon-close'>
-                <use href={`${Icons}#icon-close`} />
-              </svg>
+            <button className='close icon-btn' aria-label='close'>
+              <Svg icon='close' />
             </button>
           </Dialog.Close>
         </Dialog.Content>

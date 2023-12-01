@@ -2,11 +2,11 @@ import React from 'react';
 import { HashLink } from 'react-router-hash-link';
 
 import NavigationLinks from '../navbar/NavigationLinks';
+import Svg from '../../UI/svg/Svg';
 import Contact from '../../../features/contact/Contact';
 
 import { currentYear } from '../../../utils/helpers';
 
-import Icons from '../../../assets/icons/icons.svg';
 import './Footer.scss';
 
 const Footer = () => {
@@ -36,9 +36,7 @@ const Footer = () => {
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <svg>
-                    <use href={`${Icons}#icon-github`} />
-                  </svg>
+                  <Svg icon='github' />
                 </a>
               </li>
               <li className='icon-btn'>
@@ -47,9 +45,7 @@ const Footer = () => {
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <svg>
-                    <use href={`${Icons}#icon-linkedin`} />
-                  </svg>
+                  <Svg icon='linkedin' />
                 </a>
               </li>
             </ul>
@@ -64,9 +60,7 @@ const Footer = () => {
                   rel='noreferrer'
                 >
                   Synthesia
-                  <svg className='external-link'>
-                    <use href={`${Icons}#icon-external-link`} />
-                  </svg>
+                  <Svg className='external-link' icon='external-link' />
                 </a>
               </li>
               <li>
@@ -76,9 +70,7 @@ const Footer = () => {
                   rel='noreferrer'
                 >
                   MuseScore
-                  <svg className='external-link'>
-                    <use href={`${Icons}#icon-external-link`} />
-                  </svg>
+                  <Svg className='external-link' icon='external-link' />
                 </a>
               </li>
             </ul>

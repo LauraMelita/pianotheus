@@ -1,15 +1,14 @@
 import React from 'react';
 
-import Icons from '../../../assets/icons/icons.svg';
+import Svg from '../../../components/UI/svg/Svg';
+
 import './Quote.scss';
 
-const Quote = ({ quoteText, author, source }) => {
+const Quote = () => {
   return (
     <div className='quote'>
       <div className='icon'>
-        <svg>
-          <use href={`${Icons}#icon-quote`} />
-        </svg>
+        <Svg icon='quote' />
       </div>
       <div className='text'>
         <p>

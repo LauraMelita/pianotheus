@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import * as Separator from '@radix-ui/react-separator';
 import { motion } from 'framer-motion';
 
+import Svg from '../../svg/Svg';
 import Badge from '../../badge/Badge';
+import Separator from '../../separator/Separator';
 
-import Icons from '../../../../assets/icons/icons.svg';
 import './PosterCard.scss';
 
 const PosterCard = ({
@@ -19,9 +19,7 @@ const PosterCard = ({
 }) => {
   const scoresList = scores.map((score, index) => (
     <div className='score-list' key={index}>
-      <svg>
-        <use href={`${Icons}#icon-radio`} />
-      </svg>
+      <Svg icon='radio' />
       <li>{score.score}</li>
     </div>
   ));
@@ -43,11 +41,7 @@ const PosterCard = ({
           <img src={poster} alt={`${title} poster`} />
           <figcaption>
             <h3>Scores</h3>
-            <Separator.Root
-              className='separator'
-              orientation='horizontal'
-              decorative
-            />
+            <Separator orientation='horizontal' />
             {scoresList}
           </figcaption>
         </figure>
