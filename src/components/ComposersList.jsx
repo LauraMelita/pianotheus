@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
 import { convertToPath } from '../utils/helpers';
 
@@ -19,16 +18,12 @@ const ComposersList = ({ data }) => {
             feature={composer}
             path={`${pathname}/${convertToPath(composer)}`}
             image={composerImg}
-            width={200}
-            height={200}
+            hoverScale={1.02}
+            width={180}
+            height={180}
+            fallbackDelay={600}
           />
-          <motion.span
-            initial={{ y: '100%' }}
-            animate={{ y: 0 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-          >
-            {composer}
-          </motion.span>
+          <span>{composer}</span>
         </li>
       ))}
     </ul>
