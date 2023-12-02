@@ -9,7 +9,7 @@ const CircleCard = ({
   feature,
   path,
   image,
-  imageScale,
+  hoverScale,
   width,
   height,
   fallbackDelay,
@@ -17,7 +17,7 @@ const CircleCard = ({
   return (
     <Avatar.Root className='circle-card'>
       <motion.div
-        whileHover={{ scale: imageScale }}
+        whileHover={{ scale: hoverScale }}
         style={{ width: `${width}px`, height: `${height}px` }}
       >
         <Link to={path}>
