@@ -1,6 +1,8 @@
 import React from 'react';
 import { HashLink } from 'react-router-hash-link';
 
+import { useCreateRootCSSVariable } from '../../../hooks/useCreateRootCSSVariable';
+
 import NavigationLinks from '../navbar/NavigationLinks';
 import Svg from '../../UI/svg/Svg';
 import Contact from '../../../features/contact/Contact';
@@ -10,8 +12,14 @@ import { currentYear } from '../../../utils/helpers';
 import './Footer.scss';
 
 const Footer = () => {
+  const elementRef = useCreateRootCSSVariable(
+    'footer-height',
+    'offsetHeight',
+    'px'
+  );
+
   return (
-    <footer className='footer'>
+    <footer className='footer' ref={elementRef}>
       <div className='footer__wrapper'>
         <div className='footer__top'>
           <div className='footer__quick-links'>
