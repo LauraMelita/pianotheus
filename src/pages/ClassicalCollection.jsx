@@ -10,17 +10,11 @@ const ClassicalCollection = () => {
 
   return (
     <main>
-      <motion.div
-        className='classical-collection'
-        initial={{ y: '100%' }}
-        animate={{ y: '0%' }}
-        transition={{ duration: 0.75, ease: 'easeOut' }}
-        exit={{ opacity: 1 }}
-      >
+      <div className='classical-collection'>
         {isLoading && <h3>Loading...</h3>}
         {!isLoading && !error && <ComposersList data={data} />}
         {error && <h3>{error}</h3>}
-      </motion.div>
+      </div>
     </main>
   );
 };
