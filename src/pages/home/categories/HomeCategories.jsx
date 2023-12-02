@@ -17,6 +17,9 @@ const HomeCategories = () => {
               category={category}
               backgroundImage={`${require(`../../../assets/images/categories/${backgroundImage}`)}`}
               popOutImage={`${require(`../../../assets/images/categories/${popOutImage}`)}`}
+              hoverScale={1.05}
+              minWidth={200}
+              minHeight={200}
             />
             <span>{category}</span>
           </div>
