@@ -4,13 +4,13 @@ import { ToastContainer as Toast } from 'react-toastify';
 
 import Layout from './components/layout/Layout';
 import Navbar from './components/common/navbar/Navbar';
-import Footer from './components/common/footer/Footer';
 import Home from './pages/home/Home';
 import MovieRoutes from './routes/MovieRoutes';
 import TVShowRoutes from './routes/TVShowRoutes';
 import VideoGameRoutes from './routes/VideoGameRoutes';
 import ClassicalRoutes from './routes/ClassicalRoutes';
 import PageNotFound from './pages/error/PageNotFound';
+import Footer from './components/common/footer/Footer';
 
 const App = () => {
   const location = useLocation();
