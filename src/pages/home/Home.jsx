@@ -8,18 +8,15 @@ import HomeCategories from './categories/HomeCategories';
 const HomePage = () => {
   return (
     <main>
-      {/* <section id='parallax'>
+      <section id='parallax'>
         <ParallaxContainer />
-      </section> */}
-
+      </section>
       <section id='about'>
         <About />
       </section>
-
       <section id='quote'>
         <Quote />
       </section>
-
       <section id='categories'>
         <HomeCategories />
       </section>

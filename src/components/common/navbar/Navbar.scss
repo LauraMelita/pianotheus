@@ -3,7 +3,7 @@
 
   .navbar__wrapper {
     width: var(--global-width);
-    min-height: var(--nav-height);
+    min-height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@
         width: 100%;
 
         img {
-          height: calc(var(--nav-height) / 3);
+          min-height: 25px;
         }
       }
     }

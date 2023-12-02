@@ -1,9 +1,6 @@
 html,
 .dropdown-menu,
 select {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-
   &::-webkit-scrollbar {
     width: var(--scrollbar-width);
   }

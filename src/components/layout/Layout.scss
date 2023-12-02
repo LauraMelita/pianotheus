@@ -12,17 +12,18 @@
   background-color: var(--layout-background-color);
 
   main {
-    width: var(--global-width);
     min-height: 100svh;
+    width: var(--global-width);
     margin-inline: auto;
 
     section {
-      min-height: 100svh;
       scroll-snap-align: center;
+      min-height: 100svh;
       padding: var(--global-padding) 0;
 
       &:first-child {
-        min-height: calc(100svh - var(--nav-height));
+        min-height: calc(100svh - var(--navbar-height));
+        scroll-margin-top: var(--navbar-height);
       }
     }
   }
