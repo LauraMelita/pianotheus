@@ -5,25 +5,34 @@ import * as Avatar from '@radix-ui/react-avatar';
 
 import './CircleCard.scss';
 
-const CircleCard = ({ feature, path, image, width, height }) => {
+const CircleCard = ({
+  feature,
+  path,
+  image,
+  imageScale,
+  width,
+  height,
+  fallbackDelay,
+}) => {
   return (
-    <>
-      <Avatar.Root className='circle-card'>
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          style={{ width: `${width}px`, height: `${height}px` }}
-        >
-          <Link to={path}>
-            <Avatar.Image className='card-image' src={image} alt={feature} />
-          </Link>
-          <Link to={path}>
-            <Avatar.Fallback className='card-fallback' delayMs={600}>
-              {feature}
-            </Avatar.Fallback>
-          </Link>
-        </motion.div>
-      </Avatar.Root>
-    </>
+    <Avatar.Root className='circle-card'>
+      <motion.div
+        whileHover={{ scale: imageScale }}
+        style={{ width: `${width}px`, height: `${height}px` }}
+      >
+        <Link to={path}>
+          <Avatar.Image src={image} alt={feature} />
+        </Link>
+        <Link to={path}>
+          <Avatar.Fallback
+            className='circle-card__fallback'
+            delayMs={fallbackDelay}
+          >
+            {feature}
+          </Avatar.Fallback>
+        </Link>
+      </motion.div>
+    </Avatar.Root>
   );
 };
 
