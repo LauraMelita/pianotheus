@@ -1,0 +1,17 @@
+.home {
+  section {
+    scroll-snap-align: start;
+    min-height: 100svh;
+    padding: var(--global-padding) 0;
+
+    &[id='parallax'] {
+      min-height: calc(100svh - var(--navbar-height));
+      scroll-margin-top: var(--navbar-height);
+    }
+
+    &[id='quote'] {
+      min-height: calc(100svh - var(--footer-height));
+      scroll-margin-bottom: var(--footer-height);
+    }
+  }
+}
