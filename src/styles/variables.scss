@@ -23,6 +23,10 @@
   --global-width: min(80%, 2500px);
   --global-padding: 20px;
   --global-gap: 20px;
+  --global-border-width: 2px;
+
+  --spinner-width: 48px;
+  --spinner-height: 48px;
 
   &.dark-theme {
     // --primary-color: ;

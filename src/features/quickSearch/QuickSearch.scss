@@ -9,11 +9,11 @@
     justify-content: space-between;
     overflow: hidden;
     background-color: var(--highlight-200);
-    border: 2px solid var(--highlight-200);
+    border: var(--global-border-width) solid var(--highlight-200);
     border-radius: 20px;
 
     &:focus-within {
-      border: 2px solid var(--accent-color-200);
+      border: var(--global-border-width) solid var(--accent-color-200);
     }
 
     input {
@@ -21,6 +21,10 @@
       padding: 15px;
       background-color: transparent;
       font-size: var(--fs-50);
+
+      &:focus {
+        outline: none;
+      }
     }
 
     .search-icon,

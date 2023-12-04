@@ -10,7 +10,7 @@
     width: 45px;
     height: 45px;
     background: var(--gray-400);
-    border: 2px solid var(--accent-color-200);
+    border: var(--global-border-width) solid var(--accent-color-200);
     border-radius: 26px;
 
     svg {
