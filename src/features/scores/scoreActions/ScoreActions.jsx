@@ -3,7 +3,6 @@ import React from 'react';
 import DownloadMidi from './download/DownloadMidi';
 import DownloadPdf from './download/DownloadPdf';
 import PrintPdf from './print/PrintPdf';
-import Share from './share/Share';
 
 const ScoreActions = ({ movie, scoreTitle }) => {
   return (
@@ -11,7 +10,6 @@ const ScoreActions = ({ movie, scoreTitle }) => {
       <DownloadMidi title={scoreTitle} />
       <DownloadPdf title={scoreTitle} />
       <PrintPdf title={scoreTitle} />
-      <Share />
     </div>
   );
 };
