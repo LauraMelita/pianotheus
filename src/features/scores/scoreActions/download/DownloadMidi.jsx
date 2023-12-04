@@ -11,7 +11,7 @@ const DownloadMidi = ({ title }) => {
 
   return (
     <a className='icon-btn' href={file.url} download>
-      <Svg icon='download' />
+      <Svg icon='midi' />
     </a>
   );
 };
