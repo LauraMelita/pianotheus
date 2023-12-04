@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 
-export const useCreateRootCSSVariable = (
+export const useCreateCSSRootVariable = (
   variableName,
   htmlElementProperty,
   cssUnit

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { useCreateRootCSSVariable } from '../../../hooks/useCreateRootCSSVariable';
+import { useCreateCSSRootVariable } from '../../../hooks/useCreateCSSRootVariable';
 
 import NavigationLinks from './NavigationLinks';
 import QuickSearch from '../../../features/quickSearch/QuickSearch';
@@ -12,7 +12,7 @@ import Logo from '../../../assets/images/logo.svg';
 import './Navbar.scss';
 
 const Navbar = () => {
-  const elementRef = useCreateRootCSSVariable(
+  const elementRef = useCreateCSSRootVariable(
     'navbar-height',
     'offsetHeight',
     'px'
