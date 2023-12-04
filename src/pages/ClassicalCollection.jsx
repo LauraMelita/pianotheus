@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 import { ClassicalContext } from '../context/ClassicalContext';
 
+import Spinner from '../components/UI/spinner/Spinner';
 import ComposersList from '../components/ComposersList';
 
 const ClassicalCollection = () => {
@@ -11,7 +12,7 @@ const ClassicalCollection = () => {
   return (
     <main>
       <div className='classical-collection'>
-        {isLoading && <h3>Loading...</h3>}
+        {isLoading && <Spinner />}
         {!isLoading && !error && <ComposersList data={data} />}
         {error && <h3>{error}</h3>}
       </div>

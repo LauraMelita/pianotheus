@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { MoviesContext } from '../context/MoviesContext';
 
 import TitlesList from '../components/TitlesList';
+import Spinner from '../components/UI/spinner/Spinner';
 
 const MoviesCollection = () => {
   const { data, isLoading, error } = useContext(MoviesContext);
@@ -17,7 +18,7 @@ const MoviesCollection = () => {
           alignItems: 'center',
         }}
       >
-        {isLoading && <h3>Loading...</h3>}
+        {isLoading && <Spinner />}
         {!isLoading && !error && <TitlesList data={data} />}
         {error && <h3>{error}</h3>}
       </div>

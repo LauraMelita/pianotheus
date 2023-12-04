@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 
 import { TVShowsContext } from '../context/TVShowsContext';
 
+import Spinner from '../components/UI/spinner/Spinner';
 import TitlesList from '../components/TitlesList';
 
 const TVShowsCollection = () => {
@@ -17,7 +18,7 @@ const TVShowsCollection = () => {
           alignItems: 'center',
         }}
       >
-        {isLoading && <h3>Loading...</h3>}
+        {isLoading && <Spinner />}
         {!isLoading && !error && <TitlesList data={data} />}
         {error && <h3>{error}</h3>}
       </div>

@@ -4,6 +4,7 @@ import { VideoGamesContext } from '../context/VideoGamesContext';
 
 import AnimatedBackground from '../components/UI/animation/background/AnimatedBackground';
 import TitlesList from '../components/TitlesList';
+import Spinner from '../components/UI/spinner/Spinner';
 import MoveBackButton from '../components/UI/button/MoveBackButton';
 
 import BackWrapImage from '../assets/images/animatedBackground/backwrap.png';
@@ -27,7 +28,7 @@ const VideoGamesCollection = () => {
           alignItems: 'center',
         }}
       >
-        {isLoading && <h3>Loading...</h3>}
+        {isLoading && <Spinner />}
         {!isLoading && !error && <TitlesList data={data} />}
         {error && <h3>{error}</h3>}
       </div>
