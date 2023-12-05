@@ -49,7 +49,7 @@ svg {
 }
 
 .separator {
-  border: 1px solid var(--text-color-secondary);
+  border: 1px solid var(--gray-shade-200);
 
   &[data-orientation='horizontal'] {
     height: 1px;

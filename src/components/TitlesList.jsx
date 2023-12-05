@@ -3,6 +3,8 @@ import { useLocation } from 'react-router-dom';
 import { useIntersection } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import FadeIn from './UI/animation/fadeIn/FadeIn';
+
 import Search from '../features/search/Search';
 import Filter from '../features/filter/Filter';
 import PosterCard from './UI/card/poster/PosterCard';
@@ -66,32 +68,34 @@ const TitlesList = ({ data }) => {
         setFilter={setFilter}
       />
 
-      <motion.ul layout className='titles'>
-        <AnimatePresence>
-          {searchAndFilter(data)
-            .slice(0, indexOfLastTitle)
-            .map(
-              (
-                { id, title, year, poster, composer, composerImg, scores },
-                index
-              ) => {
-                // if (index === 7) <div key={id} ref={ref} />;
-                return (
-                  <PosterCard
-                    key={id}
-                    title={title}
-                    year={year}
-                    poster={poster}
-                    composer={composer}
-                    composerImg={composerImg}
-                    scores={scores}
-                    path={`${pathname}/${convertToPath(title)}`}
-                  />
-                );
-              }
-            )}
-        </AnimatePresence>
-      </motion.ul>
+      <FadeIn>
+        <motion.ul layout className='titles'>
+          <AnimatePresence>
+            {searchAndFilter(data)
+              .slice(0, indexOfLastTitle)
+              .map(
+                (
+                  { id, title, year, poster, composer, composerImg, scores },
+                  index
+                ) => {
+                  // if (index === 7) <div key={id} ref={ref} />;
+                  return (
+                    <PosterCard
+                      key={id}
+                      path={`${pathname}/${convertToPath(title)}`}
+                      title={title}
+                      year={year}
+                      poster={poster}
+                      composer={composer}
+                      composerImg={composerImg}
+                      scores={scores}
+                    />
+                  );
+                }
+              )}
+          </AnimatePresence>
+        </motion.ul>
+      </FadeIn>
 
       {!allItemsAreShown && <button onClick={loadMore}>Load More</button>}
 

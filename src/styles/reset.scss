@@ -16,7 +16,6 @@ body {
 
 html {
   scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
 }
 
 body {
@@ -81,13 +80,12 @@ body {
     color: inherit;
     outline: none;
     background: var(--highlight-100);
-    border: 1px solid var(--highlight-200);
+    border: var(--global-border-width) solid var(--highlight-200);
     border-radius: 4px;
     caret-color: var(--accent-color-100);
 
     &:focus {
-      outline: none;
-      border: 1px solid var(--accent-color-400);
+      outline: var(--global-border-width) solid var(--accent-color-200);
     }
 
     &::placeholder {

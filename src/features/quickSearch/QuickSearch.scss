@@ -47,7 +47,7 @@
       background-color: var(--highlight-200);
       overflow-y: auto;
       font-size: var(--fs-50);
-      border-radius: 10px;
+      border-radius: var(--global-border-radius);
 
       &:empty {
         display: none;

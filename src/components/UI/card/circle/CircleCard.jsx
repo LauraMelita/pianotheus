@@ -1,37 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import * as Avatar from '@radix-ui/react-avatar';
 
 import './CircleCard.scss';
 
 const CircleCard = ({
-  feature,
   path,
-  image,
-  hoverScale,
-  width,
-  height,
+  cardWidth,
+  cardHeight,
   fallbackDelay,
+  title,
+  image,
 }) => {
   return (
-    <Avatar.Root className='circle-card'>
-      <motion.div
-        whileHover={{ scale: hoverScale }}
-        style={{ width: `${width}px`, height: `${height}px` }}
+    <Avatar.Root>
+      <div
+        className='circle-card'
+        style={{ height: `${cardHeight}px`, width: `${cardWidth}px` }}
       >
         <Link to={path}>
-          <Avatar.Image src={image} alt={feature} />
+          <Avatar.Image src={image} alt={title} />
         </Link>
         <Link to={path}>
           <Avatar.Fallback
             className='circle-card__fallback'
             delayMs={fallbackDelay}
           >
-            {feature}
+            {title}
           </Avatar.Fallback>
         </Link>
-      </motion.div>
+      </div>
     </Avatar.Root>
   );
 };

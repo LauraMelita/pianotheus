@@ -2,13 +2,13 @@ import React from 'react';
 
 import './Badge.scss';
 
-const Badge = ({ image, text, height, width }) => {
+const Badge = ({ width, height, image, title }) => {
   return (
-    <div className='badge'>
-      <div style={{ height: `${height}px`, width: `${width}px` }}>
-        <img src={image} alt={`${text} badge`} />
-      </div>
-      <span>{text}</span>
+    <div
+      className='badge'
+      style={{ width: `${width}px`, height: `${height}px` }}
+    >
+      <img src={image} alt={`${title} badge`} />
     </div>
   );
 };
