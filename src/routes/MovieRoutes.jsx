@@ -1,16 +1,21 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { MoviesContextProvider } from '../context/MoviesContext';
+import { MoviesContextProvider, MoviesContext } from '../context/MoviesContext';
 
-import MoviesCollection from '../pages/MoviesCollection';
+import Collection from '../pages/collection/Collection';
 import Movie from '../pages/Movie';
 
 const MovieRoutes = () => {
   return (
     <MoviesContextProvider>
       <Routes>
-        <Route index element={<MoviesCollection />} />
+        <Route
+          index
+          element={
+            <Collection collectionName='movies' context={MoviesContext} />
+          }
+        />
         <Route path=':title'>
           <Route index element={<Movie />} />
         </Route>

@@ -1,16 +1,24 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { TVShowsContextProvider } from '../context/TVShowsContext';
+import {
+  TVShowsContextProvider,
+  TVShowsContext,
+} from '../context/TVShowsContext';
 
-import TVShowsCollection from '../pages/TVShowsCollection';
+import Collection from '../pages/collection/Collection';
 import TVShow from '../pages/TVShow';
 
 const TVShowsRoutes = () => {
   return (
     <TVShowsContextProvider>
       <Routes>
-        <Route index element={<TVShowsCollection />} />
+        <Route
+          index
+          element={
+            <Collection collectionName='tv-shows' context={TVShowsContext} />
+          }
+        />
         <Route path=':title'>
           <Route index element={<TVShow />} />
         </Route>

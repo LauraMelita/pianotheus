@@ -1,16 +1,27 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { VideoGamesContextProvider } from '../context/VideoGamesContext';
+import {
+  VideoGamesContextProvider,
+  VideoGamesContext,
+} from '../context/VideoGamesContext';
 
-import VideoGamesCollection from '../pages/VideoGamesCollection';
+import Collection from '../pages/collection/Collection';
 import VideoGame from '../pages/VideoGame';
 
 const VideoGameRoutes = () => {
   return (
     <VideoGamesContextProvider>
       <Routes>
-        <Route index element={<VideoGamesCollection />} />
+        <Route
+          index
+          element={
+            <Collection
+              collectionName='video-games'
+              context={VideoGamesContext}
+            />
+          }
+        />
         <Route path=':title'>
           <Route index element={<VideoGame />} />
         </Route>

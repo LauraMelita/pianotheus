@@ -3,13 +3,13 @@ import { useLocation } from 'react-router-dom';
 import { useIntersection } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import FadeIn from './UI/animation/fadeIn/FadeIn';
+import FadeIn from '../../components/UI/animation/fadeIn/FadeIn';
 
-import Search from '../features/search/Search';
-import Filter from '../features/filter/Filter';
-import PosterCard from './UI/card/poster/PosterCard';
+import Search from '../../features/search/Search';
+import Filter from '../../features/filter/Filter';
+import PosterCard from '../../components/UI/card/poster/PosterCard';
 
-import { convertToPath } from '../utils/helpers';
+import { convertToPath } from '../../utils/helpers';
 
 import './TitlesList.scss';
 
