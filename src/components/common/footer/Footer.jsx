@@ -32,7 +32,7 @@ const Footer = () => {
               <li>
                 <HashLink to='/#about'>About</HashLink>
               </li>
-              <Contact />
+              <Contact btnText='Contact' />
             </ul>
           </div>
           <div className='footer__social'>

@@ -4,27 +4,20 @@ import Svg from '../../../components/UI/svg/Svg';
 
 import './Quote.scss';
 
-const Quote = () => {
+const Quote = ({ text, author, source }) => {
   return (
     <div className='quote'>
-      <div className='icon'>
-        <Svg icon='quote' />
-      </div>
-      <div className='text'>
-        <p>
-          Prometheus stole fire from the gods. We are each the heirs of that
-          divine spark.
+      <Svg icon='quote' />
+      <div className='quote__container'>
+        <div
+          className='quote__text'
+          dangerouslySetInnerHTML={{ __html: text }}
+        />
+        <div className='quote__reference'>
+          <span className='quote__line'>― </span>
+          <span className='quote__author'>{author}</span>
           <br />
-          Used wisely, the spark fuels one's journey and lights the way.
-          <br />
-          Treated carelessly, the spark consumes its owner and everything in its
-          path.
-        </p>
-        <div className='reference'>
-          <span className='line'>― </span>
-          <span className='author'>Thomas Lloyd Qualls</span>
-          <br />
-          <span className='source'>Painted Oxen</span>
+          <span className='quote__source'>{source}</span>
         </div>
       </div>
     </div>

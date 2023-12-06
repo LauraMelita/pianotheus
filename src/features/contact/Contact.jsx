@@ -7,7 +7,7 @@ import { useModal } from '../../hooks/useModal';
 
 import './Contact.scss';
 
-const Contact = () => {
+const Contact = ({ btnText }) => {
   const { modalIsOpen, toggleModal } = useModal();
 
   return (
@@ -15,7 +15,7 @@ const Contact = () => {
       open={modalIsOpen}
       toggleModal={toggleModal}
       triggerBtnClassName='contact__btn'
-      triggerBtnText='Contact'
+      triggerBtnText={btnText}
       title='Contact'
       description={`Got a question? I'd love to hear from you. Fill out the form and I'll be in touch as soon as possible.`}
     >

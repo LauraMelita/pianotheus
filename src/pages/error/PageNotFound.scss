@@ -1,0 +1,34 @@
+.page-not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+
+  .page-not-found__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+
+    .page-not-found__left {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .page-not-found__right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--global-gap);
+
+      .contact__btn {
+        color: var(--accent-color-100);
+      }
+
+      button {
+        width: auto;
+      }
+    }
+  }
+}
