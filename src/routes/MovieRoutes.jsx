@@ -13,7 +13,11 @@ const MovieRoutes = () => {
         <Route
           index
           element={
-            <Collection collectionName='movies' context={MoviesContext} />
+            <Collection
+              documentTitle='Movies'
+              collectionName='movies'
+              context={MoviesContext}
+            />
           }
         />
         <Route path=':title'>

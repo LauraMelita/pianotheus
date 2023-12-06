@@ -16,7 +16,11 @@ const TVShowsRoutes = () => {
         <Route
           index
           element={
-            <Collection collectionName='tv-shows' context={TVShowsContext} />
+            <Collection
+              documentTitle='TV Shows'
+              collectionName='tv-shows'
+              context={TVShowsContext}
+            />
           }
         />
         <Route path=':title'>

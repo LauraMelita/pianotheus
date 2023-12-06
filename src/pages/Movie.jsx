@@ -3,9 +3,10 @@ import { useParams } from 'react-router-dom';
 import * as AspectRatio from '@radix-ui/react-aspect-ratio';
 
 import { MoviesContext } from '../context/MoviesContext';
-import { useUpdateDocumentTitle } from '../hooks/useUpdateDocumentTitle';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { convertToPath } from '../utils/helpers';
 
+import Spinner from '../components/UI/spinner/Spinner';
 import PageNotFound from './error/PageNotFound';
 import Svg from '../components/UI/svg/Svg';
 import Separator from '../components/UI/separator/Separator';
@@ -23,7 +24,7 @@ const Movie = () => {
     (movie) => convertToPath(movie.title) === title
   );
 
-  useUpdateDocumentTitle(
+  useDocumentTitle(
     movieDetails,
     `${movieDetails?.title} (${movieDetails?.year})`
   );
@@ -66,7 +67,7 @@ const Movie = () => {
 
   return (
     <main>
-      {isLoading && <h3>Loading...</h3>}
+      {isLoading && <Spinner />}
       {movieDetails && !isLoading && !error && (
         <div className='movie-container'>
           <div className='movie-header'>

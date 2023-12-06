@@ -1,11 +1,16 @@
 import React, { useContext } from 'react';
 
+import { useDocumentTitle } from '@mantine/hooks';
+
 import TitlesList from './TitlesList';
 import ComposersList from './ComposersList';
 import Spinner from '../../components/UI/spinner/Spinner';
 
+import './Collection.scss';
+
 const Collection = (props) => {
   const { data, isLoading, error } = useContext(props.context);
+  useDocumentTitle(props.documentTitle);
 
   const renderSpinner = () => isLoading && <Spinner />;
 
@@ -25,7 +30,7 @@ const Collection = (props) => {
   const renderError = () => error && <p>{error}</p>;
 
   return (
-    <main className={`${props.collectionName}`}>
+    <main className={`${props.collectionName}-collection`}>
       {renderSpinner()}
       {renderCollection()}
       {renderError()}

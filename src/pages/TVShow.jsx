@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { TVShowsContext } from '../context/TVShowsContext';
-import { useUpdateDocumentTitle } from '../hooks/useUpdateDocumentTitle';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { convertToPath } from '../utils/helpers';
 
+import Spinner from '../components/UI/spinner/Spinner';
 import PageNotFound from './error/PageNotFound';
 
 const TVShow = () => {
@@ -15,11 +16,11 @@ const TVShow = () => {
     (show) => convertToPath(show.title) === title
   );
 
-  useUpdateDocumentTitle(tvShowDetails, `${tvShowDetails?.title}`);
+  useDocumentTitle(tvShowDetails, `${tvShowDetails?.title}`);
 
   return (
     <main>
-      {isLoading && <h3>Loading...</h3>}
+      {isLoading && <Spinner />}
       {tvShowDetails && !isLoading && !error && <h3>{tvShowDetails.title}</h3>}
       {!isLoading && !tvShowDetails && <PageNotFound />}
     </main>

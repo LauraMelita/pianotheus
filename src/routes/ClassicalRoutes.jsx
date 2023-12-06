@@ -16,7 +16,11 @@ const ClassicalRoutes = () => {
         <Route
           index
           element={
-            <Collection collectionName='classical' context={ClassicalContext} />
+            <Collection
+              documentTitle='Classical Music'
+              collectionName='classical'
+              context={ClassicalContext}
+            />
           }
         />
         <Route path=':composer'>
