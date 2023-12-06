@@ -12,7 +12,10 @@ import ClassicalRoutes from './routes/ClassicalRoutes';
 import PageNotFound from './pages/error/PageNotFound';
 import Footer from './components/common/footer/Footer';
 
+import { useScrollToTop } from './hooks/useScrollToTop';
+
 const App = () => {
+  useScrollToTop();
   const location = useLocation();
 
   return (
