@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 
-import { ThemeContext } from '../../../context/ThemeContext';
+import Svg from '../svg/Svg';
 
-import Icons from '../../../assets/icons/icons.svg';
 import './Modal.scss';
 
 const Modal = ({
@@ -15,27 +14,22 @@ const Modal = ({
   description,
   children,
 }) => {
-  const { theme } = useContext(ThemeContext);
-
   return (
     <Dialog.Root modal={true} open={open} onOpenChange={toggleModal}>
       <Dialog.Trigger asChild>
         <button className={triggerBtnClassName}>{triggerBtnText}</button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className='overlay' data-theme={theme} />
-        <Dialog.Content className='modal' data-theme={theme}>
-          <Dialog.Title className='modal-title'>{title}</Dialog.Title>
-          <Dialog.Description className='modal-description'>
+        <Dialog.Overlay className='overlay' />
+        <Dialog.Content className='modal'>
+          <Dialog.Title className='modal__title'>{title}</Dialog.Title>
+          <Dialog.Description className='modal__description'>
             {description}
           </Dialog.Description>
           {children}
-
           <Dialog.Close asChild>
-            <button className='close-btn icon-btn' aria-label='Close'>
-              <svg className='icon-close'>
-                <use href={`${Icons}#icon-close`} />
-              </svg>
+            <button className='modal__close-btn icon-btn' aria-label='close'>
+              <Svg icon='close' />
             </button>
           </Dialog.Close>
         </Dialog.Content>

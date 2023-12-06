@@ -1,0 +1,19 @@
+.contact__btn {
+  background-color: transparent;
+  border: none;
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .contact__form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin-bottom: 5px;
+    }
+  }
+}

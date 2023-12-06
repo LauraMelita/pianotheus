@@ -1,18 +1,27 @@
 .quote {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: var(--global-gap);
 
-  > .icon {
-    svg {
-      width: 50px;
-      height: 50px;
-    }
+  svg {
+    width: 50px;
+    height: 50px;
+    color: var(--accent-color-200);
   }
 
-  > .text {
-    .author {
-      font-weight: 700;
+  .quote__container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--global-gap);
+
+    .quote__reference {
+      .quote__line {
+        color: var(--accent-color-100);
+      }
+
+      .quote__author {
+        font-weight: var(--fw-bold);
+      }
     }
   }
 }

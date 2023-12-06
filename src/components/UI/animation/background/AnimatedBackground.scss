@@ -1,17 +1,15 @@
-.animated-background {
-  width: auto;
-  height: 300px;
-
-  .backwrap {
+.animated-bg {
+  .animated-bg__backwrap {
+    min-height: 150px;
     background-size: 100% 100%;
-    height: 100%;
 
-    .back-shapes {
-      height: 100%;
+    .animated-bg__back-shapes {
       position: relative;
       overflow: hidden;
+      min-height: 150px;
+      border: var(--global-border-width) solid var(--gray-900);
 
-      .floating {
+      .animated-bg__floating {
         position: absolute;
         width: 35px;
         height: 35px;
@@ -39,6 +37,7 @@
             transform: translateY(0%) rotate(-55deg);
           }
         }
+
         @-webkit-keyframes floating {
           0% {
             -webkit-transform: translateY(0%);

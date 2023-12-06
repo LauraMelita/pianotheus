@@ -1,8 +1,7 @@
-@import '../../../../variables.scss';
-
 .animated-text {
   h1 {
-    font-family: $secondary-font;
+    font-family: var(--ff-secondary);
+    font-weight: var(--fw-bold);
     color: rgba(225, 225, 225, 0.01);
     text-transform: uppercase;
     -webkit-background-clip: text;

@@ -2,54 +2,29 @@ import React from 'react';
 
 import PopOutCard from '../../../components/UI/card/popout/PopOutCard';
 
-import { convertToPath } from '../../../utils/helper';
+import { siteConfig } from '../../../utils/config';
+import { convertToPath } from '../../../utils/helpers';
 
-import MoviesBg from '../../../assets/images/contentTypes/movies-bg.jpg';
-import MoviesPopOut from '../../../assets/images/contentTypes/movies-bg-popout.webp';
-import TVShowsBg from '../../../assets/images/contentTypes/tv-shows-bg.jpg';
-import TvShowPopOut from '../../../assets/images/contentTypes/tv-shows-bg-popout.webp';
-import VideoGamesBg from '../../../assets/images/contentTypes/video-games-bg.webp';
-import VideoGamePopOut from '../../../assets/images/contentTypes/video-games-bg-popout.png';
-import ClassicalBg from '../../../assets/images/contentTypes/classical-bg.jpg';
-import ClassicalPopOut from '../../../assets/images/contentTypes/classical-bg-popout.webp';
 import './HomeCategories.scss';
-
-const CATEGORIES = [
-  {
-    category: 'Movies',
-    backgroundImage: MoviesBg,
-    popOutImage: MoviesPopOut,
-  },
-  {
-    category: 'TV Shows',
-    backgroundImage: TVShowsBg,
-    popOutImage: TvShowPopOut,
-  },
-  {
-    category: 'Video Games',
-    backgroundImage: VideoGamesBg,
-    popOutImage: VideoGamePopOut,
-  },
-  {
-    category: 'Classical',
-    backgroundImage: ClassicalBg,
-    popOutImage: ClassicalPopOut,
-  },
-];
 
 const HomeCategories = () => {
   return (
     <div className='categories-wrapper'>
-      {CATEGORIES.map(({ category, backgroundImage, popOutImage }, index) => (
-        <div key={index} className={convertToPath(category)}>
-          <PopOutCard
-            category={category}
-            backgroundImage={backgroundImage}
-            popOutImage={popOutImage}
-          />
-          <span>{category}</span>
-        </div>
-      ))}
+      {siteConfig.categories.map(
+        ({ category, backgroundImage, popOutImage }, index) => (
+          <div key={index} className={convertToPath(category)}>
+            <PopOutCard
+              category={category}
+              backgroundImage={`${require(`../../../assets/images/categories/${backgroundImage}`)}`}
+              popOutImage={`${require(`../../../assets/images/categories/${popOutImage}`)}`}
+              hoverScale={1.05}
+              minWidth={200}
+              minHeight={200}
+            />
+            <span>{category}</span>
+          </div>
+        )
+      )}
     </div>
   );
 };

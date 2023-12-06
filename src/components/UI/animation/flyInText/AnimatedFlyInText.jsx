@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
+import { generateNumber } from '../../../../utils/helpers';
+
 import './AnimatedFlyInText.scss';
 
-import { generateNumber } from '../../../../utils/helper';
-
-const AnimatedText = ({ text, fontSize, fontWeight, animationSpeed }) => {
-  // Props usage example:
-  /* <AnimatedFlyInText
-        text='Fly-in text'
-        fontSize='30px'
-        fontWeight='500'
-        animationSpeed='1.5'
-      /> */
-
+const AnimatedFlyInText = ({ text, fontSize, fontWeight, animationSpeed }) => {
   const [isHidden, setIsHidden] = useState(true);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsHidden((prevState) => !prevState);
@@ -51,4 +44,4 @@ const AnimatedText = ({ text, fontSize, fontWeight, animationSpeed }) => {
   );
 };
 
-export default AnimatedText;
+export default AnimatedFlyInText;

@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { ClassicalContext } from '../context/ClassicalContext';
-import { useUpdateDocumentTitle } from '../hooks/useUpdateDocumentTitle';
-import { convertToPath } from '../utils/helper';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { convertToPath } from '../utils/helpers';
 
+import Spinner from '../components/UI/spinner/Spinner';
 import PageNotFound from './error/PageNotFound';
 
 const Classical = () => {
@@ -16,11 +17,11 @@ const Classical = () => {
       convertToPath(classicalComposer.composer) === composer
   );
 
-  useUpdateDocumentTitle(composerDetails, `${composerDetails?.composer}`);
+  useDocumentTitle(composerDetails, `${composerDetails?.composer}`);
 
   return (
     <main>
-      {isLoading && <h3>Loading...</h3>}
+      {isLoading && <Spinner />}
       {composerDetails && !isLoading && !error && (
         <h3>{composerDetails.composer}</h3>
       )}

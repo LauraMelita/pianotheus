@@ -1,58 +1,60 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import * as Separator from '@radix-ui/react-separator';
-import { motion } from 'framer-motion';
 
+import Svg from '../../svg/Svg';
+import Separator from '../../separator/Separator';
 import Badge from '../../badge/Badge';
 
-import Icons from '../../../../assets/icons/icons.svg';
 import './PosterCard.scss';
 
 const PosterCard = ({
+  path,
   title,
   year,
   poster,
   composer,
   composerImg,
   scores,
-  path,
 }) => {
-  const scoresList = scores.map((score, index) => (
-    <div className='score-list' key={index}>
-      <svg>
-        <use href={`${Icons}#icon-radio`} />
-      </svg>
-      <li>{score.score}</li>
-    </div>
-  ));
+  const AvailableScores = () => {
+    return (
+      <ul className='poster-card__scores'>
+        {scores.map((score, index) => (
+          <li key={index}>
+            <Svg icon='midi-text' />
+            <span>{score.score}</span>
+          </li>
+        ))}
+      </ul>
+    );
+  };
 
   return (
-    <motion.div
-      layout
-      animate={{ opacity: 1 }}
-      initial={{ opacity: 0 }}
-      exit={{ opacity: 0 }}
-      className='poster-card'
-    >
-      <h3>
-        {title} ({year})
-      </h3>
-      <Badge image={composerImg} text={composer} height={150} width={150} />
+    <div className='poster-card'>
       <Link to={path}>
-        <figure>
+        <figure className='poster-card__poster'>
           <img src={poster} alt={`${title} poster`} />
-          <figcaption>
-            <h3>Scores</h3>
-            <Separator.Root
-              className='separator'
-              orientation='horizontal'
-              decorative
-            />
-            {scoresList}
+          <figcaption className='poster-card__inner'>
+            <div className='poster-card__composer'>
+              <Badge
+                width={30}
+                height={30}
+                image={composerImg}
+                title={composer}
+              />
+              <span>{composer}</span>
+            </div>
+            <Separator orientation='horizontal' />
+
+            <AvailableScores />
           </figcaption>
         </figure>
       </Link>
-    </motion.div>
+      <div className='poster-card__title'>
+        <span>{title}</span>
+        <span>{year}</span>
+      </div>
+    </div>
   );
 };
 

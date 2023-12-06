@@ -1,0 +1,15 @@
+html,
+.dropdown-menu,
+select {
+  &::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-color);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--scrollbar-background-color);
+  }
+}

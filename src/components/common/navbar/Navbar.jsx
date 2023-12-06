@@ -1,16 +1,25 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Sidebar from './sidebar/Sidebar';
+import { useCreateCSSRootVariable } from '../../../hooks/useCreateCSSRootVariable';
+
 import NavigationLinks from './NavigationLinks';
 import QuickSearch from '../../../features/quickSearch/QuickSearch';
 import ToggleThemeMode from '../../../features/themeMode/ToggleThemeMode';
+import Sidebar from './sidebar/Sidebar';
 
 import Logo from '../../../assets/images/logo.svg';
 import './Navbar.scss';
 
 const Navbar = () => {
+  const elementRef = useCreateCSSRootVariable(
+    'navbar-height',
+    'offsetHeight',
+    'px'
+  );
+
   return (
-    <nav className='navbar'>
+    <nav className='navbar' ref={elementRef}>
       <div className='navbar__wrapper'>
         <div className='navbar__logo'>
           <Link to='/'>

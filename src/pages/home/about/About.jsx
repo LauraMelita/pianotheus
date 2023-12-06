@@ -3,7 +3,11 @@ import React from 'react';
 import './About.scss';
 
 const About = () => {
-  return <h1 className='gradient-text'>About</h1>;
+  return (
+    <div className='container'>
+      <h1 className='gradient-text'>About</h1>
+    </div>
+  );
 };
 
 export default About;

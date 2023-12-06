@@ -1,16 +1,17 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import * as AspectRatio from '@radix-ui/react-aspect-ratio';
-import * as Separator from '@radix-ui/react-separator';
 
 import { MoviesContext } from '../context/MoviesContext';
-import { useUpdateDocumentTitle } from '../hooks/useUpdateDocumentTitle';
-import { convertToPath } from '../utils/helper';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { convertToPath } from '../utils/helpers';
 
+import Spinner from '../components/UI/spinner/Spinner';
 import PageNotFound from './error/PageNotFound';
-import ScoresList from '../components/ScoresList';
+import Svg from '../components/UI/svg/Svg';
+import Separator from '../components/UI/separator/Separator';
+import Scores from '../features/scores/Scores';
 
-import Icons from '../assets/icons/icons.svg';
 import './Movie.scss';
 
 const Movie = () => {
@@ -23,7 +24,7 @@ const Movie = () => {
     (movie) => convertToPath(movie.title) === title
   );
 
-  useUpdateDocumentTitle(
+  useDocumentTitle(
     movieDetails,
     `${movieDetails?.title} (${movieDetails?.year})`
   );
@@ -66,22 +67,20 @@ const Movie = () => {
 
   return (
     <main>
-      {isLoading && <h3>Loading...</h3>}
+      {isLoading && <Spinner />}
       {movieDetails && !isLoading && !error && (
         <div className='movie-container'>
           <div className='movie-header'>
             <div className='left'>
               <div className='title-container'>
-                <h3 className='title'>{movieDetails.title}</h3>
+                <h4 className='title'>{movieDetails.title}</h4>
                 <a
                   className='imdb-link'
                   href={`https://www.imdb.com/title/${movieDetails.imdbId}`}
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <svg>
-                    <use href={`${Icons}#icon-imdb`} />
-                  </svg>
+                  <Svg icon='imdb' />
                 </a>
               </div>
               <ul className='general-info'>
@@ -93,10 +92,8 @@ const Movie = () => {
             <div className='right'>
               <p>IMDb RATING</p>
               <div className='rating-container'>
-                <svg>
-                  <use href={`${Icons}#icon-imdb-star`} />
-                </svg>
-                <span className='rating'>{imdbData.imdbRating}</span>
+                <Svg icon='imdb-star' />
+                <h4 className='rating'>{imdbData.imdbRating}</h4>
                 <span className='number'>/10</span>
               </div>
             </div>
@@ -119,20 +116,12 @@ const Movie = () => {
           <div className='movie-footer'>
             <div className='text-container'>
               <p className='plot'>{imdbData.plot}</p>
-              <Separator.Root
-                className='separator'
-                orientation='horizontal'
-                decorative
-              />
+              <Separator orientation='horizontal' />
               <div className='director'>
                 <span>Directors</span>
                 <span>{imdbData.director}</span>
               </div>
-              <Separator.Root
-                className='separator'
-                orientation='horizontal'
-                decorative
-              />
+              <Separator orientation='horizontal' />
               <div className='stars'>
                 <span>Stars</span>
                 <span>{imdbData.actors}</span>
@@ -147,7 +136,7 @@ const Movie = () => {
                 ))}
             </ul> */}
           </div>
-          <ScoresList data={movieDetails} />
+          <Scores data={movieDetails} />
         </div>
       )}
       {!isLoading && !movieDetails && <PageNotFound />}

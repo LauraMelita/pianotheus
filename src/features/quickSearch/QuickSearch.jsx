@@ -4,9 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import Suggestions from './suggestions/Suggestions';
 
 import { useComponentVisible } from '../../hooks/useComponentVisible';
-import { convertToPath } from '../../utils/helper';
+import { convertToPath } from '../../utils/helpers';
 
-import Icons from '../../assets/icons/icons.svg';
+import Svg from '../../components/UI/svg/Svg';
+
 import './QuickSearch.scss';
 
 import { movies } from '../../data/movies';
@@ -119,18 +120,12 @@ const QuickSearch = ({ searchKeys }) => {
           value={input}
           onChange={handleInputChange}
           onKeyDown={handleInputKeyDown}
-          // onFocus={}
-          // onBlur={}
         />
         <button className='search-icon icon-btn'>
           {!showDropdown && searchInputIsEmpty ? (
-            <svg>
-              <use href={`${Icons}#icon-search`} />
-            </svg>
+            <Svg icon='search' />
           ) : (
-            <svg onClick={clearSearchInput}>
-              <use href={`${Icons}#icon-close`} />
-            </svg>
+            <Svg icon='close' onClick={clearSearchInput} />
           )}
         </button>
       </div>

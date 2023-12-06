@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { VideoGamesContext } from '../context/VideoGamesContext';
-import { useUpdateDocumentTitle } from '../hooks/useUpdateDocumentTitle';
-import { convertToPath } from '../utils/helper';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { convertToPath } from '../utils/helpers';
 
+import Spinner from '../components/UI/spinner/Spinner';
 import PageNotFound from './error/PageNotFound';
 
 const VideoGame = () => {
@@ -15,14 +16,14 @@ const VideoGame = () => {
     (show) => convertToPath(show.title) === title
   );
 
-  useUpdateDocumentTitle(
+  useDocumentTitle(
     videoGameDetails,
     `${videoGameDetails?.title} (${videoGameDetails?.year})`
   );
 
   return (
     <main>
-      {isLoading && <h3>Loading...</h3>}
+      {isLoading && <Spinner />}
       {videoGameDetails && !isLoading && !error && (
         <h3>{videoGameDetails.title}</h3>
       )}

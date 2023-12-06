@@ -1,0 +1,7 @@
+main {
+  &[class$='collection'] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
