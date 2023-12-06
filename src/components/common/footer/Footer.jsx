@@ -7,7 +7,7 @@ import NavigationLinks from '../navbar/NavigationLinks';
 import Svg from '../../UI/svg/Svg';
 import Contact from '../../../features/contact/Contact';
 
-import { currentYear } from '../../../utils/helpers';
+import { setScrollBehaviorToSmooth, currentYear } from '../../../utils/helpers';
 
 import './Footer.scss';
 
@@ -30,7 +30,9 @@ const Footer = () => {
             <span>Pianotheus</span>
             <ul>
               <li>
-                <HashLink to='/#about'>About</HashLink>
+                <HashLink to='/#about' onClick={setScrollBehaviorToSmooth}>
+                  About
+                </HashLink>
               </li>
               <Contact btnText='Contact' />
             </ul>

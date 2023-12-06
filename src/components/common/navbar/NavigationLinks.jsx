@@ -1,10 +1,29 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import { siteConfig } from '../../../utils/config';
+import {
+  scrollToTop,
+  setScrollBehaviorToAuto,
+  setScrollBehaviorToSmooth,
+} from '../../../utils/helpers';
 
 const NavigationLinks = (props) => {
+  const { pathname } = useLocation();
+
+  const handleScroll = (e) => {
+    const navlink = e.target.href;
+    const navlinkSameAsCurrentPage = navlink.includes(pathname);
+
+    if (navlinkSameAsCurrentPage) {
+      setScrollBehaviorToSmooth();
+      setTimeout(() => scrollToTop(), 0);
+    } else {
+      setScrollBehaviorToAuto();
+    }
+  };
+
   const variants = {
     open: {
       transition: {
@@ -38,7 +57,9 @@ const NavigationLinks = (props) => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          <NavLink to={path}>{navLink}</NavLink>
+          <NavLink to={path} onClick={handleScroll}>
+            {navLink}
+          </NavLink>
         </motion.li>
       ))}
     </motion.ul>
