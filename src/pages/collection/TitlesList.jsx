@@ -4,6 +4,7 @@ import { useIntersection } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import FadeIn from '../../components/UI/animation/fadeIn/FadeIn';
+import Separator from '../../components/UI/separator/Separator';
 
 import Search from '../../features/search/Search';
 import Filter from '../../features/filter/Filter';
@@ -67,6 +68,8 @@ const TitlesList = ({ data }) => {
         filterBy='composer'
         setFilter={setFilter}
       />
+
+      <Separator orientation='horizontal' />
 
       <FadeIn>
         <motion.ul layout className='titles'>
