@@ -1,9 +1,7 @@
 .poster-card {
-  height: 100%;
   display: grid;
   grid-template-rows: 1fr 10%;
   gap: calc(var(--global-gap) / 4);
-  // max-width: 250px;
 
   a {
     overflow: hidden;
@@ -11,8 +9,8 @@
     border: var(--global-border-width) solid var(--gray-400);
 
     .poster-card__poster {
-      height: 100%;
       position: relative;
+      height: 100%;
 
       img {
         height: 100%;
