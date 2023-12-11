@@ -4,7 +4,7 @@ import './About.scss';
 
 const About = () => {
   return (
-    <div className='container'>
+    <div className='about'>
       <h1 className='gradient-text'>About</h1>
     </div>
   );

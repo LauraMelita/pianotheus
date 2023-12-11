@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Svg from '../../../components/UI/svg/Svg';
+import Svg from '../svg/Svg';
 
 import './Quote.scss';
 

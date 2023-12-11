@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDocumentTitle } from '@mantine/hooks';
 
-import Parallax from '../../features/parallax/Parallax';
+import Parallax from './parallax/Parallax';
+import Categories from './categories/Categories';
+import Quote from '../../components/UI/quote/Quote';
 import About from './about/About';
-import Quote from './quote/Quote';
-import HomeCategories from './categories/HomeCategories';
 
 import './Home.scss';
 
@@ -17,7 +17,7 @@ const HomePage = () => {
         <Parallax />
       </section>
       <section>
-        <HomeCategories />
+        <Categories />
       </section>
       <section>
         <Quote

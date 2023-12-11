@@ -1,0 +1,25 @@
+.categories {
+  .categories__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: calc(var(--global-gap) / 2);
+
+      .categories__title {
+        z-index: 2;
+      }
+    }
+
+    // Hack
+    .categories__tv-shows {
+      .popout-card__character {
+        width: 62%;
+        right: 45px;
+      }
+    }
+  }
+}

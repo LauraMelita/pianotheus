@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { useDocumentTitle } from '@mantine/hooks';
 
-import Quote from '../../pages/home/quote/Quote';
+import Quote from '../../components/UI/quote/Quote';
 import Contact from '../../features/contact/Contact';
 
 import PageNotFoundImg from '../../assets/images/404.jpg';

@@ -7,15 +7,15 @@ import { convertToPath } from '../../../../utils/helpers';
 import './PopOutCard.scss';
 
 const PopOutCard = ({
-  category,
+  title,
   backgroundImage,
   popOutImage,
-  minWidth,
   minHeight,
+  minWidth,
   hoverScale,
 }) => {
   return (
-    <Link to={`/${convertToPath(category)}`}>
+    <Link to={`/${convertToPath(title)}`}>
       <motion.div
         className='popout-card'
         style={{ minWidth, minHeight }}
@@ -27,13 +27,13 @@ const PopOutCard = ({
           <img
             className='popout-card__background'
             src={backgroundImage}
-            alt={`${category.toLocaleLowerCase()} card bg`}
+            alt={`${title.toLocaleLowerCase()} card bg`}
           />
         </div>
         <img
           className='popout-card__character'
           src={popOutImage}
-          alt={`${category.toLocaleLowerCase()} card character`}
+          alt={`${title.toLocaleLowerCase()} card character`}
         />
       </motion.div>
     </Link>
