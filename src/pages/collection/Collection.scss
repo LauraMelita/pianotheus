@@ -1,7 +1,6 @@
 main {
   &[class$='collection'] {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: var(--content-padding);
+    gap: var(--global-gap);
   }
 }

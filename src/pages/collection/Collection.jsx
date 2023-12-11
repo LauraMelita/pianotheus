@@ -8,9 +8,9 @@ import Spinner from '../../components/UI/spinner/Spinner';
 
 import './Collection.scss';
 
-const Collection = (props) => {
-  const { data, isLoading, error } = useContext(props.context);
-  useDocumentTitle(props.documentTitle);
+const Collection = ({ title, type, context }) => {
+  const { data, isLoading, error } = useContext(context);
+  useDocumentTitle(title);
 
   const renderSpinner = () => isLoading && <Spinner />;
 
@@ -18,7 +18,7 @@ const Collection = (props) => {
     if (!isLoading && !error)
       return (
         <>
-          {props.collectionName === 'classical' ? (
+          {type === 'classical' ? (
             <ComposersList data={data} />
           ) : (
             <TitlesList data={data} />
@@ -30,7 +30,7 @@ const Collection = (props) => {
   const renderError = () => error && <p>{error}</p>;
 
   return (
-    <main className={`${props.collectionName}-collection`}>
+    <main className={`${type}-collection`}>
       {renderSpinner()}
       {renderCollection()}
       {renderError()}
