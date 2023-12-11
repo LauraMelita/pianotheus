@@ -1,8 +1,7 @@
 import React from 'react';
-
 import { useDocumentTitle } from '@mantine/hooks';
 
-import ParallaxContainer from '../../features/parallax/ParallaxContainer';
+import Parallax from '../../features/parallax/Parallax';
 import About from './about/About';
 import Quote from './quote/Quote';
 import HomeCategories from './categories/HomeCategories';
@@ -14,16 +13,13 @@ const HomePage = () => {
 
   return (
     <main className='home'>
-      <section id='parallax'>
-        <ParallaxContainer />
+      <section className='full-width'>
+        <Parallax />
       </section>
-      <section id='categories'>
+      <section>
         <HomeCategories />
       </section>
-      <section id='about'>
-        <About />
-      </section>
-      <section id='quote'>
+      <section>
         <Quote
           text={`<p>
             Prometheus stole fire from the gods. We are each the heirs of that
@@ -37,6 +33,9 @@ const HomePage = () => {
           author='Thomas Lloyd Qualls'
           source='Painted Oxen'
         />
+      </section>
+      <section id='about'>
+        <About />
       </section>
     </main>
   );

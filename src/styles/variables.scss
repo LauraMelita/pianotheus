@@ -20,7 +20,11 @@
   --scrollbar-color: var(--gray-200);
   --scrollbar-width: 10px;
 
-  --global-width: min(80%, 2500px);
+  --navbar-height: 80px;
+
+  --content-max-width: min(80%, 2500px);
+  --content-padding: 40px 0;
+
   --global-padding: 20px;
   --global-gap: 20px;
   --global-border-width: 2px;
