@@ -72,7 +72,7 @@ const TitlesList = ({ data }) => {
       <Separator orientation='horizontal' />
 
       <FadeIn>
-        <motion.ul layout className='titles'>
+        <motion.ul layout className='posters'>
           <AnimatePresence>
             {searchAndFilter(data)
               .slice(0, indexOfLastTitle)
