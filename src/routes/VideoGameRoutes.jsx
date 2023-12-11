@@ -17,8 +17,8 @@ const VideoGameRoutes = () => {
           index
           element={
             <Collection
-              documentTitle='Video Games'
-              collectionName='video-games'
+              title='Video Games'
+              type='video-games'
               context={VideoGamesContext}
             />
           }

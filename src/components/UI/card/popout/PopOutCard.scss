@@ -35,13 +35,3 @@
     }
   }
 }
-
-// Hack
-.tv-shows {
-  &:has(.popout-card) {
-    .popout-card__character {
-      width: 62%;
-      right: 45px;
-    }
-  }
-}

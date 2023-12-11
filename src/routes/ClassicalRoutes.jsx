@@ -17,8 +17,8 @@ const ClassicalRoutes = () => {
           index
           element={
             <Collection
-              documentTitle='Classical Music'
-              collectionName='classical'
+              title='Classical Music'
+              type='classical'
               context={ClassicalContext}
             />
           }

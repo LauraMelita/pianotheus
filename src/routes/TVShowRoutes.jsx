@@ -17,8 +17,8 @@ const TVShowsRoutes = () => {
           index
           element={
             <Collection
-              documentTitle='TV Shows'
-              collectionName='tv-shows'
+              title='TV Shows'
+              type='tv-shows'
               context={TVShowsContext}
             />
           }
