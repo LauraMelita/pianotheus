@@ -1,0 +1,34 @@
+.parallax {
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+
+  .parallax__background,
+  .parallax__middleground,
+  .parallax__foreground {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  .parallax__background {
+    z-index: 1;
+    background-size: cover;
+  }
+
+  .parallax__middleground {
+    z-index: 2;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .parallax__foreground {
+    z-index: 3;
+    background-size: cover;
+  }
+}

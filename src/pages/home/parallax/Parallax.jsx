@@ -1,16 +1,20 @@
 import React from 'react';
 
-import ParallaxLayer from './ParallaxLayer';
+import ParallaxLayer from './parallaxLayer/ParallaxLayer';
 
-import BackgroundImage from '../../assets/images/parallax/background.jpg';
-import MiddlegroundImage from '../../assets/images/parallax/middleground.webp';
-import ForegroundImage from '../../assets/images/parallax/foreground.png';
-import './ParallaxContainer.scss';
+import BackgroundImage from '../../../assets/images/parallax/background.jpg';
+import MiddlegroundImage from '../../../assets/images/parallax/middleground.webp';
+import ForegroundImage from '../../../assets/images/parallax/foreground.png';
+import './Parallax.scss';
 
-const ParallaxContainer = () => {
+const Parallax = () => {
   return (
     <div className='parallax'>
-      <ParallaxLayer
+      <ParallaxLayer layer='background' src={BackgroundImage} />
+      <ParallaxLayer layer='middleground' src={MiddlegroundImage} />
+      <ParallaxLayer layer='foreground' src={ForegroundImage} />
+
+      {/* <ParallaxLayer
         layer='background'
         src={BackgroundImage}
         layerData={[
@@ -63,9 +67,9 @@ const ParallaxContainer = () => {
             ],
           },
         ]}
-      />
+      /> */}
     </div>
   );
 };
 
-export default ParallaxContainer;
+export default Parallax;
