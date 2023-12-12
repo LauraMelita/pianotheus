@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import { useFetchFirebaseCollection } from '../hooks/useFetchFirebaseCollection';
+import { useFetchCollection } from '../hooks/useFetchCollection';
 
 export const TVShowsContext = createContext({
   data: {},
@@ -9,10 +9,11 @@ export const TVShowsContext = createContext({
 });
 
 export const TVShowsContextProvider = (props) => {
-  const { data, isLoading, error } = useFetchFirebaseCollection(
-    'tv-shows',
-    'title'
-  );
+  const {
+    data,
+    isLoading,
+    isError: error,
+  } = useFetchCollection('tv-shows', 'title');
 
   return (
     <TVShowsContext.Provider value={{ data, isLoading, error }}>
