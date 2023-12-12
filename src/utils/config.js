@@ -1,4 +1,10 @@
 export const siteConfig = {
+  firestoreCollections: [
+    { name: 'movies', orderBy: 'title' },
+    { name: 'tv-shows', orderBy: 'title' },
+    { name: 'video-games', orderBy: 'title' },
+    { name: 'classical', orderBy: 'composer' },
+  ],
   navLinks: [
     { path: '/', navLink: 'Home' },
     { path: '/movies', navLink: 'Movies' },

@@ -1,38 +1,31 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { useFetchAllCollections } from '../../hooks/useFetchAllCollections';
+
 import Suggestions from './suggestions/Suggestions';
-
-import { useComponentVisible } from '../../hooks/useComponentVisible';
-import { convertToPath } from '../../utils/helpers';
-
 import Svg from '../../components/UI/svg/Svg';
+
+import { siteConfig } from '../../utils/config';
+import { convertToPath } from '../../utils/helpers';
 
 import './QuickSearch.scss';
 
-import { movies } from '../../data/movies';
-import { tvShows } from '../../data/tvShows';
-import { videoGames } from '../../data/videoGames';
-import { classical } from '../../data/classical';
-
 const QuickSearch = ({ searchKeys }) => {
-  const data = [...movies, ...tvShows, ...videoGames, ...classical];
+  const data = useFetchAllCollections(siteConfig.firestoreCollections);
+  const navigate = useNavigate();
 
   const [input, setInput] = useState('');
   const [filtered, setFiltered] = useState([]);
   const [active, setActive] = useState(0);
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const navigate = useNavigate();
-  const { ref, componentIsVisible, toggleComponentIsVisible } =
-    useComponentVisible(false);
-
   const handleInputChange = (e) => {
     const query = e.target.value.toLowerCase();
 
     setInput(query);
     if (query.length > 0) {
-      const newFilteredSuggestions = data.filter(
+      const newFilteredSuggestions = data?.filter(
         (suggestion) =>
           // Data matches 'composer' and 'title' keys
           searchKeys.some((searchKey) =>
@@ -130,7 +123,7 @@ const QuickSearch = ({ searchKeys }) => {
         </button>
       </div>
 
-      <div className='dropdown' ref={ref}>
+      <div className='dropdown'>
         {showDropdown && (
           <Suggestions
             suggestions={filtered}
