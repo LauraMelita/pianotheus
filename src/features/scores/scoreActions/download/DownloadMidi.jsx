@@ -1,11 +1,11 @@
 import React from 'react';
 
-import useFetchFileFromStorage from '../../../../hooks/useFetchFileFromStorage';
+import useFetchFile from '../../../../hooks/useFetchFile';
 
 import Svg from '../../../../components/UI/svg/Svg';
 
 const DownloadMidi = ({ title }) => {
-  const file = useFetchFileFromStorage('.mid', title);
+  const file = useFetchFile('.mid', title);
 
   if (!file) return;
 
