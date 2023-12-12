@@ -9,7 +9,6 @@ const useFetchFile = (fileExtension, fileTitle) => {
   const { pathname } = useLocation();
 
   const folderPath = `${pathname.slice(1).replaceAll('-', ' ')}`;
-
   const storageRef = ref(storage, folderPath);
 
   useEffect(() => {

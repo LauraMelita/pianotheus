@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import { useFetchFirebaseCollection } from '../hooks/useFetchFirebaseCollection';
+import { useFetchCollection } from '../hooks/useFetchCollection';
 
 export const MoviesContext = createContext({
   data: {},
@@ -9,10 +9,11 @@ export const MoviesContext = createContext({
 });
 
 export const MoviesContextProvider = (props) => {
-  const { data, isLoading, error } = useFetchFirebaseCollection(
-    'movies',
-    'title'
-  );
+  const {
+    data,
+    isLoading,
+    isError: error,
+  } = useFetchCollection('movies', 'title');
 
   return (
     <MoviesContext.Provider value={{ data, isLoading, error }}>
