@@ -2,5 +2,10 @@ main {
   &[class$='collection'] {
     padding: var(--content-padding);
     gap: var(--global-gap);
+
+    .spinner {
+      justify-self: center;
+      align-self: center;
+    }
   }
 }

@@ -12,7 +12,7 @@ const Collection = ({ title, type, context }) => {
   const { data, isLoading, error } = useContext(context);
   useDocumentTitle(title);
 
-  const renderSpinner = () => isLoading && <Spinner />;
+  const renderSpinner = () => isLoading && <Spinner type='circle' />;
 
   const renderCollection = () => {
     if (!isLoading && !error)

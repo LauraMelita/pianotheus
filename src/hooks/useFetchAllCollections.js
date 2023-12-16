@@ -12,5 +12,14 @@ export const useFetchAllCollections = (collections) => {
     }),
   });
 
-  return collectionQueries.flatMap((collection) => collection.data);
+  const isLoading = collectionQueries.every(
+    (collection) => collection.isLoading === true
+  );
+
+  const data = collectionQueries.flatMap((collection) => collection.data);
+
+  return {
+    isLoading,
+    data,
+  };
 };

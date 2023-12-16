@@ -23,7 +23,7 @@ const VideoGame = () => {
 
   return (
     <main>
-      {isLoading && <Spinner />}
+      {isLoading && <Spinner type='circle' />}
       {videoGameDetails && !isLoading && !error && (
         <h3>{videoGameDetails.title}</h3>
       )}

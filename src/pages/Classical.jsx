@@ -21,7 +21,7 @@ const Classical = () => {
 
   return (
     <main>
-      {isLoading && <Spinner />}
+      {isLoading && <Spinner type='circle' />}
       {composerDetails && !isLoading && !error && (
         <h3>{composerDetails.composer}</h3>
       )}

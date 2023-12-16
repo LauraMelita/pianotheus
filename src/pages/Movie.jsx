@@ -67,7 +67,7 @@ const Movie = () => {
 
   return (
     <main>
-      {isLoading && <Spinner />}
+      {isLoading && <Spinner type='circle' />}
       {movieDetails && !isLoading && !error && (
         <div className='movie-container'>
           <div className='movie-header'>
