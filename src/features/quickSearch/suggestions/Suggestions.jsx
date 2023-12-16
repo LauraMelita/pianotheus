@@ -1,84 +1,75 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
+
+import Svg from '../../../components/UI/svg/Svg';
 
 import './Suggestions.scss';
 
 const Suggestions = ({
+  suggestionRef,
   suggestions,
   searchQuery,
   active,
-  setActive,
-  onSuggestionClick,
+  handleSuggestionClick,
+  handleSuggestionHover,
 }) => {
-  const selectRef = useRef(null);
+  const renderImage = ({ category, composerImg, poster, composer, title }) => {
+    const isClassical = category === 'classical';
 
-  const handleClick = (selected) => {
-    onSuggestionClick(selected);
+    return (
+      <img
+        src={isClassical ? composerImg : poster}
+        alt={isClassical ? composer : `${title} poster`}
+      />
+    );
   };
 
-  const handleMouseEnter = (index) => {
-    setActive(index);
+  const renderTitle = ({ category, composer, title, year }) => {
+    const isClassical = category === 'classical';
+
+    return (
+      <span className='suggestion__title'>
+        {isClassical ? composer : `${title} (${year})`}
+      </span>
+    );
   };
 
-  useEffect(() => {
-    const selected = selectRef?.current?.querySelector('.active');
+  const renderComposer = ({ category, composer }) => {
+    const isClassical = category === 'classical';
 
-    const timer = setTimeout(() => {
-      if (selected) {
-        selected?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'nearest',
-        });
-      }
-    }, 100);
+    if (!isClassical)
+      return <span className='suggestion__composer'>{composer}</span>;
+  };
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [active]);
+  const renderScores = ({ scores }) =>
+    scores.map(({ score }, index) => {
+      const searchQueryIncludesScore = score
+        .toLowerCase()
+        .includes(searchQuery);
+
+      if (searchQueryIncludesScore)
+        return (
+          <li key={index}>
+            <Svg icon='midi-text' />
+            <span>{score}</span>
+          </li>
+        );
+    });
 
   return (
-    <ul className='dropdown-menu suggestions' ref={selectRef}>
+    <ul className='suggestions' ref={suggestionRef}>
       {suggestions.map((suggestion, index) => {
-        const {
-          category,
-          scores,
-          title,
-          year,
-          poster,
-          composer,
-          composerImg,
-          birth,
-          death,
-        } = suggestion;
-
         return (
           <li
             className={`suggestion ${index === active ? 'active' : ''}`}
             key={index}
-            onClick={() => handleClick(suggestion)}
-            onMouseEnter={() => handleMouseEnter(index)}
+            onClick={() => handleSuggestionClick(suggestion)}
+            onMouseEnter={() => handleSuggestionHover(index)}
           >
-            <div className='image'>
-              <img
-                src={category === 'classical' ? composerImg : poster}
-                alt='quick-search img'
-              />
-            </div>
-            <div className='body'>
-              <span className='title-suggestion'>
-                {category === 'classical'
-                  ? `${composer} (${birth} - ${death})`
-                  : `${title} (${year})`}
-              </span>
-              <span className='composer-suggestion'>
-                {category !== 'classical' && composer}
-              </span>
-              {scores.map(({ score }, index) => (
-                <span className='score-suggestion' key={index}>
-                  {score.toLowerCase().includes(searchQuery) && score}
-                </span>
-              ))}
+            <div className='suggestion__image'>{renderImage(suggestion)}</div>
+            <div className='suggestion__details'>
+              {renderTitle(suggestion)}
+              {renderComposer(suggestion)}
+              <ul className='suggestion__scores'>{renderScores(suggestion)}</ul>
             </div>
           </li>
         );
