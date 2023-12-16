@@ -1,23 +1,20 @@
 import React from 'react';
 
-import { useFetchAllCollections } from '../../hooks/useFetchAllCollections';
 import { useQuickSearch } from '../../hooks/useQuickSearch';
 
 import SearchBar from './searchBar/SearchBar';
 import Dropdown from './dropdown/Dropdown';
 import Suggestions from './suggestions/Suggestions';
 
-import { siteConfig } from '../../utils/config';
-
 import './QuickSearch.scss';
 
 const QuickSearch = ({ searchKeys }) => {
-  const data = useFetchAllCollections(siteConfig.firestoreCollections);
   const {
     showDropdown,
     searchInput,
     suggestions,
     activeSuggestion,
+    isLoading,
     suggestionRef,
     searchInputEmpty,
     noSuggestions,
@@ -26,7 +23,7 @@ const QuickSearch = ({ searchKeys }) => {
     handleKeyDownActions,
     handleSuggestionClick,
     handleSuggestionHover,
-  } = useQuickSearch(data, searchKeys);
+  } = useQuickSearch(searchKeys);
 
   const NoSuggestions = () => (
     <span className='no-suggestions'>No results found</span>
@@ -35,6 +32,7 @@ const QuickSearch = ({ searchKeys }) => {
   return (
     <div className='quick-search'>
       <SearchBar
+        dataIsLoading={isLoading}
         value={searchInput}
         onChange={handleSearchInputChange}
         onKeyDown={handleKeyDownActions}
