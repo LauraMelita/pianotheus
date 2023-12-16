@@ -20,7 +20,7 @@ const TVShow = () => {
 
   return (
     <main>
-      {isLoading && <Spinner />}
+      {isLoading && <Spinner type='circle' />}
       {tvShowDetails && !isLoading && !error && <h3>{tvShowDetails.title}</h3>}
       {!isLoading && !tvShowDetails && <PageNotFound />}
     </main>
