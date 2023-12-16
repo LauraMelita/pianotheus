@@ -1,15 +1,20 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { useFetchAllCollections } from './useFetchAllCollections';
+import { siteConfig } from '../utils/config';
 import { convertToPath } from '../utils/helpers';
 
-export const useQuickSearch = (data, searchKeys) => {
+export const useQuickSearch = (searchKeys) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [activeSuggestion, setActiveSuggestion] = useState(0);
   const suggestionRef = useRef(null);
   const navigate = useNavigate();
+  const { data, isLoading } = useFetchAllCollections(
+    siteConfig.firestoreCollections
+  );
 
   const searchInputEmpty = searchInput.length === 0;
   const selectedSuggestion = suggestions[activeSuggestion];
@@ -44,6 +49,8 @@ export const useQuickSearch = (data, searchKeys) => {
     const searchQuery = e.target.value.toLowerCase();
 
     setSearchInput(searchQuery);
+
+    if (isLoading) return;
 
     if (searchQuery.length > 0) {
       const filteredSuggestions = data?.filter(
@@ -111,6 +118,7 @@ export const useQuickSearch = (data, searchKeys) => {
     searchInput,
     suggestions,
     activeSuggestion,
+    isLoading,
     suggestionRef,
     searchInputEmpty,
     noSuggestions,
