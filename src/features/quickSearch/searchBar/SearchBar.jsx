@@ -1,8 +1,10 @@
 import React from 'react';
 
 import Svg from '../../../components/UI/svg/Svg';
+import Spinner from '../../../components/UI/spinner/Spinner';
 
 const SearchBar = ({
+  dataIsLoading,
   value,
   onChange,
   onKeyDown,
@@ -10,6 +12,15 @@ const SearchBar = ({
   showDropdown,
   searchInputEmpty,
 }) => {
+  const renderSpinner = () => {
+    if (!searchInputEmpty && dataIsLoading) return <Spinner type='dotted' />;
+  };
+
+  const renderCloseBtn = () => {
+    if (!searchInputEmpty && showDropdown)
+      return <Svg icon='close' onClick={onCloseBtnClick} />;
+  };
+
   return (
     <div className='quick-search__search-bar'>
       <Svg icon='search' className='icon-search' />
@@ -21,9 +32,8 @@ const SearchBar = ({
         onKeyDown={onKeyDown}
       />
       <button className='icon-btn'>
-        {showDropdown && !searchInputEmpty && (
-          <Svg icon='close' onClick={onCloseBtnClick} />
-        )}
+        {renderSpinner()}
+        {renderCloseBtn()}
       </button>
     </div>
   );
