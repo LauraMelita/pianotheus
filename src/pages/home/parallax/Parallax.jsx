@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { useParallax } from '../../../hooks/useParallax';
 import ParallaxLayer from './parallaxLayer/ParallaxLayer';
 
 import BackgroundImage from '../../../assets/images/parallax/background.jpg';
@@ -8,66 +9,36 @@ import ForegroundImage from '../../../assets/images/parallax/foreground.png';
 import './Parallax.scss';
 
 const Parallax = () => {
-  return (
-    <div className='parallax'>
-      <ParallaxLayer layer='background' src={BackgroundImage} />
-      <ParallaxLayer layer='middleground' src={MiddlegroundImage} />
-      <ParallaxLayer layer='foreground' src={ForegroundImage} />
+  const { parallaxRef, useCalculateSpeed } = useParallax();
 
-      {/* <ParallaxLayer
+  return (
+    <div className='parallax' ref={parallaxRef}>
+      <ParallaxLayer
         layer='background'
+        stackOrder={1}
+        transformY={useCalculateSpeed(1)}
         src={BackgroundImage}
-        layerData={[
-          {
-            start: 0,
-            end: 800,
-            properties: [
-              {
-                startValue: 1,
-                endValue: 1.18,
-                property: 'scale',
-              },
-            ],
-          },
-        ]}
+        size='cover'
+        position='bottom'
       />
 
       <ParallaxLayer
         layer='middleground'
+        stackOrder={2}
+        transformY={useCalculateSpeed(3)}
         src={MiddlegroundImage}
-        layerData={[
-          {
-            start: 0,
-            end: 400,
-            properties: [
-              {
-                startValue: 1,
-                endValue: 0,
-                property: 'opacity',
-              },
-            ],
-          },
-        ]}
+        size='auto 15%'
+        position='center'
       />
 
       <ParallaxLayer
         layer='foreground'
+        stackOrder={3}
+        transformY={useCalculateSpeed(1)}
         src={ForegroundImage}
-        layerData={[
-          {
-            start: 0,
-            end: 700,
-            easing: 'ease-in',
-            properties: [
-              {
-                startValue: 1,
-                endValue: 1.6,
-                property: 'scale',
-              },
-            ],
-          },
-        ]}
-      /> */}
+        size='cover'
+        position='center'
+      />
     </div>
   );
 };
