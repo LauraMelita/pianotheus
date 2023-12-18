@@ -4,22 +4,22 @@ import { motion } from 'framer-motion';
 const ParallaxLayer = ({
   layer,
   stackOrder,
-  transformY,
-  transformX,
   src,
-  size,
-  position,
+  backgroundSize,
+  backgroundPosition,
+  translateY,
+  translateX,
 }) => {
   return (
     <motion.div
       className={`parallax__${layer}`}
       style={{
         zIndex: stackOrder,
-        y: transformY,
-        x: transformX,
+        y: translateY,
+        x: translateX,
         backgroundImage: `url(${src})`,
-        backgroundSize: size,
-        backgroundPosition: position,
+        backgroundSize,
+        backgroundPosition,
         backgroundRepeat: 'no-repeat',
       }}
     />
