@@ -5,7 +5,6 @@
   contain: paint;
   display: grid;
   grid-template-areas: 'stack';
-  background-color: var(--gray-900);
 
   > * {
     position: absolute;
