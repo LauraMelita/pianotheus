@@ -9,11 +9,11 @@ export const useParallax = () => {
     offset: ['start start', 'end start'],
   });
 
-  const useCalculateSpeed = (speed) =>
+  const useSpeed = (speed) =>
     useTransform(scrollYProgress, [0, 1], ['0%', `${speed * 100}%`]);
 
   return {
     parallaxRef,
-    useCalculateSpeed,
+    useSpeed,
   };
 };
