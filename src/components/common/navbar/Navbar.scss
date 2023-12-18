@@ -1,5 +1,5 @@
 .navbar {
-  background-color: var(--gray-900);
+  border-bottom: var(--navbar-border-width) solid var(--gray-shade-100);
 
   .navbar__wrapper {
     min-height: var(--navbar-height);
