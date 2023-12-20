@@ -10,12 +10,8 @@
     }
 
     &:first-child {
-      scroll-margin-top: calc(
-        var(--navbar-height) + var(--navbar-border-width)
-      );
-      min-height: calc(
-        100dvh - var(--navbar-height) + var(--navbar-border-width)
-      );
+      scroll-margin-top: var(--navbar-height);
+      min-height: calc(100dvh - var(--navbar-height));
     }
 
     &:last-child {
