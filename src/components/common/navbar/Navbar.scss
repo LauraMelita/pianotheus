@@ -1,8 +1,8 @@
 .navbar {
-  border-bottom: var(--navbar-border-width) solid var(--gray-shade-100);
+  padding: var(--global-padding) 0;
+  border-bottom: 1px solid var(--gray-shade-100);
 
   .navbar__wrapper {
-    min-height: var(--navbar-height);
     display: flex;
     justify-content: center;
     align-items: center;
