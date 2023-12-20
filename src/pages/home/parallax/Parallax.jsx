@@ -3,7 +3,6 @@ import React from 'react';
 import { useParallax } from '../../../hooks/useParallax';
 import ParallaxLayer from './parallaxLayer/ParallaxLayer';
 
-import Logo from '../../../assets/images/logo.svg';
 import Mountains from '../../../assets/images/parallax/mountains.png';
 import Planets from '../../../assets/images/parallax/planets.png';
 import Stars from '../../../assets/images/parallax/stars.png';
@@ -79,11 +78,11 @@ const Parallax = () => {
       <ParallaxLayer
         layer='logo'
         stackOrder={6}
-        src={Logo}
-        backgroundSize='auto 65px'
-        backgroundPosition='center'
+        inset='50% 37%'
         translateY={useSpeed(2)}
-      />
+      >
+        <h1>Hello World</h1>
+      </ParallaxLayer>
 
       <ParallaxLayer
         layer='fog3'

@@ -7,8 +7,10 @@ const ParallaxLayer = ({
   src,
   backgroundSize,
   backgroundPosition,
+  inset,
   translateY,
   translateX,
+  children,
 }) => {
   return (
     <motion.div
@@ -17,12 +19,15 @@ const ParallaxLayer = ({
         zIndex: stackOrder,
         y: translateY,
         x: translateX,
-        backgroundImage: `url(${src})`,
+        backgroundImage: src ? `url(${src})` : null,
         backgroundSize,
         backgroundPosition,
+        inset,
         backgroundRepeat: 'no-repeat',
       }}
-    />
+    >
+      {children}
+    </motion.div>
   );
 };
 
