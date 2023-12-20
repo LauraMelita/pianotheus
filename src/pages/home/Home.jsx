@@ -19,6 +19,9 @@ const HomePage = () => {
       <section>
         <Categories />
       </section>
+      <section id='about'>
+        <About />
+      </section>
       <section>
         <Quote
           text={`<p>
@@ -33,9 +36,6 @@ const HomePage = () => {
           author='Thomas Lloyd Qualls'
           source='Painted Oxen'
         />
-      </section>
-      <section id='about'>
-        <About />
       </section>
     </main>
   );
