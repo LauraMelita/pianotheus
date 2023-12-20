@@ -116,12 +116,12 @@ const Movie = () => {
           <div className='movie-footer'>
             <div className='text-container'>
               <p className='plot'>{imdbData.plot}</p>
-              <Separator orientation='horizontal' />
+              <Separator type='radial' orientation='horizontal' />
               <div className='director'>
                 <span>Directors</span>
                 <span>{imdbData.director}</span>
               </div>
-              <Separator orientation='horizontal' />
+              <Separator type='radial' orientation='horizontal' />
               <div className='stars'>
                 <span>Stars</span>
                 <span>{imdbData.actors}</span>

@@ -69,7 +69,7 @@ const TitlesList = ({ data }) => {
         setFilter={setFilter}
       />
 
-      <Separator orientation='horizontal' />
+      <Separator type='border' orientation='horizontal' />
 
       <FadeIn>
         <motion.ul layout className='posters'>
