@@ -1,28 +1,13 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import { siteConfig } from '../../../utils/config';
-import {
-  scrollToTop,
-  setScrollBehaviorToAuto,
-  setScrollBehaviorToSmooth,
-} from '../../../utils/helpers';
+
+import { useScrollToTop } from '../../../hooks/useScrollToTop';
 
 const NavigationLinks = (props) => {
-  const { pathname } = useLocation();
-
-  const handleScroll = (e) => {
-    const navlink = e.target.href;
-    const navlinkSameAsCurrentPage = navlink.includes(pathname);
-
-    if (navlinkSameAsCurrentPage) {
-      setScrollBehaviorToSmooth();
-      setTimeout(() => scrollToTop(), 0);
-    } else {
-      setScrollBehaviorToAuto();
-    }
-  };
+  const { handlePageScroll } = useScrollToTop();
 
   const variants = {
     open: {
@@ -57,7 +42,7 @@ const NavigationLinks = (props) => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          <NavLink to={path} onClick={handleScroll}>
+          <NavLink to={path} onClick={(e) => handlePageScroll(e)}>
             {navLink}
           </NavLink>
         </motion.li>
