@@ -44,8 +44,7 @@ const PosterCard = ({
               />
               <span>{composer}</span>
             </div>
-            <Separator orientation='horizontal' />
-
+            <Separator type='radial' orientation='horizontal' />
             <AvailableScores />
           </figcaption>
         </figure>

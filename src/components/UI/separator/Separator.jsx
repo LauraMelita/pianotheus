@@ -1,10 +1,12 @@
 import React from 'react';
 import * as RadixSeparator from '@radix-ui/react-separator';
 
-const Separator = ({ orientation }) => {
+import './Separator.scss';
+
+const Separator = ({ type, orientation }) => {
   return (
     <RadixSeparator.Root
-      className='separator'
+      className={`separator ${type}`}
       orientation={orientation}
       decorative
     />

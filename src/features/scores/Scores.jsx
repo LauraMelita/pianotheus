@@ -14,9 +14,9 @@ const Scores = ({ data }) => {
         {scores.map(({ score, level }, index) => (
           <li className='score' key={index}>
             <span className='score__title'>{score}</span>
-            <Separator orientation='vertical' />
+            <Separator type='border' orientation='vertical' />
             <ScoreActions movie={movie} scoreTitle={score} />
-            <Separator orientation='vertical' />
+            <Separator type='border' orientation='vertical' />
             <div className='score__metadata'>
               <span>difficulty: </span>
               <span>{level}</span>

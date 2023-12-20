@@ -1,0 +1,23 @@
+.separator {
+  &.border {
+    border: 1px solid var(--gray-shade-200);
+  }
+
+  &.radial {
+    background: radial-gradient(
+      circle,
+      var(--accent-color-100) 85%,
+      rgba(34, 34, 34, 0) 100%
+    );
+  }
+
+  &[data-orientation='horizontal'] {
+    height: 1px;
+    width: 100%;
+  }
+
+  &[data-orientation='vertical'] {
+    height: 100%;
+    width: 1px;
+  }
+}

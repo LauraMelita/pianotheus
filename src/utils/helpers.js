@@ -1,4 +1,3 @@
-// General
 export const convertToPath = (str) =>
   str.toLowerCase().replaceAll(' ', '-').replaceAll(':', '');
 
@@ -13,13 +12,3 @@ export const stringIncludesWord = (str, word) =>
   new RegExp('\\b' + word + '\\b', 'i').test(str);
 
 export const currentYear = new Date().getFullYear();
-
-// Navigation
-
-export const scrollToTop = () => window.scrollTo(0, 0);
-
-export const setScrollBehaviorToAuto = () =>
-  document.documentElement.style.setProperty('--scroll-behavior', 'auto');
-
-export const setScrollBehaviorToSmooth = () =>
-  document.documentElement.style.setProperty('--scroll-behavior', 'smooth');

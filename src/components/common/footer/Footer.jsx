@@ -1,95 +1,128 @@
 import React from 'react';
 import { HashLink } from 'react-router-hash-link';
 
+import { useScrollToTop } from '../../../hooks/useScrollToTop';
 import { useCreateCSSRootVariable } from '../../../hooks/useCreateCSSRootVariable';
 
-import NavigationLinks from '../navbar/NavigationLinks';
 import Svg from '../../UI/svg/Svg';
+import Separator from '../../UI/separator/Separator';
+import NavigationLinks from '../navbar/NavigationLinks';
 import Contact from '../../../features/contact/Contact';
 
-import { setScrollBehaviorToSmooth, currentYear } from '../../../utils/helpers';
+import { currentYear } from '../../../utils/helpers';
 
+import Logo from '../../../assets/images/logo.svg';
 import './Footer.scss';
 
 const Footer = () => {
+  const { setScrollBehaviorToSmooth } = useScrollToTop();
   const elementRef = useCreateCSSRootVariable(
     'footer-height',
     'offsetHeight',
     'px'
   );
 
+  const QuickLinks = () => {
+    return (
+      <div className='footer__quick-links'>
+        <span>Quick Links</span>
+        <NavigationLinks className='footer__links' />
+      </div>
+    );
+  };
+
+  const About = () => {
+    return (
+      <div className='footer__about'>
+        <span>Pianotheus</span>
+        <ul>
+          <li>
+            <HashLink to='/#about' onClick={setScrollBehaviorToSmooth}>
+              About
+            </HashLink>
+          </li>
+          <Contact btnText='Contact' />
+        </ul>
+      </div>
+    );
+  };
+
+  const Downloads = () => {
+    return (
+      <div className='footer__download'>
+        <span>Download</span>
+        <ul>
+          <li>
+            <a
+              href='https://synthesiagame.com/download'
+              target='_blank'
+              rel='noreferrer'
+            >
+              Synthesia
+              <Svg icon='external-link' />
+            </a>
+          </li>
+          <li>
+            <a
+              href='https://musescore.org/en/download'
+              target='_blank'
+              rel='noreferrer'
+            >
+              MuseScore
+              <Svg icon='external-link' />
+            </a>
+          </li>
+        </ul>
+      </div>
+    );
+  };
+
+  const Copyright = () => {
+    return (
+      <div className='copyright'>
+        <span>© {currentYear} Pianotheus</span>
+      </div>
+    );
+  };
+
+  const Social = () => {
+    return (
+      <div className='footer__social'>
+        <a
+          className='icon-btn'
+          href='https://github.com/LauraMelita'
+          target='_blank'
+          rel='noreferrer'
+        >
+          <Svg icon='github' />
+        </a>
+        <a
+          className='icon-btn'
+          href='https://www.linkedin.com/in/laura-melita-a30086104'
+          target='_blank'
+          rel='noreferrer'
+        >
+          <Svg icon='linkedin' />
+        </a>
+      </div>
+    );
+  };
+
   return (
     <footer className='footer' ref={elementRef}>
       <div className='footer__wrapper'>
         <div className='footer__top'>
-          <div className='footer__quick-links'>
-            <span>Quick Links</span>
-            <NavigationLinks className='footer__links' />
-          </div>
-          <div className='footer__about'>
-            <span>Pianotheus</span>
-            <ul>
-              <li>
-                <HashLink to='/#about' onClick={setScrollBehaviorToSmooth}>
-                  About
-                </HashLink>
-              </li>
-              <Contact btnText='Contact' />
-            </ul>
-          </div>
-          <div className='footer__social'>
-            <span>Get in Touch</span>
-            <ul>
-              <li className='icon-btn'>
-                <a
-                  href='https://github.com/LauraMelita'
-                  target='_blank'
-                  rel='noreferrer'
-                >
-                  <Svg icon='github' />
-                </a>
-              </li>
-              <li className='icon-btn'>
-                <a
-                  href='https://www.linkedin.com/in/laura-melita-a30086104'
-                  target='_blank'
-                  rel='noreferrer'
-                >
-                  <Svg icon='linkedin' />
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className='footer__download'>
-            <span>Download</span>
-            <ul>
-              <li>
-                <a
-                  href='https://synthesiagame.com/download'
-                  target='_blank'
-                  rel='noreferrer'
-                >
-                  Synthesia
-                  <Svg className='external-link' icon='external-link' />
-                </a>
-              </li>
-              <li>
-                <a
-                  href='https://musescore.org/en/download'
-                  target='_blank'
-                  rel='noreferrer'
-                >
-                  MuseScore
-                  <Svg className='external-link' icon='external-link' />
-                </a>
-              </li>
-            </ul>
-          </div>
+          <QuickLinks />
+          <About />
+          <Downloads />
         </div>
+        <Separator type='radial' orientation='horizontal' />
         <div className='footer__bottom'>
-          <div className='copyright'>
-            <span>© {currentYear} by Pianotheus</span>
+          <div>
+            <img src={Logo} alt='logo' width={100} />
+            <Copyright />
           </div>
+          <Social />
         </div>
       </div>
     </footer>
