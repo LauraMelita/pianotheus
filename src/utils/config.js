@@ -1,14 +1,14 @@
 export const siteConfig = {
   firestoreCollections: [
     { name: 'movies', orderBy: 'title' },
-    { name: 'tv_shows', orderBy: 'title' },
-    { name: 'video_games', orderBy: 'title' },
+    { name: 'tv-shows', orderBy: 'title' },
+    { name: 'video-games', orderBy: 'title' },
     { name: 'classical', orderBy: 'composer' },
   ],
   navLinks: [
     { path: '/', navLink: 'Home' },
     { path: '/movies', navLink: 'Movies' },
-    { path: '/tv_shows', navLink: 'TV Shows' },
+    { path: '/tv-shows', navLink: 'TV Shows' },
     { path: '/video-games', navLink: 'Video Games' },
     { path: '/classical', navLink: 'Classical Music' },
   ],

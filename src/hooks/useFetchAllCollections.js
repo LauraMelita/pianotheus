@@ -1,6 +1,6 @@
 import { useQueries } from '@tanstack/react-query';
 
-import { fetchCollection } from '../utils/api';
+import { fetchCollection } from '../services/api';
 
 export const useFetchAllCollections = (collections) => {
   const collectionQueries = useQueries({

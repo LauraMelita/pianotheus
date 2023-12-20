@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { fetchCollection } from '../utils/api';
+import { fetchCollection } from '../services/api';
 
 export const useFetchCollection = (collectionName, orderCollectionBy) => {
   return useQuery({

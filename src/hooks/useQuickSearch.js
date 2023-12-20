@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useFetchAllCollections } from './useFetchAllCollections';
 import { siteConfig } from '../utils/config';
-import { convertToPath } from '../utils/helpers';
+import { convertToPath } from '../utils/formatting';
 
 export const useQuickSearch = (searchKeys) => {
   const [showDropdown, setShowDropdown] = useState(false);

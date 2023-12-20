@@ -6,9 +6,14 @@
     gap: calc(var(--global-gap) / 2);
     padding: calc(var(--global-padding) / 2);
     cursor: pointer;
+    border-bottom: 1px solid var(--gray-shade-100);
 
     &.active {
       background: var(--highlight-100);
+    }
+
+    &:last-child {
+      border-bottom: none;
     }
 
     .suggestion__image {

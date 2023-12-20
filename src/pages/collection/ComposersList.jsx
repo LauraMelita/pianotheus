@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { convertToPath } from '../../utils/helpers';
+import { convertToPath } from '../../utils/formatting';
 
 import FadeIn from '../../components/UI/animation/fadeIn/FadeIn';
 import CircleCard from '../../components/UI/card/circle/CircleCard';

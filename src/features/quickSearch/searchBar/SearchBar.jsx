@@ -23,7 +23,7 @@ const SearchBar = ({
 
   return (
     <div className='quick-search__search-bar'>
-      <Svg icon='search' className='icon-search' />
+      <Svg icon='search' />
       <input
         type='text'
         placeholder='Quick Search'
