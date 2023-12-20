@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ref, getDownloadURL, listAll, getMetadata } from 'firebase/storage';
 
-import { storage } from '../lib/firebase';
+import { storage } from '../services/firebase';
 
 const useFetchFile = (fileExtension, fileTitle) => {
   const [files, setFiles] = useState([]);

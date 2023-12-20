@@ -5,12 +5,11 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import FadeIn from '../../components/UI/animation/fadeIn/FadeIn';
 import Separator from '../../components/UI/separator/Separator';
-
 import Search from '../../features/search/Search';
 import Filter from '../../features/filter/Filter';
 import PosterCard from '../../components/UI/card/poster/PosterCard';
 
-import { convertToPath } from '../../utils/helpers';
+import { convertToPath } from '../../utils/formatting';
 
 import './TitlesList.scss';
 

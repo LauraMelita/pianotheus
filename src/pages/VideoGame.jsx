@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { VideoGamesContext } from '../context/VideoGamesContext';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
-import { convertToPath } from '../utils/helpers';
+import { convertToPath } from '../utils/formatting';
 
 import Spinner from '../components/UI/spinner/Spinner';
 import PageNotFound from './error/PageNotFound';

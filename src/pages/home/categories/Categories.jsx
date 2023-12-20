@@ -3,7 +3,7 @@ import React from 'react';
 import PopOutCard from '../../../components/UI/card/popout/PopOutCard';
 
 import { siteConfig } from '../../../utils/config';
-import { convertToPath } from '../../../utils/helpers';
+import { convertToPath } from '../../../utils/formatting';
 
 import './Categories.scss';
 
