@@ -15,7 +15,7 @@ import Logo from '../../../assets/images/logo.svg';
 import './Footer.scss';
 
 const Footer = () => {
-  const { setScrollBehaviorToSmooth } = useScrollToTop();
+  const { handlePageScroll } = useScrollToTop();
   const elementRef = useCreateCSSRootVariable(
     'footer-height',
     'offsetHeight',
@@ -37,7 +37,7 @@ const Footer = () => {
         <span>Pianotheus</span>
         <ul>
           <li>
-            <HashLink to='/#about' onClick={setScrollBehaviorToSmooth}>
+            <HashLink to='/#about' onClick={(e) => handlePageScroll(e)}>
               About
             </HashLink>
           </li>
@@ -49,8 +49,8 @@ const Footer = () => {
 
   const Downloads = () => {
     return (
-      <div className='footer__download'>
-        <span>Download</span>
+      <div className='footer__downloads'>
+        <span>Downloads</span>
         <ul>
           <li>
             <a
@@ -119,7 +119,7 @@ const Footer = () => {
         <Separator type='radial' orientation='horizontal' />
         <div className='footer__bottom'>
           <div>
-            <img src={Logo} alt='logo' width={100} />
+            <img src={Logo} alt='logo' width={80} />
             <Copyright />
           </div>
           <Social />

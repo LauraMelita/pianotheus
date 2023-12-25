@@ -5,29 +5,33 @@ export const useScrollToTop = () => {
   const { pathname } = useLocation();
 
   const scrollToTop = () => window.scrollTo(0, 0);
+
   const setScrollBehaviorToAuto = () =>
     document.documentElement.style.setProperty('--scroll-behavior', 'auto');
+
   const setScrollBehaviorToSmooth = () =>
     document.documentElement.style.setProperty('--scroll-behavior', 'smooth');
 
-  useLayoutEffect(() => {
-    const URLContainsHashlink = window.location.href.includes('#');
+  const useRestoreScrollToTop = (currentPathname) => {
+    useLayoutEffect(() => {
+      const pathContainsHashlink = window.location.href.includes('#');
 
-    if (URLContainsHashlink) return;
+      if (pathContainsHashlink) return;
 
-    setScrollBehaviorToAuto();
-    const timeout = setTimeout(() => scrollToTop(), 0);
+      setScrollBehaviorToAuto();
+      const timeout = setTimeout(() => scrollToTop(), 0);
 
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [pathname]);
+      return () => {
+        clearTimeout(timeout);
+      };
+    }, [currentPathname]);
+  };
 
   const handlePageScroll = (e) => {
     const navlink = e.target.href;
-    const navlinkSameAsCurrentPage = navlink.includes(pathname);
+    const samePage = navlink.includes(pathname);
 
-    if (navlinkSameAsCurrentPage) {
+    if (samePage) {
       setScrollBehaviorToSmooth();
       setTimeout(() => scrollToTop(), 0);
     } else {
@@ -37,8 +41,7 @@ export const useScrollToTop = () => {
 
   return {
     scrollToTop,
+    useRestoreScrollToTop,
     handlePageScroll,
-    setScrollBehaviorToAuto,
-    setScrollBehaviorToSmooth,
   };
 };
