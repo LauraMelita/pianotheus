@@ -15,8 +15,10 @@ import Footer from './components/common/footer/Footer';
 import { useScrollToTop } from './hooks/useScrollToTop';
 
 const App = () => {
-  useScrollToTop();
   const location = useLocation();
+  const { useRestoreScrollToTop } = useScrollToTop();
+
+  useRestoreScrollToTop(location.pathname);
 
   return (
     <Layout>
