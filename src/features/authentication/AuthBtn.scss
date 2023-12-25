@@ -1,0 +1,26 @@
+.auth {
+  min-height: var(--auth-btn-height);
+  min-width: var(--auth-btn-width);
+  display: flex;
+  justify-content: center;
+
+  button {
+    border: 0;
+    background: transparent;
+
+    .auth__user-avatar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: var(--auth-btn-height);
+      min-width: var(--auth-btn-width);
+      border: var(--global-border-width) solid var(--gray-200);
+      border-radius: 50%;
+      background-size: cover;
+
+      &:hover {
+        border: var(--global-border-width) solid var(--accent-color-100);
+      }
+    }
+  }
+}

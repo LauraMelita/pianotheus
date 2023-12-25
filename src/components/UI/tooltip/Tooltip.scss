@@ -1,0 +1,77 @@
+.tooltip__content {
+  padding: 10px 15px;
+  border-radius: 4px;
+  background-color: var(--highlight-200);
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  color: var(--text-color-secondary);
+  font-size: var(--fs-50);
+  user-select: none;
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+
+  &[data-state='delayed-open'][data-side='top'] {
+    animation-name: slideDownAndFade;
+
+    @keyframes slideDownAndFade {
+      from {
+        opacity: 0;
+        transform: translateY(-2px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &[data-state='delayed-open'][data-side='right'] {
+    animation-name: slideLeftAndFade;
+
+    @keyframes slideLeftAndFade {
+      from {
+        opacity: 0;
+        transform: translateX(2px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &[data-state='delayed-open'][data-side='bottom'] {
+    animation-name: slideUpAndFade;
+
+    @keyframes slideUpAndFade {
+      from {
+        opacity: 0;
+        transform: translateY(2px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &[data-state='delayed-open'][data-side='left'] {
+    animation-name: slideRightAndFade;
+
+    @keyframes slideRightAndFade {
+      from {
+        opacity: 0;
+        transform: translateX(-2px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+.tooltip__arrow {
+  fill: var(--highlight-200);
+}
