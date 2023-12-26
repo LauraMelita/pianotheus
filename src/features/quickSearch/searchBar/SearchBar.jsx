@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useCreateCSSRootVariable } from '../../../hooks/useCreateCSSRootVariable';
+
 import Svg from '../../../components/UI/svg/Svg';
 import Spinner from '../../../components/UI/spinner/Spinner';
 
@@ -12,6 +14,12 @@ const SearchBar = ({
   showDropdown,
   searchInputEmpty,
 }) => {
+  const elementRef = useCreateCSSRootVariable(
+    'searchbar-height',
+    'offsetHeight',
+    'px'
+  );
+
   const renderSpinner = () => {
     if (!searchInputEmpty && dataIsLoading) return <Spinner type='dotted' />;
   };
@@ -22,7 +30,7 @@ const SearchBar = ({
   };
 
   return (
-    <div className='quick-search__search-bar'>
+    <div className='quick-search__search-bar' ref={elementRef}>
       <Svg icon='search' />
       <input
         type='text'
