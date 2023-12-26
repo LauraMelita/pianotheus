@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useScreenSize } from '../../../hooks/useScreenSize';
+import { useSidebar } from '../../../hooks/useSidebar';
 import { useCreateCSSRootVariable } from '../../../hooks/useCreateCSSRootVariable';
 
 import Sidebar from './sidebar/Sidebar';
@@ -16,6 +17,7 @@ import './Navbar.scss';
 
 const Navbar = () => {
   const { isMobile, isDesktop } = useScreenSize();
+  const { closeSidebar } = useSidebar();
   const elementRef = useCreateCSSRootVariable(
     'navbar-height',
     'offsetHeight',
@@ -36,7 +38,7 @@ const Navbar = () => {
           <NavigationLinks
             className='sidebar__links'
             shouldRenderIcons={true}
-            // onClick={() => setShowSidebar(false)}
+            onClick={closeSidebar}
           />
           <Separator type='border' orientation='horizontal' />
           <ToggleThemeMode />

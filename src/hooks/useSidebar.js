@@ -1,14 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useClickOutside } from '@mantine/hooks';
 
+import { SidebarContext } from '../context/SidebarContext';
+
 export const useSidebar = () => {
-  const [showSidebar, setShowSidebar] = useState(false);
+  const { showSidebar, toggleSidebar, closeSidebar } =
+    useContext(SidebarContext);
 
-  const sidebarRef = useClickOutside(() => setShowSidebar(false));
-
-  const toggleSidebar = () => setShowSidebar((prevState) => !prevState);
-
-  const closeSidebar = () => setShowSidebar(false);
+  const sidebarRef = useClickOutside(closeSidebar);
 
   useEffect(() => {
     if (showSidebar)

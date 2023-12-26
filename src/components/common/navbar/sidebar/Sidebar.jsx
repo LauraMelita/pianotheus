@@ -9,7 +9,7 @@ import SidebarMenuButton from './sidebarMenuButton/SidebarMenuButton';
 import './Sidebar.scss';
 
 const Sidebar = ({ children }) => {
-  const { showSidebar, toggleSidebar, closeSidebar, sidebarRef } = useSidebar();
+  const { showSidebar, toggleSidebar, sidebarRef } = useSidebar();
   const { isMobile } = useScreenSize();
 
   const slideSidebarAnimation = {
