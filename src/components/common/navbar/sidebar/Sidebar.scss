@@ -1,3 +1,5 @@
+@import '../../../../styles/breakpoints.scss';
+
 .sidebar {
   .sidebar__toggle-btn {
     display: flex;
@@ -26,8 +28,20 @@
       > * {
         &:not(.quick-search, .separator) {
           width: var(--content-max-width);
-          margin-inline: auto;
+          margin: 0 auto;
+
+          @include tablet {
+            margin: 0 0 0 auto;
+          }
+
+          @include laptop {
+            margin: 0 0 0 auto;
+          }
         }
+      }
+
+      &:not(:has(.quick-search)) {
+        padding-top: var(--global-padding);
       }
 
       .sidebar__links {
@@ -37,14 +51,15 @@
 
         li {
           a {
-            color: var(--text-color-secondary);
             display: flex;
             align-items: center;
             gap: calc(var(--global-gap) / 2);
+            color: var(--text-color-primary);
 
             svg {
               height: 20px;
               width: 20px;
+              color: var(--text-color-secondary);
             }
           }
         }

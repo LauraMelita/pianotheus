@@ -41,6 +41,10 @@
     --content-max-width: 90%;
   }
 
+  @include laptop {
+    --content-max-width: 90%;
+  }
+
   &.dark-theme {
     // --primary-color: ;
     // --secondary-color: ;
