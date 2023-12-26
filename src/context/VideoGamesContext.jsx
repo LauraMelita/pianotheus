@@ -8,7 +8,7 @@ export const VideoGamesContext = createContext({
   error: null,
 });
 
-export const VideoGamesContextProvider = (props) => {
+export const VideoGamesProvider = ({ children }) => {
   const {
     data,
     isLoading,
@@ -17,7 +17,7 @@ export const VideoGamesContextProvider = (props) => {
 
   return (
     <VideoGamesContext.Provider value={{ data, isLoading, error }}>
-      {props.children}
+      {children}
     </VideoGamesContext.Provider>
   );
 };

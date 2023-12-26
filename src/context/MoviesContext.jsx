@@ -8,7 +8,7 @@ export const MoviesContext = createContext({
   error: null,
 });
 
-export const MoviesContextProvider = (props) => {
+export const MoviesProvider = ({ children }) => {
   const {
     data,
     isLoading,
@@ -17,7 +17,7 @@ export const MoviesContextProvider = (props) => {
 
   return (
     <MoviesContext.Provider value={{ data, isLoading, error }}>
-      {props.children}
+      {children}
     </MoviesContext.Provider>
   );
 };

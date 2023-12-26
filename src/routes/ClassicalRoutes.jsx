@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import {
-  ClassicalContextProvider,
+  ClassicalProvider,
   ClassicalContext,
 } from '../context/ClassicalContext';
 
@@ -11,7 +11,7 @@ import Classical from '../pages/Classical';
 
 const ClassicalRoutes = () => {
   return (
-    <ClassicalContextProvider>
+    <ClassicalProvider>
       <Routes>
         <Route
           index
@@ -27,7 +27,7 @@ const ClassicalRoutes = () => {
           <Route index element={<Classical />} />
         </Route>
       </Routes>
-    </ClassicalContextProvider>
+    </ClassicalProvider>
   );
 };
 
