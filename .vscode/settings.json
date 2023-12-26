@@ -1,10 +1,11 @@
 {
   "cSpell.words": [
-    "Imdb",
+    "firestore",
+    "imdb",
     "middleground",
-    "pianotheus",
     "parallax",
-    "tanstack",
-    "firestore"
+    "pianotheus",
+    "searchbar",
+    "tanstack"
   ]
 }
