@@ -1,23 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
-const ToggleSidebarMenu = ({
-  setShowMenu,
-  componentIsVisible,
-  toggleComponentIsVisible,
-}) => {
-  const handleClick = () => {
-    setShowMenu((prevState) => !prevState);
-    toggleComponentIsVisible();
-  };
-
-  useEffect(() => {
-    setShowMenu(componentIsVisible);
-  }, [componentIsVisible, setShowMenu]);
-
+const SidebarMenuButton = ({ onClick }) => {
   return (
-    <button className='sidebar__toggle-btn' onClick={handleClick}>
-      <svg viewBox='0 0 24 24'>
+    <button className='sidebar__toggle-btn' onClick={onClick}>
+      <svg viewBox='0 0 20 20'>
         <motion.path
           strokeWidth='2'
           stroke='currentColor'
@@ -51,4 +38,4 @@ const ToggleSidebarMenu = ({
   );
 };
 
-export default ToggleSidebarMenu;
+export default SidebarMenuButton;
