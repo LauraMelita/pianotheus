@@ -8,6 +8,8 @@ export const useSidebar = () => {
 
   const toggleSidebar = () => setShowSidebar((prevState) => !prevState);
 
+  const closeSidebar = () => setShowSidebar(false);
+
   useEffect(() => {
     if (showSidebar)
       document.documentElement.style.setProperty('--overflow', 'hidden');
@@ -20,6 +22,7 @@ export const useSidebar = () => {
   return {
     showSidebar,
     toggleSidebar,
+    closeSidebar,
     sidebarRef,
   };
 };
