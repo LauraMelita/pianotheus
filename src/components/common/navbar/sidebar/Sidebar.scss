@@ -2,16 +2,7 @@
 
 .sidebar {
   .sidebar__toggle-btn {
-    display: flex;
     margin-top: 1px;
-    background-color: transparent;
-    border: none;
-
-    svg {
-      height: 24px;
-      width: 24px;
-      color: var(--accent-color-100);
-    }
   }
 
   .sidebar__bg {

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const SidebarMenuButton = ({ onClick }) => {
   return (
-    <button className='sidebar__toggle-btn' onClick={onClick}>
+    <button className='sidebar__toggle-btn icon-btn' onClick={onClick}>
       <svg viewBox='0 0 20 20'>
         <motion.path
           strokeWidth='2'
