@@ -8,7 +8,7 @@ export const ClassicalContext = createContext({
   error: null,
 });
 
-export const ClassicalContextProvider = (props) => {
+export const ClassicalProvider = ({ children }) => {
   const {
     data,
     isLoading,
@@ -17,7 +17,7 @@ export const ClassicalContextProvider = (props) => {
 
   return (
     <ClassicalContext.Provider value={{ data, isLoading, error }}>
-      {props.children}
+      {children}
     </ClassicalContext.Provider>
   );
 };

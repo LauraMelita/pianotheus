@@ -114,7 +114,7 @@ const Parallax = () => {
         layer='black-shadow'
         stackOrder={10}
         src={BlackShadow}
-        backgroundSize='cover%'
+        backgroundSize='cover'
         backgroundPosition='bottom'
         translateY={useSpeed(3)}
       />

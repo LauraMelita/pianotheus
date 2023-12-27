@@ -25,8 +25,12 @@ const Footer = () => {
   const QuickLinks = () => {
     return (
       <div className='footer__quick-links'>
-        <span>Quick Links</span>
-        <NavigationLinks className='footer__links' />
+        <span className='footer__title'>Quick Links</span>
+        <NavigationLinks
+          className='footer__links'
+          shouldRenderIcons={false}
+          onClick={(e) => handlePageScroll(e)}
+        />
       </div>
     );
   };
@@ -34,7 +38,7 @@ const Footer = () => {
   const About = () => {
     return (
       <div className='footer__about'>
-        <span>Pianotheus</span>
+        <span className='footer__title'>Pianotheus</span>
         <ul>
           <li>
             <HashLink to='/#about' onClick={(e) => handlePageScroll(e)}>
@@ -50,7 +54,7 @@ const Footer = () => {
   const Downloads = () => {
     return (
       <div className='footer__downloads'>
-        <span>Downloads</span>
+        <span className='footer__title'>Downloads</span>
         <ul>
           <li>
             <a

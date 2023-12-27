@@ -1,3 +1,5 @@
+@import '../styles//breakpoints.scss';
+
 :root {
   --gray-0: #ffffff;
   --gray-50: #b7b7b7;
@@ -30,6 +32,18 @@
 
   --auth-btn-height: 30px;
   --auth-btn-width: 30px;
+
+  @include mobile {
+    --content-max-width: 90%;
+  }
+
+  @include tablet {
+    --content-max-width: 90%;
+  }
+
+  @include laptop {
+    --content-max-width: 90%;
+  }
 
   &.dark-theme {
     // --primary-color: ;

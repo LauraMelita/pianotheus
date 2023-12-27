@@ -6,11 +6,11 @@ export const siteConfig = {
     { name: 'classical', orderBy: 'composer' },
   ],
   navLinks: [
-    { path: '/', navLink: 'Home' },
-    { path: '/movies', navLink: 'Movies' },
-    { path: '/tv-shows', navLink: 'TV Shows' },
-    { path: '/video-games', navLink: 'Video Games' },
-    { path: '/classical', navLink: 'Classical Music' },
+    { path: '/', navLink: 'Home', icon: 'home' },
+    { path: '/movies', navLink: 'Movies', icon: 'cinema' },
+    { path: '/tv-shows', navLink: 'TV Shows', icon: 'tv' },
+    { path: '/video-games', navLink: 'Video Games', icon: 'video-games' },
+    { path: '/classical', navLink: 'Classical Music', icon: 'classical' },
   ],
   categories: [
     {

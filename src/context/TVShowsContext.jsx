@@ -8,7 +8,7 @@ export const TVShowsContext = createContext({
   error: null,
 });
 
-export const TVShowsContextProvider = (props) => {
+export const TVShowsProvider = ({ children }) => {
   const {
     data,
     isLoading,
@@ -17,7 +17,7 @@ export const TVShowsContextProvider = (props) => {
 
   return (
     <TVShowsContext.Provider value={{ data, isLoading, error }}>
-      {props.children}
+      {children}
     </TVShowsContext.Provider>
   );
 };

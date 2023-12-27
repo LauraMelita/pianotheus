@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import {
-  VideoGamesContextProvider,
+  VideoGamesProvider,
   VideoGamesContext,
 } from '../context/VideoGamesContext';
 
@@ -11,7 +11,7 @@ import VideoGame from '../pages/VideoGame';
 
 const VideoGameRoutes = () => {
   return (
-    <VideoGamesContextProvider>
+    <VideoGamesProvider>
       <Routes>
         <Route
           index
@@ -27,7 +27,7 @@ const VideoGameRoutes = () => {
           <Route index element={<VideoGame />} />
         </Route>
       </Routes>
-    </VideoGamesContextProvider>
+    </VideoGamesProvider>
   );
 };
 

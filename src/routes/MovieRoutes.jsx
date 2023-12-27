@@ -1,14 +1,14 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { MoviesContextProvider, MoviesContext } from '../context/MoviesContext';
+import { MoviesProvider, MoviesContext } from '../context/MoviesContext';
 
 import Collection from '../pages/collection/Collection';
 import Movie from '../pages/Movie';
 
 const MovieRoutes = () => {
   return (
-    <MoviesContextProvider>
+    <MoviesProvider>
       <Routes>
         <Route
           index
@@ -20,7 +20,7 @@ const MovieRoutes = () => {
           <Route index element={<Movie />} />
         </Route>
       </Routes>
-    </MoviesContextProvider>
+    </MoviesProvider>
   );
 };
 

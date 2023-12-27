@@ -1,52 +1,59 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
-import NavigationLinks from '../NavigationLinks';
-import ToggleSidebarMenu from './toggleSidebarMenu/ToggleSidebarMenu';
+import { useSidebar } from '../../../../hooks/useSidebar';
+import { useScreenSize } from '../../../../hooks/useScreenSize';
 
-import { useComponentVisible } from '../../../../hooks/useComponentVisible';
+import SidebarMenuButton from './sidebarMenuButton/SidebarMenuButton';
 
 import './Sidebar.scss';
 
-const Sidebar = () => {
-  const [showMenu, setShowMenu] = useState(false);
-  const { ref, componentIsVisible, toggleComponentIsVisible } =
-    useComponentVisible(false);
+const Sidebar = ({ children }) => {
+  const { showSidebar, toggleSidebar, sidebarRef } = useSidebar();
+  const { isMobile } = useScreenSize();
 
-  const variants = {
+  const slideSidebarAnimation = {
     open: {
-      clipPath: 'circle(1200px at 600px 0px)',
+      width: isMobile ? '100%' : '50%',
       transition: {
         type: 'spring',
-        stiffness: 20,
+        duration: 0.8,
       },
     },
     closed: {
-      clipPath: 'circle(0px at 600px 0px)',
-      transition: {
-        delay: 0.2,
-        type: 'spring',
-        stiffness: 400,
-        damping: 40,
-      },
+      width: 0,
+    },
+  };
+
+  const showHideContentAnimation = {
+    open: {
+      display: 'flex',
+    },
+    closed: {
+      display: 'none',
     },
   };
 
   return (
     <motion.div
       className='sidebar'
-      ref={ref}
-      animate={showMenu ? 'open' : 'closed'}
+      ref={sidebarRef}
+      animate={showSidebar ? 'open' : 'closed'}
     >
-      <motion.div className='sidebar__bg' variants={variants}>
-        <NavigationLinks className='sidebar__links' />
+      <SidebarMenuButton onClick={toggleSidebar} />
+      <motion.div
+        className='sidebar__bg'
+        initial={{ width: 0 }}
+        exit={{ width: 0 }}
+        variants={slideSidebarAnimation}
+      >
+        <motion.div
+          className='sidebar__content'
+          variants={showHideContentAnimation}
+        >
+          {children}
+        </motion.div>
       </motion.div>
-
-      <ToggleSidebarMenu
-        setShowMenu={setShowMenu}
-        componentIsVisible={componentIsVisible}
-        toggleComponentIsVisible={toggleComponentIsVisible}
-      />
     </motion.div>
   );
 };

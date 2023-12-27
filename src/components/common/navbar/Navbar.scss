@@ -9,13 +9,17 @@
 
     .navbar__logo {
       margin-right: auto;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--global-gap);
 
       a {
         display: block;
         width: 100%;
 
         img {
-          min-height: 25px;
+          min-height: 24px;
         }
       }
     }

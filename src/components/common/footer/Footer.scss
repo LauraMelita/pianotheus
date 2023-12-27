@@ -20,7 +20,7 @@ footer {
         flex-direction: column;
         align-items: flex-start;
 
-        span {
+        .footer__title {
           padding-bottom: 5px;
           color: var(--accent-color-200);
         }
