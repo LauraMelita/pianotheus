@@ -1,26 +1,33 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { MoviesProvider, MoviesContext } from '../context/MoviesContext';
+import {
+  CollectionProvider,
+  CollectionContext,
+} from '../context/CollectionContext';
 
 import Collection from '../pages/collection/Collection';
-import Movie from '../pages/Movie';
+import ItemDetails from '../pages/itemDetails/ItemDetails';
 
 const MovieRoutes = () => {
   return (
-    <MoviesProvider>
+    <CollectionProvider collectionName='movies' orderCollectionBy='title'>
       <Routes>
         <Route
           index
           element={
-            <Collection title='Movies' type='movies' context={MoviesContext} />
+            <Collection
+              title='Movies'
+              context={CollectionContext}
+              category='movies'
+            />
           }
         />
         <Route path=':title'>
-          <Route index element={<Movie />} />
+          <Route index element={<ItemDetails filterKey='title' />} />
         </Route>
       </Routes>
-    </MoviesProvider>
+    </CollectionProvider>
   );
 };
 

@@ -2,32 +2,32 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import {
-  ClassicalProvider,
-  ClassicalContext,
-} from '../context/ClassicalContext';
+  CollectionProvider,
+  CollectionContext,
+} from '../context/CollectionContext';
 
 import Collection from '../pages/collection/Collection';
-import Classical from '../pages/Classical';
+import ItemDetails from '../pages/itemDetails/ItemDetails';
 
 const ClassicalRoutes = () => {
   return (
-    <ClassicalProvider>
+    <CollectionProvider collectionName='classical' orderCollectionBy='composer'>
       <Routes>
         <Route
           index
           element={
             <Collection
               title='Classical Music'
-              type='classical'
-              context={ClassicalContext}
+              context={CollectionContext}
+              category='classical'
             />
           }
         />
         <Route path=':composer'>
-          <Route index element={<Classical />} />
+          <Route index element={<ItemDetails filterKey='composer' />} />
         </Route>
       </Routes>
-    </ClassicalProvider>
+    </CollectionProvider>
   );
 };
 

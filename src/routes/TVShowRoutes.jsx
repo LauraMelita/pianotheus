@@ -1,30 +1,33 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { TVShowsProvider, TVShowsContext } from '../context/TVShowsContext';
+import {
+  CollectionProvider,
+  CollectionContext,
+} from '../context/CollectionContext';
 
 import Collection from '../pages/collection/Collection';
-import TVShow from '../pages/TVShow';
+import ItemDetails from '../pages/itemDetails/ItemDetails';
 
 const TVShowsRoutes = () => {
   return (
-    <TVShowsProvider>
+    <CollectionProvider collectionName='tv-shows' orderCollectionBy='title'>
       <Routes>
         <Route
           index
           element={
             <Collection
               title='TV Shows'
-              type='tv-shows'
-              context={TVShowsContext}
+              context={CollectionContext}
+              category='tv-shows'
             />
           }
         />
         <Route path=':title'>
-          <Route index element={<TVShow />} />
+          <Route index element={<ItemDetails filterKey='title' />} />
         </Route>
       </Routes>
-    </TVShowsProvider>
+    </CollectionProvider>
   );
 };
 

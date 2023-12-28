@@ -2,32 +2,32 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import {
-  VideoGamesProvider,
-  VideoGamesContext,
-} from '../context/VideoGamesContext';
+  CollectionProvider,
+  CollectionContext,
+} from '../context/CollectionContext';
 
 import Collection from '../pages/collection/Collection';
-import VideoGame from '../pages/VideoGame';
+import ItemDetails from '../pages/itemDetails/ItemDetails';
 
 const VideoGameRoutes = () => {
   return (
-    <VideoGamesProvider>
+    <CollectionProvider collectionName='video-games' orderCollectionBy='title'>
       <Routes>
         <Route
           index
           element={
             <Collection
               title='Video Games'
-              type='video-games'
-              context={VideoGamesContext}
+              context={CollectionContext}
+              category='video-games'
             />
           }
         />
         <Route path=':title'>
-          <Route index element={<VideoGame />} />
+          <Route index element={<ItemDetails filterKey='title' />} />
         </Route>
       </Routes>
-    </VideoGamesProvider>
+    </CollectionProvider>
   );
 };
 
