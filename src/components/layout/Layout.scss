@@ -32,4 +32,16 @@
       grid-column: full-width;
     }
   }
+
+  main {
+    &:not(.home) {
+      padding: var(--content-padding);
+      gap: var(--global-gap);
+
+      .spinner {
+        justify-self: center;
+        align-self: center;
+      }
+    }
+  }
 }
