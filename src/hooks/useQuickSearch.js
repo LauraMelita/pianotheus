@@ -13,7 +13,7 @@ export const useQuickSearch = (searchKeys) => {
   const suggestionRef = useRef(null);
   const navigate = useNavigate();
   const { data, isLoading } = useFetchAllCollections(
-    siteConfig.firestoreCollections
+    siteConfig.firebase.collections
   );
 
   const searchInputEmpty = searchInput.length === 0;

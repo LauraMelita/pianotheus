@@ -12,7 +12,7 @@ const Categories = () => {
     <div className='categories'>
       <h4>Discover by Category</h4>
       <div className='categories__container'>
-        {siteConfig.categories.map(
+        {siteConfig.home.categories.map(
           ({ category, backgroundImage, popOutImage }, index) => (
             <div
               key={index}
