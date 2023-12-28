@@ -2,38 +2,34 @@ import React, { useContext } from 'react';
 
 import { useDocumentTitle } from '@mantine/hooks';
 
+import Spinner from '../../components/UI/spinner/Spinner';
+import Error from '../../components/error/Error';
 import TitlesList from './TitlesList';
 import ComposersList from './ComposersList';
-import Spinner from '../../components/UI/spinner/Spinner';
+import MoveBackButton from '../../components/UI/button/MoveBackButton';
 
-import './Collection.scss';
-
-const Collection = ({ title, type, context }) => {
-  const { data, isLoading, error } = useContext(context);
+const Collection = ({ title, context, category }) => {
   useDocumentTitle(title);
+  const { data, isLoading, error } = useContext(context);
 
-  const renderSpinner = () => isLoading && <Spinner type='circle' />;
-
-  const renderCollection = () => {
-    if (!isLoading && !error)
-      return (
-        <>
-          {type === 'classical' ? (
-            <ComposersList data={data} />
-          ) : (
-            <TitlesList data={data} />
-          )}
-        </>
-      );
+  const renderSpinner = () => {
+    if (isLoading) return <Spinner type='circle' />;
   };
 
-  const renderError = () => error && <p>{error}</p>;
+  const renderError = () => {
+    if (error) return <Error error={error} />;
+  };
 
   return (
-    <main className={`${type}-collection`}>
+    <main className={`${category}-collection`}>
       {renderSpinner()}
-      {renderCollection()}
       {renderError()}
+      {category === 'classical' ? (
+        <ComposersList data={data} />
+      ) : (
+        <TitlesList data={data} />
+      )}
+      <MoveBackButton />
     </main>
   );
 };
