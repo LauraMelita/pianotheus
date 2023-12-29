@@ -6,3 +6,15 @@ export const removeAccents = (str) =>
 
 export const stringIncludesWord = (str, word) =>
   new RegExp('\\b' + word + '\\b', 'i').test(str);
+
+export const formatDate = (dateToFormat) => {
+  const date = new Date(dateToFormat);
+
+  const options = {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  };
+
+  return date.toLocaleDateString('en-US', options);
+};
