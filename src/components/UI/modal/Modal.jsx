@@ -19,7 +19,7 @@ const Modal = ({
       <Dialog.Trigger asChild>
         <button className={triggerBtnClassName}>{triggerBtnText}</button>
       </Dialog.Trigger>
-      <Dialog.Portal container={document.getElementById('modal-root')}>
+      <Dialog.Portal container={document.getElementById('portals')}>
         <Dialog.Overlay className='overlay' />
         <Dialog.Content className='modal'>
           <Dialog.Title className='modal__title'>{title}</Dialog.Title>
