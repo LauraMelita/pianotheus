@@ -32,10 +32,10 @@ const TitlesList = ({ data }) => {
     if (entry?.isIntersecting) loadMore();
   }, [entry]);
 
-  const totalTitles = data.length;
+  const totalTitles = data?.length;
   const indexOfLastTitle = pageNumber * titlesPerPage; // 1 * 8
-  const currentTitles = data.slice(0, indexOfLastTitle);
-  const lastElement = currentTitles.length - 1;
+  const currentTitles = data?.slice(0, indexOfLastTitle);
+  const lastElement = currentTitles?.length - 1;
 
   const searchAndFilter = (data) =>
     data.filter(

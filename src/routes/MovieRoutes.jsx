@@ -6,8 +6,8 @@ import {
   CollectionContext,
 } from '../context/CollectionContext';
 
-import Collection from '../pages/collection/Collection';
-import ItemDetails from '../pages/itemDetails/ItemDetails';
+import Collection from '../pages/collectionPage/Collection';
+import Details from '../pages/detailsPage/Details';
 
 const MovieRoutes = () => {
   return (
@@ -24,7 +24,7 @@ const MovieRoutes = () => {
           }
         />
         <Route path=':title'>
-          <Route index element={<ItemDetails filterKey='title' />} />
+          <Route index element={<Details filterKey='title' />} />
         </Route>
       </Routes>
     </CollectionProvider>

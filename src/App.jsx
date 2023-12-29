@@ -4,12 +4,12 @@ import { ToastContainer as Toast } from 'react-toastify';
 
 import Layout from './components/layout/Layout';
 import Navbar from './components/common/navbar/Navbar';
-import Home from './pages/home/Home';
+import Home from './pages/homePage/Home';
 import MovieRoutes from './routes/MovieRoutes';
 import TVShowRoutes from './routes/TVShowRoutes';
 import VideoGameRoutes from './routes/VideoGameRoutes';
 import ClassicalRoutes from './routes/ClassicalRoutes';
-import PageNotFound from './pages/error/PageNotFound';
+import PageNotFound from './pages/errorPage/PageNotFound';
 import Footer from './components/common/footer/Footer';
 
 import { useScrollToTop } from './hooks/useScrollToTop';

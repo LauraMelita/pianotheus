@@ -6,8 +6,8 @@ import {
   CollectionContext,
 } from '../context/CollectionContext';
 
-import Collection from '../pages/collection/Collection';
-import ItemDetails from '../pages/itemDetails/ItemDetails';
+import Collection from '../pages/collectionPage/Collection';
+import Details from '../pages/detailsPage/Details';
 
 const ClassicalRoutes = () => {
   return (
@@ -24,7 +24,7 @@ const ClassicalRoutes = () => {
           }
         />
         <Route path=':composer'>
-          <Route index element={<ItemDetails filterKey='composer' />} />
+          <Route index element={<Details filterKey='composer' />} />
         </Route>
       </Routes>
     </CollectionProvider>
