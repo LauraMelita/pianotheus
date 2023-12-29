@@ -5,7 +5,8 @@ import { useFetchCollection } from '../hooks/useFetchCollection';
 export const CollectionContext = createContext({
   data: {},
   isLoading: null,
-  error: null,
+  isError: null,
+  isSuccess: null,
 });
 
 export const CollectionProvider = ({
@@ -13,14 +14,13 @@ export const CollectionProvider = ({
   orderCollectionBy,
   children,
 }) => {
-  const {
-    data,
-    isLoading,
-    isError: error,
-  } = useFetchCollection(collectionName, orderCollectionBy);
+  const { data, isLoading, isError, isSuccess } = useFetchCollection(
+    collectionName,
+    orderCollectionBy
+  );
 
   return (
-    <CollectionContext.Provider value={{ data, isLoading, error }}>
+    <CollectionContext.Provider value={{ data, isLoading, isError, isSuccess }}>
       {children}
     </CollectionContext.Provider>
   );
