@@ -4,6 +4,8 @@
   align-items: center;
 
   svg {
+    color: var(--accent-color-200);
+
     &.icon__pc {
       width: 16px;
       height: 16px;
