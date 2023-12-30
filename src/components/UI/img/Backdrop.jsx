@@ -2,7 +2,12 @@ import React from 'react';
 
 import { extractRgbValues } from '../../../utils/formatting';
 
-const Backdrop = ({ backdropImg, rgbBgColor, opacity = 0.6, blend = 0.9 }) => {
+const Backdrop = ({
+  backdropImg,
+  rgbBgColor = 'rgb(18, 18, 18)',
+  opacity = 0.6,
+  blend = 0.9,
+}) => {
   const rgbValues = extractRgbValues(rgbBgColor);
 
   return (
