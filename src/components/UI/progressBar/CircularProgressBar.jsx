@@ -7,6 +7,7 @@ const CircularProgressBar = ({
   maxValue,
   speed = 20,
   incrementBy = 2,
+  type = 'rating',
   width = 80,
   height = 80,
   progressFillColor = 'var(--accent-color-100)',
@@ -26,6 +27,17 @@ const CircularProgressBar = ({
     return () => clearTimeout(timer);
   }, [filled, percentage, incrementBy, speed]);
 
+  const renderProgressValue = () => {
+    switch (type) {
+      case 'rating':
+        return filled / 10;
+      case 'percent':
+        return `${filled}%`;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div
       className='progress-bar'
@@ -37,7 +49,7 @@ const CircularProgressBar = ({
         }deg, ${progressBgColor} ${filled * ONE_PERCENT}deg)`,
       }}
     >
-      <div className='progress-bar__value'>{`${filled}%`}</div>
+      <div className='progress-bar__value'>{renderProgressValue()}</div>
     </div>
   );
 };
