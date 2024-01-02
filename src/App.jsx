@@ -14,6 +14,8 @@ import Footer from './components/common/footer/Footer';
 
 import { useScrollToTop } from './hooks/useScrollToTop';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 const App = () => {
   const location = useLocation();
   const { useRestoreScrollToTop } = useScrollToTop();
