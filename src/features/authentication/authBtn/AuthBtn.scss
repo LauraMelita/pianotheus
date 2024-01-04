@@ -1,4 +1,4 @@
-.auth {
+.auth-btn {
   min-height: var(--auth-btn-height);
   min-width: var(--auth-btn-width);
   display: flex;
@@ -8,7 +8,7 @@
     border: 0;
     background: transparent;
 
-    .auth__user-avatar {
+    .auth-btn__user-avatar {
       display: flex;
       justify-content: center;
       align-items: center;
