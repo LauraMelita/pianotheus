@@ -3,7 +3,7 @@ import * as RadixTooltip from '@radix-ui/react-tooltip';
 
 import './Tooltip.scss';
 
-const Tooltip = ({ content, place, offset, children }) => {
+const Tooltip = ({ content, place = 'bottom', offset = 10, children }) => {
   return (
     <RadixTooltip.Provider delayDuration={0}>
       <RadixTooltip.Root>
