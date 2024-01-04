@@ -1,10 +1,7 @@
-import { useContext } from 'react';
-
-import { AuthContext } from '../context/AuthContext';
+import { useAuthContext } from '../context/AuthContext';
 
 export const useAuthentication = () => {
-  const { isLoggedIn, setIsLoggedIn, toggleIsLoggedIn } =
-    useContext(AuthContext);
+  const { isLoggedIn, setIsLoggedIn, toggleIsLoggedIn } = useAuthContext();
 
   return {
     isLoggedIn,

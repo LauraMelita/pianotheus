@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { ThemeContext } from '../../context/ThemeContext';
+import { useThemeContext } from '../../context/ThemeContext';
 
 import Svg from '../../components/UI/svg/Svg';
 
 const ToggleThemeMode = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useThemeContext();
 
   return (
     <button
