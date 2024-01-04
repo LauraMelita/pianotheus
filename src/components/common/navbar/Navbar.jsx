@@ -10,7 +10,7 @@ import NavigationLinks from './NavigationLinks';
 import QuickSearch from '../../../features/quickSearch/QuickSearch';
 import ToggleThemeMode from '../../../features/themeMode/ToggleThemeMode';
 import Separator from '../../UI/separator/Separator';
-import AuthBtn from '../../../features/authentication/AuthBtn';
+import AuthBtn from '../../../features/authentication/authBtn/AuthBtn';
 
 import PianotheusLogo from '../../../assets/images/logo.svg';
 import './Navbar.scss';
