@@ -1,12 +1,20 @@
 export const siteConfig = {
-  firebase: {
-    collections: [
-      { name: 'movies', orderBy: 'title' },
-      { name: 'tv-shows', orderBy: 'title' },
-      { name: 'video-games', orderBy: 'title' },
-      { name: 'classical', orderBy: 'composer' },
-    ],
-  },
+  collections: [
+    { name: 'movies', orderBy: 'title', path: '/movies', params: 'title' },
+    { name: 'tv-shows', orderBy: 'title', path: '/tv-shows', params: 'title' },
+    {
+      name: 'video-games',
+      orderBy: 'title',
+      path: '/video-games',
+      params: 'title',
+    },
+    {
+      name: 'classical',
+      orderBy: 'composer',
+      path: '/classical',
+      params: 'composer',
+    },
+  ],
 
   navigation: {
     links: [

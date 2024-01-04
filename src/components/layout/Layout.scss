@@ -8,40 +8,43 @@
   position: relative;
   min-height: 100dvh;
   display: grid;
-  grid-template-rows:
-    [navbar] auto
-    [main] 1fr
-    [footer] auto;
-  background-color: var(--layout-background-color);
+  background: var(--layout-background-color);
 
-  > * {
-    display: grid;
-    grid-template-columns:
-      [full-width-start] 1fr
-      [content-start] var(--content-max-width)
-      [content-end] 1fr
-      [full-width-end];
+  &.main {
+    grid-template-rows:
+      [navbar] auto
+      [main] 1fr
+      [footer] auto;
 
     > * {
-      &:not(.full-width) {
-        grid-column: content;
-      }
-    }
+      display: grid;
+      grid-template-columns:
+        [full-width-start] 1fr
+        [content-start] var(--content-max-width)
+        [content-end] 1fr
+        [full-width-end];
 
-    .full-width {
-      grid-column: full-width;
+      > * {
+        &:not(.full-width) {
+          grid-column: content;
+        }
+      }
+
+      .full-width {
+        grid-column: full-width;
+      }
     }
   }
 
-  main {
-    &:not(.home) {
-      padding: var(--content-padding);
-      gap: var(--global-gap);
+  &.auth {
+    justify-content: center;
+    align-items: center;
+  }
 
-      .spinner {
-        justify-self: center;
-        align-self: center;
-      }
+  main {
+    .spinner {
+      justify-self: center;
+      align-self: center;
     }
   }
 }

@@ -20,7 +20,9 @@ export const CollectionProvider = ({
   );
 
   return (
-    <CollectionContext.Provider value={{ data, isLoading, isError, isSuccess }}>
+    <CollectionContext.Provider
+      value={{ data, isLoading, isError, isSuccess, collectionName }}
+    >
       {children}
     </CollectionContext.Provider>
   );
