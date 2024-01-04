@@ -2,6 +2,7 @@ import React from 'react';
 
 import useFetchFile from '../../../../hooks/useFetchFile';
 
+import Tooltip from '../../../../components/UI/tooltip/Tooltip';
 import Svg from '../../../../components/UI/svg/Svg';
 
 const PrintPdf = ({ title }) => {
@@ -10,9 +11,11 @@ const PrintPdf = ({ title }) => {
   if (!file) return;
 
   return (
-    <button className='icon-btn'>
-      <Svg icon='print' />
-    </button>
+    <Tooltip content='Print sheet music'>
+      <button className='icon-btn'>
+        <Svg icon='print' />
+      </button>
+    </Tooltip>
   );
 };
 
