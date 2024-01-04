@@ -6,7 +6,7 @@ import Categories from './categories/Categories';
 import Quote from '../../components/UI/quote/Quote';
 import About from './about/About';
 
-import './Home.scss';
+import './HomePage.scss';
 
 const HomePage = () => {
   useDocumentTitle('Pianotheus: MIDI Piano Collection');

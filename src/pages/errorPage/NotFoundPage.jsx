@@ -7,9 +7,9 @@ import Quote from '../../components/UI/quote/Quote';
 import Contact from '../../features/contact/Contact';
 
 import PageNotFoundImg from '../../assets/images/404.jpg';
-import './PageNotFound.scss';
+import './NotFoundPage.scss';
 
-const PageNotFound = () => {
+const NotFoundPage = () => {
   useDocumentTitle('Page Not Found');
 
   return (
@@ -42,4 +42,4 @@ const PageNotFound = () => {
   );
 };
 
-export default PageNotFound;
+export default NotFoundPage;
