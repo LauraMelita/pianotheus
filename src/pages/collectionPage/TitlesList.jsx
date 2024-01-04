@@ -38,7 +38,7 @@ const TitlesList = ({ data }) => {
   const lastElement = currentTitles?.length - 1;
 
   const searchAndFilter = (data) =>
-    data.filter(
+    data?.filter(
       ({ title, composer }) =>
         composer.includes(filter) &&
         title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -74,8 +74,8 @@ const TitlesList = ({ data }) => {
         <motion.ul layout className='posters'>
           <AnimatePresence>
             {searchAndFilter(data)
-              .slice(0, indexOfLastTitle)
-              .map(
+              ?.slice(0, indexOfLastTitle)
+              ?.map(
                 (
                   { id, title, year, poster, composer, composerImg, scores },
                   index
@@ -101,7 +101,7 @@ const TitlesList = ({ data }) => {
 
       {!allItemsAreShown && <button onClick={loadMore}>Load More</button>}
 
-      {searchAndFilter(data).length === 0 && <h3>No results found</h3>}
+      {searchAndFilter(data)?.length === 0 && <h3>No results found</h3>}
     </>
   );
 };

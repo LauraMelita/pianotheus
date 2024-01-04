@@ -1,24 +1,25 @@
 import React, { useContext } from 'react';
 
 import { useDocumentTitle } from '@mantine/hooks';
+import { CollectionContext } from '../../context/CollectionContext';
 
 import Spinner from '../../components/UI/spinner/Spinner';
 import TitlesList from './TitlesList';
 import ComposersList from './ComposersList';
 import MoveBackButton from '../../components/UI/button/MoveBackButton';
 
-const Collection = ({ title, context, category }) => {
-  useDocumentTitle(title);
-  const { data, isLoading, isError, isSuccess } = useContext(context);
+const CollectionPage = ({ title }) => {
+  // useDocumentTitle(title);
+  const { data, isLoading, collectionName } = useContext(CollectionContext);
 
   const renderSpinner = () => {
     if (isLoading) return <Spinner type='circle' />;
   };
 
   return (
-    <main className={`${category}-collection`}>
+    <main className={`${collectionName}-collection`}>
       {renderSpinner()}
-      {category === 'classical' ? (
+      {collectionName === 'classical' ? (
         <ComposersList data={data} />
       ) : (
         <TitlesList data={data} />
@@ -28,4 +29,4 @@ const Collection = ({ title, context, category }) => {
   );
 };
 
-export default Collection;
+export default CollectionPage;

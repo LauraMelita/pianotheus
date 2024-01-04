@@ -14,7 +14,7 @@ const ComposersList = ({ data }) => {
   return (
     <FadeIn>
       <ul className='composers'>
-        {data.map(({ id, composer, composerImg }) => (
+        {data?.map(({ id, composer, composerImg }) => (
           <li key={id}>
             <CircleCard
               path={`${pathname}/${convertToPath(composer)}`}
