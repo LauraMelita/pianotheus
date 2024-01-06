@@ -22,7 +22,7 @@ export const fetchCollection = async (collectionName, orderCollectionBy) => {
 
     return documents;
   } catch (error) {
-    throw new Error(error);
+    throw new Error(`Firebase Error: ${error.message}`);
   }
 };
 

@@ -9,7 +9,7 @@ import RegisterPage from './pages/registerPage/RegisterPage';
 import AppLayout from './components/layout/AppLayout';
 import HomePage from './pages/homePage/HomePage';
 import CollectionRoutes from './routes/CollectionRoutes';
-import NotFoundPage from './pages/errorPage/NotFoundPage';
+import ErrorPage from './pages/errorPage/ErrorPage';
 
 import { useScrollToTop } from './hooks/useScrollToTop';
 
@@ -29,7 +29,7 @@ const App = () => {
         <Route element={<AppLayout />}>
           <Route path='/' element={<HomePage />} />
           {CollectionRoutes()}
-          <Route path='*' element={<NotFoundPage />} />
+          <Route path='*' element={<ErrorPage code='404' />} />
         </Route>
       </Routes>
       <Toast position='bottom-right' />
