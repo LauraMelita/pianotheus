@@ -14,13 +14,11 @@ import Fog5 from '../../../assets/images/parallax/fog_5.png';
 import BlackShadow from '../../../assets/images/parallax/black_shadow.png';
 import SunRays from '../../../assets/images/parallax/sun_rays.png';
 
-import './Parallax.scss';
-
 const Parallax = () => {
   const { parallaxRef, useSpeed } = useParallax();
 
   return (
-    <div className='parallax' ref={parallaxRef}>
+    <div className='parallax stack' ref={parallaxRef}>
       <ParallaxLayer
         layer='fog1'
         stackOrder={0}

@@ -7,6 +7,7 @@ const ParallaxLayer = ({
   src,
   backgroundSize,
   backgroundPosition,
+  backgroundRepeat = 'no-repeat',
   inset,
   translateY,
   translateX,
@@ -22,8 +23,8 @@ const ParallaxLayer = ({
         backgroundImage: src ? `url(${src})` : null,
         backgroundSize,
         backgroundPosition,
+        backgroundRepeat,
         inset,
-        backgroundRepeat: 'no-repeat',
       }}
     >
       {children}

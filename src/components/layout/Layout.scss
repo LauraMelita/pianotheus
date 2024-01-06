@@ -34,6 +34,11 @@
         grid-column: full-width;
       }
     }
+
+    .spinner {
+      align-self: center;
+      margin-inline: auto;
+    }
   }
 
   &.auth {
@@ -42,9 +47,8 @@
   }
 
   main {
-    .spinner {
-      justify-self: center;
-      align-self: center;
+    &:not(.home) {
+      padding: var(--content-padding);
     }
   }
 }
