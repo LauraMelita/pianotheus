@@ -1,9 +1,9 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 
-import Backdrop from '../../../components/UI/img/Backdrop';
+import Backdrop from '../../../components/UI/image/Backdrop';
 import Badge from '../../../components/UI/badge/Badge';
-import Poster from '../../../components/UI/img/Poster';
+import Poster from '../../../components/UI/image/Poster';
 import Tags from '../../../components/UI/tags/Tags';
 import PlatformIcons from './platforms/PlatformIcons';
 import Trailer from '../../../components/UI/trailer/Trailer';

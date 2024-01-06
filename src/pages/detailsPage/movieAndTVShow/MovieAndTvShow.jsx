@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import { fetchImdbData } from '../../../services/api';
 
-import Backdrop from '../../../components/UI/img/Backdrop';
+import Backdrop from '../../../components/UI/image/Backdrop';
 import Trailer from '../../../components/UI/trailer/Trailer';
 import Svg from '../../../components/UI/svg/Svg';
 import Separator from '../../../components/UI/separator/Separator';
