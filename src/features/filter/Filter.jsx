@@ -11,7 +11,7 @@ const Filter = ({
   setFilter,
 }) => {
   const filterOptions = [
-    ...new Set(data.map((element) => element[filterBy])),
+    ...new Set(data?.map((element) => element[filterBy])),
   ].sort();
 
   return (
@@ -22,7 +22,7 @@ const Filter = ({
         aria-label={ariaLabel}
       >
         <option value=''>{defaultValue}</option>
-        {filterOptions.map((option, index) => (
+        {filterOptions?.map((option, index) => (
           <option key={index} value={option}>
             {option}
           </option>

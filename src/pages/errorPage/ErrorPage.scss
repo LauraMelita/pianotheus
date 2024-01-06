@@ -1,0 +1,47 @@
+@import '../../styles/mixins.scss';
+
+.error {
+  display: flex;
+  justify-items: center;
+
+  > div {
+    display: grid;
+    grid-template-columns: [left] 1fr [right] 1fr;
+    gap: var(--global-gap);
+    color: var(--text-color-secondary);
+
+    .error__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: calc(var(--global-gap) * 2);
+
+      .quote {
+        gap: calc(var(--global-gap) / 2);
+        align-items: baseline;
+
+        svg {
+          width: 15px;
+          height: 15px;
+        }
+
+        .quote__container {
+          gap: calc(var(--global-gap) / 2);
+        }
+
+        .quote__text {
+          font-size: var(--fs-200);
+          @include lineHeightCrop(1.5);
+        }
+      }
+
+      .contact__btn {
+        color: var(--accent-color-100);
+      }
+
+      button {
+        align-self: start;
+      }
+    }
+  }
+}

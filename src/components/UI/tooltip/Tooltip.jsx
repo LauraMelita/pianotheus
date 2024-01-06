@@ -3,14 +3,12 @@ import * as RadixTooltip from '@radix-ui/react-tooltip';
 
 import './Tooltip.scss';
 
-const Tooltip = ({ content, place, offset, children }) => {
+const Tooltip = ({ content, place = 'bottom', offset = 10, children }) => {
   return (
     <RadixTooltip.Provider delayDuration={0}>
       <RadixTooltip.Root>
         <RadixTooltip.Trigger asChild>{children}</RadixTooltip.Trigger>
-        <RadixTooltip.Portal
-          container={document.getElementById('tooltip-root')}
-        >
+        <RadixTooltip.Portal container={document.getElementById('portals')}>
           <RadixTooltip.Content
             className='tooltip__content'
             side={place}

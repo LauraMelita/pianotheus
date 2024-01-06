@@ -1,11 +1,16 @@
 {
   "cSpell.words": [
+    "apikey",
+    "esbr",
     "firestore",
     "imdb",
+    "metacritic",
     "middleground",
+    "OMDB",
     "parallax",
     "pianotheus",
     "searchbar",
-    "tanstack"
+    "tanstack",
+    "toastify"
   ]
 }

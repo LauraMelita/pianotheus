@@ -51,6 +51,28 @@ const Footer = () => {
     );
   };
 
+  const APIs = () => {
+    return (
+      <div className='footer__apis'>
+        <span className='footer__title'>APIs</span>
+        <ul>
+          <li>
+            <a href='https://www.omdbapi.com/' target='_blank' rel='noreferrer'>
+              OMDb
+              <Svg icon='external-link' />
+            </a>
+          </li>
+          <li>
+            <a href='https://rawg.io/apidocs' target='_blank' rel='noreferrer'>
+              Rawg
+              <Svg icon='external-link' />
+            </a>
+          </li>
+        </ul>
+      </div>
+    );
+  };
+
   const Downloads = () => {
     return (
       <div className='footer__downloads'>
@@ -118,6 +140,7 @@ const Footer = () => {
         <div className='footer__top'>
           <QuickLinks />
           <About />
+          <APIs />
           <Downloads />
         </div>
         <Separator type='radial' orientation='horizontal' />

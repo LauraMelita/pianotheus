@@ -1,0 +1,21 @@
+.progress-bar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    height: 85%;
+    width: 85%;
+    border-radius: 50%;
+    background-color: var(--layout-background-color);
+  }
+
+  .progress-bar__value {
+    position: relative;
+    color: var(--text-color-secondary);
+  }
+}

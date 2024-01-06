@@ -4,10 +4,10 @@ import { fetchCollection } from '../services/api';
 
 export const useFetchAllCollections = (collections) => {
   const collectionQueries = useQueries({
-    queries: collections.map((collection) => {
+    queries: collections.map(({ collection, orderCollectionBy }) => {
       return {
-        queryKey: [collection.name, collection.name, collection.orderBy],
-        queryFn: () => fetchCollection(collection.name, collection.orderBy),
+        queryKey: [collection, collection, orderCollectionBy],
+        queryFn: () => fetchCollection(collection, orderCollectionBy),
       };
     }),
   });

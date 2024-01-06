@@ -41,8 +41,9 @@ const PosterCard = ({
                 height={30}
                 image={composerImg}
                 title={composer}
-              />
-              <span>{composer}</span>
+              >
+                <span>{composer}</span>
+              </Badge>
             </div>
             <Separator type='radial' orientation='horizontal' />
             <AvailableScores />

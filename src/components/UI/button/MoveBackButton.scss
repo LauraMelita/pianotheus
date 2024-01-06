@@ -9,9 +9,15 @@
     align-items: center;
     width: 45px;
     height: 45px;
-    background: var(--gray-400);
+    background: var(--layout-background-color);
     border: var(--global-border-width) solid var(--accent-color-200);
     border-radius: 50%;
+    transition: box-shadow 0.5s;
+
+    &:hover {
+      --webkit-box-shadow: inset 45px 0 0 0 var(--gray-900);
+      box-shadow: inset 45px 0 0 0 var(--gray-900);
+    }
 
     svg {
       color: var(--gray-50);

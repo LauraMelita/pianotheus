@@ -1,0 +1,11 @@
+.tags {
+  display: flex;
+  gap: calc(var(--global-gap) / 2);
+
+  > li {
+    padding: 5px 10px;
+    border: 2px solid var(--accent-color-200);
+    border-radius: calc(var(--global-border-radius) * 2);
+    font-size: var(--fs-50);
+  }
+}

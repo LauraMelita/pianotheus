@@ -3,36 +3,36 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { ToastContainer as Toast } from 'react-toastify';
 
 import Layout from './components/layout/Layout';
-import Navbar from './components/common/navbar/Navbar';
-import Home from './pages/home/Home';
-import MovieRoutes from './routes/MovieRoutes';
-import TVShowRoutes from './routes/TVShowRoutes';
-import VideoGameRoutes from './routes/VideoGameRoutes';
-import ClassicalRoutes from './routes/ClassicalRoutes';
-import PageNotFound from './pages/error/PageNotFound';
-import Footer from './components/common/footer/Footer';
+import AuthLayout from './components/layout/AuthLayout';
+import SignInPage from './pages/signInPage/SignInPage';
+import RegisterPage from './pages/registerPage/RegisterPage';
+import AppLayout from './components/layout/AppLayout';
+import HomePage from './pages/homePage/HomePage';
+import CollectionRoutes from './routes/CollectionRoutes';
+import ErrorPage from './pages/errorPage/ErrorPage';
 
 import { useScrollToTop } from './hooks/useScrollToTop';
 
 const App = () => {
-  const location = useLocation();
+  const { pathname } = useLocation();
   const { useRestoreScrollToTop } = useScrollToTop();
 
-  useRestoreScrollToTop(location.pathname);
+  useRestoreScrollToTop(pathname);
 
   return (
     <Layout>
-      <Navbar />
-      <Routes location={location} key={location.pathname}>
-        <Route path='/' element={<Home />} />
-        <Route path='movies/*' element={<MovieRoutes />} />
-        <Route path='tv-shows/*' element={<TVShowRoutes />} />
-        <Route path='video-games/*' element={<VideoGameRoutes />} />
-        <Route path='classical/*' element={<ClassicalRoutes />} />
-        <Route path='*' element={<PageNotFound />} />
+      <Routes>
+        <Route element={<AuthLayout />}>
+          <Route path='sign-in' element={<SignInPage />} />
+          <Route path='register' element={<RegisterPage />} />
+        </Route>
+        <Route element={<AppLayout />}>
+          <Route path='/' element={<HomePage />} />
+          {CollectionRoutes()}
+          <Route path='*' element={<ErrorPage code='404' />} />
+        </Route>
       </Routes>
       <Toast position='bottom-right' />
-      <Footer />
     </Layout>
   );
 };
