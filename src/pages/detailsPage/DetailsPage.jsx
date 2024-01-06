@@ -1,11 +1,12 @@
 import React from 'react';
+import { useParams } from 'react-router';
+import { useDocumentTitle } from '@mantine/hooks';
 
-import { useFilterItem } from '../../hooks/useFilterItem';
-import { useDocumentTitle } from '../../hooks/useDocumentTitle';
+import { useCollectionContext } from '../../context/CollectionContext';
+import { convertToPath } from '../../utils/formatting';
 
 import Spinner from '../../components/UI/spinner/Spinner';
-import NotFoundPage from '../errorPage/NotFoundPage';
-
+import ErrorPage from '../errorPage/ErrorPage';
 import MovieAndTvShow from './movieAndTVShow/MovieAndTvShow';
 import VideoGame from './videoGame/VideoGame';
 import Classical from './classical/Classical';
@@ -14,9 +15,25 @@ import MoveBackButton from '../../components/UI/button/MoveBackButton';
 
 import './DetailsPage.scss';
 
-const DetailsPage = ({ filterKey }) => {
-  const { filteredItem, isLoading } = useFilterItem(filterKey);
-  useDocumentTitle(filteredItem, `${filteredItem?.[filterKey]}`);
+const DetailsPage = () => {
+  const {
+    data: collection,
+    filterKey,
+    isLoading,
+    error,
+  } = useCollectionContext();
+  const params = useParams();
+
+  const filteredItem = collection?.find(
+    (item) => convertToPath(item[filterKey]) === params[filterKey]
+  );
+
+  useDocumentTitle(`${filteredItem?.[filterKey]}`);
+
+  if (isLoading) return <Spinner type='circle' />;
+
+  if (!filteredItem && !isLoading)
+    return <ErrorPage code='500' message={error.message} />;
 
   const renderDetails = () => {
     switch (filteredItem.category) {
@@ -32,10 +49,6 @@ const DetailsPage = ({ filterKey }) => {
     }
   };
 
-  const renderSpinner = () => {
-    if (isLoading) return <Spinner type='circle' />;
-  };
-
   const DetailsContent = () => {
     if (filteredItem) {
       return (
@@ -48,13 +61,8 @@ const DetailsPage = ({ filterKey }) => {
     }
   };
 
-  if (!filteredItem && !isLoading) {
-    return <NotFoundPage />;
-  }
-
   return (
     <main className='details'>
-      {renderSpinner()}
       <DetailsContent />
     </main>
   );
