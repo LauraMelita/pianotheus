@@ -1,18 +1,28 @@
 export const siteConfig = {
   collections: [
-    { name: 'movies', orderBy: 'title', path: '/movies', params: 'title' },
-    { name: 'tv-shows', orderBy: 'title', path: '/tv-shows', params: 'title' },
     {
-      name: 'video-games',
-      orderBy: 'title',
-      path: '/video-games',
-      params: 'title',
+      collection: 'movies',
+      orderCollectionBy: 'title',
+      collectionTitle: 'Movies',
+      filterDocumentBy: 'title',
     },
     {
-      name: 'classical',
-      orderBy: 'composer',
-      path: '/classical',
-      params: 'composer',
+      collection: 'tv-shows',
+      orderCollectionBy: 'title',
+      collectionTitle: 'TV Shows',
+      filterDocumentBy: 'title',
+    },
+    {
+      collection: 'video-games',
+      orderCollectionBy: 'title',
+      collectionTitle: 'Video Games',
+      filterDocumentBy: 'title',
+    },
+    {
+      collection: 'classical',
+      orderCollectionBy: 'composer',
+      collectionTitle: 'Classical Music',
+      filterDocumentBy: 'composer',
     },
   ],
 
