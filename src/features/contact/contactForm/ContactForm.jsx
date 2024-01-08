@@ -2,6 +2,15 @@ import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
 
+import {
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  TextArea,
+} from '../../../components/UI/form/Form';
+import Button from '../../../components/UI/button/Button';
+
 const ContactForm = ({ toggleModal }) => {
   const formRef = useRef();
 
@@ -29,27 +38,27 @@ const ContactForm = ({ toggleModal }) => {
   };
 
   return (
-    <form className='contact__form' ref={formRef} onSubmit={sendEmailHandler}>
-      <div className='contact__form-group'>
-        <label className='required'>Name</label>
-        <input type='text' name='from_name' />
-      </div>
-      <div className='contact__form-group'>
-        <label className='required'>Email</label>
-        <input type='email' name='from_email' />
-      </div>
-      <div className='contact__form-group'>
-        <label>Subject</label>
-        <input type='subject' name='from_subject' />
-      </div>
-      <div className='contact__form-group'>
-        <label className='required'>Message</label>
-        <textarea name='message' />
-      </div>
-      <div className='contact__form-actions'>
-        <button type='submit'>Submit</button>
-      </div>
-    </form>
+    <Form className='contact' ref={formRef} onSubmit={sendEmailHandler}>
+      <FormGroup className='name'>
+        <Label>Name</Label>
+        <Input type='text' name='from_name' />
+      </FormGroup>
+      <FormGroup className='email'>
+        <Label>Email</Label>
+        <Input type='email' name='from_email' />
+      </FormGroup>
+      <FormGroup className='subject'>
+        <Label>Subject</Label>
+        <Input type='text' name='subject' />
+      </FormGroup>
+      <FormGroup className='message'>
+        <Label>Message</Label>
+        <TextArea name='message' />
+      </FormGroup>
+      <Button className='contact__btn' variant='default' type='submit'>
+        Submit
+      </Button>
+    </Form>
   );
 };
 
