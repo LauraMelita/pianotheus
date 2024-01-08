@@ -1,11 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import Button from '../button/Button';
 import Svg from '../svg/Svg';
 
 import './MoveBackButton.scss';
 
-const MoveBackButton = ({ btnText }) => {
+const MoveBackButton = () => {
   const navigate = useNavigate();
 
   const goToPrevPageHandler = () => {
@@ -13,11 +14,11 @@ const MoveBackButton = ({ btnText }) => {
   };
 
   return (
-    <button className='navigation-btn' onClick={goToPrevPageHandler}>
+    <Button className='navigation-btn' onClick={goToPrevPageHandler}>
       <span className='navigation-btn__circle' aria-hidden='true'>
         <Svg icon='chevron-left' />
       </span>
-    </button>
+    </Button>
   );
 };
 

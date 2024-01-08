@@ -4,6 +4,7 @@ import { useDocumentTitle } from '@mantine/hooks';
 
 import BackgroundImage from '../../../components/UI/image/BackgroundImage';
 import Quote from '../../../components/UI/quote/Quote';
+import Button from '../../../components/UI/button/Button';
 
 import Wall from '../../../assets/images/error/404.jpg';
 
@@ -36,9 +37,9 @@ const NotFound = ({ code }) => {
           It looks like the page doesn't exist. Please check the URL and try
           again.
         </span>
-        <button className='primary-btn'>
+        <Button variant='default'>
           <Link to='/'>Back to home page</Link>
-        </button>
+        </Button>
       </div>
     </div>
   );

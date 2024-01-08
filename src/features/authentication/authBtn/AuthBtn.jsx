@@ -2,7 +2,9 @@ import React from 'react';
 
 import { useAuthentication } from '../../../hooks/useAuthentication';
 
+import Button from '../../../components/UI/button/Button';
 import Svg from '../../../components/UI/svg/Svg';
+import BackgroundImage from '../../../components/UI/image/BackgroundImage';
 
 import './AuthBtn.scss';
 
@@ -14,22 +16,17 @@ const AuthBtn = () => {
 
   const LoginBtn = () => {
     return (
-      <button className='icon-btn' onClick={toggleIsLoggedIn}>
+      <Button variant='icon' onClick={toggleIsLoggedIn}>
         <Svg icon='user' />
-      </button>
+      </Button>
     );
   };
 
   const UserAvatar = () => {
     return (
-      <button onClick={toggleIsLoggedIn}>
-        <div
-          className='auth-btn__user-avatar'
-          style={{
-            backgroundImage: `url(${userAvatar})`,
-          }}
-        />
-      </button>
+      <Button onClick={toggleIsLoggedIn}>
+        <BackgroundImage className='auth-btn__user-avatar' url={userAvatar} />
+      </Button>
     );
   };
 

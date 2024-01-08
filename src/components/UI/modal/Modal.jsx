@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 
+import Button from '../button/Button';
 import Svg from '../svg/Svg';
 
 import './Modal.scss';
@@ -17,7 +18,7 @@ const Modal = ({
   return (
     <Dialog.Root modal={true} open={open} onOpenChange={toggleModal}>
       <Dialog.Trigger asChild>
-        <button className={triggerBtnClassName}>{triggerBtnText}</button>
+        <Button className={triggerBtnClassName}>{triggerBtnText}</Button>
       </Dialog.Trigger>
       <Dialog.Portal container={document.getElementById('portals')}>
         <Dialog.Overlay className='overlay' />
@@ -28,9 +29,13 @@ const Modal = ({
           </Dialog.Description>
           {children}
           <Dialog.Close asChild>
-            <button className='modal__close-btn icon-btn' aria-label='close'>
+            <Button
+              className='modal__close-btn'
+              variant='icon'
+              aria-label='close'
+            >
               <Svg icon='close' />
-            </button>
+            </Button>
           </Dialog.Close>
         </Dialog.Content>
       </Dialog.Portal>

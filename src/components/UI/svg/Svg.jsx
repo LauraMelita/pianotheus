@@ -1,14 +1,13 @@
 import React from 'react';
 
 import Icons from '../../../assets/icons/icons.svg';
+import './Svg.scss';
 
-const Svg = ({ icon, width, height, onClick }) => {
+const Svg = ({ variant, icon, ...props }) => {
   return (
     <svg
-      className={`icon__${icon}`}
-      width={width}
-      height={height}
-      onClick={onClick}
+      className={variant ? `icon__${icon} ${variant}` : `icon__${icon}`}
+      {...props}
     >
       <use href={`${Icons}#icon-${icon}`} />
     </svg>

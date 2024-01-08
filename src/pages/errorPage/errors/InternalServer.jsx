@@ -4,6 +4,7 @@ import { useDocumentTitle } from '@mantine/hooks';
 
 import BackgroundImage from '../../../components/UI/image/BackgroundImage';
 import Contact from '../../../features/contact/Contact';
+import Button from '../../../components/UI/button/Button';
 
 import Batman from '../../../assets/images/error/500_1.png';
 import Bats from '../../../assets/images/error/500_2.png';
@@ -38,9 +39,10 @@ const InternalServer = ({ code, message }) => {
           If the issue persists, please let me know via the &nbsp;
           <Contact btnText='contact form' />.
         </span>
-        <button className='primary-btn'>
+
+        <Button variant='default'>
           <Link to='/'>Back to home page</Link>
-        </button>
+        </Button>
       </div>
     </div>
   );

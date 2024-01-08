@@ -4,6 +4,7 @@ import { useDocumentTitle } from '@mantine/hooks';
 
 import BackgroundImage from '../../../components/UI/image/BackgroundImage';
 import Quote from '../../../components/UI/quote/Quote';
+import Button from '../../../components/UI/button/Button';
 
 import Gandalf from '../../../assets/images/error/403_1.png';
 import Embers from '../../../assets/images/error/403_2.png';
@@ -45,9 +46,9 @@ const Forbidden = ({ code }) => {
           source='Lord of the Rings: The Fellowship of the Ring (2001)'
         />
         <span>Sorry, you do not have access to this page or resource.</span>
-        <button className='primary-btn'>
+        <Button variant='default'>
           <Link to='/sign-in'>Log in</Link>
-        </button>
+        </Button>
       </div>
     </div>
   );

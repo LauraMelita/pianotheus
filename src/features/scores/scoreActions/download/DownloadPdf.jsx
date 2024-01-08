@@ -3,6 +3,7 @@ import React from 'react';
 import useFetchFile from '../../../../hooks/useFetchFile';
 
 import Tooltip from '../../../../components/UI/tooltip/Tooltip';
+import Button from '../../../../components/UI/button/Button';
 import Svg from '../../../../components/UI/svg/Svg';
 
 const DownloadPdf = ({ title }) => {
@@ -24,9 +25,9 @@ const DownloadPdf = ({ title }) => {
 
   return (
     <Tooltip content='Download pdf file'>
-      <button className='icon-btn' onClick={downloadFileAtUrl}>
+      <Button variant='icon' onClick={downloadFileAtUrl}>
         <Svg icon='pdf' />
-      </button>
+      </Button>
     </Tooltip>
   );
 };
