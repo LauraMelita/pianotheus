@@ -5,8 +5,8 @@ import './CircularProgressBar.scss';
 const CircularProgressBar = ({
   value,
   maxValue,
-  speed = 20,
-  incrementBy = 2,
+  speed = 10,
+  incrementBy = 1,
   type = 'rating',
   width = 80,
   height = 80,
