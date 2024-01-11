@@ -20,6 +20,7 @@ const DetailsPage = () => {
     data: collection,
     filterKey,
     isLoading,
+    isError,
     error,
   } = useCollectionContext();
   const params = useParams();
@@ -32,8 +33,9 @@ const DetailsPage = () => {
 
   if (isLoading) return <Spinner type='circle' />;
 
-  if (!filteredItem && !isLoading)
-    return <ErrorPage code='500' message={error.message} />;
+  if (!filteredItem) return <ErrorPage code='404' />;
+
+  if (isError && error) return <ErrorPage code='500' message={error.message} />;
 
   const renderDetails = () => {
     switch (filteredItem.category) {

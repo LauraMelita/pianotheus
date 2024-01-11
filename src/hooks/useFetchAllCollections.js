@@ -1,13 +1,13 @@
 import { useQueries } from '@tanstack/react-query';
 
-import { fetchCollection } from '../services/api';
+import { getCollection } from '../services/firebase/api';
 
 export const useFetchAllCollections = (collections) => {
   const collectionQueries = useQueries({
     queries: collections.map(({ collection, orderCollectionBy }) => {
       return {
         queryKey: [collection, collection, orderCollectionBy],
-        queryFn: () => fetchCollection(collection, orderCollectionBy),
+        queryFn: () => getCollection(collection, orderCollectionBy),
       };
     }),
   });

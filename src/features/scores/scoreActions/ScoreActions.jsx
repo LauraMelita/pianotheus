@@ -4,7 +4,7 @@ import DownloadMidi from './download/DownloadMidi';
 import DownloadPdf from './download/DownloadPdf';
 import PrintPdf from './print/PrintPdf';
 
-const ScoreActions = ({ movie, scoreTitle }) => {
+const ScoreActions = ({ scoreTitle }) => {
   return (
     <div className='score__actions'>
       <DownloadMidi title={scoreTitle} />

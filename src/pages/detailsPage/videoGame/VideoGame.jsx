@@ -1,5 +1,4 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
 
 import Backdrop from '../../../components/UI/image/Backdrop';
 import Button from '../../../components/UI/button/Button';
@@ -11,16 +10,13 @@ import Trailer from '../../../components/UI/trailer/Trailer';
 import Svg from '../../../components/UI/svg/Svg';
 import CircularProgressBar from '../../../components/UI/progressBar/CircularProgressBar';
 
-import { fetchRawgData } from '../../../services/api';
+import { useGetRawgData } from '../../../services/reactQuery/queries';
 import { formatDate } from '../../../utils/formatting';
 
 import './VideoGame.scss';
 
 const VideoGame = ({ filteredData }) => {
-  const { data: rawgData } = useQuery({
-    queryKey: ['rawg', filteredData.rawgId],
-    queryFn: () => fetchRawgData(filteredData.rawgId),
-  });
+  const { data: rawgData } = useGetRawgData(filteredData, filteredData.rawgId);
 
   const {
     title,

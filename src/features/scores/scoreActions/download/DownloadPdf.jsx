@@ -1,31 +1,25 @@
 import React from 'react';
 
-import useFetchFile from '../../../../hooks/useFetchFile';
+import { useFolderPath } from '../../../../hooks/useFolderPath';
+import { useDownloadFile } from '../../../../services/reactQuery/queries';
+import { EXTENSION } from '../../../../utils/constants';
 
 import Tooltip from '../../../../components/UI/tooltip/Tooltip';
 import Button from '../../../../components/UI/button/Button';
 import Svg from '../../../../components/UI/svg/Svg';
 
 const DownloadPdf = ({ title }) => {
-  const file = useFetchFile('.pdf', title);
+  const folderPath = useFolderPath();
 
-  if (!file) return;
-
-  const downloadFileAtUrl = async () => {
-    const response = await fetch(file);
-    const blob = await response.blob();
-    const blobURL = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = blobURL;
-    link.setAttribute('download', file.name);
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-  };
+  const { data: file, refetch: downloadFile } = useDownloadFile(
+    folderPath,
+    title,
+    EXTENSION.PDF
+  );
 
   return (
     <Tooltip content='Download pdf file'>
-      <Button variant='icon' onClick={downloadFileAtUrl}>
+      <Button onClick={downloadFile} variant='icon' href={file?.url} download>
         <Svg icon='pdf' />
       </Button>
     </Tooltip>
