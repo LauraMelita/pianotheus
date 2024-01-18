@@ -41,13 +41,8 @@
     }
   }
 
-  &.auth {
-    justify-content: center;
-    align-items: center;
-  }
-
   main {
-    &:not(.home) {
+    &:not(.home, .sign-in, .register) {
       padding: var(--content-padding);
     }
   }

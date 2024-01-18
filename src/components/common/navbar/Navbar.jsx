@@ -9,8 +9,9 @@ import Sidebar from './sidebar/Sidebar';
 import NavigationLinks from './NavigationLinks';
 import QuickSearch from '../../../features/quickSearch/QuickSearch';
 import ToggleThemeMode from '../../../features/themeMode/ToggleThemeMode';
+import UserAuth from '../../../features/authentication/userAuth/UserAuth';
+import LogoutBtn from '../../../features/authentication/LogoutBtn/LogoutBtn';
 import Separator from '../../UI/separator/Separator';
-import AuthBtn from '../../../features/authentication/authBtn/AuthBtn';
 
 import PianotheusLogo from '../../../assets/images/logo.svg';
 import './Navbar.scss';
@@ -42,6 +43,7 @@ const Navbar = () => {
           />
           <Separator type='border' orientation='horizontal' />
           <ToggleThemeMode />
+          <LogoutBtn />
         </Sidebar>
       );
   };
@@ -59,7 +61,7 @@ const Navbar = () => {
         {!isMobile && <QuickSearch searchKeys={['title', 'composer']} />}
         {isDesktop && <ToggleThemeMode />}
         <Separator type='border' orientation='vertical' />
-        <AuthBtn />
+        <UserAuth />
       </>
     );
   };

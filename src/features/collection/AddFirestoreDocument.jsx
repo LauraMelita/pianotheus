@@ -1,27 +1,22 @@
 import React from 'react';
 
-import { db } from '../../lib/firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { useCreateDocument } from '../../services/reactQuery/queries';
 
 import Button from '../../components/UI/button/Button';
 
 const AddFirestoreDocument = () => {
-  const collectionRef = collection(db, 'movies');
+  const { mutate: createDocument, isLoading: isCreatingDocument } =
+    useCreateDocument(); // pass collection to the hook
 
-  const document = {};
-
-  const addDocumentToFirebase = async () => {
-    try {
-      await addDoc(collectionRef, document);
-      alert('document successfully uploaded');
-    } catch (error) {
-      console.error(`An error has occurred: ${error}`);
-    }
+  const handleClick = (e) => {
+    e.preventDefault();
+    createDocument({}); // pass document to the function
   };
 
   return (
     <div>
-      <Button onClick={addDocumentToFirebase}>Add Document</Button>
+      {isCreatingDocument && <p>...Loading...</p>}
+      <Button onClick={handleClick}>Add Document</Button>
     </div>
   );
 };

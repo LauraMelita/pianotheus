@@ -1,19 +1,16 @@
 import {
   useQuery,
   useMutation,
-  useQueryClient,
-  useInfiniteQuery,
+  // useInfiniteQuery,
 } from '@tanstack/react-query';
 
 import { QUERY_KEYS } from './queryKeys';
 import {
   createUserAccount,
-  saveUserToDB,
   signInUser,
-  getCurrentUser,
-  signOutUser,
   getCollection,
   createDocument,
+  getDocument,
   downloadFile,
 } from '../firebase/api';
 import { getImdbData, getRawgData } from '../axios/api';
@@ -28,15 +25,11 @@ export const useCreateUserAccount = () => {
   });
 };
 
-export const useSignInUser = () => {};
-
-export const useSignOutUser = () => {};
-
-// ============================================================
-// USER QUERIES
-// ============================================================
-
-export const useGetCurrentUser = () => {};
+export const useSignInUser = () => {
+  return useMutation({
+    mutationFn: (user) => signInUser(user),
+  });
+};
 
 // ============================================================
 // COLLECTION QUERIES
@@ -57,6 +50,13 @@ export const useGetCollection = (collection, orderBy) => {
 export const useCreateDocument = (collection) => {
   return useMutation({
     mutationFn: (document) => createDocument(collection, document),
+  });
+};
+
+export const useGetDocument = (collection, query) => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.GET_DOCUMENT, collection, query],
+    queryFn: () => getDocument(collection, query),
   });
 };
 

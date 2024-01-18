@@ -1,0 +1,25 @@
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--global-gap) / 4);
+  background: transparent;
+  border: none;
+  font-size: var(--fs-50);
+  color: var(--text-color-secondary);
+
+  svg {
+    width: 18px;
+    height: 18px;
+    color: var(--accent-color-100);
+    filter: grayscale(70%) opacity(0.7);
+    transition: 600ms ease;
+  }
+
+  &:hover {
+    color: var(--text-color-primary);
+
+    svg {
+      filter: grayscale(0%) opacity(1);
+    }
+  }
+}

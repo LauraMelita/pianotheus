@@ -1,23 +1,41 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
+
+import { getCurrentUser, signOutUser } from '../services/firebase/api';
 
 const AuthContext = createContext({
-  isLoggedIn: false,
-  setIsLoggedIn: () => {},
-  toggleIsLoggedIn: () => {},
+  user: null,
+  isAuthenticating: false,
+  setUser: () => {},
+  setIsAuthenticating: () => {},
+  signOutUser: () => {},
 });
 
 export const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAuthenticating, setIsAuthenticating] = useState(true);
+  const [user, setUser] = useState(null);
 
-  const toggleIsLoggedIn = () => setIsLoggedIn((prev) => !prev);
+  useEffect(() => {
+    const authListener = getCurrentUser((currentUser) => {
+      setUser(currentUser);
+      setIsAuthenticating(false);
+    });
+
+    return () => {
+      authListener();
+    };
+  }, []);
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn, setIsLoggedIn, toggleIsLoggedIn }}
+      value={{
+        user,
+        setUser,
+        signOutUser,
+      }}
     >
-      {children}
+      {!isAuthenticating && children}
     </AuthContext.Provider>
   );
 };
 
-export const useAuthContext = () => useContext(AuthContext);
+export const useUserContext = () => useContext(AuthContext);

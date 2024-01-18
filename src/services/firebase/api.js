@@ -1,8 +1,15 @@
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from 'firebase/auth';
 import {
   collection,
   addDoc,
   getDocs,
+  where,
   query,
   orderBy,
 } from 'firebase/firestore';
@@ -31,37 +38,72 @@ export const createUserAccount = async (user) => {
     // Upload user file to storage and get URL
     const uploadPath = 'auth/users/';
     const fileName = `${username}_avatar`;
-    const { fileURL: avatarURL } = await uploadFile(
-      uploadPath,
-      fileName,
-      avatar
-    );
+
+    const userImage = await uploadFile(uploadPath, fileName, avatar);
 
     // Update new user in firebase auth
     await updateProfile(newAccount.user, {
       displayName: username,
-      photoURL: avatarURL,
+      photoURL: userImage ? userImage.url : null,
     });
 
     // Create a new user in firestore collection
-    const newUser = await createDocument('users', {
+    await createDocument('users', {
       id: uid,
       username,
       email,
-      avatar: avatarURL,
+      avatar: userImage ? userImage.url : null,
     });
-
-    return newUser;
   } catch (error) {
     throw new Error(error.message);
   }
 };
 
-export const signInUser = async () => {};
+export const signInUser = async (user) => {
+  try {
+    const userCredentials = await signInWithEmailAndPassword(
+      auth,
+      user.email,
+      user.password
+    );
 
-export const getCurrentUser = async () => {};
+    const signedInUser = userCredentials.user;
 
-export const signOutUser = async () => {};
+    if (!signedInUser) throw Error;
+
+    return signedInUser;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const getCurrentUser = (handleAuthStateChange) => {
+  return onAuthStateChanged(auth, handleAuthStateChange);
+};
+
+export const getUserById = async () => {
+  try {
+    const id = auth.currentUser?.uid;
+
+    if (!id) throw Error;
+
+    const currentUser = await getDocument('users', {
+      field: 'id',
+      operator: '==',
+      value: id,
+    });
+
+    if (!currentUser) throw Error;
+
+    return currentUser;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const signOutUser = async () => {
+  return await signOut(auth);
+};
 
 // ============================================================
 // COLLECTIONS
@@ -107,6 +149,26 @@ export const createDocument = async (collectionName, document) => {
   }
 };
 
+export const getDocument = async (collectionName, searchQuery) => {
+  const documentRef = collection(db, collectionName);
+  const documentQuery = query(
+    documentRef,
+    where(searchQuery.field, searchQuery.operator, searchQuery.value)
+  );
+
+  try {
+    const querySnapshot = await getDocs(documentQuery);
+
+    if (querySnapshot.empty) throw Error;
+
+    const document = querySnapshot.docs[0].data();
+
+    return document;
+  } catch (error) {
+    throw new Error(`Firebase error: Document doesn't exist`);
+  }
+};
+
 // ============================================================
 // FILES
 // ============================================================
@@ -138,6 +200,8 @@ const getFileURL = async (file) => {
 };
 
 export const uploadFile = async (filePath, fileName, file) => {
+  if (!file) return;
+
   try {
     const { extension } = await getFileMetadata(file);
 
@@ -150,11 +214,9 @@ export const uploadFile = async (filePath, fileName, file) => {
 
     if (!snapshot) throw Error;
 
-    console.log(snapshot);
+    const url = await getFileURL(snapshot);
 
-    const fileURL = await getFileURL(snapshot);
-
-    return { snapshot, fileURL };
+    return { snapshot, url };
   } catch (error) {
     throw new Error(error.message);
   }

@@ -1,15 +1,15 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { ToastContainer as Toast } from 'react-toastify';
 
 import Layout from './components/layout/Layout';
-import AuthLayout from './components/layout/AuthLayout';
+import AuthLayout from './components/layout/authLayout/AuthLayout';
 import SignInPage from './pages/signInPage/SignInPage';
 import RegisterPage from './pages/registerPage/RegisterPage';
-import AppLayout from './components/layout/AppLayout';
+import AppLayout from './components/layout/appLayout/AppLayout';
 import HomePage from './pages/homePage/HomePage';
 import CollectionRoutes from './routes/CollectionRoutes';
 import ErrorPage from './pages/errorPage/ErrorPage';
+import Toaster from './components/UI/toaster/Toaster';
 
 import { useScrollToTop } from './hooks/useScrollToTop';
 
@@ -32,7 +32,7 @@ const App = () => {
           <Route path='*' element={<ErrorPage code='404' />} />
         </Route>
       </Routes>
-      <Toast position='bottom-right' />
+      <Toaster />
     </Layout>
   );
 };
