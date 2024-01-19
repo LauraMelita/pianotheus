@@ -73,7 +73,14 @@ export const signInUser = async (user) => {
 
     return signedInUser;
   } catch (error) {
-    throw new Error(error.message);
+    switch (error.code) {
+      case 'auth/invalid-login-credentials':
+        throw new Error(
+          'Login failed. Make sure your email and password are entered correctly'
+        );
+      default:
+        throw new Error('An error has occurred, please try again later.');
+    }
   }
 };
 
