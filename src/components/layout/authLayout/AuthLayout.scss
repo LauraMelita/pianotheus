@@ -34,21 +34,9 @@
       }
     }
 
-    form {
-      button {
-        &[type='submit'] {
-          min-height: 55px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-      }
-    }
-
     .contact__btn {
       font-size: var(--fs-50);
       color: var(--text-color-secondary);
-      cursor: pointer;
 
       &:hover {
         text-decoration: underline;
