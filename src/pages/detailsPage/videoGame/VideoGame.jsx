@@ -1,7 +1,7 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
 
 import Backdrop from '../../../components/UI/image/Backdrop';
+import Button from '../../../components/UI/button/Button';
 import Badge from '../../../components/UI/badge/Badge';
 import Poster from '../../../components/UI/image/Poster';
 import Tags from '../../../components/UI/tags/Tags';
@@ -10,16 +10,13 @@ import Trailer from '../../../components/UI/trailer/Trailer';
 import Svg from '../../../components/UI/svg/Svg';
 import CircularProgressBar from '../../../components/UI/progressBar/CircularProgressBar';
 
-import { fetchRawgData } from '../../../services/api';
+import { useGetRawgData } from '../../../services/reactQuery/queries';
 import { formatDate } from '../../../utils/formatting';
 
 import './VideoGame.scss';
 
 const VideoGame = ({ filteredData }) => {
-  const { data: rawgData } = useQuery({
-    queryKey: ['rawg', filteredData.rawgId],
-    queryFn: () => fetchRawgData(filteredData.rawgId),
-  });
+  const { data: rawgData } = useGetRawgData(filteredData, filteredData.rawgId);
 
   const {
     title,
@@ -55,8 +52,6 @@ const VideoGame = ({ filteredData }) => {
           <CircularProgressBar value={rating} maxValue={5} />
         </div>
 
-        {/* <button className='test'>Hello</button> */}
-
         <h3>
           {title} | {year}
         </h3>
@@ -75,10 +70,10 @@ const VideoGame = ({ filteredData }) => {
           ))}
         </ul>
 
-        <a className='icon-btn' href={website} target='_blank' rel='noreferrer'>
+        <Button variant='icon' href={website} target='_blank' rel='noreferrer'>
           Official Website
-          <Svg icon='external-link' />
-        </a>
+          <Svg icon='external-link' variant='small' />
+        </Button>
 
         <Tags className='genres' tags={genres} objectKey='name' />
 

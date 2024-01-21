@@ -1,55 +1,76 @@
-import React, { useRef } from 'react';
-import emailjs from '@emailjs/browser';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'react-toastify';
 
+import { useSendEmail } from '../../../services/reactQuery/queries';
+import { contactValidation } from '../../../services/zod/validation';
+
+import { Form } from '../../../components/UI/form/Form';
+import TextInput from '../../../components/UI/form/TextInput';
+import TextAreaInput from '../../../components/UI/form/TextAreaInput';
+import Alert from '../../../components/UI/alert/Alert';
+import SubmitButton from '../../../components/UI/form/SubmitButton';
+
 const ContactForm = ({ toggleModal }) => {
-  const formRef = useRef();
+  const { mutateAsync: sendEmail } = useSendEmail();
 
-  const sendEmailHandler = async (e) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: zodResolver(contactValidation),
+  });
 
+  const onSendEmail = async (formData) => {
     try {
-      const result = await emailjs.sendForm(
-        process.env.REACT_APP_SERVICE_ID,
-        process.env.REACT_APP_TEMPLATE_ID,
-        formRef.current,
-        process.env.REACT_APP_PUBLIC_KEY
-      );
-
+      await sendEmail(formData);
+      reset();
       toggleModal();
-      if (result.text !== 'OK') throw new Error(`Message could not be send.`);
       toast.success('Thank you for reaching out!', {
         hideProgressBar: true,
       });
     } catch (error) {
-      toast.error(error, {
+      toast.error(error.message, {
         hideProgressBar: true,
       });
     }
   };
 
   return (
-    <form className='contact__form' ref={formRef} onSubmit={sendEmailHandler}>
-      <div className='contact__form-group'>
-        <label className='required'>Name</label>
-        <input type='text' name='from_name' />
-      </div>
-      <div className='contact__form-group'>
-        <label className='required'>Email</label>
-        <input type='email' name='from_email' />
-      </div>
-      <div className='contact__form-group'>
-        <label>Subject</label>
-        <input type='subject' name='from_subject' />
-      </div>
-      <div className='contact__form-group'>
-        <label className='required'>Message</label>
-        <textarea name='message' />
-      </div>
-      <div className='contact__form-actions'>
-        <button type='submit'>Submit</button>
-      </div>
-    </form>
+    <Form className='contact' onSubmit={handleSubmit(onSendEmail)}>
+      <TextInput
+        label='Name'
+        type='text'
+        name='name'
+        register={register}
+        errors={errors}
+      />
+      <TextInput
+        label='Email'
+        type='text'
+        name='email'
+        register={register}
+        errors={errors}
+      />
+      <TextInput
+        label='Subject'
+        type='text'
+        name='subject'
+        register={register}
+        errors={errors}
+      />
+      <TextAreaInput
+        label='Message'
+        name='message'
+        register={register}
+        errors={errors}
+      />
+      <SubmitButton btnText='Send email' isSubmitting={isSubmitting} />
+      <Alert severity='error'>{errors.root && errors.root.message}</Alert>
+    </Form>
   );
 };
 

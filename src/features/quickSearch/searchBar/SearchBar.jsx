@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useCreateCSSRootVariable } from '../../../hooks/useCreateCSSRootVariable';
 
+import Button from '../../../components/UI/button/Button';
 import Svg from '../../../components/UI/svg/Svg';
 import Spinner from '../../../components/UI/spinner/Spinner';
 
@@ -39,10 +40,11 @@ const SearchBar = ({
         onChange={onChange}
         onKeyDown={onKeyDown}
       />
-      <button className='icon-btn'>
+
+      <Button variant='icon'>
         {renderSpinner()}
         {renderCloseBtn()}
-      </button>
+      </Button>
     </div>
   );
 };

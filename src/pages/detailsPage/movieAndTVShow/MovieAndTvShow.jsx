@@ -1,7 +1,6 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
 
-import { fetchImdbData } from '../../../services/api';
+import { useGetImdbData } from '../../../services/reactQuery/queries';
 
 import Backdrop from '../../../components/UI/image/Backdrop';
 import Trailer from '../../../components/UI/trailer/Trailer';
@@ -11,10 +10,7 @@ import Separator from '../../../components/UI/separator/Separator';
 import './MovieAndTvShow.scss';
 
 const MovieAndTvShow = ({ data }) => {
-  const { data: imdbData } = useQuery({
-    queryKey: ['imdb', data.imdbId],
-    queryFn: () => fetchImdbData(data.imdbId),
-  });
+  const { data: imdbData } = useGetImdbData(data, data.imdbId);
 
   return (
     <section className='full-width'>

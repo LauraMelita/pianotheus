@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import { CollectionProvider } from '../context/CollectionContext';
 import { siteConfig } from '../utils/config';
 
+import ProtectedRoute from '../features/authentication/ProtectedRoute';
 import CollectionPage from '../pages/collectionPage/CollectionPage';
 import DetailsPage from '../pages/detailsPage/DetailsPage';
 
@@ -22,8 +23,22 @@ const CollectionRoutes = () => {
         }
       >
         <Route path={collection}>
-          <Route index element={<CollectionPage />} />
-          <Route path={`:${filterDocumentBy}`} element={<DetailsPage />} />
+          <Route
+            index
+            element={
+              <ProtectedRoute>
+                <CollectionPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={`:${filterDocumentBy}`}
+            element={
+              <ProtectedRoute>
+                <DetailsPage />
+              </ProtectedRoute>
+            }
+          />
         </Route>
       </Route>
     )

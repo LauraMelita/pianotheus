@@ -1,0 +1,46 @@
+.sign-in,
+.sign-up {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: [left] 1fr [right] 1fr;
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: var(--global-gap);
+
+      h2 {
+        align-self: start;
+        font-family: var(--ff-tertiary);
+        letter-spacing: 4px;
+        text-transform: uppercase;
+      }
+
+      .redirect {
+        color: var(--text-color-secondary);
+
+        a {
+          color: var(--accent-color-100);
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    .contact__btn {
+      font-size: var(--fs-50);
+      color: var(--text-color-secondary);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

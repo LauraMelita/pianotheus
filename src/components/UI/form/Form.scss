@@ -1,0 +1,117 @@
+input,
+textarea,
+select {
+  background: var(--highlight-100);
+  border: var(--global-border-width) solid var(--highlight-200);
+  border-radius: 4px;
+  caret-color: var(--accent-color-100);
+  padding: 5px 10px;
+
+  &:focus {
+    outline: var(--global-border-width) solid var(--accent-color-200);
+  }
+
+  &::placeholder {
+    color: var(--text-color-secondary);
+  }
+
+  &:disabled {
+    background-color: var(--disabled-background-color);
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--global-gap);
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--global-gap) / 4);
+
+    label {
+      color: var(--text-color-secondary);
+    }
+
+    &.password {
+      > div {
+        display: flex;
+        background-color: var(--highlight-200);
+        border-radius: 4px;
+        border: var(--global-border-width) solid var(--highlight-200);
+
+        &:focus-within {
+          border: var(--global-border-width) solid var(--accent-color-200);
+        }
+
+        input {
+          width: 90%;
+          border: none;
+          background-color: transparent;
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        button {
+          svg {
+            height: 20px;
+            width: 20px;
+          }
+        }
+      }
+    }
+
+    &.file {
+      label {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--global-gap) / 4);
+        cursor: pointer;
+        color: var(--accent-color-100);
+        filter: grayscale(70%) opacity(0.7);
+        transition: 600ms ease;
+
+        .file__trigger {
+          display: flex;
+          align-items: center;
+          gap: calc(var(--global-gap) / 4);
+
+          svg {
+            height: 20px;
+            width: 20px;
+          }
+
+          &:hover {
+            filter: grayscale(0%) opacity(1);
+          }
+        }
+
+        .file__name {
+          font-size: var(--fs-50);
+          color: var(--text-color-secondary);
+        }
+      }
+
+      input {
+        display: none;
+      }
+    }
+  }
+
+  button {
+    &[type='submit'] {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--global-gap);
+    }
+  }
+}
+
+[class*='error'] {
+  color: var(--text-color-danger);
+  font-size: var(--fs-50);
+}

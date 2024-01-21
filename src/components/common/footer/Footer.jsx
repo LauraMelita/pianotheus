@@ -4,6 +4,7 @@ import { HashLink } from 'react-router-hash-link';
 import { useScrollToTop } from '../../../hooks/useScrollToTop';
 import { useCreateCSSRootVariable } from '../../../hooks/useCreateCSSRootVariable';
 
+import Button from '../../UI/button/Button';
 import Svg from '../../UI/svg/Svg';
 import Separator from '../../UI/separator/Separator';
 import NavigationLinks from '../navbar/NavigationLinks';
@@ -59,13 +60,13 @@ const Footer = () => {
           <li>
             <a href='https://www.omdbapi.com/' target='_blank' rel='noreferrer'>
               OMDb
-              <Svg icon='external-link' />
+              <Svg icon='external-link' variant='small' />
             </a>
           </li>
           <li>
             <a href='https://rawg.io/apidocs' target='_blank' rel='noreferrer'>
               Rawg
-              <Svg icon='external-link' />
+              <Svg icon='external-link' variant='small' />
             </a>
           </li>
         </ul>
@@ -85,7 +86,7 @@ const Footer = () => {
               rel='noreferrer'
             >
               Synthesia
-              <Svg icon='external-link' />
+              <Svg icon='external-link' variant='small' />
             </a>
           </li>
           <li>
@@ -95,7 +96,7 @@ const Footer = () => {
               rel='noreferrer'
             >
               MuseScore
-              <Svg icon='external-link' />
+              <Svg icon='external-link' variant='small' />
             </a>
           </li>
         </ul>
@@ -114,22 +115,23 @@ const Footer = () => {
   const Social = () => {
     return (
       <div className='footer__social'>
-        <a
-          className='icon-btn'
+        <Button
+          variant='icon'
           href='https://github.com/LauraMelita'
           target='_blank'
           rel='noreferrer'
         >
           <Svg icon='github' />
-        </a>
-        <a
-          className='icon-btn'
+        </Button>
+
+        <Button
+          variant='icon'
           href='https://www.linkedin.com/in/laura-melita-a30086104'
           target='_blank'
           rel='noreferrer'
         >
           <Svg icon='linkedin' />
-        </a>
+        </Button>
       </div>
     );
   };

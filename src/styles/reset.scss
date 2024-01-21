@@ -79,21 +79,5 @@ body {
     font: inherit;
     color: inherit;
     outline: none;
-    background: var(--highlight-100);
-    border: var(--global-border-width) solid var(--highlight-200);
-    border-radius: 4px;
-    caret-color: var(--accent-color-100);
-
-    &:focus {
-      outline: var(--global-border-width) solid var(--accent-color-200);
-    }
-
-    &::placeholder {
-      color: var(--text-color-secondary);
-    }
-
-    &:disabled {
-      background-color: var(--disabled-background-color);
-    }
   }
 }

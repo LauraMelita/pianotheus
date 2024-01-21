@@ -1,6 +1,7 @@
 import React from 'react';
 
-const BlendInImage = ({
+const BackgroundImage = ({
+  className,
   zIndex,
   gradient,
   url,
@@ -38,7 +39,7 @@ const BlendInImage = ({
 
   return (
     <div
-      className='background-image'
+      className={className && className}
       style={{
         zIndex,
         backgroundImage: setBackgroundImage(),
@@ -50,4 +51,4 @@ const BlendInImage = ({
   );
 };
 
-export default BlendInImage;
+export default BackgroundImage;

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Input } from '../../components/UI/form/Form';
+
 const Search = ({ placeholder, searchQuery, setSearchQuery }) => {
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
@@ -8,7 +10,7 @@ const Search = ({ placeholder, searchQuery, setSearchQuery }) => {
   return (
     <div>
       Search
-      <input
+      <Input
         type='search'
         placeholder={placeholder}
         value={searchQuery}

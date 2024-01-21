@@ -35,7 +35,7 @@
       }
     }
 
-    .icon-btn {
+    button {
       justify-content: center;
       width: 15%;
 
@@ -57,6 +57,7 @@
       width: 100%;
       background-color: var(--highlight-200);
       border-radius: calc(var(--global-border-radius) / 2);
+      box-shadow: var(--box-shadow);
 
       .suggestions,
       .no-suggestions {
@@ -69,7 +70,7 @@
 
       .no-suggestions {
         display: block;
-        padding: 10px;
+        padding: calc(var(--global-padding) / 2);
         font-size: var(--fs-50);
         color: var(--text-color-secondary);
       }
@@ -99,7 +100,7 @@
         border: none;
       }
 
-      .icon-btn {
+      button {
         justify-content: end;
       }
     }

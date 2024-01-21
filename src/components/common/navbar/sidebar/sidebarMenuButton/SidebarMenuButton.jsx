@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+import Button from '../../../../UI/button/Button';
+
 const SidebarMenuButton = ({ onClick }) => {
   return (
-    <button className='sidebar__toggle-btn icon-btn' onClick={onClick}>
+    <Button className='sidebar__toggle-btn' variant='icon' onClick={onClick}>
       <svg viewBox='0 0 20 20'>
         <motion.path
           strokeWidth='2'
@@ -34,7 +36,7 @@ const SidebarMenuButton = ({ onClick }) => {
           }}
         />
       </svg>
-    </button>
+    </Button>
   );
 };
 

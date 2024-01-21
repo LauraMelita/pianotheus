@@ -64,6 +64,8 @@
     --text-color-secondary: var(--gray-50);
     --text-color-danger: #dc3545;
 
+    --box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35),
+      0px 10px 20px -15px rgba(22, 23, 24, 0.2);
     --highlight-100: var(--gray-shade-200);
     --highlight-200: var(--gray-500);
     --disabled-background-color: #efefef4d;

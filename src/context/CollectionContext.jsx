@@ -1,16 +1,7 @@
 import { createContext, useContext } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
 
-import { fetchCollection } from '../services/api';
-
-const useFetchCollection = (collectionName, orderCollectionBy) => {
-  return useQuery({
-    queryKey: [collectionName, collectionName, orderCollectionBy],
-    queryFn: () => fetchCollection(collectionName, orderCollectionBy),
-    staleTime: Infinity,
-  });
-};
+import { useGetCollection } from '../services/reactQuery/queries';
 
 export const CollectionContext = createContext({
   collection: '',
@@ -24,7 +15,7 @@ export const CollectionContext = createContext({
 });
 
 export const CollectionProvider = (props) => {
-  const { data, isLoading, isError, error, isSuccess } = useFetchCollection(
+  const { data, isLoading, isError, error, isSuccess } = useGetCollection(
     props.collection,
     props.orderCollectionBy
   );
