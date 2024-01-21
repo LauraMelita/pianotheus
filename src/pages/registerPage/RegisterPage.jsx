@@ -1,45 +1,57 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDocumentTitle } from '@mantine/hooks';
-import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-import { useShowPassword } from '../../hooks/useShowPassword';
 import { useCreateUserAccount } from '../../services/reactQuery/queries';
+import { signUpValidation } from '../../services/zod/validation';
 
-import { Form, FormGroup, Label, Input } from '../../components/UI/form/Form';
-import Button from '../../components/UI/button/Button';
-import Svg from '../../components/UI/svg/Svg';
-import Spinner from '../../components/UI/spinner/Spinner';
+import { Form } from '../../components/UI/form/Form';
+import TextInput from '../../components/UI/form/TextInput';
+import PasswordInput from '../../components/UI/form/PasswordInput';
+import FileInput from '../../components/UI/form/FileInput';
+import SubmitButton from '../../components/UI/form/SubmitButton';
+import Alert from '../../components/UI/alert/Alert';
 import BackgroundImage from '../../components/UI/image/BackgroundImage';
+
+import Image from '../../assets/images/sign-up.jpg';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
   useDocumentTitle('Pianotheus | Sign Up');
-  const { toggleShowPassword, icon, inputType } = useShowPassword();
+
   const {
-    mutateAsync: createUserAccount,
-    isLoading: isCreatingAccount,
-    isError,
-    error,
-  } = useCreateUserAccount();
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors, isSubmitting },
+    setError,
+  } = useForm({
+    resolver: zodResolver(signUpValidation),
+  });
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
+  const { mutateAsync: createUserAccount } = useCreateUserAccount();
 
-    const user = {
-      username: e.target.username.value,
-      email: e.target.email.value,
-      password: e.target.password.value,
-      avatar: e.target.avatar.files[0],
-    };
+  const onRegisterUser = async ({ username, email, password, file }) => {
+    const avatar = file[0];
+    const newUser = { username, email, password, avatar };
 
     try {
-      await createUserAccount(user);
+      await createUserAccount(newUser);
+      reset();
       navigate('/');
     } catch (error) {
-      toast.error('Sign up failed. Please try again.', {
-        hideProgressBar: true,
-      });
+      if (error.message.includes('auth/email-already-in-use')) {
+        setError('email', {
+          message: 'Email already in use',
+        });
+      } else {
+        setError('root', {
+          message: error.message,
+        });
+      }
     }
   };
 
@@ -51,44 +63,38 @@ const RegisterPage = () => {
           <p className='redirect'>
             Already have an account? <Link to='/sign-in'>Sign in</Link>
           </p>
-          <Form onSubmit={handleRegister}>
-            <FormGroup className='username'>
-              <Label>Username</Label>
-              <Input type='text' name='username' />
-            </FormGroup>
-            <FormGroup className='email'>
-              <Label>Email</Label>
-              <Input type='email' name='email' />
-            </FormGroup>
-            <FormGroup className='password'>
-              <Label>Password</Label>
-              <div>
-                <Input type={inputType} name='password' />
-                <Button
-                  variant='icon'
-                  type='button'
-                  onClick={toggleShowPassword}
-                >
-                  <Svg icon={icon} />
-                </Button>
-              </div>
-            </FormGroup>
-            <FormGroup className='file'>
-              <Label htmlFor='avatar'>
-                <Svg icon='add-image' />
-                <span>Add an avatar</span>
-              </Label>
-              <Input type='file' id='avatar' name='avatar' />
-            </FormGroup>
-            <span>{isError && error.message}</span>
-            <Button variant='default' type='submit'>
-              {isCreatingAccount ? <Spinner type='dotted' /> : 'Create Account'}
-            </Button>
+          <Form onSubmit={handleSubmit(onRegisterUser)}>
+            <TextInput
+              label='Username'
+              type='text'
+              name='username'
+              register={register}
+              errors={errors}
+            />
+            <TextInput
+              label='Email'
+              type='text'
+              name='email'
+              register={register}
+              errors={errors}
+            />
+            <PasswordInput register={register} errors={errors} />
+            <FileInput
+              label='Avatar'
+              register={register}
+              watch={watch}
+              errors={errors}
+            />
+            <SubmitButton
+              btnText='Create Account'
+              isSubmitting={isSubmitting}
+            />
           </Form>
+          <Alert severity='error'>{errors.root && errors.root.message}</Alert>
         </div>
       </div>
       <BackgroundImage
-        url='https://cdna.artstation.com/p/assets/images/images/021/705/528/large/andrea-boloch-horror-time-03.jpg?1572638877'
+        url={Image}
         backgroundSize='cover'
         backgroundPosition='100% 100%'
         gradient={{

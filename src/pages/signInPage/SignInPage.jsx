@@ -1,41 +1,44 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDocumentTitle } from '@mantine/hooks';
-import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-import { useShowPassword } from '../../hooks/useShowPassword';
 import { useSignInUser } from '../../services/reactQuery/queries';
+import { signInValidation } from '../../services/zod/validation';
 
-import { Form, FormGroup, Label, Input } from '../../components/UI/form/Form';
-import Button from '../../components/UI/button/Button';
-import Svg from '../../components/UI/svg/Svg';
+import { Form } from '../../components/UI/form/Form';
+import TextInput from '../../components/UI/form/TextInput';
+import PasswordInput from '../../components/UI/form/PasswordInput';
+import Alert from '../../components/UI/alert/Alert';
+import SubmitButton from '../../components/UI/form/SubmitButton';
 import Contact from '../../features/contact/Contact';
-import Spinner from '../../components/UI/spinner/Spinner';
 import BackgroundImage from '../../components/UI/image/BackgroundImage';
 
 const SignInPage = () => {
   const navigate = useNavigate();
   useDocumentTitle('Pianotheus | Sign In');
-  const { toggleShowPassword, icon, inputType } = useShowPassword();
+
+  const { mutateAsync: signInUser } = useSignInUser();
+
   const {
-    mutateAsync: signInUser,
-    isLoading: isSigningInUser,
-    isError,
-    error,
-  } = useSignInUser();
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+    setError,
+  } = useForm({
+    resolver: zodResolver(signInValidation),
+  });
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    const [email, password] = e.target;
-    const user = { email: email.value, password: password.value };
-
+  const onLoginUser = async (formData) => {
     try {
-      await signInUser(user);
+      await signInUser(formData);
+      reset();
       navigate('/');
     } catch (error) {
-      toast.error(error.message, {
-        hideProgressBar: true,
+      setError('root', {
+        message: error.message,
       });
     }
   };
@@ -48,29 +51,18 @@ const SignInPage = () => {
           <p className='redirect'>
             Don't have an account? <Link to='/register'>Sign up</Link>
           </p>
-          <span>{isError && error.message}</span>
-          <Form onSubmit={handleLogin}>
-            <FormGroup className='email'>
-              <Label>Email</Label>
-              <Input type='email' name='email' />
-            </FormGroup>
-            <FormGroup className='password'>
-              <Label>Password</Label>
-              <div>
-                <Input type={inputType} name='password' />
-                <Button
-                  variant='icon'
-                  type='button'
-                  onClick={toggleShowPassword}
-                >
-                  <Svg icon={icon} />
-                </Button>
-              </div>
-            </FormGroup>
-            <Button variant='default' type='submit'>
-              {isSigningInUser ? <Spinner type='dotted' /> : 'Log in'}
-            </Button>
+          <Form onSubmit={handleSubmit(onLoginUser)}>
+            <TextInput
+              label='Email'
+              type='text'
+              name='email'
+              register={register}
+              errors={errors}
+            />
+            <PasswordInput register={register} errors={errors} />
+            <SubmitButton btnText='Log in' isSubmitting={isSubmitting} />
           </Form>
+          <Alert severity='error'>{errors.root && errors.root.message}</Alert>
           <Contact btnText='Need help signing in?' />
         </div>
       </div>
