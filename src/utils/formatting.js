@@ -7,6 +7,10 @@ export const removeAccents = (str) =>
 export const stringIncludesWord = (str, word) =>
   new RegExp('\\b' + word + '\\b', 'i').test(str);
 
+export const capitalize = (str) => {
+  return str.replace(str[0], str[0].toUpperCase());
+};
+
 export const formatDate = (dateToFormat) => {
   const date = new Date(dateToFormat);
 
@@ -34,3 +38,18 @@ export const extractRgbValues = (rgbColor) =>
     .replace(/[^\d,]/g, '')
     .split(',')
     .join(', ');
+
+export const bytesToMegabytes = (bytes) => bytes / (1024 * 1024);
+
+export const formatList = (arr) => {
+  const listFormatter = new Intl.ListFormat('en-us');
+  return listFormatter.format(arr);
+};
+
+export const fileExtensionsList = (fileTypes) => {
+  const fileExtensions = fileTypes.map((fileType) =>
+    fileType.replace('image/', '.')
+  );
+
+  return formatList(fileExtensions);
+};

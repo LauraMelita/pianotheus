@@ -3,3 +3,5 @@ export const generateNumber = (min, max) => {
 };
 
 export const currentYear = new Date().getFullYear();
+
+export const isValueSafe = (value) => !/<(?:.|\n)*?>/gm.test(value);
