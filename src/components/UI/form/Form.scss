@@ -67,20 +67,31 @@ form {
     &.file {
       label {
         display: flex;
-        align-items: center;
+        flex-direction: column;
         gap: calc(var(--global-gap) / 4);
         cursor: pointer;
         color: var(--accent-color-100);
         filter: grayscale(70%) opacity(0.7);
         transition: 600ms ease;
 
-        svg {
-          height: 20px;
-          width: 20px;
+        .file__trigger {
+          display: flex;
+          align-items: center;
+          gap: calc(var(--global-gap) / 4);
+
+          svg {
+            height: 20px;
+            width: 20px;
+          }
+
+          &:hover {
+            filter: grayscale(0%) opacity(1);
+          }
         }
 
-        &:hover {
-          filter: grayscale(0%) opacity(1);
+        .file__name {
+          font-size: var(--fs-50);
+          color: var(--text-color-secondary);
         }
       }
 
@@ -92,10 +103,10 @@ form {
 
   button {
     &[type='submit'] {
-      min-height: 55px;
       display: flex;
       justify-content: center;
       align-items: center;
+      gap: var(--global-gap);
     }
   }
 }
@@ -103,8 +114,4 @@ form {
 [class*='error'] {
   color: var(--text-color-danger);
   font-size: var(--fs-50);
-
-  &.root-error {
-    align-self: center;
-  }
 }

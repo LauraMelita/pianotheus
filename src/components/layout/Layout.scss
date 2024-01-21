@@ -42,7 +42,7 @@
   }
 
   main {
-    &:not(.home, .sign-in, .register) {
+    &:not(.home, .sign-in, .sign-up) {
       padding: var(--content-padding);
     }
   }
