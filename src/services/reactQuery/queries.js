@@ -14,6 +14,7 @@ import {
   downloadFile,
 } from '../firebase/api';
 import { getImdbData, getRawgData } from '../axios/api';
+import { sendEmail } from '../emailjs/api.js';
 
 // ============================================================
 // AUTH QUERIES
@@ -89,5 +90,15 @@ export const useGetRawgData = (data, rawgId) => {
     queryKey: [QUERY_KEYS.RAWG_DATA, rawgId],
     enabled: data?.rawgId != null,
     queryFn: () => getRawgData(rawgId),
+  });
+};
+
+// ============================================================
+// EMAILJS QUERIES
+// ============================================================
+
+export const useSendEmail = () => {
+  return useMutation({
+    mutationFn: (form) => sendEmail(form),
   });
 };
