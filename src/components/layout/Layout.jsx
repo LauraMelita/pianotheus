@@ -8,9 +8,7 @@ const Layout = ({ children }) => {
   const { pathname } = useLocation();
 
   const layoutType =
-    pathname.includes('/sign-in') || pathname.includes('/register')
-      ? 'auth'
-      : 'main';
+    pathname === '/sign-in' || pathname === '/register' ? 'auth' : 'main';
 
   return <div className={`layout ${layoutType}`}>{children}</div>;
 };
