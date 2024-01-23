@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Image from '../../image/Image';
 import Svg from '../../svg/Svg';
 import Separator from '../../separator/Separator';
 import Badge from '../../badge/Badge';
@@ -33,14 +34,14 @@ const PosterCard = ({
     <div className='poster-card'>
       <Link to={path}>
         <figure className='poster-card__poster'>
-          <img src={poster} alt={`${title} poster`} />
+          <Image src={poster} alt={`${title} poster`} />
           <figcaption className='poster-card__inner'>
             <div className='poster-card__composer'>
               <Badge
-                width={30}
-                height={30}
                 image={composerImg}
                 title={composer}
+                width={30}
+                height={30}
               >
                 <span>{composer}</span>
               </Badge>

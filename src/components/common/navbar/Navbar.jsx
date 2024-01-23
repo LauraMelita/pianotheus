@@ -5,6 +5,7 @@ import { useScreenSize } from '../../../hooks/useScreenSize';
 import { useSidebar } from '../../../hooks/useSidebar';
 import { useCreateCSSRootVariable } from '../../../hooks/useCreateCSSRootVariable';
 
+import Image from '../../UI/image/Image';
 import Sidebar from './sidebar/Sidebar';
 import NavigationLinks from './NavigationLinks';
 import QuickSearch from '../../../features/quickSearch/QuickSearch';
@@ -27,7 +28,7 @@ const Navbar = () => {
 
   const Logo = () => (
     <Link to='/'>
-      <img src={PianotheusLogo} alt='logo' />
+      <Image src={PianotheusLogo} alt='pianotheus logo' />
     </Link>
   );
 
