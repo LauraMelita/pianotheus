@@ -8,10 +8,10 @@ import { useSignInUser } from '../../services/reactQuery/queries';
 import { signInValidation } from '../../services/zod/validation';
 
 import { Form } from '../../components/UI/form/Form';
-import TextInput from '../../components/UI/form/TextInput';
-import PasswordInput from '../../components/UI/form/PasswordInput';
+import TextInput from '../../components/UI/form/elements/TextInput';
+import PasswordInput from '../../components/UI/form/elements/PasswordInput';
 import Alert from '../../components/UI/alert/Alert';
-import SubmitButton from '../../components/UI/form/SubmitButton';
+import SubmitButton from '../../components/UI/form/elements/SubmitButton';
 import Contact from '../../features/contact/Contact';
 import BackgroundImage from '../../components/UI/image/BackgroundImage';
 
@@ -62,13 +62,14 @@ const SignInPage = () => {
             <PasswordInput register={register} errors={errors} />
             <SubmitButton btnText='Log in' isSubmitting={isSubmitting} />
           </Form>
-          <Alert severity='error'>{errors.root && errors.root.message}</Alert>
+          <Alert className='form-error' severity='error'>
+            {errors.root && errors.root.message}
+          </Alert>
           <Contact btnText='Need help signing in?' />
         </div>
       </div>
       <BackgroundImage
         url='https://atthemoviesshop.com/cdn/shop/files/unbreakable-vinyl-soundtrack-atm_460x@2x.webp'
-        backgroundSize='cover'
         backgroundPosition='100% 100%'
       />
     </main>

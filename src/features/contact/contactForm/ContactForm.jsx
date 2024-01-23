@@ -7,10 +7,10 @@ import { useSendEmail } from '../../../services/reactQuery/queries';
 import { contactValidation } from '../../../services/zod/validation';
 
 import { Form } from '../../../components/UI/form/Form';
-import TextInput from '../../../components/UI/form/TextInput';
-import TextAreaInput from '../../../components/UI/form/TextAreaInput';
+import TextInput from '../../../components/UI/form/elements/TextInput';
+import TextAreaInput from '../../../components/UI/form/elements/TextAreaInput';
 import Alert from '../../../components/UI/alert/Alert';
-import SubmitButton from '../../../components/UI/form/SubmitButton';
+import SubmitButton from '../../../components/UI/form/elements/SubmitButton';
 
 const ContactForm = ({ toggleModal }) => {
   const { mutateAsync: sendEmail } = useSendEmail();
@@ -65,6 +65,7 @@ const ContactForm = ({ toggleModal }) => {
       <TextAreaInput
         label='Message'
         name='message'
+        rows={4}
         register={register}
         errors={errors}
       />

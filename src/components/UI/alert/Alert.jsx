@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react';
 const Alert = forwardRef(({ severity, className, children, ...props }, ref) => {
   return (
     <span
-      className={className ? `${severity} ${className}` : `${severity}`}
+      className={className ? `${className}` : `${severity}`}
       ref={ref}
       {...props}
     >

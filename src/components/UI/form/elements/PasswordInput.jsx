@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { useShowPassword } from '../../../hooks/useShowPassword';
+import { useShowPassword } from '../../../../hooks/useShowPassword';
 
-import { FormGroup, Label, Input } from './Form';
-import Button from '../button/Button';
-import Svg from '../svg/Svg';
-import Alert from '../alert/Alert';
+import { FormGroup, Label, Input } from '../Form';
+import Button from '../../button/Button';
+import Svg from '../../svg/Svg';
+import Alert from '../../alert/Alert';
 
 const PasswordInput = ({ register, errors }) => {
   const { inputType, toggleShowPassword, icon } = useShowPassword();

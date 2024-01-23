@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Button from '../button/Button';
-import Spinner from '../spinner/Spinner';
+import Button from '../../button/Button';
+import Spinner from '../../spinner/Spinner';
 
 const SubmitButton = ({ btnText, isSubmitting }) => {
   return (

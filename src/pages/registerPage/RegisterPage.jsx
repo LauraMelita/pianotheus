@@ -8,10 +8,10 @@ import { useCreateUserAccount } from '../../services/reactQuery/queries';
 import { signUpValidation } from '../../services/zod/validation';
 
 import { Form } from '../../components/UI/form/Form';
-import TextInput from '../../components/UI/form/TextInput';
-import PasswordInput from '../../components/UI/form/PasswordInput';
-import FileInput from '../../components/UI/form/FileInput';
-import SubmitButton from '../../components/UI/form/SubmitButton';
+import TextInput from '../../components/UI/form/elements/TextInput';
+import PasswordInput from '../../components/UI/form/elements/PasswordInput';
+import FileInput from '../../components/UI/form/elements/FileInput';
+import SubmitButton from '../../components/UI/form/elements/SubmitButton';
 import Alert from '../../components/UI/alert/Alert';
 import BackgroundImage from '../../components/UI/image/BackgroundImage';
 
@@ -90,18 +90,18 @@ const RegisterPage = () => {
               isSubmitting={isSubmitting}
             />
           </Form>
-          <Alert severity='error'>{errors.root && errors.root.message}</Alert>
+          <Alert className='form-error' severity='error'>
+            {errors.root && errors.root.message}
+          </Alert>
         </div>
       </div>
       <BackgroundImage
         url={Image}
-        backgroundSize='cover'
-        backgroundPosition='100% 100%'
         gradient={{
           type: 'linear',
           direction: '270deg',
           transparentPosition: '65%',
-          bgPosition: '87%',
+          bgPosition: '100%',
         }}
       />
     </main>

@@ -99,6 +99,11 @@ form {
         display: none;
       }
     }
+
+    .error {
+      color: var(--text-color-danger);
+      font-size: var(--fs-50);
+    }
   }
 
   button {
@@ -111,7 +116,9 @@ form {
   }
 }
 
-[class*='error'] {
+.form-error {
+  max-width: 100%;
   color: var(--text-color-danger);
   font-size: var(--fs-50);
+  text-align: center;
 }

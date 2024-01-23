@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { FormGroup, Label, Input } from './Form';
-import Alert from '../alert/Alert';
+import { FormGroup, Label, Input } from '../Form';
+import Alert from '../../alert/Alert';
 
 const TextInput = ({ label, type, name, register, errors }) => {
   return (

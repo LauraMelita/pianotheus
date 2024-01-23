@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { FormGroup, Label, Input } from './Form';
-import Svg from '../svg/Svg';
-import Alert from '../alert/Alert';
+import { FormGroup, Label, Input } from '../Form';
+import Svg from '../../svg/Svg';
+import Alert from '../../alert/Alert';
 
 const FileInput = ({ label, register, watch, errors }) => {
   const FileName = () => {
