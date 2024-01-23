@@ -18,7 +18,7 @@ const UserAuth = () => {
         <BackgroundImage
           className='auth-btn__user-avatar'
           url={user.photoURL}
-        />
+        ></BackgroundImage>
       );
     };
 
