@@ -31,15 +31,19 @@ body {
     list-style: none;
   }
 
-  p,
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    overflow-wrap: break-word;
+    text-wrap: balance;
     hyphens: auto;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
   }
 
   a {
@@ -52,15 +56,9 @@ body {
   }
 
   img {
-    display: block;
     max-width: 100%;
+    display: block;
     object-fit: cover;
-  }
-
-  iframe {
-    min-width: 100%;
-    min-height: 100%;
-    border: none;
   }
 
   button {
