@@ -1,26 +1,19 @@
 import React from 'react';
 
-import { extractRgbValues } from '../../../utils/formatting';
+import { GLOBAL_STYLES } from '../../../utils/constants';
 
-const Backdrop = ({
-  backdropImg,
-  rgbBgColor = 'rgb(18, 18, 18)',
-  opacity = 0.6,
-  blend = 0.9,
-}) => {
-  const rgbValues = extractRgbValues(rgbBgColor);
-
+const Backdrop = ({ className, image, opacity = 0.6, blend = 0.9 }) => {
   return (
     <div
-      className='backdrop'
+      className={className ? className : 'backdrop'}
       style={{
-        backgroundImage: `linear-gradient(
-          to bottom,
-          rgba(15, 15, 15, 0),
-          ${rgbBgColor}
-          ),
-          linear-gradient(to bottom, rgba(${rgbValues}, ${opacity}), rgba(21, 21, 21, ${blend})),
-          url(${backdropImg}`,
+        backgroundImage: `linear-gradient(to bottom, 
+          ${GLOBAL_STYLES.TRANSPARENT_COLOR}, 
+          ${GLOBAL_STYLES.BACKGROUND_COLOR}),
+         linear-gradient(to bottom, 
+          rgba(18, 18, 18, ${opacity}), 
+          rgba(21, 21, 21, ${blend})),
+         url(${image}`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'top',

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Image from '../../../components/UI/image/Image';
 import Svg from '../../../components/UI/svg/Svg';
 
 import './Suggestions.scss';
@@ -16,7 +17,7 @@ const Suggestions = ({
     const isClassical = category === 'classical';
 
     return (
-      <img
+      <Image
         src={isClassical ? composerImg : poster}
         alt={isClassical ? composer : `${title} poster`}
       />

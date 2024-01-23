@@ -15,15 +15,15 @@ const NotFound = ({ code }) => {
     <div className={`${code}`}>
       <div className='error__images stack'>
         <BackgroundImage
+          url={Wall}
+          backgroundSize='contain'
+          backgroundPosition='center'
           gradient={{
             type: 'radial',
             shape: 'circle',
             transparentPosition: '48%',
             bgPosition: '70%',
           }}
-          url={Wall}
-          backgroundSize='contain'
-          backgroundPosition='center'
         />
       </div>
 

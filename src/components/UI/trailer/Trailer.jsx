@@ -1,6 +1,8 @@
 import React from 'react';
 import * as AspectRatio from '@radix-ui/react-aspect-ratio';
 
+import './Trailer.scss';
+
 const Trailer = ({ aspectRatio, title, trailerKey }) => {
   return (
     <div className='trailer'>

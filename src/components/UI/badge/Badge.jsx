@@ -1,15 +1,13 @@
 import React from 'react';
 
+import Image from '../image/Image';
+
 import './Badge.scss';
 
-const Badge = ({ width, height, image, title, children }) => {
+const Badge = ({ className, image, title, children, ...props }) => {
   return (
-    <div className='badge'>
-      <img
-        src={image}
-        alt={`${title} badge`}
-        style={{ width: `${width}px`, height: `${height}px` }}
-      />
+    <div className={className ? `${className} badge` : 'badge'}>
+      <Image src={image} alt={`${title} badge`} {...props} />
       {children}
     </div>
   );

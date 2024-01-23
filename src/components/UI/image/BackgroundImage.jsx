@@ -1,53 +1,58 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+
+import { GLOBAL_STYLES } from '../../../utils/constants';
 
 const BackgroundImage = ({
   className,
   zIndex,
+  inset,
+  translateY,
+  translateX,
   gradient,
   url,
-  backgroundSize,
-  backgroundPosition,
+  backgroundSize = 'cover',
+  backgroundPosition = 'auto 100%',
   backgroundRepeat = 'no-repeat',
+  children,
 }) => {
-  const TRANSPARENT_COLOR = 'rgba(255, 255, 255, 0)';
-  const BACKGROUND_COLOR = 'var(--layout-background-color)';
-
   const setBackgroundImage = () => {
-    if (gradient) {
-      switch (gradient.type) {
-        case 'linear':
-          return `linear-gradient(
+    switch (gradient?.type) {
+      case 'linear':
+        return `linear-gradient(
             ${gradient.direction}, 
-            ${TRANSPARENT_COLOR} ${gradient.transparentPosition}, 
-            ${BACKGROUND_COLOR} ${gradient.bgPosition}), 
+            ${GLOBAL_STYLES.TRANSPARENT_COLOR} ${gradient.transparentPosition}, 
+            ${GLOBAL_STYLES.BACKGROUND_COLOR} ${gradient.bgPosition}), 
             url(${url})`;
 
-        case 'radial':
-          return `radial-gradient(
+      case 'radial':
+        return `radial-gradient(
             ${gradient.shape}, 
-            ${TRANSPARENT_COLOR} ${gradient.transparentPosition}, 
-            ${BACKGROUND_COLOR} ${gradient.bgPosition}), 
+            ${GLOBAL_STYLES.TRANSPARENT_COLOR} ${gradient.transparentPosition}, 
+            ${GLOBAL_STYLES.BACKGROUND_COLOR} ${gradient.bgPosition}), 
             url(${url})`;
 
-        default:
-          return null;
-      }
+      default:
+        return `url(${url})`;
     }
-
-    if (!gradient) return `url(${url})`;
   };
 
   return (
-    <div
-      className={className && className}
+    <motion.div
+      className={className ? className : 'bg-image'}
       style={{
         zIndex,
-        backgroundImage: setBackgroundImage(),
+        inset,
+        y: translateY,
+        x: translateX,
+        backgroundImage: url && setBackgroundImage(),
         backgroundSize,
         backgroundPosition,
         backgroundRepeat,
       }}
-    />
+    >
+      {children}
+    </motion.div>
   );
 };
 

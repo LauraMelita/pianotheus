@@ -9,6 +9,7 @@ import Svg from '../../UI/svg/Svg';
 import Separator from '../../UI/separator/Separator';
 import NavigationLinks from '../navbar/NavigationLinks';
 import Contact from '../../../features/contact/Contact';
+import Image from '../../UI/image/Image';
 
 import { currentYear } from '../../../utils/helpers';
 
@@ -148,7 +149,7 @@ const Footer = () => {
         <Separator type='radial' orientation='horizontal' />
         <div className='footer__bottom'>
           <div>
-            <img src={Logo} alt='logo' width={80} />
+            <Image src={Logo} alt='Pianotheus logo' width={80} />
             <Copyright />
           </div>
           <Social />

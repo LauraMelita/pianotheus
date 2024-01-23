@@ -1,34 +1,17 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
-const ParallaxLayer = ({
-  layer,
-  stackOrder,
-  src,
-  backgroundSize,
-  backgroundPosition,
-  backgroundRepeat = 'no-repeat',
-  inset,
-  translateY,
-  translateX,
-  children,
-}) => {
+import BackgroundImage from '../../../../components/UI/image/BackgroundImage';
+
+const ParallaxLayer = ({ layer, stackOrder, src, children, ...props }) => {
   return (
-    <motion.div
+    <BackgroundImage
       className={`parallax__${layer}`}
-      style={{
-        zIndex: stackOrder,
-        y: translateY,
-        x: translateX,
-        backgroundImage: src ? `url(${src})` : null,
-        backgroundSize,
-        backgroundPosition,
-        backgroundRepeat,
-        inset,
-      }}
+      zIndex={stackOrder}
+      url={src}
+      {...props}
     >
       {children}
-    </motion.div>
+    </BackgroundImage>
   );
 };
 

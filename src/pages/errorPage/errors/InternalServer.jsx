@@ -16,17 +16,21 @@ const InternalServer = ({ code, message }) => {
     <div className={`${code}`}>
       <div className='error__images stack'>
         <BackgroundImage
+          url={Batman}
+          zIndex={1}
           gradient={{
             type: 'linear',
             direction: '180deg',
             transparentPosition: '0%',
             bgPosition: '83%',
           }}
-          url={Batman}
-          zIndex={1}
-          backgroundSize='auto, cover'
         />
-        <BackgroundImage url={Bats} zIndex={0} backgroundPosition='50%' />
+        <BackgroundImage
+          url={Bats}
+          zIndex={0}
+          backgroundSize='auto'
+          backgroundPosition='50%'
+        />
       </div>
       <div className='error__container'>
         <div className='error__title'>

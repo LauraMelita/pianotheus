@@ -16,21 +16,19 @@ const Forbidden = ({ code }) => {
     <div className={`${code}`}>
       <div className='error__images stack'>
         <BackgroundImage
+          url={Gandalf}
+          zIndex={1}
           gradient={{
             type: 'linear',
             direction: '180deg',
             transparentPosition: '45%',
             bgPosition: '100%',
           }}
-          url={Gandalf}
-          zIndex={1}
-          backgroundSize='auto, cover'
         />
 
         <BackgroundImage
           url={Embers}
           zIndex={0}
-          backgroundPosition='center'
           gradient={{
             type: 'radial',
             shape: 'circle',

@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
+import Image from '../../image/Image';
+
 import { convertToPath } from '../../../../utils/formatting';
 
 import './PopOutCard.scss';
@@ -24,13 +26,13 @@ const PopOutCard = ({
         }}
       >
         <div>
-          <img
+          <Image
             className='popout-card__background'
             src={backgroundImage}
             alt={`${title.toLocaleLowerCase()} card bg`}
           />
         </div>
-        <img
+        <Image
           className='popout-card__character'
           src={popOutImage}
           alt={`${title.toLocaleLowerCase()} card character`}

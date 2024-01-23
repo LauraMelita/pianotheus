@@ -3,7 +3,6 @@ import React from 'react';
 import Backdrop from '../../../components/UI/image/Backdrop';
 import Button from '../../../components/UI/button/Button';
 import Badge from '../../../components/UI/badge/Badge';
-import Poster from '../../../components/UI/image/Poster';
 import Tags from '../../../components/UI/tags/Tags';
 import PlatformIcons from './platforms/PlatformIcons';
 import Trailer from '../../../components/UI/trailer/Trailer';
@@ -12,6 +11,8 @@ import CircularProgressBar from '../../../components/UI/progressBar/CircularProg
 
 import { useGetRawgData } from '../../../services/reactQuery/queries';
 import { formatDate } from '../../../utils/formatting';
+
+import Image from '../../../components/UI/image/Image';
 
 import './VideoGame.scss';
 
@@ -38,12 +39,20 @@ const VideoGame = ({ filteredData }) => {
     trailer,
   } = { ...filteredData, ...rawgData };
 
+  const Poster = ({ img, title }) => {
+    return (
+      <div className='poster'>
+        <Image src={img} alt={`${title} poster`} />
+      </div>
+    );
+  };
+
   return (
     <section className='full-width'>
-      <Backdrop backdropImg={backdrop} />
+      <Backdrop image={backdrop} />
 
       <div className='container'>
-        <Badge width={150} height={150} image={composerImg} title={composer}>
+        <Badge image={composerImg} title={composer} width={150} height={150}>
           <span>{composer}</span>
         </Badge>
 

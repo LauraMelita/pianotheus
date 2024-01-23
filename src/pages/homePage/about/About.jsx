@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+import Image from '../../../components/UI/image/Image';
 import Separator from '../../../components/UI/separator/Separator';
 
 import AboutImg from '../../../assets/images/about.png';
@@ -16,7 +17,7 @@ const About = () => {
         transition={{ duration: 2 }}
         whileInView={{ opacity: 1, scale: 1.5 }}
       >
-        <img src={AboutImg} alt='about' />
+        <Image src={AboutImg} alt='about' />
         <Separator type='radial' orientation='horizontal' />
       </motion.div>
     </div>

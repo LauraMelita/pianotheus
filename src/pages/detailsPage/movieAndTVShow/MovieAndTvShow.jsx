@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useGetImdbData } from '../../../services/reactQuery/queries';
 
+import Image from '../../../components/UI/image/Image';
 import Backdrop from '../../../components/UI/image/Backdrop';
 import Trailer from '../../../components/UI/trailer/Trailer';
 import Svg from '../../../components/UI/svg/Svg';
@@ -14,7 +15,7 @@ const MovieAndTvShow = ({ data }) => {
 
   return (
     <section className='full-width'>
-      <Backdrop backdropImg={data.backdrop} />
+      <Backdrop image={data.backdrop} />
       <div className='container'>
         <div className='movie-header'>
           <div className='left'>
@@ -46,7 +47,7 @@ const MovieAndTvShow = ({ data }) => {
         </div>
         <div className='movie-body'>
           <div className='poster'>
-            <img src={data.poster} alt={data.title} />
+            <Image src={data.poster} alt={data.title} />
           </div>
           <Trailer
             aspectRatio={16 / 9}
