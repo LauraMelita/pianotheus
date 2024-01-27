@@ -21,8 +21,16 @@
   }
 }
 
+.header {
+  font-family: var(--ff-tertiary);
+  font-weight: var(--fw-bold);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
 .gradient-text {
   display: inline;
+  align-self: start;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   background-image: linear-gradient(

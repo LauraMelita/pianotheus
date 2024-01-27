@@ -6,10 +6,10 @@
     gap: calc(var(--global-gap) / 2);
     padding: calc(var(--global-padding) / 2);
     cursor: pointer;
-    border-bottom: 1px solid var(--gray-shade-100);
+    border-bottom: 1px solid var(--dropdown-item-border-color);
 
     &.active {
-      background: var(--highlight-100);
+      background: var(--dropdown-item-background-color);
     }
 
     &:last-child {

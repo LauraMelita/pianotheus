@@ -1,18 +1,18 @@
 input,
 textarea,
 select {
-  background: var(--highlight-100);
-  border: var(--global-border-width) solid var(--highlight-200);
+  background: var(--input-background-color);
+  border: var(--global-border-width) solid var(--input-border-color);
   border-radius: 4px;
-  caret-color: var(--accent-color-100);
+  caret-color: var(--input-caret-color);
   padding: 5px 10px;
 
   &:focus {
-    outline: var(--global-border-width) solid var(--accent-color-200);
+    outline: var(--global-border-width) solid var(--input-focus-color);
   }
 
   &::placeholder {
-    color: var(--text-color-secondary);
+    color: var(--input-placeholder-color);
   }
 
   &:disabled {
@@ -24,6 +24,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: var(--global-gap);
+  max-width: 350px;
 
   .form-group {
     display: flex;
@@ -31,18 +32,18 @@ form {
     gap: calc(var(--global-gap) / 4);
 
     label {
-      color: var(--text-color-secondary);
+      color: var(--label-color);
     }
 
     &.password {
       > div {
         display: flex;
-        background-color: var(--highlight-200);
+        background-color: var(--input-background-color);
         border-radius: 4px;
-        border: var(--global-border-width) solid var(--highlight-200);
+        border: var(--global-border-width) solid var(--input-border-color);
 
         &:focus-within {
-          border: var(--global-border-width) solid var(--accent-color-200);
+          border: var(--global-border-width) solid var(--input-focus-color);
         }
 
         input {
@@ -69,10 +70,8 @@ form {
         display: flex;
         flex-direction: column;
         gap: calc(var(--global-gap) / 4);
+        color: var(--label-color);
         cursor: pointer;
-        color: var(--accent-color-100);
-        filter: grayscale(70%) opacity(0.7);
-        transition: 600ms ease;
 
         .file__trigger {
           display: flex;
@@ -83,15 +82,11 @@ form {
             height: 20px;
             width: 20px;
           }
-
-          &:hover {
-            filter: grayscale(0%) opacity(1);
-          }
         }
 
         .file__name {
           font-size: var(--fs-50);
-          color: var(--text-color-secondary);
+          color: var(--text-color-primary);
         }
       }
 

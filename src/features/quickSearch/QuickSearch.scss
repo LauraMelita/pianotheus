@@ -11,12 +11,12 @@
     flex-direction: row;
     align-items: center;
     gap: calc(var(--global-gap) / 4);
-    background-color: var(--highlight-200);
+    background-color: var(--input-border-color);
     border-radius: 20px;
-    border: var(--global-border-width) solid var(--highlight-200);
+    border: var(--global-border-width) solid var(--input-border-color);
 
     &:focus-within {
-      border: var(--global-border-width) solid var(--accent-color-200);
+      border: var(--global-border-width) solid var(--input-focus-color);
     }
 
     .icon__search {
@@ -55,7 +55,7 @@
       position: absolute;
       top: 20px;
       width: 100%;
-      background-color: var(--highlight-200);
+      background-color: var(--dropdown-background-color);
       border-radius: calc(var(--global-border-radius) / 2);
       box-shadow: var(--box-shadow);
 

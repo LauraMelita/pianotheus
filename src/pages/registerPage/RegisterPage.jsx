@@ -59,7 +59,7 @@ const RegisterPage = () => {
     <main className='sign-up'>
       <div className='container'>
         <div>
-          <h2 className='gradient-text'>Create an account</h2>
+          <h2 className='header gradient-text'>Create an account</h2>
           <p className='redirect'>
             Already have an account? <Link to='/sign-in'>Sign in</Link>
           </p>

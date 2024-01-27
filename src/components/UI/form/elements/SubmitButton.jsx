@@ -5,7 +5,7 @@ import Spinner from '../../spinner/Spinner';
 
 const SubmitButton = ({ btnText, isSubmitting }) => {
   return (
-    <Button disabled={isSubmitting} variant='default' type='submit'>
+    <Button disabled={isSubmitting} variant='primary' type='submit'>
       {isSubmitting ? (
         <>
           {btnText}

@@ -44,7 +44,7 @@ const InternalServer = ({ code, message }) => {
           <Contact btnText='contact form' />.
         </span>
 
-        <Button variant='default'>
+        <Button variant='primary'>
           <Link to='/'>Back to home page</Link>
         </Button>
       </div>

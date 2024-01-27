@@ -1,6 +1,6 @@
 button,
 a {
-  &.default {
+  &.primary {
     padding: 10px 20px;
     background-color: transparent;
     border: 2px solid var(--accent-color-100);
@@ -16,6 +16,8 @@ a {
 
   &:disabled {
     pointer-events: none;
+    background-color: var(--disabled-color);
+    filter: none;
   }
 
   &.icon {
@@ -35,6 +37,25 @@ a {
       width: 24px;
       height: 24px;
       color: var(--accent-color-200);
+    }
+  }
+
+  &.icon-text {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--global-gap) / 4);
+    background: none;
+    border: none;
+    border-radius: 50%;
+    color: var(--text-color-secondary);
+
+    &:hover {
+      color: var(--text-color-primary);
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
     }
   }
 }

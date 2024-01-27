@@ -6,8 +6,6 @@ import { useUserContext } from '../../../context/AuthContext';
 import Button from '../../../components/UI/button/Button';
 import Svg from '../../../components/UI/svg/Svg';
 
-import './LogoutBtn.scss';
-
 const LogoutBtn = () => {
   const { signOutUser } = useUserContext();
 
@@ -21,7 +19,7 @@ const LogoutBtn = () => {
     }
   };
   return (
-    <Button className='logout-btn' onClick={handleLogOut}>
+    <Button className='logout-btn' variant='icon-text' onClick={handleLogOut}>
       <Svg icon='logout' />
       Sign Out
     </Button>

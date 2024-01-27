@@ -1,6 +1,6 @@
 footer {
-  background: var(--gray-900);
   padding: var(--global-padding) 0;
+  background-color: var(--footer-background-color);
 
   .footer__wrapper {
     display: flex;
@@ -22,16 +22,16 @@ footer {
 
         .footer__title {
           padding-bottom: 5px;
-          color: var(--accent-color-200);
+          color: var(--footer-title-color);
         }
 
         ul {
           li {
             a {
-              color: var(--text-color-secondary);
+              color: var(--footer-link-color);
 
               &:hover {
-                color: var(--text-color-primary);
+                color: var(--footer-hover-link-color);
               }
             }
           }
@@ -39,18 +39,20 @@ footer {
 
         &.footer__about {
           .contact__btn {
-            color: var(--text-color-secondary);
+            color: var(--footer-link-color);
 
             &:hover {
-              color: var(--text-color-primary);
+              color: var(--footer-hover-link-color);
             }
           }
         }
 
         &.footer__downloads,
         &.footer__apis {
-          .icon__external-link {
-            margin-left: 5px;
+          a {
+            display: flex;
+            align-items: baseline;
+            gap: calc(var(--global-gap) / 4);
           }
         }
       }
@@ -66,7 +68,7 @@ footer {
         .copyright {
           span {
             font-size: var(--fs-50);
-            color: var(--text-color-secondary);
+            color: var(--footer-copyright-color);
           }
         }
       }
