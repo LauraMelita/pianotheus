@@ -14,13 +14,6 @@
       flex-direction: column;
       gap: var(--global-gap);
 
-      h2 {
-        align-self: start;
-        font-family: var(--ff-tertiary);
-        letter-spacing: 4px;
-        text-transform: uppercase;
-      }
-
       .redirect {
         color: var(--text-color-secondary);
 
