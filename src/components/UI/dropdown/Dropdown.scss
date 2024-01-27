@@ -21,6 +21,12 @@
   &[data-side='left'] {
     animation-name: slideRightAndFade;
   }
+
+  .separator {
+    &:last-child {
+      display: none;
+    }
+  }
 }
 
 .dropdown-menu__item {

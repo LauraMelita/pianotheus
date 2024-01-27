@@ -1,6 +1,8 @@
 import React, { cloneElement, forwardRef } from 'react';
 import * as Dropdown from '@radix-ui/react-dropdown-menu';
 
+import Separator from '../separator/Separator';
+
 import './Dropdown.scss';
 
 const DropdownMenu = forwardRef(
@@ -25,7 +27,7 @@ const DropdownMenu = forwardRef(
         modal={isModal}
       >
         <Dropdown.Trigger asChild>
-          {<div>{cloneElement(triggerComponent)}</div>}
+          {cloneElement(triggerComponent)}
         </Dropdown.Trigger>
         <Dropdown.Portal container={document.getElementById('portals')}>
           <Dropdown.Content
@@ -46,16 +48,21 @@ const DropdownMenu = forwardRef(
 const DropdownItem = forwardRef(
   ({ className, disabled, onSelect, children }, ref) => {
     return (
-      <Dropdown.Item
-        ref={ref}
-        className={
-          className ? `${className} dropdown-menu__item` : 'dropdown-menu__item'
-        }
-        disabled={disabled}
-        onSelect={onSelect}
-      >
-        {children}
-      </Dropdown.Item>
+      <>
+        <Dropdown.Item
+          ref={ref}
+          className={
+            className
+              ? `${className} dropdown-menu__item`
+              : 'dropdown-menu__item'
+          }
+          disabled={disabled}
+          onSelect={onSelect}
+        >
+          {children}
+        </Dropdown.Item>
+        <Separator type='border' orientation='horizontal' />
+      </>
     );
   }
 );
