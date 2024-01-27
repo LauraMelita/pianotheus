@@ -1,10 +1,10 @@
 .tooltip__content {
   padding: 10px 15px;
   border-radius: 4px;
-  background-color: var(--highlight-200);
+  background-color: var(--tooltip-background-color);
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
     hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
-  color: var(--text-color-secondary);
+  color: var(--tooltip-color);
   font-size: var(--fs-50);
   user-select: none;
   animation-duration: 400ms;
@@ -73,5 +73,5 @@
 }
 
 .tooltip__arrow {
-  fill: var(--highlight-200);
+  fill: var(--tooltip-background-color);
 }

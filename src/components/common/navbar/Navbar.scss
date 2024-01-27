@@ -1,6 +1,7 @@
 .navbar {
   padding: var(--global-padding) 0;
-  border-bottom: 1px solid var(--gray-shade-100);
+  background: var(--navbar-background-color);
+  border-bottom: 1px solid var(--navbar-border-color);
 
   .navbar__wrapper {
     display: flex;
@@ -30,14 +31,14 @@
 
       li {
         a {
-          color: var(--text-color-secondary);
+          color: var(--navbar-link-color);
 
           &:hover {
-            color: var(--text-color-primary);
+            color: var(--navbar-hover-link-color);
           }
 
           &.active {
-            color: var(--accent-color-200);
+            color: var(--navbar-active-link-color);
           }
         }
       }

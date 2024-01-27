@@ -11,7 +11,7 @@ const CircularProgressBar = ({
   width = 80,
   height = 80,
   progressFillColor = 'var(--accent-color-100)',
-  progressBgColor = 'var(--gray-200)',
+  progressBgColor = 'var(--gray-7)',
 }) => {
   const [filled, setFilled] = useState(0);
 

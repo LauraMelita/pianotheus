@@ -36,6 +36,10 @@
     --text-color-primary: var(--white-0);
     --text-color-secondary: var(--gray-1);
 
+    --border-color: var(--black-1);
+    --separator-color: var(--gray-shade-70);
+    --fallback-background-color: var(--black-7);
+
     --label-color: var(--text-color-secondary);
     --input-background-color: var(--gray-shade-70);
     --input-border-color: var(--black-2);
@@ -45,6 +49,7 @@
 
     --dropdown-background-color: var(--black-2);
     --dropdown-item-background-color: var(--gray-shade-70);
+    --dropdown-item-border-color: var(--gray-shade-10);
 
     --tooltip-background-color: var(--black-2);
     --tooltip-color: var(--text-color-secondary);
@@ -81,6 +86,10 @@
     --text-color-primary: var(--black-6);
     --text-color-secondary: var(--gray-9);
 
+    --border-color: var(--gray-0);
+    --separator-color: var(--gray-0);
+    --fallback-background-color: var(--gray-0);
+
     --label-color: var(--text-color-primary);
     --input-background-color: var(--white-0);
     --input-border-color: var(--white-2);
@@ -90,6 +99,7 @@
 
     --dropdown-background-color: var(--white-0);
     --dropdown-item-background-color: var(--gray-0);
+    --dropdown-item-border-color: var(--gray-0);
 
     --tooltip-background-color: var(--white-0);
     --tooltip-color: var(--text-color-primary);
