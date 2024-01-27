@@ -6,7 +6,7 @@ import { useUserContext } from '../../../context/AuthContext';
 import Button from '../../../components/UI/button/Button';
 import Svg from '../../../components/UI/svg/Svg';
 
-const LogoutBtn = () => {
+const LogoutButton = () => {
   const { signOutUser } = useUserContext();
 
   const handleLogOut = async () => {
@@ -26,4 +26,4 @@ const LogoutBtn = () => {
   );
 };
 
-export default LogoutBtn;
+export default LogoutButton;

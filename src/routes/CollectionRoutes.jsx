@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import { CollectionProvider } from '../context/CollectionContext';
 import { siteConfig } from '../utils/config';
 
-import ProtectedRoute from '../features/authentication/ProtectedRoute';
+import ProtectedRoute from '../features/authentication/routing/ProtectedRoute';
 import CollectionPage from '../pages/collectionPage/CollectionPage';
 import DetailsPage from '../pages/detailsPage/DetailsPage';
 
