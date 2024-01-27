@@ -1,15 +1,21 @@
 .about {
-  .gradient-text {
-    font-family: var(--ff-tertiary);
-    font-weight: var(--fw-bold);
-    letter-spacing: 4px;
-    text-transform: uppercase;
-  }
+  display: grid;
+  grid-template-columns: [left] 1fr [right] 1fr;
+  min-height: 100%;
+  gap: var(--global-gap);
 
-  div {
-    width: 200px;
-    img {
-      width: 200px;
+  .about__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--global-gap);
+
+    div {
+      color: var(--text-color-secondary);
+    }
+
+    button {
+      align-self: start;
     }
   }
 }

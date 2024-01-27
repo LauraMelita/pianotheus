@@ -16,11 +16,11 @@ const HomePage = () => {
       <section className='full-width'>
         <Parallax />
       </section>
-      <section>
-        <Categories />
-      </section>
       <section id='about'>
         <About />
+      </section>
+      <section>
+        <Categories />
       </section>
       <section>
         <Quote
