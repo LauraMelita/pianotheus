@@ -10,7 +10,7 @@ import './Categories.scss';
 const Categories = () => {
   return (
     <div className='categories'>
-      <h4>Discover by Category</h4>
+      <h2 className='header gradient-text'>Discover by Category</h2>
       <div className='categories__container'>
         {siteConfig.home.categories.map(
           ({ category, backgroundImage, popOutImage }, index) => (
