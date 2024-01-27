@@ -1,6 +1,5 @@
-.dropdown-menu__content {
-  padding: calc(var(--global-padding) / 2);
-  background-color: var(--highlight-200);
+.dropdown-menu {
+  background-color: var(--dropdown-background-color);
   border-radius: calc(var(--global-border-radius) / 2);
   box-shadow: var(--box-shadow);
   animation-duration: 400ms;
@@ -25,7 +24,15 @@
 }
 
 .dropdown-menu__item {
-  padding: calc(var(--global-padding) / 4);
+  padding: calc(var(--global-padding) / 2);
+
+  &:not([aria-disabled='true']) {
+    &:active,
+    &:hover,
+    &:focus-visible {
+      background: var(--dropdown-item-background-color);
+    }
+  }
 
   &:focus-visible {
     outline: none;
