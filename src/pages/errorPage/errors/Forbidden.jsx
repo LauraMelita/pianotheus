@@ -44,7 +44,7 @@ const Forbidden = ({ code }) => {
           source='Lord of the Rings: The Fellowship of the Ring (2001)'
         />
         <span>Sorry, you do not have access to this page or resource.</span>
-        <Button variant='default'>
+        <Button variant='primary'>
           <Link to='/sign-in'>Log in</Link>
         </Button>
       </div>

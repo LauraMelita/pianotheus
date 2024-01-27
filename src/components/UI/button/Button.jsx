@@ -4,23 +4,17 @@ import './Button.scss';
 
 const Button = forwardRef(
   ({ className, href, variant, children, ...props }, ref) => {
+    const combinedClassName = `${className || ''} ${variant || ''}`.trim();
+
     if (href)
       return (
-        <a
-          className={className ? `${className} ${variant}` : variant}
-          href={href}
-          {...props}
-        >
+        <a className={combinedClassName} href={href} {...props}>
           {children}
         </a>
       );
 
     return (
-      <button
-        className={className ? `${className} ${variant}` : variant}
-        ref={ref}
-        {...props}
-      >
+      <button className={combinedClassName} ref={ref} {...props}>
         {children}
       </button>
     );

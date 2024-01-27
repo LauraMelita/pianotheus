@@ -37,7 +37,7 @@ const NotFound = ({ code }) => {
           It looks like the page doesn't exist. Please check the URL and try
           again.
         </span>
-        <Button variant='default'>
+        <Button variant='primary'>
           <Link to='/'>Back to home page</Link>
         </Button>
       </div>

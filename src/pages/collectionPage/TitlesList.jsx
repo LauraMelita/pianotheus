@@ -101,7 +101,7 @@ const TitlesList = ({ data }) => {
       </FadeIn>
 
       {!allItemsAreShown && (
-        <Button variant='default' onClick={loadMore}>
+        <Button variant='primary' onClick={loadMore}>
           Load More
         </Button>
       )}
