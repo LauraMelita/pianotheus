@@ -53,3 +53,12 @@ export const fileExtensionsList = (fileTypes) => {
 
   return formatList(fileExtensions);
 };
+
+export const getRootStyleValue = (variable) => {
+  const root = document.documentElement;
+  const style = getComputedStyle(root);
+
+  return style.getPropertyValue(variable);
+};
+
+export const parsePxToNumber = (value) => +value.replace('px', '');
