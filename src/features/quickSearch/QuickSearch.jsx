@@ -1,5 +1,7 @@
 import React from 'react';
+import { useFocusTrap } from '@mantine/hooks';
 
+import { useScreenSize } from '../../hooks/useScreenSize';
 import { useQuickSearch } from '../../hooks/useQuickSearch';
 
 import SearchBar from './searchBar/SearchBar';
@@ -8,7 +10,9 @@ import Suggestions from './suggestions/Suggestions';
 
 import './QuickSearch.scss';
 
-const QuickSearch = ({ searchKeys }) => {
+const QuickSearch = ({ className, searchKeys = ['title', 'composer'] }) => {
+  const { isMobile } = useScreenSize();
+  const focusTrapRef = useFocusTrap();
   const {
     showDropdown,
     searchInput,
@@ -30,7 +34,10 @@ const QuickSearch = ({ searchKeys }) => {
   );
 
   return (
-    <div className='quick-search'>
+    <div
+      ref={isMobile ? focusTrapRef : null}
+      className={className ? `quick-search ${className}` : `quick-search`}
+    >
       <SearchBar
         dataIsLoading={isLoading}
         value={searchInput}
