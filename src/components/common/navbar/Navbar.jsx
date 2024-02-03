@@ -2,24 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useScreenSize } from '../../../hooks/useScreenSize';
-import { useSidebar } from '../../../hooks/useSidebar';
+import { useUserContext } from '../../../context/AuthContext';
 import { useCreateCSSRootVariable } from '../../../hooks/useCreateCSSRootVariable';
 
 import Image from '../../UI/image/Image';
-import Sidebar from './sidebar/Sidebar';
-import NavigationLinks from './NavigationLinks';
-import QuickSearch from '../../../features/quickSearch/QuickSearch';
-import ToggleThemeMode from '../../../features/themeMode/ToggleThemeMode';
-import UserAuth from '../../../features/authentication/userAuth/UserAuth';
-import LogoutBtn from '../../../features/authentication/LogoutBtn/LogoutBtn';
 import Separator from '../../UI/separator/Separator';
+import NavigationMenu from './menu/navigation/NavigationMenu';
+import NavigationLinks from '../../../features/navigation/NavigationLinks';
+import SearchMenu from './menu/search/SearchMenu';
+import QuickSearch from '../../../features/quickSearch/QuickSearch';
+import UserMenu from '../../../features/authentication/user/menu/UserMenu';
+import LoginButton from '../../../features/authentication/buttons/LoginButton';
 
 import PianotheusLogo from '../../../assets/images/logo.svg';
 import './Navbar.scss';
 
 const Navbar = () => {
   const { isMobile, isDesktop } = useScreenSize();
-  const { closeSidebar } = useSidebar();
+  const { user } = useUserContext();
   const elementRef = useCreateCSSRootVariable(
     'navbar-height',
     'offsetHeight',
@@ -32,38 +32,20 @@ const Navbar = () => {
     </Link>
   );
 
-  const renderSidebar = () => {
-    if (!isDesktop)
-      return (
-        <Sidebar>
-          {isMobile && <QuickSearch searchKeys={['title', 'composer']} />}
-          <NavigationLinks
-            className='sidebar__links'
-            shouldRenderIcons={true}
-            onClick={closeSidebar}
-          />
-          <Separator type='border' orientation='horizontal' />
-          <ToggleThemeMode />
-          <LogoutBtn />
-        </Sidebar>
-      );
-  };
-
-  const renderNavigationLinks = () => {
+  const NavbarLinks = () => {
     if (isDesktop)
       return (
         <NavigationLinks className='navbar__links' shouldRenderIcons={false} />
       );
   };
 
-  const renderNavbarActions = () => {
+  const NavbarActions = () => {
     return (
-      <>
-        {!isMobile && <QuickSearch searchKeys={['title', 'composer']} />}
-        {isDesktop && <ToggleThemeMode />}
+      <div className='navbar__actions'>
+        {isMobile ? <SearchMenu /> : <QuickSearch />}
         <Separator type='border' orientation='vertical' />
-        <UserAuth />
-      </>
+        {user ? <UserMenu /> : <LoginButton />}
+      </div>
     );
   };
 
@@ -71,11 +53,11 @@ const Navbar = () => {
     <nav className='navbar' ref={elementRef}>
       <div className='navbar__wrapper'>
         <div className='navbar__logo'>
-          {renderSidebar()}
+          {!isDesktop && <NavigationMenu />}
           <Logo />
         </div>
-        {renderNavigationLinks()}
-        <div className='navbar__actions'>{renderNavbarActions()}</div>
+        <NavbarLinks />
+        <NavbarActions />
       </div>
     </nav>
   );
