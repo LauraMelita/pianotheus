@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import Button from '../../../../UI/button/Button';
+import Button from '../../button/Button';
 
-const SidebarMenuButton = ({ onClick }) => {
+const AnimatedMenuButton = ({ onClick }) => {
   return (
-    <Button className='sidebar__toggle-btn' variant='icon' onClick={onClick}>
+    <Button className='navigation-menu__btn' variant='icon' onClick={onClick}>
       <svg viewBox='0 0 20 20'>
         <motion.path
           strokeWidth='2'
@@ -40,4 +40,4 @@ const SidebarMenuButton = ({ onClick }) => {
   );
 };
 
-export default SidebarMenuButton;
+export default AnimatedMenuButton;
