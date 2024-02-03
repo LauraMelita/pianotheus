@@ -5,7 +5,6 @@
 
   .navbar__wrapper {
     display: flex;
-    justify-content: center;
     align-items: center;
 
     .navbar__logo {
@@ -49,6 +48,26 @@
       display: flex;
       flex-direction: row;
       gap: var(--global-gap);
+
+      .quick-search {
+        min-width: 350px;
+      }
+
+      .user-button,
+      .login-btn {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        cursor: pointer;
+
+        > * {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: var(--auth-btn-height);
+          min-width: var(--auth-btn-width);
+        }
+      }
     }
   }
 }

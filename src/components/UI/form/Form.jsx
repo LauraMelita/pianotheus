@@ -1,10 +1,18 @@
 import React, { forwardRef } from 'react';
+import { useFocusTrap, useMergedRef } from '@mantine/hooks';
 
 import './Form.scss';
 
 const Form = forwardRef(({ className, onSubmit, children }, ref) => {
+  const focusTrapRef = useFocusTrap();
+  const mergedRef = useMergedRef(ref, focusTrapRef);
+
   return (
-    <form className={className && className} ref={ref} onSubmit={onSubmit}>
+    <form
+      className={className && className}
+      ref={mergedRef}
+      onSubmit={onSubmit}
+    >
       {children}
     </form>
   );

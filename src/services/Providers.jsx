@@ -1,12 +1,15 @@
 import React from 'react';
 
-import { ThemeProvider } from '../context/ThemeContext';
 import { AuthProvider } from '../context/AuthContext';
+import { ThemeProvider } from '../context/ThemeContext';
+import { MobileMenuProvider } from '../context/MobileMenuContext';
 
 const Providers = ({ children }) => {
   return (
     <AuthProvider>
-      <ThemeProvider>{children}</ThemeProvider>
+      <ThemeProvider>
+        <MobileMenuProvider>{children}</MobileMenuProvider>
+      </ThemeProvider>
     </AuthProvider>
   );
 };

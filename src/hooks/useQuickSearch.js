@@ -2,7 +2,8 @@ import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useFetchAllCollections } from './useFetchAllCollections';
-import { useSidebar } from './useSidebar';
+import { useMobileMenuContext } from '../context/MobileMenuContext';
+
 import { siteConfig } from '../utils/config';
 import { convertToPath } from '../utils/formatting';
 
@@ -14,7 +15,11 @@ export const useQuickSearch = (searchKeys) => {
   const suggestionRef = useRef(null);
   const navigate = useNavigate();
   const { data, isLoading } = useFetchAllCollections(siteConfig.collections);
-  const { closeSidebar } = useSidebar();
+  const {
+    menus: {
+      drawer: { close: closeDrawer },
+    },
+  } = useMobileMenuContext();
 
   const searchInputEmpty = searchInput.length === 0;
   const selectedSuggestion = suggestions[activeSuggestion];
@@ -106,7 +111,7 @@ export const useQuickSearch = (searchKeys) => {
     const path = `/${convertToPath(category)}/${convertToPath(
       category === 'classical' ? composer : title
     )}`;
-    closeSidebar();
+    closeDrawer();
     clearSearch();
     navigate(path);
   };

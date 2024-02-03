@@ -1,0 +1,24 @@
+.user__profile {
+  display: flex;
+  flex-direction: row;
+  gap: calc(var(--global-gap) / 2);
+
+  .user__badge {
+    min-height: 45px;
+    min-width: 45px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    .user__name {
+      color: var(--accent-color-100);
+    }
+
+    .user__email {
+      color: var(--text-color-secondary);
+      font-size: var(--fs-50);
+    }
+  }
+}

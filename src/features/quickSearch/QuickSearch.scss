@@ -4,7 +4,6 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  min-width: 300px;
 
   .quick-search__search-bar {
     display: flex;
@@ -73,48 +72,6 @@
         padding: calc(var(--global-padding) / 2);
         font-size: var(--fs-50);
         color: var(--text-color-secondary);
-      }
-    }
-  }
-
-  @include mobile {
-    z-index: 1;
-    background-color: black;
-
-    .quick-search__search-bar {
-      width: var(--content-max-width);
-      margin-inline: auto;
-      padding: 20px 0;
-      background-color: black;
-      border: none;
-
-      &:focus-within {
-        border: none;
-      }
-
-      .icon__search {
-        margin: 0;
-      }
-
-      input {
-        border: none;
-      }
-
-      button {
-        justify-content: end;
-      }
-    }
-
-    .quick-search__dropdown {
-      .dropdown-menu {
-        top: 0;
-        border-radius: unset;
-
-        .suggestions {
-          max-height: calc(
-            100vh - (var(--navbar-height) + var(--searchbar-height))
-          );
-        }
       }
     }
   }
