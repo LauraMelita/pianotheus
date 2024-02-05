@@ -26,6 +26,7 @@ const SearchMenu = () => {
   return (
     <MobileMenu
       className='search-menu'
+      isPortal={true}
       showMenu={open}
       closeMenu={close}
       componentTrigger={<MenuButton onClick={toggle} />}

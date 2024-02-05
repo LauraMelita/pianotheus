@@ -17,6 +17,7 @@ const NavigationMenu = () => {
   return (
     <MobileMenu
       className='navigation-menu'
+      closeOnOutsideClick={true}
       showMenu={open}
       closeMenu={close}
       componentTrigger={<AnimatedMenuButton onClick={toggle} />}
