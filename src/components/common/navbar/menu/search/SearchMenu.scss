@@ -60,7 +60,7 @@
               max-height: calc(100vh - var(--searchbar-height));
 
               .suggestion {
-                padding: 15px var(--global-gap);
+                padding: calc(var(--global-padding) / 1.5) var(--global-padding);
               }
             }
           }
