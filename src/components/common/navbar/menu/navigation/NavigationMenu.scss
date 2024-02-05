@@ -6,6 +6,9 @@
   }
 
   .navigation-menu__overlay {
+    position: fixed;
+    inset: var(--navbar-height) 0 0 0;
+
     .navigation-menu__content {
       width: var(--content-max-width);
       margin: 0 auto;

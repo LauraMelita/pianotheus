@@ -8,47 +8,59 @@
       stroke-width: 2.5;
     }
   }
+}
 
-  .search-menu__overlay {
-    .search-menu__content {
-      .quick-search {
-        &.mobile {
-          z-index: 1;
+.search-menu__overlay {
+  inset: 0;
+
+  .search-menu__content {
+    .quick-search {
+      &.mobile {
+        background-color: var(--responsive-quick-search-color);
+
+        .quick-search__search-bar {
+          width: 100%;
+          margin-inline: auto;
+          padding: var(--global-padding);
           background-color: var(--responsive-quick-search-color);
+          border: none;
 
-          .quick-search__search-bar {
-            width: var(--content-max-width);
-            margin-inline: auto;
-            padding: var(--global-padding) 0;
-            background-color: var(--responsive-quick-search-color);
+          &:focus-within {
             border: none;
-
-            &:focus-within {
-              border: none;
-            }
-
-            .icon__search {
-              margin: 0;
-            }
-
-            input {
-              border: none;
-            }
-
-            button {
-              justify-content: end;
-            }
           }
 
-          .quick-search__dropdown {
-            .dropdown-menu {
-              top: 0;
-              border-radius: unset;
+          .icon__search {
+            margin: 0;
+            height: 23px;
+            width: 23px;
+            stroke-width: 1.7;
+            color: var(--text-color-secondary);
+          }
 
-              .suggestions {
-                max-height: calc(
-                  100vh - (var(--navbar-height) + var(--searchbar-height))
-                );
+          input {
+            border: none;
+          }
+
+          button {
+            justify-content: end;
+
+            .icon__close {
+              height: 23px;
+              width: 23px;
+            }
+          }
+        }
+
+        .quick-search__dropdown {
+          .dropdown-menu {
+            top: 0;
+            border-radius: unset;
+
+            .suggestions {
+              max-height: calc(100vh - var(--searchbar-height));
+
+              .suggestion {
+                padding: 15px var(--global-gap);
               }
             }
           }
