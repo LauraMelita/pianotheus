@@ -2,16 +2,15 @@ import React from 'react';
 
 import { useCreateCSSRootVariable } from '../../../hooks/useCreateCSSRootVariable';
 
-import Button from '../../../components/UI/button/Button';
 import Svg from '../../../components/UI/svg/Svg';
-import Spinner from '../../../components/UI/spinner/Spinner';
+import SearchBarIcons from './icons/SearchBarIcons';
 
 const SearchBar = ({
   dataIsLoading,
   value,
   onChange,
   onKeyDown,
-  onCloseBtnClick,
+  clearSearch,
   showDropdown,
   searchInputEmpty,
 }) => {
@@ -20,15 +19,6 @@ const SearchBar = ({
     'offsetHeight',
     'px'
   );
-
-  const renderSpinner = () => {
-    if (!searchInputEmpty && dataIsLoading) return <Spinner type='dotted' />;
-  };
-
-  const renderCloseBtn = () => {
-    if (!searchInputEmpty && showDropdown)
-      return <Svg icon='close' onClick={onCloseBtnClick} />;
-  };
 
   return (
     <div className='quick-search__search-bar' ref={elementRef}>
@@ -40,11 +30,12 @@ const SearchBar = ({
         onChange={onChange}
         onKeyDown={onKeyDown}
       />
-
-      <Button variant='icon'>
-        {renderSpinner()}
-        {renderCloseBtn()}
-      </Button>
+      <SearchBarIcons
+        dataIsLoading={dataIsLoading}
+        clearSearch={clearSearch}
+        showDropdown={showDropdown}
+        searchInputEmpty={searchInputEmpty}
+      />
     </div>
   );
 };

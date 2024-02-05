@@ -43,7 +43,7 @@ const QuickSearch = ({ className, searchKeys = ['title', 'composer'] }) => {
         value={searchInput}
         onChange={handleSearchInputChange}
         onKeyDown={handleKeyDownActions}
-        onCloseBtnClick={clearSearch}
+        clearSearch={clearSearch}
         showDropdown={showDropdown}
         searchInputEmpty={searchInputEmpty}
       />
