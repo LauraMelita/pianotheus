@@ -15,11 +15,16 @@ export const getImdbData = async (imdbId) => {
   }
 };
 
-export const getRawgData = async (rawgId) => {
-  const URL = `${API.RAWG}/games/${rawgId}?key=${process.env.REACT_APP_RAWG_API_KEY}`;
+export const getRawgData = async (rawgId, slug) => {
+  const DATA_URL = `${API.RAWG}/games/${rawgId}?key=${process.env.REACT_APP_RAWG_API_KEY}`;
+
+  const SCREENSHOTS_URL = `${API.RAWG}/games/${slug}/screenshots?key=${process.env.REACT_APP_RAWG_API_KEY}`;
 
   try {
-    const { data } = await axios.get(URL);
+    const data = Promise.all([
+      await axios.get(DATA_URL),
+      await axios.get(SCREENSHOTS_URL),
+    ]);
 
     if (!data) throw Error;
 
