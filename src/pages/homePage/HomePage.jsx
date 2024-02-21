@@ -1,5 +1,4 @@
 import React from 'react';
-import { useDocumentTitle } from '@mantine/hooks';
 
 import Parallax from './parallax/Parallax';
 import Categories from './categories/Categories';
@@ -9,8 +8,6 @@ import About from './about/About';
 import './HomePage.scss';
 
 const HomePage = () => {
-  useDocumentTitle('Pianotheus: MIDI Piano Collection');
-
   return (
     <main className='home'>
       <section className='full-width'>

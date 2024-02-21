@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDocumentTitle } from '@mantine/hooks';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -17,7 +16,6 @@ import BackgroundImage from '../../components/UI/image/BackgroundImage';
 
 const SignInPage = () => {
   const navigate = useNavigate();
-  useDocumentTitle('Pianotheus | Sign In');
 
   const { mutateAsync: signInUser } = useSignInUser();
 
