@@ -1,8 +1,6 @@
-import {
-  useQuery,
-  useMutation,
-  // useInfiniteQuery,
-} from '@tanstack/react-query';
+import { useQuery, useMutation, useInfiniteQuery } from '@tanstack/react-query';
+
+import { useCollectionContext } from '../../context/CollectionContext.jsx';
 
 import { QUERY_KEYS } from './queryKeys';
 import {
@@ -11,10 +9,13 @@ import {
   getCollection,
   createDocument,
   getDocument,
+  getInfiniteCollection,
   downloadFile,
 } from '../firebase/api';
 import { getImdbData, getRawgData } from '../axios/api';
 import { sendEmail } from '../emailjs/api.js';
+
+import { formatDate } from '../../utils/formatting.js';
 
 // ============================================================
 // AUTH QUERIES
@@ -44,6 +45,115 @@ export const useGetCollection = (collection, orderBy) => {
   });
 };
 
+export const useGetInfiniteCollection = (resultsPerPage) => {
+  const { collection, routeParam: orderBy } = useCollectionContext();
+
+  return useInfiniteQuery({
+    queryKey: [
+      QUERY_KEYS.GET_INFINITE_COLLECTION,
+      collection,
+      orderBy,
+      resultsPerPage,
+    ],
+    queryFn: ({ pageParam }) =>
+      getInfiniteCollection(
+        {
+          pageParam,
+        },
+        collection,
+        orderBy,
+        resultsPerPage
+      ),
+    getNextPageParam: (lastPage) => {
+      // If there's no data, there are no more pages.
+      if (!lastPage || lastPage.length === 0) return null;
+
+      // If there are more pages, use the title/composer of the last document as the pagination cursor.
+      const cursor =
+        lastPage[lastPage.length - 1].category === 'classical'
+          ? lastPage[lastPage.length - 1].composer
+          : lastPage[lastPage.length - 1].title;
+
+      return cursor;
+    },
+    staleTime: Infinity,
+  });
+};
+
+export const useSearchCollection = (searchTerm) => {
+  const {
+    collection,
+    routeParam: orderBy,
+    searchKeys,
+  } = useCollectionContext();
+
+  return useQuery({
+    queryKey: [QUERY_KEYS.SEARCH_COLLECTION, searchTerm],
+    queryFn: () => getCollection(collection, orderBy),
+    select: (data) =>
+      data.filter((document) =>
+        searchKeys.some(
+          (field) =>
+            document[field].toLowerCase().includes(searchTerm.toLowerCase())
+          // ) ||
+          // document.scores.some((score) =>
+          //   score.score?.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      ),
+    staleTime: Infinity,
+    enabled: false,
+  });
+};
+
+export const useGetCollectionFilters = () => {
+  const {
+    collection,
+    routeParam: orderBy,
+    filterOptions,
+  } = useCollectionContext();
+
+  return useQuery({
+    queryKey: [QUERY_KEYS.GET_COLLECTION_FILTERS, collection],
+    queryFn: () => getCollection(collection, orderBy),
+    select: (data) => {
+      const options = filterOptions.map((filter) => {
+        const uniqueValues = [
+          ...new Set(data.map((document) => document[filter])),
+        ];
+
+        return { option: filter, values: uniqueValues };
+      });
+
+      return options;
+    },
+    staleTime: Infinity,
+  });
+};
+
+export const useFilterCollection = (selectedFilter) => {
+  const {
+    collection,
+    routeParam: orderBy,
+    filterOptions,
+  } = useCollectionContext();
+
+  return useQuery({
+    queryKey: [QUERY_KEYS.FILTER_COLLECTION, collection, selectedFilter],
+    queryFn: () => getCollection(collection, orderBy),
+    select: (data) => {
+      const filteredResults = data.filter((document) =>
+        filterOptions.some((option) =>
+          document[option].includes(selectedFilter)
+        )
+      );
+
+      return filteredResults;
+    },
+    staleTime: Infinity,
+    enabled: false,
+  });
+};
+
 // ============================================================
 // DOCUMENT QUERIES
 // ============================================================
@@ -58,6 +168,57 @@ export const useGetDocument = (collection, query) => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_DOCUMENT, collection, query],
     queryFn: () => getDocument(collection, query),
+    staleTime: Infinity,
+  });
+};
+
+// ============================================================
+// DETAILS QUERIES
+// ============================================================
+
+export const useGetDetails = (collection, currentPath) => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.GET_DETAILS, collection, currentPath],
+    queryFn: () =>
+      getDocument(collection, {
+        queryField: 'path',
+        queryValue: currentPath,
+      }),
+    staleTime: Infinity,
+  });
+};
+
+export const useGetImdbData = (imdbId, data) => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.IMDB_DATA, imdbId],
+    enabled: data?.imdbId != null,
+    queryFn: () => getImdbData(imdbId),
+  });
+};
+
+export const useGetRawgData = (rawgId, path, data) => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.RAWG_DATA, rawgId, path],
+    enabled: data?.rawgId != null,
+    queryFn: () => getRawgData(rawgId, path),
+    select: (data) => {
+      const details = data[0].data;
+      const screenshots = data[1].data.results.map(
+        (screenshot) => screenshot.image
+      );
+
+      return {
+        description: details.description_raw,
+        released: formatDate(details.released),
+        playtime: details.playtime,
+        genres: details.genres,
+        platforms: details.platforms,
+        rating: details.rating,
+        developers: details.developers,
+        website: details.website,
+        screenshots,
+      };
+    },
   });
 };
 
@@ -68,28 +229,8 @@ export const useGetDocument = (collection, query) => {
 export const useDownloadFile = (filePath, fileName, extension) => {
   return useQuery({
     queryKey: [QUERY_KEYS.DOWNLOAD_FILE, filePath, fileName, extension],
-    enabled: false,
     queryFn: () => downloadFile(filePath, fileName, extension),
-  });
-};
-
-// ============================================================
-// AXIOS QUERIES
-// ============================================================
-
-export const useGetImdbData = (data, imdbId) => {
-  return useQuery({
-    queryKey: [QUERY_KEYS.IMDB_DATA, imdbId],
-    enabled: data?.imdbId != null,
-    queryFn: () => getImdbData(imdbId),
-  });
-};
-
-export const useGetRawgData = (data, rawgId) => {
-  return useQuery({
-    queryKey: [QUERY_KEYS.RAWG_DATA, rawgId],
-    enabled: data?.rawgId != null,
-    queryFn: () => getRawgData(rawgId),
+    enabled: false,
   });
 };
 
