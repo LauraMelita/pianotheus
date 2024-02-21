@@ -1,12 +1,15 @@
-import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useDocumentTitle as setDocumentTitle } from '@mantine/hooks';
 
-export const useDocumentTitle = (data, title) => {
-  useEffect(() => {
-    if (!data) return;
-    document.title = `${title}`;
+import { siteConfig } from '../utils/config';
 
-    return () => {
-      document.title = 'Pianotheus';
-    };
-  }, [data, title]);
+export const useDocumentTitle = () => {
+  const { pathname } = useLocation();
+  const titleMap = siteConfig.navigation.titleMap;
+
+  const getTitleFromRoute = (path) => {
+    if (titleMap[path]) return titleMap[path];
+  };
+
+  setDocumentTitle(getTitleFromRoute(pathname));
 };

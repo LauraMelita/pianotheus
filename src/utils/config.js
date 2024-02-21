@@ -25,7 +25,6 @@ export const siteConfig = {
       filterDocumentBy: 'composer',
     },
   ],
-
   navigation: {
     links: [
       { path: '/', navLink: 'Home', icon: 'home' },
@@ -34,8 +33,16 @@ export const siteConfig = {
       { path: '/video-games', navLink: 'Video Games', icon: 'video-games' },
       { path: '/classical', navLink: 'Classical Music', icon: 'classical' },
     ],
+    titleMap: {
+      '/': 'MIDI Piano Collection',
+      '/register': 'Sign Up',
+      '/sign-in': 'Sign In',
+      '/movies': 'Movies',
+      '/tv-shows': 'TV Shows',
+      '/video-games': 'Video Games',
+      '/classical': 'Classical Music',
+    },
   },
-
   home: {
     categories: [
       {
