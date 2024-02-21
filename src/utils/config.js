@@ -2,27 +2,27 @@ export const siteConfig = {
   collections: [
     {
       collection: 'movies',
-      orderCollectionBy: 'title',
-      collectionTitle: 'Movies',
-      filterDocumentBy: 'title',
+      routeParam: 'title',
+      searchKeys: ['title'],
+      filterOptions: ['composer', 'year'],
     },
     {
       collection: 'tv-shows',
-      orderCollectionBy: 'title',
-      collectionTitle: 'TV Shows',
-      filterDocumentBy: 'title',
+      routeParam: 'title',
+      searchKeys: ['title'],
+      filterOptions: ['composer', 'year'],
     },
     {
       collection: 'video-games',
-      orderCollectionBy: 'title',
-      collectionTitle: 'Video Games',
-      filterDocumentBy: 'title',
+      routeParam: 'title',
+      searchKeys: ['title'],
+      filterOptions: ['composer', 'year'],
     },
     {
       collection: 'classical',
-      orderCollectionBy: 'composer',
-      collectionTitle: 'Classical Music',
-      filterDocumentBy: 'composer',
+      routeParam: 'composer',
+      searchKeys: ['composer'],
+      filterOptions: ['epoch'],
     },
   ],
   navigation: {
@@ -66,5 +66,8 @@ export const siteConfig = {
         popOutImage: 'classical_popout.webp',
       },
     ],
+  },
+  infiniteScroll: {
+    resultsPerPage: 10,
   },
 };

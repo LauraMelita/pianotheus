@@ -1,39 +1,30 @@
 import { createContext, useContext } from 'react';
-import { Outlet } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-import { useGetCollection } from '../services/reactQuery/queries';
+import { siteConfig } from '../utils/config';
 
-export const CollectionContext = createContext({
-  collection: '',
-  collectionTitle: '',
-  filterKey: '',
-  data: {},
-  isLoading: null,
-  error: null,
-  isError: null,
-  isSuccess: null,
-});
+export const CollectionContext = createContext({});
 
-export const CollectionProvider = (props) => {
-  const { data, isLoading, isError, error, isSuccess } = useGetCollection(
-    props.collection,
-    props.orderCollectionBy
+export const CollectionProvider = ({ children }) => {
+  const { pathname } = useLocation();
+
+  const [currentCollection] = siteConfig.collections.filter(({ collection }) =>
+    pathname.includes(collection)
   );
+
+  const isClassical = currentCollection.collection === 'classical';
 
   return (
     <CollectionContext.Provider
       value={{
-        collection: props.collection,
-        collectionTitle: props.collectionTitle,
-        filterKey: props.filterDocumentBy,
-        data,
-        isLoading,
-        isError,
-        error,
-        isSuccess,
+        collection: currentCollection.collection,
+        routeParam: currentCollection.routeParam,
+        searchKeys: currentCollection.searchKeys,
+        filterOptions: currentCollection.filterOptions,
+        isClassical,
       }}
     >
-      <Outlet />
+      {children}
     </CollectionContext.Provider>
   );
 };
