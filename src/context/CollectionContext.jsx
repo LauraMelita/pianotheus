@@ -18,6 +18,7 @@ export const CollectionProvider = ({ children }) => {
     <CollectionContext.Provider
       value={{
         collection: currentCollection.collection,
+        title: currentCollection.title,
         routeParam: currentCollection.routeParam,
         searchKeys: currentCollection.searchKeys,
         filterOptions: currentCollection.filterOptions,

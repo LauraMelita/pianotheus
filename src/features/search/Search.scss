@@ -1,0 +1,40 @@
+@import '../../styles/breakpoints.scss';
+
+.search {
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  display: grid;
+  grid-template-columns:
+    [search-button] 40px
+    [input] auto
+    [close-button] 40px;
+  background-color: var(--input-border-color);
+  border: var(--global-border-width) solid var(--input-border-color);
+  border-radius: calc(var(--global-border-radius) * 2);
+  width: 50%;
+
+  @include mobile {
+    width: 100%;
+  }
+
+  &:focus-within {
+    border: var(--global-border-width) solid var(--input-focus-color);
+  }
+
+  .icon__search,
+  .icon__close {
+    margin: auto;
+    height: 19px;
+    width: 19px;
+  }
+
+  input {
+    background-color: transparent;
+    font-size: var(--fs-50);
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

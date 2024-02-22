@@ -2,24 +2,28 @@ export const siteConfig = {
   collections: [
     {
       collection: 'movies',
+      title: 'Movies',
       routeParam: 'title',
       searchKeys: ['title'],
       filterOptions: ['composer', 'year'],
     },
     {
       collection: 'tv-shows',
+      title: 'TV Shows',
       routeParam: 'title',
       searchKeys: ['title'],
       filterOptions: ['composer', 'year'],
     },
     {
       collection: 'video-games',
+      title: 'Video Games',
       routeParam: 'title',
       searchKeys: ['title'],
       filterOptions: ['composer', 'year'],
     },
     {
       collection: 'classical',
+      title: 'Classical Music',
       routeParam: 'composer',
       searchKeys: ['composer'],
       filterOptions: ['epoch'],

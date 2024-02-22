@@ -1,36 +1,24 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import './Filter.scss';
 
-const Filter = ({
-  className,
-  data,
-  defaultValue,
-  filterBy,
-  ariaLabel,
-  setFilter,
-}) => {
-  const filterOptions = [
-    ...new Set(data?.map((element) => element[filterBy])),
-  ].sort();
-
+const Filter = forwardRef(({ options }, ref) => {
   return (
-    <div className={className}>
-      <select
-        onChange={(e) => setFilter(e.target.value)}
-        className='custom-select'
-        aria-label={ariaLabel}
-      >
-        <option value=''>{defaultValue}</option>
-        {filterOptions?.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-      <span className='focus'></span>
+    <div ref={ref} className='filter'>
+      {options.map((option, index) => (
+        <div key={index}>
+          <div>
+            <h3>{option.option}</h3>
+            <ul>
+              {option.values.map((value, index) => (
+                <li key={index}>{value}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
     </div>
   );
-};
+});
 
 export default Filter;

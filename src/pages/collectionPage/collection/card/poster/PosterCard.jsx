@@ -1,10 +1,11 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-import Image from '../../image/Image';
-import Svg from '../../svg/Svg';
-import Separator from '../../separator/Separator';
-import Badge from '../../badge/Badge';
+import Image from '../../../../../components/UI/image/Image';
+import Svg from '../../../../../components/UI/svg/Svg';
+import Separator from '../../../../../components/UI/separator/Separator';
+import Badge from '../../../../../components/UI/badge/Badge';
 
 import './PosterCard.scss';
 
@@ -31,7 +32,7 @@ const PosterCard = ({
   };
 
   return (
-    <div className='poster-card'>
+    <motion.li className='poster-card'>
       <Link to={path}>
         <figure className='poster-card__poster'>
           <Image src={poster} alt={`${title} poster`} />
@@ -55,7 +56,7 @@ const PosterCard = ({
         <span>{title}</span>
         <span>{year}</span>
       </div>
-    </div>
+    </motion.li>
   );
 };
 

@@ -1,0 +1,13 @@
+.composer-card {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--global-gap) / 2);
+
+  span {
+    .circle-card {
+      height: 180px;
+      width: 180px;
+    }
+  }
+}
