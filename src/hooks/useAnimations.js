@@ -1,7 +1,7 @@
-import { useScreenSize } from './useScreenSize';
+import { useResponsive } from './useResponsive';
 
 export const useAnimations = () => {
-  const { isMobile } = useScreenSize();
+  const { isMobile } = useResponsive();
 
   const showHide = {
     open: {

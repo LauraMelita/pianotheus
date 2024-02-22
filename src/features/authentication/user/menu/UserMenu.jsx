@@ -10,7 +10,7 @@ import {
 import UserBadge from '../badge/UserBadge';
 import UserProfile from '../profile/UserProfile';
 import ToggleThemeMode from '../../../themeMode/ToggleThemeMode';
-import LogoutButton from '../../buttons/LogoutButton';
+import LogoutButton from '../../button/LogoutButton';
 
 import {
   getRootStyleValue,

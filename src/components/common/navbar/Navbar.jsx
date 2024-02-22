@@ -1,24 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { useScreenSize } from '../../../hooks/useScreenSize';
+import { useResponsive } from '../../../hooks/useResponsive';
 import { useUserContext } from '../../../context/AuthContext';
 import { useCreateCSSRootVariable } from '../../../hooks/useCreateCSSRootVariable';
 
 import Image from '../../UI/image/Image';
 import Separator from '../../UI/separator/Separator';
 import NavigationMenu from './menu/navigation/NavigationMenu';
-import NavigationLinks from '../../../features/navigation/NavigationLinks';
+import NavigationLinks from '../../../features/navigation/links/NavigationLinks';
 import SearchMenu from './menu/search/SearchMenu';
 import QuickSearch from '../../../features/quickSearch/QuickSearch';
 import UserMenu from '../../../features/authentication/user/menu/UserMenu';
-import LoginButton from '../../../features/authentication/buttons/LoginButton';
+import LoginButton from '../../../features/authentication/button/LoginButton';
 
 import PianotheusLogo from '../../../assets/images/logo.svg';
 import './Navbar.scss';
 
 const Navbar = () => {
-  const { isMobile, isDesktop } = useScreenSize();
+  const { isMobile, isDesktop } = useResponsive();
   const { user } = useUserContext();
   const elementRef = useCreateCSSRootVariable(
     'navbar-height',
