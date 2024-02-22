@@ -1,0 +1,12 @@
+.back-to-top__btn {
+  position: fixed;
+  z-index: 1000;
+  bottom: calc(var(--global-padding) * 2);
+  right: calc(var(--global-padding) * 2);
+  transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+}
