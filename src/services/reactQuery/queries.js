@@ -1,6 +1,12 @@
-import { useQuery, useMutation, useInfiniteQuery } from '@tanstack/react-query';
+import {
+  useQuery,
+  useQueries,
+  useMutation,
+  useInfiniteQuery,
+} from '@tanstack/react-query';
 
 import { useCollectionContext } from '../../context/CollectionContext.jsx';
+import { siteConfig } from '../../utils/config.js';
 
 import { QUERY_KEYS } from './queryKeys';
 import {
@@ -43,6 +49,26 @@ export const useGetCollection = (collection, orderBy) => {
     queryFn: () => getCollection(collection, orderBy),
     staleTime: Infinity,
   });
+};
+
+export const useGetAllCollections = () => {
+  const collectionQueries = useQueries({
+    queries: siteConfig.collections.map(({ collection, routeParam }) => {
+      return {
+        queryKey: [QUERY_KEYS.GET_ALL_COLLECTIONS, collection, routeParam],
+        queryFn: () => getCollection(collection, routeParam),
+        staleTime: Infinity,
+      };
+    }),
+  });
+
+  const isLoading = collectionQueries.every(
+    (collection) => collection.isLoading === true
+  );
+
+  const data = collectionQueries.flatMap((collection) => collection.data);
+
+  return { data, isLoading };
 };
 
 export const useGetInfiniteCollection = (resultsPerPage) => {

@@ -1,5 +1,6 @@
 export const QUERY_KEYS = {
   GET_COLLECTION: 'getCollection',
+  GET_ALL_COLLECTIONS: 'getAllCollections',
   GET_INFINITE_COLLECTION: 'getInfiniteCollection',
   SEARCH_COLLECTION: 'searchCollection',
   GET_COLLECTION_FILTERS: 'getCollectionFilters',
