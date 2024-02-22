@@ -1,11 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useFetchAllCollections } from './useFetchAllCollections';
+import { useGetAllCollections } from '../services/reactQuery/queries';
 import { useMobileMenuContext } from '../context/MobileMenuContext';
 
-import { siteConfig } from '../utils/config';
 import { convertToPath } from '../utils/formatting';
+import { KEY_CODES } from '../utils/constants';
 
 export const useQuickSearch = (searchKeys) => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -14,7 +14,8 @@ export const useQuickSearch = (searchKeys) => {
   const [activeSuggestion, setActiveSuggestion] = useState(0);
   const suggestionRef = useRef(null);
   const navigate = useNavigate();
-  const { data, isLoading } = useFetchAllCollections(siteConfig.collections);
+  const { data, isLoading } = useGetAllCollections();
+
   const {
     menus: {
       drawer: { close: closeDrawer },
@@ -78,26 +79,21 @@ export const useQuickSearch = (searchKeys) => {
   };
 
   const handleKeyDownActions = (e) => {
-    const arrowUp = 38;
-    const arrowDown = 40;
-    const enter = 13;
-    const escape = 27;
-
     switch (e.keyCode) {
-      case arrowUp:
+      case KEY_CODES.ARROW_UP:
         e.preventDefault();
         if (activeSuggestion === 0) return;
         setActiveSuggestion(activeSuggestion - 1);
         break;
-      case arrowDown:
+      case KEY_CODES.ARROW_DOWN:
         if (activeSuggestion === suggestions?.length - 1) return;
         setActiveSuggestion(activeSuggestion + 1);
         break;
-      case enter:
+      case KEY_CODES.ENTER:
         if (searchInputEmpty || noSuggestions) return;
         handleSuggestionClick(selectedSuggestion);
         break;
-      case escape:
+      case KEY_CODES.ESCAPE:
         clearSearch();
         break;
       default:
