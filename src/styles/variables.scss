@@ -51,6 +51,11 @@
     --dropdown-item-background-color: var(--gray-shade-70);
     --dropdown-item-border-color: var(--gray-shade-10);
 
+    --select-background-color: var(--black-2);
+    --select-focus-color: var(--accent-color-200);
+    --select-highlight-background-color: var(--accent-color-200);
+    --select-highlight-color: var(--black-7);
+
     --tooltip-background-color: var(--black-2);
     --tooltip-color: var(--text-color-secondary);
 
@@ -101,6 +106,11 @@
     --dropdown-background-color: var(--white-0);
     --dropdown-item-background-color: var(--gray-0);
     --dropdown-item-border-color: var(--gray-0);
+
+    --select-background-color: var(--white-0);
+    --select-focus-color: var(--accent-color-200);
+    --select-highlight-background-color: var(--accent-color-200);
+    --select-highlight-color: var(--black-7);
 
     --tooltip-background-color: var(--white-0);
     --tooltip-color: var(--text-color-primary);

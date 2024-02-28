@@ -1,0 +1,35 @@
+.scroll-area__root {
+  --scrollbar-size: var(--scrollbar-width);
+  overflow: hidden;
+  border-radius: calc(var(--global-border-radius) / 2);
+  border: 1px solid var(--black-4);
+
+  .scroll-area__viewport {
+    width: 100%;
+    height: 100%;
+  }
+
+  .scroll-area__scrollbar {
+    display: flex;
+    padding: 2px;
+    background: var(--black-4);
+    user-select: none;
+    touch-action: none;
+
+    &[data-orientation='vertical'] {
+      width: var(--scrollbar-size);
+    }
+
+    &[data-orientation='horizontal'] {
+      flex-direction: column;
+      height: var(--scrollbar-size);
+    }
+
+    .scroll-area__thumb {
+      position: relative;
+      flex: 1;
+      background: var(--gray-7);
+      border-radius: var(--scrollbar-size);
+    }
+  }
+}
