@@ -5,16 +5,19 @@ import CollectionList from '../collection/CollectionList';
 import CollectionItems from '../collection/CollectionItems';
 
 const FilterResults = ({ isFilterFetching, data }) => {
-  const filterResults = data && data.length > 0;
+  const filteredResults = data && data.length > 0;
+  const noFilteredResults = data && data.length === 0;
 
   if (isFilterFetching) return <Spinner type='circle' />;
 
-  if (filterResults)
+  if (filteredResults)
     return (
       <CollectionList displayMode='filter'>
         <CollectionItems data={data} />
       </CollectionList>
     );
+
+  if (noFilteredResults) return <h1>No results found</h1>;
 };
 
 export default FilterResults;
