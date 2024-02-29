@@ -21,7 +21,7 @@ export const CollectionProvider = ({ children }) => {
         title: currentCollection.title,
         routeParam: currentCollection.routeParam,
         searchKeys: currentCollection.searchKeys,
-        filterOptions: currentCollection.filterOptions,
+        filterKeys: currentCollection.filterKeys,
         isClassical,
       }}
     >
