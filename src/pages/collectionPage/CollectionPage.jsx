@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { useCollectionContext } from '../../context/CollectionContext';
 import {
-  useSearchCollection,
   useGetInfiniteCollection,
+  useSearchCollection,
   useGetCollectionFilters,
   useFilterCollection,
 } from '../../services/reactQuery/queries';
@@ -13,75 +13,49 @@ import { useDebounce } from '../../hooks/useDebounce';
 import Spinner from '../../components/UI/spinner/Spinner';
 import ErrorPage from '../errorPage/ErrorPage';
 import Search from '../../features/search/Search';
-// import Filter from '../../features/filter/Filter';
+import Filter from '../../features/filter/Filter';
 import InfiniteResults from './results/InfiniteResults';
 import SearchResults from './results/SearchResults';
+import FilterResults from './results/FilterResults';
 import BackToTopButton from '../../features/navigation/button/backToTop/BackToTopButton';
 
-import Select from '../../components/UI/select/Select';
-
 import { siteConfig } from '../../utils/config';
+import { formatList } from '../../utils/formatting';
 
 import './CollectionPage.scss';
-import FilterResults from './results/FilterResults';
 
 const CollectionPage = () => {
-  const { collection, title, routeParam: searchField } = useCollectionContext();
-
-  // ============================================================
-  // SEARCH PARAMS
-  // ============================================================
-
-  const [searchParams, setSearchParams] = useSearchParams({
-    q: '',
-    composer: '',
-  });
+  const { collection, title, searchKeys, filterKeys } = useCollectionContext();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   // ============================================================
   // FILTER
   // ============================================================
 
-  const { data: filterOptions } = useGetCollectionFilters();
+  const { data: filters } = useGetCollectionFilters();
 
-  console.log(filterOptions);
-
-  const filterValue = searchParams.get('composer') || '';
+  const filterValues = useMemo(() => {
+    return filterKeys.reduce((accumulator, { key }) => {
+      accumulator[key] = searchParams.get(key) || '';
+      return accumulator;
+    }, {});
+  }, [filterKeys, searchParams]);
 
   const {
     data: filteredResults,
     isFetching: isFilterFetching,
     refetch: filterCollection,
-  } = useFilterCollection(filterValue);
+  } = useFilterCollection(filterValues);
+
+  const hasSelectedFilters = Object.values(filterValues).some(
+    (value) => typeof value === 'string' && value !== '' && value !== 'all'
+  );
 
   useEffect(() => {
-    const filterSelected = filterValue !== '';
-    const allSelected = filterValue === 'all';
-
-    if (allSelected) clearFilterParam();
-
-    if (filterSelected) filterCollection(filterValue);
-  }, [filterValue]);
-
-  const handleFilter = (e) => {
-    const filterValue = e;
-
-    setSearchParams(
-      (prev) => {
-        prev.set('composer', filterValue);
-        return prev;
-      },
-      { replace: true }
-    );
-  };
-
-  const clearFilterParam = () => {
-    setSearchParams((prev) => {
-      prev.delete('composer');
-      return prev;
-    });
-  };
-
-  const shouldShowFilterResults = !!filterValue;
+    if (hasSelectedFilters) {
+      filterCollection(filterValues);
+    }
+  }, [hasSelectedFilters, filterValues, filterCollection]);
 
   // ============================================================
   // INFINITE SCROLL
@@ -113,12 +87,6 @@ const CollectionPage = () => {
   const searchInputEmpty = !searchValue;
   const shouldShowSearchResults = !!searchValue;
 
-  useEffect(() => {
-    const searchValueNotEmpty = searchValue !== '';
-
-    if (searchValueNotEmpty) searchCollection();
-  }, [debouncedSearchValue]);
-
   const handleSearch = (e) => {
     const inputValue = e.target.value;
 
@@ -138,6 +106,14 @@ const CollectionPage = () => {
     });
   };
 
+  useEffect(() => {
+    const searchValueNotEmpty = searchValue !== '';
+
+    if (searchInputEmpty) clearSearchParam();
+
+    if (searchValueNotEmpty) searchCollection();
+  }, [debouncedSearchValue]);
+
   // ============================================================
   // COMPONENT STUFF
   // ============================================================
@@ -151,39 +127,34 @@ const CollectionPage = () => {
       <div className='collection__container'>
         <h2 className='header gradient-text'>{title}</h2>
         <Search
-          placeholder={`Search by ${searchField}`}
+          placeholder={`Search by ${formatList(searchKeys)}`}
           value={searchValue}
           onChange={handleSearch}
           clearSearch={clearSearchParam}
           searchInputEmpty={searchInputEmpty}
         />
 
-        <Select
-          options={filterOptions[0]}
-          value={filterValue}
-          onChange={handleFilter}
-          clearFilter={clearFilterParam}
+        <Filter
+          filters={filters}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
         />
 
-        {/* {shouldShowSearchResults ? (
+        {shouldShowSearchResults && (
           <SearchResults
             data={searchResults}
             isSearchFetching={isSearchFetching}
           />
-        ) : (
-          <InfiniteResults
-            data={infiniteScrollResults}
-            fetchNextPage={fetchNextPage}
-            hasNextPage={hasNextPage}
-          />
-        )} */}
+        )}
 
-        {shouldShowFilterResults ? (
+        {hasSelectedFilters && (
           <FilterResults
             isFilterFetching={isFilterFetching}
             data={filteredResults}
           />
-        ) : (
+        )}
+
+        {!shouldShowSearchResults && !hasSelectedFilters && (
           <InfiniteResults
             data={infiniteScrollResults}
             fetchNextPage={fetchNextPage}
