@@ -5,28 +5,37 @@ export const siteConfig = {
       title: 'Movies',
       routeParam: 'title',
       searchKeys: ['title'],
-      filterOptions: ['composer', 'year'],
+      filterKeys: [
+        { name: 'Composers', key: 'composer' },
+        { name: 'Year', key: 'year' },
+      ],
     },
     {
       collection: 'tv-shows',
       title: 'TV Shows',
       routeParam: 'title',
       searchKeys: ['title'],
-      filterOptions: ['composer', 'year'],
+      filterKeys: [
+        { name: 'Composers', key: 'composer' },
+        { name: 'Year', key: 'year' },
+      ],
     },
     {
       collection: 'video-games',
       title: 'Video Games',
       routeParam: 'title',
       searchKeys: ['title'],
-      filterOptions: ['composer', 'year'],
+      filterKeys: [
+        { name: 'Composers', key: 'composer' },
+        { name: 'Year', key: 'year' },
+      ],
     },
     {
       collection: 'classical',
       title: 'Classical Music',
       routeParam: 'composer',
       searchKeys: ['composer'],
-      filterOptions: ['epoch'],
+      filterKeys: [{ name: 'Epoch', key: 'epoch' }],
     },
   ],
   navigation: {
