@@ -1,24 +1,64 @@
-import React, { forwardRef } from 'react';
+import React, { useState, useEffect } from 'react';
+
+import { Select, Option } from '../../components/UI/select/Select';
 
 import './Filter.scss';
 
-const Filter = forwardRef(({ options }, ref) => {
+const Filter = ({ filters, searchParams, setSearchParams }) => {
+  const [currentOption, setCurrentOption] = useState({
+    value: '',
+    filterKey: '',
+  });
+
+  const selectedOption = (filterKey) => searchParams.get(filterKey) || '';
+
+  const handleSelectOption = (e, filterKey) => {
+    setCurrentOption({ value: e, filterKey });
+
+    setSearchParams(
+      (prev) => {
+        prev.set(filterKey, e);
+        return prev;
+      },
+      { replace: true }
+    );
+  };
+
+  const clearSearchParam = (filterKey) => {
+    setSearchParams((prev) => {
+      prev.delete(filterKey);
+      return prev;
+    });
+  };
+
+  useEffect(() => {
+    if (currentOption.value === 'all')
+      clearSearchParam(currentOption.filterKey);
+  }, [currentOption]);
+
   return (
-    <div ref={ref} className='filter'>
-      {options.map((option, index) => (
-        <div key={index}>
-          <div>
-            <h3>{option.option}</h3>
-            <ul>
-              {option.values.map((value, index) => (
-                <li key={index}>{value}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
+    <div className='filter'>
+      {filters.map(({ filterName, filterKey, options }) => (
+        <Select
+          key={filterKey}
+          label={filterName}
+          value={selectedOption(filterKey)}
+          onChange={(e) => handleSelectOption(e, filterKey)}
+        >
+          {/* If a filter was selected, display 'All' to allow clearing that filter */}
+          {selectedOption(filterKey) && <Option label='All' value='all' />}
+          {options.map((option) => (
+            <Option
+              key={option.value}
+              label={option.label}
+              value={option.value}
+            />
+          ))}
+          <Option />
+        </Select>
       ))}
     </div>
   );
-});
+};
 
 export default Filter;
