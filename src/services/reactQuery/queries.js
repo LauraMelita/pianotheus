@@ -135,19 +135,26 @@ export const useGetCollectionFilters = () => {
   const {
     collection,
     routeParam: orderBy,
-    filterOptions,
+    filterKeys,
   } = useCollectionContext();
 
   return useQuery({
     queryKey: [QUERY_KEYS.GET_COLLECTION_FILTERS, collection],
     queryFn: () => getCollection(collection, orderBy),
     select: (data) => {
-      const options = filterOptions.map((filter) => {
+      const options = filterKeys.map(({ name, key }) => {
         const uniqueValues = [
-          ...new Set(data.map((document) => document[filter])),
-        ];
+          ...new Set(data.map((document) => document[key])),
+        ].toSorted();
 
-        return { option: filter, values: uniqueValues };
+        return {
+          filterName: name,
+          filterKey: key,
+          options: uniqueValues.map((value) => ({
+            label: value,
+            value: value.toLowerCase(),
+          })),
+        };
       });
 
       return options;
@@ -156,22 +163,22 @@ export const useGetCollectionFilters = () => {
   });
 };
 
-export const useFilterCollection = (selectedFilter) => {
-  const {
-    collection,
-    routeParam: orderBy,
-    filterOptions,
-  } = useCollectionContext();
+export const useFilterCollection = (selectedFilters) => {
+  const { collection, routeParam: orderBy } = useCollectionContext();
 
   return useQuery({
-    queryKey: [QUERY_KEYS.FILTER_COLLECTION, collection, selectedFilter],
+    queryKey: [QUERY_KEYS.FILTER_COLLECTION, selectedFilters],
     queryFn: () => getCollection(collection, orderBy),
     select: (data) => {
-      const filteredResults = data.filter((document) =>
-        filterOptions.some((option) =>
-          document[option].includes(selectedFilter)
-        )
-      );
+      const filteredResults = data.filter((document) => {
+        const matchesAllFilters = Object.keys(selectedFilters).every((key) => {
+          const documentValue = document[key].toLowerCase();
+          const filterValue = selectedFilters[key].toLowerCase();
+          return documentValue.includes(filterValue);
+        });
+
+        return matchesAllFilters;
+      });
 
       return filteredResults;
     },
