@@ -13,7 +13,7 @@ const CollectionItems = ({ data }) => {
       isClassical ? (
         <ComposerCard
           key={id}
-          index={index}
+          cardIndex={index}
           path={path}
           title={composer}
           composerImg={composerImg}
@@ -21,7 +21,7 @@ const CollectionItems = ({ data }) => {
       ) : (
         <PosterCard
           key={id}
-          index={index}
+          cardIndex={index}
           path={path}
           title={title}
           year={year}

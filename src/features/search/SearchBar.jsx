@@ -4,18 +4,16 @@ import Svg from '../../components/UI/svg/Svg';
 import { Input } from '../../components/UI/form/Form';
 import Button from '../../components/UI/button/Button';
 
-import { KEY_CODES } from '../../utils/constants';
+import './SearchBar.scss';
 
-import './Search.scss';
-
-const Search = forwardRef(
-  ({ placeholder, value, onChange, searchInputEmpty, clearSearch }, ref) => {
+const SearchBar = forwardRef(
+  ({ placeholder, value, onChange, clearSearch, ...props }, ref) => {
     const handleEscape = (e) => {
-      if (e.keyCode === KEY_CODES.ESCAPE) clearSearch();
+      if (e.key === 'Escape') clearSearch();
     };
 
     return (
-      <div ref={ref} className='search'>
+      <div ref={ref} className='search-bar'>
         <Svg icon='search' />
         <Input
           type='text'
@@ -23,13 +21,14 @@ const Search = forwardRef(
           value={value}
           onChange={onChange}
           onKeyDown={handleEscape}
+          {...props}
         />
         <Button variant='icon'>
-          {!searchInputEmpty && <Svg icon='close' onClick={clearSearch} />}
+          {value && <Svg icon='close' onClick={clearSearch} />}
         </Button>
       </div>
     );
   }
 );
 
-export default Search;
+export default SearchBar;

@@ -5,6 +5,7 @@ export const QUERY_KEYS = {
   SEARCH_COLLECTION: 'searchCollection',
   GET_COLLECTION_FILTERS: 'getCollectionFilters',
   FILTER_COLLECTION: 'filterCollection',
+  // SEARCH_FILTER_COLLECTION: 'searchFilterCollection',
   GET_DETAILS: 'getDetails',
   GET_DOCUMENT: 'getDocument',
   DOWNLOAD_FILE: 'downloadFile',

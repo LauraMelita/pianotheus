@@ -13,7 +13,7 @@ const InfiniteResults = ({ data, fetchNextPage, hasNextPage }) => {
 
   return (
     <>
-      <CollectionList displayMode='infinite'>
+      <CollectionList id='infinite-results'>
         {data?.pages.map((pageData, index) => (
           <CollectionItems key={`page-${index}`} data={pageData} />
         ))}

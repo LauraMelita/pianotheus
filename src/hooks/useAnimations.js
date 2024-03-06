@@ -38,5 +38,19 @@ export const useAnimations = () => {
     },
   };
 
-  return { showHide, slideRight, slideDown };
+  const staggerCards = {
+    hidden: {
+      opacity: 0,
+      scale: 0.9,
+    },
+    visible: (index) => ({
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delay: 0.05 * index,
+      },
+    }),
+  };
+
+  return { showHide, slideRight, slideDown, staggerCards };
 };

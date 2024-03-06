@@ -1,22 +1,10 @@
-@import '../../styles/breakpoints.scss';
-
-.search {
+.search-bar {
   height: fit-content;
   display: flex;
   align-items: center;
-  display: grid;
-  grid-template-columns:
-    [search-button] 40px
-    [input] auto
-    [close-button] 40px;
   background-color: var(--input-border-color);
   border: var(--global-border-width) solid var(--input-border-color);
   border-radius: calc(var(--global-border-radius) * 2);
-  width: 50%;
-
-  @include mobile {
-    width: 100%;
-  }
 
   &:focus-within {
     border: var(--global-border-width) solid var(--input-focus-color);
@@ -24,13 +12,16 @@
 
   .icon__search,
   .icon__close {
-    margin: auto;
+    margin: 0 calc(var(--global-margin) / 1.5);
     height: 19px;
     width: 19px;
   }
 
   input {
+    flex-grow: 1;
+    padding: 8px 10px;
     background-color: transparent;
+    border: none;
     font-size: var(--fs-50);
 
     &:focus {

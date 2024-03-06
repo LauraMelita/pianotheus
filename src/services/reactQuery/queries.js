@@ -118,12 +118,8 @@ export const useSearchCollection = (searchTerm) => {
     queryFn: () => getCollection(collection, orderBy),
     select: (data) =>
       data.filter((document) =>
-        searchKeys.some(
-          (field) =>
-            document[field].toLowerCase().includes(searchTerm.toLowerCase())
-          // ) ||
-          // document.scores.some((score) =>
-          //   score.score?.toLowerCase().includes(searchTerm.toLowerCase())
+        searchKeys.some((field) =>
+          document[field].toLowerCase().includes(searchTerm.toLowerCase())
         )
       ),
     staleTime: Infinity,
@@ -186,6 +182,39 @@ export const useFilterCollection = (selectedFilters) => {
     enabled: false,
   });
 };
+
+// export const useSearchFilterCollection = (searchParams) => {
+//   const {
+//     collection,
+//     routeParam: orderBy,
+//     searchKeys,
+//   } = useCollectionContext();
+
+//   return useQuery({
+//     queryKey: [QUERY_KEYS.SEARCH_FILTER_COLLECTION, searchParams],
+//     queryFn: () => getCollection(collection, orderBy),
+//     select: (data) => {
+//       const results = data.filter((document) =>
+//         Object.entries(searchParams).every(([key, value]) => {
+//           if (key === 'q') {
+//             // If the key is 'q', check for matches in searchKeys
+//             return searchKeys.some((searchKey) =>
+//               document[searchKey].toLowerCase().includes(value.toLowerCase())
+//             );
+//           } else {
+//             // For other keys, check the usual inclusion
+//             return document[key].toLowerCase().includes(value.toLowerCase());
+//           }
+//         })
+//       );
+
+//       console.log(results);
+//       return results;
+//     },
+//     staleTime: Infinity,
+//     enabled: false,
+//   });
+// };
 
 // ============================================================
 // DOCUMENT QUERIES

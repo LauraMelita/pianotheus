@@ -12,12 +12,13 @@ const FilterResults = ({ isFilterFetching, data }) => {
 
   if (filteredResults)
     return (
-      <CollectionList displayMode='filter'>
+      <CollectionList id='filter-results'>
         <CollectionItems data={data} />
       </CollectionList>
     );
 
-  if (noFilteredResults) return <h1>No results found</h1>;
+  if (noFilteredResults)
+    return <h1 className='no-results'>No results found</h1>;
 };
 
 export default FilterResults;

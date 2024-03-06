@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { Select, Option } from '../../components/UI/select/Select';
 
-import './Filter.scss';
-
-const Filter = ({ filters, searchParams, setSearchParams }) => {
+const Filters = ({ filterOptions, searchParams, setSearchParams }) => {
   const [currentOption, setCurrentOption] = useState({
     value: '',
     filterKey: '',
@@ -37,8 +35,8 @@ const Filter = ({ filters, searchParams, setSearchParams }) => {
   }, [currentOption]);
 
   return (
-    <div className='filter'>
-      {filters.map(({ filterName, filterKey, options }) => (
+    <div className='filters'>
+      {filterOptions.map(({ filterName, filterKey, options }) => (
         <Select
           key={filterKey}
           label={filterName}
@@ -61,4 +59,4 @@ const Filter = ({ filters, searchParams, setSearchParams }) => {
   );
 };
 
-export default Filter;
+export default Filters;

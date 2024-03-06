@@ -2,14 +2,11 @@ import React from 'react';
 
 import { useCollectionContext } from '../../../context/CollectionContext';
 
-const CollectionList = ({ displayMode, children }) => {
+const CollectionList = ({ type, children, ...props }) => {
   const { isClassical } = useCollectionContext();
 
   return (
-    <ul
-      id={`${displayMode}-results`}
-      className={`${isClassical ? 'composers' : 'posters'}`}
-    >
+    <ul className={`${isClassical ? 'composers' : 'posters'}`} {...props}>
       {children}
     </ul>
   );
