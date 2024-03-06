@@ -2,47 +2,38 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import { CollectionProvider } from '../context/CollectionContext';
-import { siteConfig } from '../utils/config';
 
 import ProtectedRoute from '../features/authentication/routing/ProtectedRoute';
 import CollectionPage from '../pages/collectionPage/CollectionPage';
 import DetailsPage from '../pages/detailsPage/DetailsPage';
 
+import { siteConfig } from '../utils/config';
+
 const CollectionRoutes = () => {
-  return siteConfig.collections.map(
-    ({ collection, orderCollectionBy, collectionTitle, filterDocumentBy }) => (
+  return siteConfig.collections.map(({ collection, routeParam }) => (
+    <Route key={collection} path={collection}>
       <Route
-        key={collection}
+        index
         element={
-          <CollectionProvider
-            collection={collection}
-            orderCollectionBy={orderCollectionBy}
-            collectionTitle={collectionTitle}
-            filterDocumentBy={filterDocumentBy}
-          />
+          <ProtectedRoute>
+            <CollectionProvider>
+              <CollectionPage />
+            </CollectionProvider>
+          </ProtectedRoute>
         }
-      >
-        <Route path={collection}>
-          <Route
-            index
-            element={
-              <ProtectedRoute>
-                <CollectionPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={`:${filterDocumentBy}`}
-            element={
-              <ProtectedRoute>
-                <DetailsPage />
-              </ProtectedRoute>
-            }
-          />
-        </Route>
-      </Route>
-    )
-  );
+      />
+      <Route
+        path={`:${routeParam}`}
+        element={
+          <ProtectedRoute>
+            <CollectionProvider>
+              <DetailsPage />
+            </CollectionProvider>
+          </ProtectedRoute>
+        }
+      />
+    </Route>
+  ));
 };
 
 export default CollectionRoutes;

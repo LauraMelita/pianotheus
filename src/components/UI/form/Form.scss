@@ -1,22 +1,24 @@
 input,
 textarea,
 select {
-  background: var(--input-background-color);
-  border: var(--global-border-width) solid var(--input-border-color);
-  border-radius: 4px;
-  caret-color: var(--input-caret-color);
-  padding: 5px 10px;
+  &:not([type='range']) {
+    background: var(--input-background-color);
+    border: var(--global-border-width) solid var(--input-border-color);
+    border-radius: 4px;
+    caret-color: var(--input-caret-color);
+    padding: 5px 10px;
 
-  &:focus {
-    outline: var(--global-border-width) solid var(--input-focus-color);
-  }
+    &:focus {
+      outline: var(--global-border-width) solid var(--input-focus-color);
+    }
 
-  &::placeholder {
-    color: var(--input-placeholder-color);
-  }
+    &::placeholder {
+      color: var(--input-placeholder-color);
+    }
 
-  &:disabled {
-    background-color: var(--disabled-background-color);
+    &:disabled {
+      background-color: var(--disabled-background-color);
+    }
   }
 }
 

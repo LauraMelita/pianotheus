@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BackgroundImage from '../../../components/UI/image/BackgroundImage';
+import { BackgroundImage } from '../../../components/UI/image/BackgroundImage';
 import Button from '../../../components/UI/button/Button';
 
 import AboutImg from '../../../assets/images/about.png';
@@ -36,7 +36,7 @@ const About = () => {
         </div>
         <Button variant='primary'>Get Started</Button>
       </div>
-      <BackgroundImage className='about__image' url={AboutImg} />
+      {/* <BackgroundImage className='about__image' url={AboutImg} /> */}
     </div>
   );
 };

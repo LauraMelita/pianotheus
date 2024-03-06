@@ -1,25 +1,26 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useFetchAllCollections } from './useFetchAllCollections';
+import { useGetAllCollections } from '../services/reactQuery/queries';
 import { useMobileMenuContext } from '../context/MobileMenuContext';
 
-import { siteConfig } from '../utils/config';
 import { convertToPath } from '../utils/formatting';
 
 export const useQuickSearch = (searchKeys) => {
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [searchInput, setSearchInput] = useState('');
-  const [suggestions, setSuggestions] = useState([]);
-  const [activeSuggestion, setActiveSuggestion] = useState(0);
-  const suggestionRef = useRef(null);
-  const navigate = useNavigate();
-  const { data, isLoading } = useFetchAllCollections(siteConfig.collections);
+  const { data, isLoading } = useGetAllCollections();
   const {
     menus: {
       drawer: { close: closeDrawer },
     },
   } = useMobileMenuContext();
+
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+  const [activeSuggestion, setActiveSuggestion] = useState(0);
+
+  const suggestionRef = useRef(null);
+  const navigate = useNavigate();
 
   const searchInputEmpty = searchInput.length === 0;
   const selectedSuggestion = suggestions[activeSuggestion];
@@ -78,26 +79,21 @@ export const useQuickSearch = (searchKeys) => {
   };
 
   const handleKeyDownActions = (e) => {
-    const arrowUp = 38;
-    const arrowDown = 40;
-    const enter = 13;
-    const escape = 27;
-
-    switch (e.keyCode) {
-      case arrowUp:
+    switch (e.key) {
+      case 'ArrowUp':
         e.preventDefault();
         if (activeSuggestion === 0) return;
         setActiveSuggestion(activeSuggestion - 1);
         break;
-      case arrowDown:
+      case 'ArrowDown':
         if (activeSuggestion === suggestions?.length - 1) return;
         setActiveSuggestion(activeSuggestion + 1);
         break;
-      case enter:
+      case 'Enter':
         if (searchInputEmpty || noSuggestions) return;
         handleSuggestionClick(selectedSuggestion);
         break;
-      case escape:
+      case 'Escape':
         clearSearch();
         break;
       default:
@@ -106,14 +102,11 @@ export const useQuickSearch = (searchKeys) => {
   };
 
   const handleSuggestionClick = (suggestion) => {
-    const { category, title, composer } = suggestion;
+    const { category, path } = suggestion;
 
-    const path = `/${convertToPath(category)}/${convertToPath(
-      category === 'classical' ? composer : title
-    )}`;
     closeDrawer();
     clearSearch();
-    navigate(path);
+    navigate(`/${convertToPath(category)}/${path}`);
   };
 
   const handleSuggestionHover = (index) => setActiveSuggestion(index);

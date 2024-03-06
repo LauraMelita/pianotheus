@@ -8,13 +8,13 @@ const Button = forwardRef(
 
     if (href)
       return (
-        <a className={combinedClassName} href={href} {...props}>
+        <a ref={ref} className={combinedClassName} href={href} {...props}>
           {children}
         </a>
       );
 
     return (
-      <button className={combinedClassName} ref={ref} {...props}>
+      <button ref={ref} className={combinedClassName} {...props}>
         {children}
       </button>
     );

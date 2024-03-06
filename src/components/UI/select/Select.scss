@@ -1,0 +1,48 @@
+.select__trigger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 15px;
+  border: none;
+  background-color: var(--select-background-color);
+  border-radius: calc(var(--global-border-radius) / 2);
+  box-shadow: var(--box-shadow);
+  color: var(--text-color-primary);
+
+  &:focus {
+    box-shadow: 0 0 0 2px var(--select-focus-color);
+  }
+
+  .select__icon {
+    display: inherit;
+
+    svg {
+      height: 22px;
+      width: 22px;
+    }
+  }
+}
+
+.select__content {
+  z-index: 5;
+  max-height: 430px;
+  background-color: var(--select-background-color);
+  box-shadow: var(--box-shadow);
+  border-radius: calc(var(--global-border-radius) / 2);
+
+  .select__item {
+    user-select: none;
+    position: relative;
+    padding: 0 35px 0 25px;
+    font-size: var(--fs-50);
+    color: var(--text-color-secondary);
+
+    &[data-highlighted] {
+      background-color: var(--select-highlight-background-color);
+      color: var(--select-highlight-color);
+      outline: none;
+      cursor: pointer;
+    }
+  }
+}

@@ -11,7 +11,9 @@ import {
   getDocs,
   where,
   query,
+  limit,
   orderBy,
+  startAfter,
 } from 'firebase/firestore';
 import { ref, uploadBytes, getBlob, getDownloadURL } from 'firebase/storage';
 
@@ -48,12 +50,14 @@ export const createUserAccount = async (user) => {
     });
 
     // Create a new user in firestore collection
-    await createDocument('users', {
+    const userDocument = {
       id: uid,
       username,
       email,
       avatar: userImage ? userImage.url : null,
-    });
+    };
+
+    await createDocument('users', userDocument);
   } catch (error) {
     throw new Error(error.message);
   }
@@ -93,9 +97,8 @@ export const getUserById = async () => {
     if (!id) throw Error;
 
     const currentUser = await getDocument('users', {
-      field: 'id',
-      operator: '==',
-      value: id,
+      queryField: 'id',
+      queryValue: id,
     });
 
     if (!currentUser) throw Error;
@@ -116,13 +119,12 @@ export const signOutUser = async () => {
 
 export const getCollection = async (collectionName, orderCollectionBy) => {
   const collectionRef = collection(db, collectionName);
+  const collectionQuery = query(
+    collectionRef,
+    orderBy(orderCollectionBy, 'asc')
+  );
 
   try {
-    const collectionQuery = query(
-      collectionRef,
-      orderBy(orderCollectionBy, 'asc')
-    );
-
     const data = await getDocs(collectionQuery);
 
     const documents = data.docs.map((document) => ({
@@ -138,9 +140,107 @@ export const getCollection = async (collectionName, orderCollectionBy) => {
   }
 };
 
+export const createCollection = async (
+  collectionName,
+  documentsArray,
+  uniqueField
+) => {
+  try {
+    const collectionRef = collection(db, collectionName);
+    const docIds = [];
+
+    for (const data of documentsArray) {
+      const existingDocsQuery = query(
+        collectionRef,
+        where(uniqueField, '==', data[uniqueField])
+      );
+      const existingDocsSnapshot = await getDocs(existingDocsQuery);
+
+      if (existingDocsSnapshot.size === 0) {
+        const docRef = await addDoc(collectionRef, data);
+        docIds.push(docRef.id);
+        console.log('Document written with ID:', docRef.id);
+      } else {
+        console.log(
+          'Document with duplicate unique field found, skipping:',
+          data
+        );
+      }
+    }
+
+    return docIds;
+  } catch (error) {
+    console.error('Error adding documents:', error.message);
+    throw error;
+  }
+};
+
+export const getInfiniteCollection = async (
+  {
+    pageParam, // automatically passed by useInfiniteQuery
+  },
+  collectionName,
+  orderCollectionBy,
+  resultsPerPage
+) => {
+  const collectionRef = collection(db, collectionName);
+  const baseQuery = [
+    collectionRef,
+    orderBy(orderCollectionBy),
+    limit(resultsPerPage),
+  ];
+
+  // Firestore's startAfter() method is designed to work with pagination.
+  // Each call to startAfter() specifies the starting point for the next batch of documents.
+  // If pageParam exists, it's used as the cursor for startAfter(pageParam).
+  // If it doesn't exist, the query starts from the beginning.
+  const firestoreQuery = query(
+    ...(pageParam ? [...baseQuery, startAfter(pageParam)] : baseQuery)
+  );
+
+  try {
+    const documentSnapshots = await getDocs(firestoreQuery);
+    const documents = documentSnapshots.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    if (!documents) throw Error;
+
+    return documents;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 // ============================================================
 // DOCUMENTS
 // ============================================================
+
+export const getDocument = async (
+  collectionName,
+  { queryField, queryOperator = '==', queryValue }
+) => {
+  const documentRef = collection(db, collectionName);
+  const queryRef = query(
+    documentRef,
+    where(queryField, queryOperator, queryValue)
+  );
+
+  try {
+    const querySnapshot = await getDocs(queryRef);
+
+    if (querySnapshot.docs.length === 0) {
+      throw new Error('not-found');
+    }
+
+    const document = querySnapshot.docs[0].data();
+
+    return document;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
 export const createDocument = async (collectionName, document) => {
   const collectionRef = collection(db, collectionName);
@@ -149,28 +249,10 @@ export const createDocument = async (collectionName, document) => {
     const newDocument = await addDoc(collectionRef, document);
 
     if (!newDocument) throw Error;
+
+    return newDocument;
   } catch (error) {
     throw new Error(error.message);
-  }
-};
-
-export const getDocument = async (collectionName, searchQuery) => {
-  const documentRef = collection(db, collectionName);
-  const documentQuery = query(
-    documentRef,
-    where(searchQuery.field, searchQuery.operator, searchQuery.value)
-  );
-
-  try {
-    const querySnapshot = await getDocs(documentQuery);
-
-    if (querySnapshot.empty) throw Error;
-
-    const document = querySnapshot.docs[0].data();
-
-    return document;
-  } catch (error) {
-    throw new Error(`Firebase error: Document doesn't exist`);
   }
 };
 
@@ -210,8 +292,6 @@ export const uploadFile = async (filePath, fileName, file) => {
   try {
     const { extension } = await getFileMetadata(file);
 
-    // File validation here
-
     const fullFilePath = filePath + `${fileName}.${extension}`;
     const fileRef = ref(storage, fullFilePath);
 
@@ -238,7 +318,7 @@ export const downloadFile = async (filePath, fileName, extension) => {
 
     if (!url || !blob) throw Error;
 
-    return { url, blob: blob };
+    return { url, blob };
   } catch (error) {
     throw new Error(error.message);
   }

@@ -2,30 +2,39 @@ export const siteConfig = {
   collections: [
     {
       collection: 'movies',
-      orderCollectionBy: 'title',
-      collectionTitle: 'Movies',
-      filterDocumentBy: 'title',
+      title: 'Movies',
+      routeParam: 'title',
+      searchKeys: ['title'],
+      filterKeys: [
+        { name: 'Composers', key: 'composer' },
+        { name: 'Year', key: 'year' },
+      ],
     },
     {
       collection: 'tv-shows',
-      orderCollectionBy: 'title',
-      collectionTitle: 'TV Shows',
-      filterDocumentBy: 'title',
+      title: 'TV Shows',
+      routeParam: 'title',
+      searchKeys: ['title'],
+      filterKeys: [{ name: 'Composers', key: 'composer' }],
     },
     {
       collection: 'video-games',
-      orderCollectionBy: 'title',
-      collectionTitle: 'Video Games',
-      filterDocumentBy: 'title',
+      title: 'Video Games',
+      routeParam: 'title',
+      searchKeys: ['title'],
+      filterKeys: [
+        { name: 'Composers', key: 'composer' },
+        { name: 'Year', key: 'year' },
+      ],
     },
     {
       collection: 'classical',
-      orderCollectionBy: 'composer',
-      collectionTitle: 'Classical Music',
-      filterDocumentBy: 'composer',
+      title: 'Classical Music',
+      routeParam: 'composer',
+      searchKeys: ['composer'],
+      filterKeys: [{ name: 'Epoch', key: 'epoch' }],
     },
   ],
-
   navigation: {
     links: [
       { path: '/', navLink: 'Home', icon: 'home' },
@@ -34,8 +43,16 @@ export const siteConfig = {
       { path: '/video-games', navLink: 'Video Games', icon: 'video-games' },
       { path: '/classical', navLink: 'Classical Music', icon: 'classical' },
     ],
+    titleMap: {
+      '/': 'MIDI Piano Collection',
+      '/register': 'Sign Up',
+      '/sign-in': 'Sign In',
+      '/movies': 'Movies',
+      '/tv-shows': 'TV Shows',
+      '/video-games': 'Video Games',
+      '/classical': 'Classical Music',
+    },
   },
-
   home: {
     categories: [
       {
@@ -59,5 +76,8 @@ export const siteConfig = {
         popOutImage: 'classical_popout.webp',
       },
     ],
+  },
+  infiniteScroll: {
+    resultsPerPage: 10,
   },
 };

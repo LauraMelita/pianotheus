@@ -11,12 +11,14 @@ import CollectionRoutes from './routes/CollectionRoutes';
 import ErrorPage from './pages/errorPage/ErrorPage';
 import Toaster from './components/UI/toaster/Toaster';
 
+import { useDocumentTitle } from './hooks/useDocumentTitle';
 import { useScrollToTop } from './hooks/useScrollToTop';
 
 const App = () => {
   const { pathname } = useLocation();
   const { useRestoreScrollToTop } = useScrollToTop();
 
+  useDocumentTitle();
   useRestoreScrollToTop(pathname);
 
   return (

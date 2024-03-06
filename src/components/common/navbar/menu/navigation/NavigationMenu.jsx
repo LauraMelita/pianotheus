@@ -5,7 +5,7 @@ import { useAnimations } from '../../../../../hooks/useAnimations';
 
 import MobileMenu from '../../../../../features/mobile/menu/MobileMenu';
 import AnimatedMenuButton from '../../../../UI/animation/menuButton/AnimatedMenuButton';
-import NavigationLinks from '../../../../../features/navigation/NavigationLinks';
+import NavigationLinks from '../../../../../features/navigation/links/NavigationLinks';
 
 import './NavigationMenu.scss';
 

@@ -7,7 +7,7 @@ import { useCreateCSSRootVariable } from '../../../hooks/useCreateCSSRootVariabl
 import Button from '../../UI/button/Button';
 import Svg from '../../UI/svg/Svg';
 import Separator from '../../UI/separator/Separator';
-import NavigationLinks from '../../../features/navigation/NavigationLinks';
+import NavigationLinks from '../../../features/navigation/links/NavigationLinks';
 import Contact from '../../../features/contact/Contact';
 import Image from '../../UI/image/Image';
 

@@ -8,7 +8,7 @@ const CircleCard = ({
   path,
   cardWidth,
   cardHeight,
-  fallbackDelay,
+  fallbackDelay = 600,
   title,
   image,
 }) => {

@@ -1,7 +1,7 @@
-import { useScreenSize } from './useScreenSize';
+import { useResponsive } from './useResponsive';
 
 export const useAnimations = () => {
-  const { isMobile } = useScreenSize();
+  const { isMobile } = useResponsive();
 
   const showHide = {
     open: {
@@ -38,5 +38,19 @@ export const useAnimations = () => {
     },
   };
 
-  return { showHide, slideRight, slideDown };
+  const staggerCards = {
+    hidden: {
+      opacity: 0,
+      scale: 0.9,
+    },
+    visible: (index) => ({
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delay: 0.05 * index,
+      },
+    }),
+  };
+
+  return { showHide, slideRight, slideDown, staggerCards };
 };

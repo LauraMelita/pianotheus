@@ -1,12 +1,13 @@
 .poster-card {
-  display: grid;
-  grid-template-rows: 1fr 10%;
+  display: flex;
+  flex-direction: column;
   gap: calc(var(--global-gap) / 4);
 
   a {
     overflow: hidden;
     border-radius: var(--global-border-radius);
     border: var(--global-border-width) solid var(--border-color);
+    height: 100%;
 
     .poster-card__poster {
       position: relative;
@@ -20,6 +21,8 @@
 
       .poster-card__inner {
         position: absolute;
+        // height: 100%;
+        // overflow: hidden;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -45,13 +48,14 @@
         }
 
         .poster-card__scores {
+          // overflow-y: auto;
           display: flex;
           flex-direction: column;
           gap: calc(var(--global-gap) / 2);
 
           li {
             display: grid;
-            grid-template-columns: 10% 1fr;
+            grid-template-columns: auto 1fr;
             gap: calc(var(--global-gap) / 4);
 
             svg {
@@ -81,6 +85,13 @@
     margin-left: 4px;
 
     span {
+      &:first-child {
+        width: var(--card-width);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
       &:last-child {
         font-size: var(--fs-50);
         color: var(--gray-1);

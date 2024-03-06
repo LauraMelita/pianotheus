@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDocumentTitle } from '@mantine/hooks';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -13,13 +12,12 @@ import PasswordInput from '../../components/UI/form/elements/PasswordInput';
 import FileInput from '../../components/UI/form/elements/FileInput';
 import SubmitButton from '../../components/UI/form/elements/SubmitButton';
 import Alert from '../../components/UI/alert/Alert';
-import BackgroundImage from '../../components/UI/image/BackgroundImage';
+import { BackgroundImage } from '../../components/UI/image/BackgroundImage';
 
 import Image from '../../assets/images/sign-up.jpg';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
-  useDocumentTitle('Pianotheus | Sign Up');
 
   const {
     register,

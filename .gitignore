@@ -27,3 +27,4 @@ yarn-error.log*
 # other
 notes.txt
 /src/data
+/src/hooks/useData.jsx

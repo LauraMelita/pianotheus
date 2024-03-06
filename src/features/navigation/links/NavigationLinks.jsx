@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import Svg from '../../components/UI/svg/Svg';
+import Svg from '../../../components/UI/svg/Svg';
 
-import { siteConfig } from '../../utils/config';
+import { siteConfig } from '../../../utils/config';
 
 const NavigationLinks = ({ className, shouldRenderIcons, onClick }) => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useScreenSize } from '../../../../hooks/useScreenSize';
+import { useResponsive } from '../../../../hooks/useResponsive';
 import { useMobileMenuContext } from '../../../../context/MobileMenuContext';
 
 import Spinner from '../../../../components/UI/spinner/Spinner';
@@ -14,7 +14,7 @@ const SearchBarIcons = ({
   showDropdown,
   searchInputEmpty,
 }) => {
-  const { isMobile } = useScreenSize();
+  const { isMobile } = useResponsive();
   const { menus: { drawer: { close: closeSearchMenu } } } = useMobileMenuContext();
 
   return isMobile ? (

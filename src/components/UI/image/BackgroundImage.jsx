@@ -56,4 +56,4 @@ const BackgroundImage = ({
   );
 };
 
-export default BackgroundImage;
+export { BackgroundImage };

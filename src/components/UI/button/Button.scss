@@ -58,4 +58,30 @@ a {
       height: 18px;
     }
   }
+
+  &.navigation {
+    border: 0;
+    background: transparent;
+
+    .circle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 45px;
+      height: 45px;
+      background: var(--layout-background-color);
+      border: var(--global-border-width) solid var(--accent-color-200);
+      border-radius: 50%;
+      transition: box-shadow 0.5s;
+
+      &:hover {
+        --webkit-box-shadow: inset 45px 0 0 0 var(--black-7);
+        box-shadow: inset 45px 0 0 0 var(--black-7);
+      }
+
+      svg {
+        color: var(--gray-1);
+      }
+    }
+  }
 }
