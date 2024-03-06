@@ -12,7 +12,7 @@ import PasswordInput from '../../components/UI/form/elements/PasswordInput';
 import Alert from '../../components/UI/alert/Alert';
 import SubmitButton from '../../components/UI/form/elements/SubmitButton';
 import Contact from '../../features/contact/Contact';
-import BackgroundImage from '../../components/UI/image/BackgroundImage';
+import { BackgroundImage } from '../../components/UI/image/BackgroundImage';
 
 const SignInPage = () => {
   const navigate = useNavigate();

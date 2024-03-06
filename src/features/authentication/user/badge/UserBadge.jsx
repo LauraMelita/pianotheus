@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useUserContext } from '../../../../context/AuthContext';
 
-import BackgroundImage from '../../../../components/UI/image/BackgroundImage';
+import { BackgroundImage } from '../../../../components/UI/image/BackgroundImage';
 
 import './UserBadge.scss';
 

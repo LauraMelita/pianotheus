@@ -12,7 +12,7 @@ import PasswordInput from '../../components/UI/form/elements/PasswordInput';
 import FileInput from '../../components/UI/form/elements/FileInput';
 import SubmitButton from '../../components/UI/form/elements/SubmitButton';
 import Alert from '../../components/UI/alert/Alert';
-import BackgroundImage from '../../components/UI/image/BackgroundImage';
+import { BackgroundImage } from '../../components/UI/image/BackgroundImage';
 
 import Image from '../../assets/images/sign-up.jpg';
 

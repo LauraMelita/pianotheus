@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDocumentTitle } from '@mantine/hooks';
 
-import BackgroundImage from '../../../components/UI/image/BackgroundImage';
+import { BackgroundImage } from '../../../components/UI/image/BackgroundImage';
 import Contact from '../../../features/contact/Contact';
 import Button from '../../../components/UI/button/Button';
 
