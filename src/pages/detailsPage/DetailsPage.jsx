@@ -11,7 +11,6 @@ import MovieAndTvShow from './movieAndTVShow/MovieAndTvShow';
 import VideoGame from './videoGame/VideoGame';
 import Classical from './classical/Classical';
 import Scores from '../../features/scores/Scores';
-import MoveBackButton from '../../components/UI/button/MoveBackButton';
 
 import './DetailsPage.scss';
 
@@ -57,7 +56,6 @@ const DetailsPage = () => {
         <>
           {renderDetails()}
           <Scores data={filteredItem} />
-          <MoveBackButton />
         </>
       );
     }

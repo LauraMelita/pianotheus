@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BackgroundImage from '../../../../components/UI/image/BackgroundImage';
+import { BackgroundImage } from '../../../../components/UI/image/BackgroundImage';
 
 const ParallaxLayer = ({ layer, stackOrder, src, children, ...props }) => {
   return (
