@@ -53,7 +53,7 @@ const QuickSearch = ({ className, searchKeys = ['title', 'composer'] }) => {
             <NoSuggestions />
           ) : (
             <Suggestions
-              suggestionRef={suggestionRef}
+              ref={suggestionRef}
               suggestions={suggestions}
               searchQuery={searchInput}
               active={activeSuggestion}

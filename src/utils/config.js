@@ -15,10 +15,7 @@ export const siteConfig = {
       title: 'TV Shows',
       routeParam: 'title',
       searchKeys: ['title'],
-      filterKeys: [
-        { name: 'Composers', key: 'composer' },
-        { name: 'Year', key: 'year' },
-      ],
+      filterKeys: [{ name: 'Composers', key: 'composer' }],
     },
     {
       collection: 'video-games',

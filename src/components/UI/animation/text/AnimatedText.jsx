@@ -10,6 +10,7 @@ const AnimatedText = ({
   animationSpeed = 0.1,
 }) => {
   const textContainerRef = useRef(null);
+
   const isInView = useInView(textContainerRef, {
     amount: 0.5, // Triggers when at least 50% of the element is in view
     once: animateOnlyOnce,

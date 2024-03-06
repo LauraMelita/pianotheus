@@ -5,22 +5,22 @@ import { useGetAllCollections } from '../services/reactQuery/queries';
 import { useMobileMenuContext } from '../context/MobileMenuContext';
 
 import { convertToPath } from '../utils/formatting';
-import { KEY_CODES } from '../utils/constants';
 
 export const useQuickSearch = (searchKeys) => {
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [searchInput, setSearchInput] = useState('');
-  const [suggestions, setSuggestions] = useState([]);
-  const [activeSuggestion, setActiveSuggestion] = useState(0);
-  const suggestionRef = useRef(null);
-  const navigate = useNavigate();
   const { data, isLoading } = useGetAllCollections();
-
   const {
     menus: {
       drawer: { close: closeDrawer },
     },
   } = useMobileMenuContext();
+
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+  const [activeSuggestion, setActiveSuggestion] = useState(0);
+
+  const suggestionRef = useRef(null);
+  const navigate = useNavigate();
 
   const searchInputEmpty = searchInput.length === 0;
   const selectedSuggestion = suggestions[activeSuggestion];
@@ -79,21 +79,21 @@ export const useQuickSearch = (searchKeys) => {
   };
 
   const handleKeyDownActions = (e) => {
-    switch (e.keyCode) {
-      case KEY_CODES.ARROW_UP:
+    switch (e.key) {
+      case 'ArrowUp':
         e.preventDefault();
         if (activeSuggestion === 0) return;
         setActiveSuggestion(activeSuggestion - 1);
         break;
-      case KEY_CODES.ARROW_DOWN:
+      case 'ArrowDown':
         if (activeSuggestion === suggestions?.length - 1) return;
         setActiveSuggestion(activeSuggestion + 1);
         break;
-      case KEY_CODES.ENTER:
+      case 'Enter':
         if (searchInputEmpty || noSuggestions) return;
         handleSuggestionClick(selectedSuggestion);
         break;
-      case KEY_CODES.ESCAPE:
+      case 'Escape':
         clearSearch();
         break;
       default:
@@ -102,14 +102,11 @@ export const useQuickSearch = (searchKeys) => {
   };
 
   const handleSuggestionClick = (suggestion) => {
-    const { category, title, composer } = suggestion;
+    const { category, path } = suggestion;
 
-    const path = `/${convertToPath(category)}/${convertToPath(
-      category === 'classical' ? composer : title
-    )}`;
     closeDrawer();
     clearSearch();
-    navigate(path);
+    navigate(`/${convertToPath(category)}/${path}`);
   };
 
   const handleSuggestionHover = (index) => setActiveSuggestion(index);
