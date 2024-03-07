@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import { CollectionProvider } from '../context/CollectionContext';
+import { PlayerProvider } from '../context/PlayerContext';
 
 import ProtectedRoute from '../features/authentication/routing/ProtectedRoute';
 import CollectionPage from '../pages/collectionPage/CollectionPage';
@@ -27,7 +28,9 @@ const CollectionRoutes = () => {
         element={
           <ProtectedRoute>
             <CollectionProvider>
-              <DetailsPage />
+              <PlayerProvider>
+                <DetailsPage />
+              </PlayerProvider>
             </CollectionProvider>
           </ProtectedRoute>
         }
