@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import { motion } from 'framer-motion';
 
 import './Button.scss';
 
@@ -8,15 +9,20 @@ const Button = forwardRef(
 
     if (href)
       return (
-        <a ref={ref} className={combinedClassName} href={href} {...props}>
+        <motion.a
+          ref={ref}
+          className={combinedClassName}
+          href={href}
+          {...props}
+        >
           {children}
-        </a>
+        </motion.a>
       );
 
     return (
-      <button ref={ref} className={combinedClassName} {...props}>
+      <motion.button ref={ref} className={combinedClassName} {...props}>
         {children}
-      </button>
+      </motion.button>
     );
   }
 );

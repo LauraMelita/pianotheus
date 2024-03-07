@@ -62,3 +62,6 @@ export const getRootStyleValue = (variable) => {
 };
 
 export const parsePxToNumber = (value) => +value.replace('px', '');
+
+export const formatTime = (time) =>
+  `${Math.floor(time / 60)}:${`0${Math.floor(time % 60)}`.slice(-2)}`;
