@@ -1,8 +1,7 @@
 import React from 'react';
 
 import Modal from '../../components/UI/modal/Modal';
-import ContactForm from './form/ContactForm';
-
+import ContactForm from '../contact/form/ContactForm';
 import { useModal } from '../../hooks/useModal';
 
 import './Contact.scss';
