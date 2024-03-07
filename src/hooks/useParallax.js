@@ -6,7 +6,7 @@ export const useParallax = () => {
 
   const { scrollYProgress } = useScroll({
     target: parallaxRef,
-    offset: ['start start', 'end start'],
+    offset: ['0%', '100%'],
   });
 
   const useSpeed = (speed) =>
