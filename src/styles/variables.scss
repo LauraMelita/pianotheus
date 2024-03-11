@@ -59,6 +59,11 @@
     --select-highlight-background-color: var(--accent-color-200);
     --select-highlight-color: var(--black-7);
 
+    --accordion-border-color: var(--black-5);
+    --accordion-header-background-color: var(--black-3);
+    --accordion-header-hover-color: var(--black-6);
+    --accordion-content-background-color: var(--black-5);
+
     --tooltip-background-color: var(--black-2);
     --tooltip-color: var(--text-color-secondary);
 
@@ -114,6 +119,11 @@
     --select-focus-color: var(--accent-color-200);
     --select-highlight-background-color: var(--accent-color-200);
     --select-highlight-color: var(--black-7);
+
+    --accordion-border-color: var(--white-0);
+    --accordion-header-background-color: var(--gray-0);
+    --accordion-header-hover-color: var(--gray-0);
+    --accordion-content-background-color: var(--white-0);
 
     --tooltip-background-color: var(--white-0);
     --tooltip-color: var(--text-color-primary);
