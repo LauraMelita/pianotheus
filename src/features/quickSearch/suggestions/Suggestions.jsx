@@ -8,6 +8,7 @@ import './Suggestions.scss';
 const Suggestions = forwardRef(
   (
     {
+      suggestionRef,
       suggestions,
       searchQuery,
       active,
@@ -66,7 +67,7 @@ const Suggestions = forwardRef(
       });
 
     return (
-      <ul className='suggestions' ref={ref}>
+      <ul className='suggestions' ref={suggestionRef}>
         {suggestions.map((suggestion, index) => {
           return (
             <li
