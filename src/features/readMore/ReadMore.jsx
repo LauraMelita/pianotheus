@@ -35,7 +35,7 @@ const ReadMore = ({ text, maxAmountOfWords = 37 }) => {
           textDecoration: 'underline',
         }}
       >
-        {isExpanded ? 'show less' : 'show more'}
+        {isExpanded ? 'show less' : 'read more'}
       </span>
     );
   };
