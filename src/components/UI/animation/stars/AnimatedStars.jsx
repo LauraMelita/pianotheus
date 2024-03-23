@@ -4,7 +4,7 @@ import { Stars } from '@react-three/drei';
 
 const AnimatedStars = ({ radius, count, factor, speed, ...props }) => {
   return (
-    <div style={{ height: '100%', width: '100%' }}>
+    <div className='stars' style={{ height: '100%', width: '100%' }}>
       <Canvas>
         <Stars
           fade
