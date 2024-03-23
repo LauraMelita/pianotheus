@@ -1,40 +1,43 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
+
+import { useCarousel } from '../../hooks/useCarousel';
+import { useResponsive } from '../../hooks/useResponsive';
+import { useAnimations } from '../../hooks/useAnimations';
 
 import Button from '../../components/UI/button/Button';
 import Svg from '../../components/UI/svg/Svg';
+import Image from '../../components/UI/image/Image';
 
 import './Carousel.scss';
 
 const Carousel = ({ items }) => {
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-
-  const slideBackward = () => {
-    setCurrentSlideIndex((prevIndex) =>
-      prevIndex === 0 ? items.length - 1 : prevIndex - 1
-    );
-  };
-
-  const slideForward = () => {
-    setCurrentSlideIndex((prevIndex) =>
-      prevIndex === items.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const handleKeyDownActions = (e) => {
-    if (e.key === 'ArrowRight') slideForward();
-    if (e.key === 'ArrowLeft') slideBackward();
-  };
+  const { isMobile } = useResponsive();
+  const { highlight } = useAnimations();
+  const {
+    currentSlideIndex,
+    setCurrentSlideIndex,
+    slideBackward,
+    slideForward,
+    handleKeyDown,
+    handleMouseWheel,
+  } = useCarousel(items);
 
   const CarouselSlide = () => {
     return (
-      <div className='carousel__container'>
+      <div className='carousel__slides'>
+        <div
+          className='carousel__navigation backward'
+          onClick={slideBackward}
+        />
+        <div className='carousel__navigation forward' onClick={slideForward} />
         {items.map((item, index) => (
-          <img
+          <Image
             key={index}
             className='carousel__item'
-            style={{ transform: `translateX(-${currentSlideIndex * 100}%)` }}
             src={item}
             alt='carousel item'
+            style={{ transform: `translateX(-${currentSlideIndex * 100}%)` }}
           />
         ))}
       </div>
@@ -42,40 +45,53 @@ const Carousel = ({ items }) => {
   };
 
   const CarouselButton = ({ className, icon, onClick }) => {
-    return (
-      <Button
-        className={`carousel__btn ${className}`}
-        onClick={onClick}
-        whileHover={{ scale: 1.1 }}
-      >
-        <span className='circle' aria-hidden='true'>
-          <Svg icon={`chevron-${icon}`} />
-        </span>
-      </Button>
-    );
+    if (!isMobile)
+      return (
+        <Button className={`carousel__btn ${className}`} onClick={onClick}>
+          <motion.span className='circle' aria-hidden='true'>
+            <Svg icon={icon} />
+          </motion.span>
+        </Button>
+      );
   };
 
   const CarouselIndicators = () => {
     return (
-      <div className='carousel__indicators'>
-        {items.map((_, index) => (
-          <Button
-            key={index}
-            className={index === currentSlideIndex && 'active'}
-            onClick={() => setCurrentSlideIndex(index)}
-            whileHover={{ scale: 1.1 }}
-          />
-        ))}
+      <div className={`carousel__indicators ${isMobile ? 'mobile' : ''}`}>
+        {items.map((item, index) => {
+          const isActive = index === currentSlideIndex;
+          return (
+            <Button
+              key={index}
+              className={isActive && 'active'}
+              onClick={() => setCurrentSlideIndex(index)}
+              variants={highlight}
+              initial='inactive'
+              animate={isActive && 'active'}
+            >
+              {!isMobile && <Image src={item} alt='preview' />}
+            </Button>
+          );
+        })}
       </div>
     );
   };
 
   return (
-    <div className='carousel' tabIndex={0} onKeyDown={handleKeyDownActions}>
-      <CarouselSlide />
-      <CarouselButton className='prev' onClick={slideBackward} icon='left' />
-      <CarouselButton className='next' onClick={slideForward} icon='right' />
-      <CarouselIndicators />
+    <div
+      className='carousel'
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      onWheel={handleMouseWheel}
+    >
+      <div>
+        <CarouselButton onClick={slideBackward} icon='chevron-left' />
+        <CarouselSlide />
+        <CarouselButton onClick={slideForward} icon='chevron-right' />
+      </div>
+      <div>
+        <CarouselIndicators />
+      </div>
     </div>
   );
 };
