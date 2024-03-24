@@ -3,4 +3,18 @@ svg {
     height: 10px;
     width: 10px;
   }
+
+  &.icon__chevron-down {
+    height: 18px;
+    width: 18px;
+  }
+}
+
+[data-state='open'] {
+  > * svg {
+    &.icon__chevron-down {
+      transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
+      transform: rotate(180deg);
+    }
+  }
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDocumentTitle } from '@mantine/hooks';
 
 import { BackgroundImage } from '../../../components/UI/image/BackgroundImage';
-import Contact from '../../../features/contact/Contact';
+import ContactModal from '../../../features/contact/ContactModal';
 import Button from '../../../components/UI/button/Button';
 
 import Batman from '../../../assets/images/error/500_1.png';
@@ -39,9 +39,9 @@ const InternalServer = ({ code, message }) => {
         <span>
           Error: <code>"{message}"</code>
         </span>
-        <span>
+        <span style={{ display: 'flex' }}>
           If the issue persists, please let me know via the &nbsp;
-          <Contact btnText='contact form' />.
+          <ContactModal btnText='contact form' />.
         </span>
 
         <Button variant='primary'>

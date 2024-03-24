@@ -25,14 +25,19 @@
           }
         }
       }
-    }
 
-    .contact__btn {
-      font-size: var(--fs-50);
-      color: var(--text-color-secondary);
+      .modal__trigger {
+        text-align: center;
 
-      &:hover {
-        text-decoration: underline;
+        .contact__btn {
+          font-size: var(--fs-50);
+          color: var(--text-color-secondary);
+          text-align: center;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
     }
   }

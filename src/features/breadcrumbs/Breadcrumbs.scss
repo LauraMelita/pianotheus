@@ -1,0 +1,21 @@
+.breadcrumbs {
+  display: flex;
+  gap: calc(var(--global-gap) / 4);
+
+  .breadcrumbs__item,
+  .breadcrumbs__separator {
+    color: var(--text-color-secondary);
+
+    &.breadcrumbs__item {
+      &:not(:last-child) {
+        &:hover {
+          color: var(--text-color-primary);
+        }
+      }
+
+      &:last-child {
+        color: var(--accent-color-200);
+      }
+    }
+  }
+}

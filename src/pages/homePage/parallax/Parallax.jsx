@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import { useParallax } from '../../../hooks/useParallax';
 
 import { BackgroundImage as ParallaxLayer } from '../../../components/UI/image/BackgroundImage';
+import AnimatedStars from '../../../components/UI/animation/stars/AnimatedStars';
 
-import Stars from '../../../assets/images/parallax/stars.png';
 import Fog1 from '../../../assets/images/parallax/fog_1.png';
 import Moon from '../../../assets/images/parallax/moon.png';
 import Fog2 from '../../../assets/images/parallax/fog_2.png';
@@ -19,12 +19,9 @@ const Parallax = () => {
 
   return (
     <motion.div ref={parallaxRef} className='parallax stack'>
-      <ParallaxLayer
-        url={Stars}
-        zIndex={0}
-        backgroundSize='cover'
-        backgroundPosition='bottom'
-      />
+      <ParallaxLayer zIndex={0} inset='0'>
+        <AnimatedStars fade radius={50} count={2500} factor={2} speed={2} />
+      </ParallaxLayer>
 
       <ParallaxLayer
         url={Fog1}
