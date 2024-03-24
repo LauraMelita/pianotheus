@@ -29,8 +29,13 @@ const Carousel = ({ items }) => {
         <div
           className='carousel__navigation backward'
           onClick={slideBackward}
+          aria-hidden
         />
-        <div className='carousel__navigation forward' onClick={slideForward} />
+        <div
+          className='carousel__navigation forward'
+          onClick={slideForward}
+          aria-hidden
+        />
         {items.map((item, index) => (
           <Image
             key={index}
@@ -48,7 +53,7 @@ const Carousel = ({ items }) => {
     if (!isMobile)
       return (
         <Button className={`carousel__btn ${className}`} onClick={onClick}>
-          <motion.span className='circle' aria-hidden='true'>
+          <motion.span className='circle' aria-hidden>
             <Svg icon={icon} />
           </motion.span>
         </Button>

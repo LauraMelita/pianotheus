@@ -39,7 +39,7 @@ const BackToTopButton = () => {
         className='back-to-top__btn'
         onClick={scrollToTop}
       >
-        <span className='circle' aria-hidden='true'>
+        <span className='circle' aria-hidden>
           <Svg icon='chevron-up' />
         </span>
       </Button>
