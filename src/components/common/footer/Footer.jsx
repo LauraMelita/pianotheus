@@ -4,11 +4,11 @@ import { HashLink } from 'react-router-hash-link';
 import { useScrollToTop } from '../../../hooks/useScrollToTop';
 import { useCreateCSSRootVariable } from '../../../hooks/useCreateCSSRootVariable';
 
-import Button from '../../UI/button/Button';
 import Svg from '../../UI/svg/Svg';
 import Separator from '../../UI/separator/Separator';
+import Social from '../../UI/social/Social';
 import NavigationLinks from '../../../features/navigation/links/NavigationLinks';
-import Contact from '../../../features/contact/Contact';
+import ContactModal from '../../../features/contact/ContactModal';
 import Image from '../../UI/image/Image';
 
 import { currentYear } from '../../../utils/helpers';
@@ -47,7 +47,7 @@ const Footer = () => {
               About
             </HashLink>
           </li>
-          <Contact btnText='Contact' />
+          <ContactModal btnText='Contact' />
         </ul>
       </div>
     );
@@ -109,30 +109,6 @@ const Footer = () => {
     return (
       <div className='copyright'>
         <span>© {currentYear} Pianotheus</span>
-      </div>
-    );
-  };
-
-  const Social = () => {
-    return (
-      <div className='footer__social'>
-        <Button
-          variant='icon'
-          href='https://github.com/LauraMelita'
-          target='_blank'
-          rel='noreferrer'
-        >
-          <Svg icon='github' />
-        </Button>
-
-        <Button
-          variant='icon'
-          href='https://www.linkedin.com/in/laura-melita-a30086104'
-          target='_blank'
-          rel='noreferrer'
-        >
-          <Svg icon='linkedin' />
-        </Button>
       </div>
     );
   };

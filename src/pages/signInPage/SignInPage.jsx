@@ -11,7 +11,7 @@ import TextInput from '../../components/UI/form/elements/TextInput';
 import PasswordInput from '../../components/UI/form/elements/PasswordInput';
 import Alert from '../../components/UI/alert/Alert';
 import SubmitButton from '../../components/UI/form/elements/SubmitButton';
-import Contact from '../../features/contact/Contact';
+import ContactModal from '../../features/contact/ContactModal';
 import { BackgroundImage } from '../../components/UI/image/BackgroundImage';
 
 const SignInPage = () => {
@@ -60,10 +60,12 @@ const SignInPage = () => {
             <PasswordInput register={register} errors={errors} />
             <SubmitButton btnText='Log in' isSubmitting={isSubmitting} />
           </Form>
-          <Alert className='form-error' severity='error'>
-            {errors.root && errors.root.message}
-          </Alert>
-          <Contact btnText='Need help signing in?' />
+          {errors.root && (
+            <Alert className='form-error' severity='error'>
+              {errors.root.message}
+            </Alert>
+          )}
+          <ContactModal btnText='Need help signing in?' />
         </div>
       </div>
       <BackgroundImage
