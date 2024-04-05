@@ -32,7 +32,7 @@ export const siteConfig = {
       title: 'Classical Music',
       routeParam: 'composer',
       searchKeys: ['composer'],
-      filterKeys: [{ name: 'Epoch', key: 'epoch' }],
+      filterKeys: [{ name: 'Era', key: 'era' }],
     },
   ],
   navigation: {
