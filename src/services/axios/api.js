@@ -1,35 +1,104 @@
 import axios from 'axios';
 
-import { API } from '../../utils/constants';
+import {
+  omdbUrl,
+  tmdbMovieUrl,
+  tmdbSeriesUrl,
+  tmdbMovieScreenshotsUrl,
+  tmdbSeriesScreenshotsUrl,
+  rawgUrl,
+  rawgScreenshotsUrl,
+} from './endpoints';
+import {
+  formatOmdbMovieData,
+  formatOmdbSeriesData,
+  formatTmdbMovieData,
+  formatTmdSeriesData,
+  formatTmdbScreenshotData,
+  formatRawgData,
+  formatRawgScreenshotsData,
+} from './formatting';
 
-export const getImdbData = async (imdbId) => {
-  const URL = `${API.OMDB}/?apikey=${process.env.REACT_APP_OMDB_API_KEY}&i=${imdbId}`;
+// ============================================================
+// MOVIE
+// ============================================================
+
+export const fetchMovieData = async (imdbId) => {
   try {
-    const { data } = await axios.get(URL);
+    const [omdbResponse, tmdbResponse, tmdbScreenshotsResponse] =
+      await Promise.all([
+        axios.get(omdbUrl(imdbId)),
+        axios.get(tmdbMovieUrl(imdbId)),
+        axios.get(tmdbMovieScreenshotsUrl(imdbId)),
+      ]);
 
-    if (!data) throw Error;
+    if (!omdbResponse || !tmdbResponse || !tmdbScreenshotsResponse) {
+      throw Error;
+    }
 
-    return data;
+    const movieData = {
+      ...formatOmdbMovieData(omdbResponse.data),
+      ...formatTmdbMovieData(tmdbResponse.data),
+      ...formatTmdbScreenshotData(tmdbScreenshotsResponse.data),
+    };
+
+    return movieData;
   } catch (error) {
-    throw new Error(`OMDb error: ${error.message}`);
+    throw new Error(`Failed to fetch IMDB data: ${error.message}`);
   }
 };
 
-export const getRawgData = async (rawgId, slug) => {
-  const DATA_URL = `${API.RAWG}/games/${rawgId}?key=${process.env.REACT_APP_RAWG_API_KEY}`;
+// ============================================================
+// TV SHOW
+// ============================================================
 
-  const SCREENSHOTS_URL = `${API.RAWG}/games/${slug}/screenshots?key=${process.env.REACT_APP_RAWG_API_KEY}`;
-
+export const fetchSeriesData = async (imdbId, tmdbId) => {
   try {
-    const data = Promise.all([
-      await axios.get(DATA_URL),
-      await axios.get(SCREENSHOTS_URL),
+    const [omdbResponse, tmdbResponse, tmdbScreenshotsResponse] =
+      await Promise.all([
+        axios.get(omdbUrl(imdbId)),
+        axios.get(tmdbSeriesUrl(tmdbId)),
+        axios.get(tmdbSeriesScreenshotsUrl(tmdbId)),
+      ]);
+
+    if (!omdbResponse || !tmdbResponse || !tmdbScreenshotsResponse) {
+      throw Error;
+    }
+
+    const seriesData = {
+      ...formatOmdbSeriesData(omdbResponse.data),
+      ...formatTmdSeriesData(tmdbResponse.data),
+      ...formatTmdbScreenshotData(tmdbScreenshotsResponse.data),
+    };
+
+    return seriesData;
+  } catch (error) {
+    throw new Error(`Failed to fetch IMDB data: ${error.message}`);
+  }
+};
+
+// ============================================================
+// VIDEO GAME
+// ============================================================
+
+export const fetchVideoGameData = async (rawgSlug) => {
+  try {
+    const [rawgResponse, rawgScreenshotsResponse] = await Promise.all([
+      axios.get(rawgUrl(rawgSlug)),
+      axios.get(rawgScreenshotsUrl(rawgSlug)),
     ]);
 
-    if (!data) throw Error;
+    if (!rawgResponse || !rawgScreenshotsResponse) {
+      throw Error;
+    }
 
-    return data;
+    const videoGameData = {
+      ...formatRawgData(rawgResponse.data),
+      ...formatRawgScreenshotsData(rawgScreenshotsResponse.data),
+    };
+
+    return videoGameData;
   } catch (error) {
-    throw new Error(`RAWG error: ${error.message}`);
+    throw new Error(`Failed to fetch RAWG data: ${error.message}`);
   }
 };

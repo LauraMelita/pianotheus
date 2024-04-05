@@ -7,13 +7,16 @@ import {
 } from 'firebase/auth';
 import {
   collection,
-  addDoc,
+  doc,
   getDocs,
+  updateDoc,
+  addDoc,
   where,
   query,
   limit,
   orderBy,
   startAfter,
+  Timestamp,
 } from 'firebase/firestore';
 import { ref, uploadBytes, getBlob, getDownloadURL } from 'firebase/storage';
 
@@ -234,9 +237,24 @@ export const getDocument = async (
       throw new Error('not-found');
     }
 
-    const document = querySnapshot.docs[0].data();
+    const documentData = querySnapshot.docs[0].data();
+    const documentID = querySnapshot.docs[0].id;
+
+    const document = { id: documentID, ...documentData };
 
     return document;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const updateDocument = async (collectionName, documentID, newData) => {
+  try {
+    const lastUpdated = Timestamp.now();
+    const data = { ...newData, lastUpdated };
+
+    const documentRef = doc(db, collectionName, documentID);
+    await updateDoc(documentRef, data);
   } catch (error) {
     throw new Error(error.message);
   }
@@ -274,15 +292,33 @@ const getFileMetadata = (file) => {
   }
 };
 
-const getFileURL = async (file) => {
+export const getFileBlob = async (filePath, fileName, extension) => {
   try {
-    const fileURL = await getDownloadURL(file.ref);
+    const fullFilePath = `media/${filePath}/${fileName}.${extension}`;
+    const fileRef = ref(storage, fullFilePath);
 
-    if (!fileURL) throw Error;
+    const blob = await getBlob(fileRef);
 
-    return fileURL;
+    if (!blob) throw Error;
+
+    return blob;
   } catch (error) {
-    throw new Error(`Error getting file URL: ${error.message}`);
+    throw new Error(error.message);
+  }
+};
+
+export const getFileUrl = async (filePath, fileName, extension) => {
+  try {
+    const fullFilePath = `media/${filePath}/${fileName}.${extension}`;
+    const fileRef = ref(storage, fullFilePath);
+
+    const url = await getDownloadURL(fileRef);
+
+    if (!url) throw Error;
+
+    return url;
+  } catch (error) {
+    throw new Error(error.message);
   }
 };
 
@@ -291,7 +327,6 @@ export const uploadFile = async (filePath, fileName, file) => {
 
   try {
     const { extension } = await getFileMetadata(file);
-
     const fullFilePath = filePath + `${fileName}.${extension}`;
     const fileRef = ref(storage, fullFilePath);
 
@@ -299,26 +334,11 @@ export const uploadFile = async (filePath, fileName, file) => {
 
     if (!snapshot) throw Error;
 
-    const url = await getFileURL(snapshot);
+    const url = await getDownloadURL(snapshot.ref);
+
+    if (!url) throw Error;
 
     return { snapshot, url };
-  } catch (error) {
-    throw new Error(error.message);
-  }
-};
-
-export const downloadFile = async (filePath, fileName, extension) => {
-  const fullFilePath = `${filePath}/${fileName}.${extension}`;
-
-  try {
-    const fileRef = ref(storage, fullFilePath);
-
-    const url = await getDownloadURL(fileRef);
-    const blob = await getBlob(fileRef);
-
-    if (!url || !blob) throw Error;
-
-    return { url, blob };
   } catch (error) {
     throw new Error(error.message);
   }
