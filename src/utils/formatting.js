@@ -74,3 +74,10 @@ export const formatFileName = (title) => {
     .replace(/[\s]+/g, '_') // Replace spaces with underscores
     .replace(/[\(\)]/g, ''); // Remove parentheses
 };
+
+export const slugify = (text) => {
+  return text
+    .toLowerCase()
+    .replace(/ /g, '-') // Replace all white spaces with dashes
+    .replace(/[^\w-]+/g, ''); // Remove all special characters
+};
