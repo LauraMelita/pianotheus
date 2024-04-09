@@ -144,6 +144,8 @@ const CollectionPage = () => {
             data={searchResults}
             isSearchFetching={isSearchFetching}
             isSearchLoading={isSearchLoading}
+            searchTerm={searchValue}
+            clearSearch={clearSearchParam}
           />
         )}
 
