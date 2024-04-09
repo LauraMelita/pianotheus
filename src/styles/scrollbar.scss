@@ -29,4 +29,18 @@ html {
       }
     }
   }
+
+  .table__container {
+    &::-webkit-scrollbar {
+      &-thumb {
+        background-clip: padding-box;
+        border-radius: var(--global-border-radius);
+        border: 6px solid transparent;
+      }
+
+      &-track {
+        background: transparent;
+      }
+    }
+  }
 }
