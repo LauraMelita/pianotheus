@@ -4,10 +4,16 @@ export const useAnimations = () => {
   const { isMobile } = useResponsive();
 
   const showHide = {
-    open: {
-      display: 'flex',
+    show: {
+      opacity: 1,
+      display: 'block',
+      transition: {
+        type: 'spring',
+        duration: 3,
+      },
     },
-    closed: {
+    hidden: {
+      opacity: 0,
       display: 'none',
     },
   };

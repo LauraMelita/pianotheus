@@ -24,6 +24,12 @@
     flex-direction: row;
     gap: calc(var(--global-gap) / 2);
 
+    .badge {
+      img {
+        border-radius: 10%;
+      }
+    }
+
     .track__info {
       display: flex;
       flex-direction: column;
@@ -90,12 +96,13 @@
     .progress {
       display: flex;
       gap: calc(var(--global-gap) / 2);
+      align-items: center;
 
       .backward__btn,
       .forward__btn {
         svg {
-          height: 24px;
-          width: 24px;
+          height: 16px;
+          width: 16px;
 
           &:hover {
             color: var(--text-color-primary);
@@ -106,27 +113,19 @@
       span {
         font-size: var(--fs-50);
       }
-
-      input {
-        width: 100%;
-      }
     }
   }
 
   .volume {
     display: flex;
     gap: calc(var(--global-gap) / 2);
-    max-width: 10em;
+    width: 10em;
 
     button {
       svg {
         width: 22px;
         height: 22px;
       }
-    }
-
-    input {
-      width: 100%;
     }
   }
 }
