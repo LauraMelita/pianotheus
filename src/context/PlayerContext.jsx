@@ -9,7 +9,9 @@ const PlayerContext = createContext({
   setCurrentSongs: () => {},
   play: () => {},
   pause: () => {},
+  handlePlayPause: () => {},
   setSelectedSong: () => {},
+  isActiveSongPlaying: () => {},
 });
 
 export const PlayerProvider = ({ children }) => {
@@ -23,11 +25,22 @@ export const PlayerProvider = ({ children }) => {
 
   const pause = () => setIsPlaying(false);
 
+  const handlePlayPause = () => {
+    if (isPlaying) {
+      pause();
+    } else {
+      play();
+    }
+  };
+
   const selectSong = (song, index) => {
     setActiveSong(song);
     setCurrentIndex(index);
     setIsActive(true);
   };
+
+  const isActiveSongPlaying = (songTitle) =>
+    songTitle === activeSong.title && isPlaying;
 
   return (
     <PlayerContext.Provider
@@ -40,7 +53,9 @@ export const PlayerProvider = ({ children }) => {
         setCurrentSongs,
         play,
         pause,
+        handlePlayPause,
         selectSong,
+        isActiveSongPlaying,
       }}
     >
       {children}

@@ -13,21 +13,13 @@ import './AudioPlayer.scss';
 
 const AudioPlayer = ({ data }) => {
   const { isClassical } = useCollectionContext();
-  const { isPlaying, play, pause, activeSong } = usePlayerContext();
+  const { isPlaying, pause, handlePlayPause, activeSong } = usePlayerContext();
 
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [playbackProgress, setPlaybackProgress] = useState(0);
   const [volume, setVolume] = useState(0.5);
   const [repeat, setRepeat] = useState(false);
-
-  const handlePlayPause = () => {
-    if (isPlaying) {
-      pause();
-    } else {
-      play();
-    }
-  };
 
   const handleOnEnded = () => {
     setCurrentTime(0);
