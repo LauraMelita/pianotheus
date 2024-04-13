@@ -18,6 +18,8 @@ export const useFile = () => {
       if (fileName && fileName.length) a.download = fileName;
       document.body.appendChild(a);
       a.click();
+
+      return blobURL;
     } catch (error) {
       toast.error(error.message, {
         hideProgressBar: true,
@@ -31,6 +33,8 @@ export const useFile = () => {
       const blobUrl = URL.createObjectURL(blob);
 
       window.open(blobUrl, '_blank'); // Open the blob URL in a new window
+
+      return blobUrl;
     } catch (error) {
       toast.error(error.message, {
         hideProgressBar: true,

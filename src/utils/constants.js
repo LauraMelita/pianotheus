@@ -9,9 +9,13 @@ export const MEDIA_URLS = {
   THEMOVIEDB_IMAGE_PATH: 'https://image.tmdb.org/t/p/original',
 };
 
-export const EXTENSION = {
-  MIDI: 'mid',
-  PDF: 'pdf',
+export const FILE_TYPES = {
+  midi: {
+    extension: 'mid',
+  },
+  sheetMusic: {
+    extension: 'pdf',
+  },
 };
 
 export const FORM = {

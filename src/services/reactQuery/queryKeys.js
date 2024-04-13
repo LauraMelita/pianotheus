@@ -9,4 +9,5 @@ export const QUERY_KEYS = {
   GET_DETAILS: 'getDetails',
   GET_DOCUMENT: 'getDocument',
   DOWNLOAD_FILE: 'downloadFile',
+  OPEN_FILE_IN_NEW_WINDOW: 'openFileInNewWindow',
 };

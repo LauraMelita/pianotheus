@@ -6,9 +6,11 @@ import {
 } from '@tanstack/react-query';
 
 import { useCollectionContext } from '../../context/CollectionContext.jsx';
-import { siteConfig } from '../../utils/config.js';
+import { useFile } from '../../hooks/useFile.js';
 
+import { siteConfig } from '../../utils/config.js';
 import { QUERY_KEYS } from './queryKeys';
+
 import {
   createUserAccount,
   signInUser,
@@ -243,6 +245,30 @@ export const useGetDetails = (collection, currentPath) => {
         queryValue: currentPath,
       }),
     staleTime: Infinity,
+  });
+};
+
+// ============================================================
+// FILE QUERIES
+// ============================================================
+
+export const useDownloadFile = (fileName, fileExtension) => {
+  const { downloadFile } = useFile();
+
+  return useQuery({
+    queryKey: [QUERY_KEYS.DOWNLOAD_FILE, fileName, fileExtension],
+    queryFn: () => downloadFile(fileName, fileExtension),
+    enabled: false,
+  });
+};
+
+export const useOpenFileInNewWindow = (fileName, fileExtension) => {
+  const { openFileInNewWindow } = useFile();
+
+  return useQuery({
+    queryKey: [QUERY_KEYS.OPEN_FILE_IN_NEW_WINDOW, fileName, fileExtension],
+    queryFn: () => openFileInNewWindow(fileName, fileExtension),
+    enabled: false,
   });
 };
 
