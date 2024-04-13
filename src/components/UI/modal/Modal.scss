@@ -1,3 +1,5 @@
+@import '../../../styles/mixins.scss';
+
 .overlay {
   position: fixed;
   inset: 0;
@@ -20,6 +22,99 @@
       position: absolute;
       top: 20px;
       right: 20px;
+    }
+  }
+
+  &.contact {
+    overflow: hidden;
+    border-radius: calc(var(--global-border-radius) * 2);
+
+    .modal__content {
+      .contact__form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--global-gap);
+        padding: var(--global-padding);
+        background: var(--black-6);
+        border-radius: calc(var(--global-border-radius) * 2);
+        border: calc(var(--global-border-width) * 2) solid
+          var(--accent-color-100);
+
+        > div {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          .social {
+            display: flex;
+            justify-content: center;
+            gap: var(--global-gap);
+          }
+        }
+
+        form {
+          padding: 20px 40px;
+          border-radius: calc(var(--global-border-radius) * 2);
+
+          button {
+            width: 50%;
+          }
+        }
+      }
+
+      .modal__close-btn {
+        @include iconButton();
+      }
+    }
+  }
+
+  &.youtube {
+    .modal__content {
+      min-width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: var(--global-padding);
+
+      .video {
+        overflow: hidden;
+        height: 50%;
+        width: 50%;
+        border-radius: var(--global-border-radius);
+
+        iframe {
+          min-height: 100%;
+          min-width: 100%;
+          border: none;
+        }
+      }
+
+      .modal__close-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background: hsla(0, 0%, 100%, 0.05);
+        border-radius: 50%;
+        border: 1px solid hsla(0, 0%, 59.2%, 0.05);
+        cursor: pointer;
+
+        svg {
+          color: var(--white-0);
+          width: 24px;
+          height: 24px;
+        }
+
+        &:hover {
+          background: var(--white-0);
+
+          svg {
+            color: var(--black-7);
+          }
+        }
+      }
     }
   }
 }

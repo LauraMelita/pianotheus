@@ -6,8 +6,6 @@ import Modal from '../../components/UI/modal/Modal';
 import ContactButton from './button/ContactButton';
 import ContactForm from './form/ContactForm';
 
-import './ContactModal.scss';
-
 const ContactModal = ({ btnText }) => {
   const { isOpen, toggleModal } = useModal();
 
