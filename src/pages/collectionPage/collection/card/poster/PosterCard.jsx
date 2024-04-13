@@ -57,6 +57,7 @@ const PosterCard = ({
                 title={composer}
                 width={30}
                 height={30}
+                borderRadius='50%'
               >
                 <span>{composer}</span>
               </Badge>
