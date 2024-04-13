@@ -5,6 +5,7 @@ import { useParallax } from '../../../hooks/useParallax';
 
 import { BackgroundImage as ParallaxLayer } from '../../../components/UI/image/BackgroundImage';
 import AnimatedStars from '../../../components/UI/animation/stars/AnimatedStars';
+import Aurora from '../../../components/UI/animation/aurora/Aurora';
 
 import Fog1 from '../../../assets/images/parallax/fog_1.png';
 import Moon from '../../../assets/images/parallax/moon.png';
@@ -21,6 +22,10 @@ const Parallax = () => {
     <motion.div ref={parallaxRef} className='parallax stack'>
       <ParallaxLayer zIndex={0} inset='0'>
         <AnimatedStars fade radius={50} count={2500} factor={2} speed={2} />
+      </ParallaxLayer>
+
+      <ParallaxLayer zIndex={1} inset='0'>
+        <Aurora hexColors={['#13FFAA', '#1E67C6', '#CE84CF', '#DD335C']} />
       </ParallaxLayer>
 
       <ParallaxLayer
