@@ -1,0 +1,8 @@
+.code-block {
+  display: flex;
+  flex-direction: column;
+
+  .clipboard {
+    align-self: flex-end;
+  }
+}
