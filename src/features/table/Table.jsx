@@ -53,7 +53,7 @@ const Table = ({
   const isSearching = searchTerm !== '';
 
   return (
-    <div className={`table__container ${className || ''}`}>
+    <div className={`${className || ''} table`}>
       <div className='table__controls'>
         <SearchBar
           placeholder={searchBarPlaceholder}

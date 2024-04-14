@@ -43,7 +43,7 @@
   }
 
   main {
-    &:not(.home, .details, .sign-in, .sign-up, .collection) {
+    &:not(.home, .scores, .sign-in, .sign-up, .collection) {
       padding: var(--content-padding);
     }
   }

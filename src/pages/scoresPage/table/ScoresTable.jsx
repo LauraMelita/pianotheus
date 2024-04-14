@@ -66,7 +66,7 @@ const ScoresTable = ({ data }) => {
 
   return (
     <Table
-      className='scores'
+      className='scores-list'
       data={data.scores}
       columns={columns}
       resultsPerPage={10}

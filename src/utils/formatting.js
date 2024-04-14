@@ -81,3 +81,14 @@ export const slugify = (text) => {
     .replace(/ /g, '-') // Replace all white spaces with dashes
     .replace(/[^\w-]+/g, ''); // Remove all special characters
 };
+
+export const convertMinutesToHoursAndMinutes = (minutes) => {
+  // Calculate the number of hours
+  const hours = Math.floor(minutes / 60);
+
+  // Calculate the remaining minutes after subtracting the hours
+  const remainingMinutes = minutes % 60;
+
+  // Return an object containing hours and remaining minutes
+  return { hours, minutes: remainingMinutes };
+};
