@@ -50,6 +50,8 @@
         .carousel__item {
           flex-shrink: 0;
           flex-grow: 0;
+          min-width: 100%;
+          min-height: 100%;
         }
       }
 

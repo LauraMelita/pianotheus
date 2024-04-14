@@ -1,19 +1,15 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { useFocusTrap } from '@mantine/hooks';
 
 import { useCarousel } from '../../hooks/useCarousel';
-import { useResponsive } from '../../hooks/useResponsive';
-import { useAnimations } from '../../hooks/useAnimations';
 
-import Button from '../../components/UI/button/Button';
-import Svg from '../../components/UI/svg/Svg';
-import Image from '../../components/UI/image/Image';
+import CarouselButton from './elements/CarouselButton';
+import CarouselSlide from './elements/CarouselSlide';
+import CarouselIndicators from './elements/CarouselIndicators';
 
 import './Carousel.scss';
 
 const Carousel = ({ items }) => {
-  const { isMobile } = useResponsive();
-  const { highlight } = useAnimations();
   const {
     currentSlideIndex,
     setCurrentSlideIndex,
@@ -22,80 +18,33 @@ const Carousel = ({ items }) => {
     handleKeyDown,
     handleMouseWheel,
   } = useCarousel(items);
-
-  const CarouselSlide = () => {
-    return (
-      <div className='carousel__slides'>
-        <div
-          className='carousel__navigation backward'
-          onClick={slideBackward}
-          aria-hidden
-        />
-        <div
-          className='carousel__navigation forward'
-          onClick={slideForward}
-          aria-hidden
-        />
-        {items.map((item, index) => (
-          <Image
-            key={index}
-            className='carousel__item'
-            src={item}
-            alt='carousel item'
-            style={{ transform: `translateX(-${currentSlideIndex * 100}%)` }}
-          />
-        ))}
-      </div>
-    );
-  };
-
-  const CarouselButton = ({ className, icon, onClick }) => {
-    if (!isMobile)
-      return (
-        <Button className={`carousel__btn ${className}`} onClick={onClick}>
-          <motion.span className='circle' aria-hidden>
-            <Svg icon={icon} />
-          </motion.span>
-        </Button>
-      );
-  };
-
-  const CarouselIndicators = () => {
-    return (
-      <div className={`carousel__indicators ${isMobile ? 'mobile' : ''}`}>
-        {items.map((item, index) => {
-          const isActive = index === currentSlideIndex;
-          return (
-            <Button
-              key={index}
-              className={isActive && 'active'}
-              onClick={() => setCurrentSlideIndex(index)}
-              variants={highlight}
-              initial='inactive'
-              animate={isActive && 'active'}
-            >
-              {!isMobile && <Image src={item} alt='preview' />}
-            </Button>
-          );
-        })}
-      </div>
-    );
-  };
+  const focusTrapRef = useFocusTrap();
 
   return (
     <div
+      ref={focusTrapRef}
       className='carousel'
       tabIndex={0}
       onKeyDown={handleKeyDown}
       onWheel={handleMouseWheel}
     >
       <div>
-        <CarouselButton onClick={slideBackward} icon='chevron-left' />
-        <CarouselSlide />
-        <CarouselButton onClick={slideForward} icon='chevron-right' />
+        <CarouselButton icon='chevron-left' onClick={slideBackward} />
+        <CarouselSlide
+          slides={items}
+          slideBackward={slideBackward}
+          slideForward={slideForward}
+          currentSlideIndex={currentSlideIndex}
+        />
+        <CarouselButton icon='chevron-right' onClick={slideForward} />
       </div>
+
       <div>
-        <CarouselIndicators />
+        <CarouselIndicators
+          slides={items}
+          currentSlideIndex={currentSlideIndex}
+          setCurrentSlideIndex={setCurrentSlideIndex}
+        />
       </div>
     </div>
   );
