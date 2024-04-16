@@ -5,10 +5,25 @@ import Svg from '../../svg/Svg';
 import Alert from '../../alert/Alert';
 
 const FileInput = ({ label, register, watch, errors }) => {
-  const FileName = () => {
-    if (!watch('file') || watch('file').length === 0) return null;
+  const selectedFile = watch('file')?.[0];
 
-    return <span className='file__name'>{watch('file')[0]?.name}</span>;
+  const FileName = () => {
+    return (
+      selectedFile && <span className='file__name'>{selectedFile.name}</span>
+    );
+  };
+
+  const FilePreview = () => {
+    return (
+      selectedFile && (
+        <img
+          src={URL.createObjectURL(selectedFile)}
+          alt='selected avatar'
+          height={100}
+          width={100}
+        />
+      )
+    );
   };
 
   return (
@@ -19,6 +34,7 @@ const FileInput = ({ label, register, watch, errors }) => {
           <span>{label}</span>
         </div>
         <FileName />
+        <FilePreview />
       </Label>
       <Input type='file' id='file' name='file' {...register('file')} />
       <Alert severity='error'>{errors.file && errors.file.message}</Alert>

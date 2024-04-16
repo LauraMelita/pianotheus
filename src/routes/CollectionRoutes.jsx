@@ -6,7 +6,7 @@ import { PlayerProvider } from '../context/PlayerContext';
 
 import ProtectedRoute from '../features/authentication/routing/ProtectedRoute';
 import CollectionPage from '../pages/collectionPage/CollectionPage';
-import DetailsPage from '../pages/detailsPage/DetailsPage';
+import ScoresPage from '../pages/scoresPage/ScoresPage';
 
 import { siteConfig } from '../utils/config';
 
@@ -29,7 +29,7 @@ const CollectionRoutes = () => {
           <ProtectedRoute>
             <CollectionProvider>
               <PlayerProvider>
-                <DetailsPage />
+                <ScoresPage />
               </PlayerProvider>
             </CollectionProvider>
           </ProtectedRoute>

@@ -4,10 +4,16 @@ export const useAnimations = () => {
   const { isMobile } = useResponsive();
 
   const showHide = {
-    open: {
-      display: 'flex',
+    show: {
+      opacity: 1,
+      display: 'block',
+      transition: {
+        type: 'spring',
+        duration: 3,
+      },
     },
-    closed: {
+    hidden: {
+      opacity: 0,
       display: 'none',
     },
   };
@@ -52,5 +58,16 @@ export const useAnimations = () => {
     }),
   };
 
-  return { showHide, slideRight, slideDown, staggerCards };
+  const highlight = {
+    inactive: {
+      opacity: 0.6,
+      filter: 'brightness(1)',
+    },
+    active: {
+      opacity: 1,
+      filter: 'brightness(1.5)',
+    },
+  };
+
+  return { showHide, slideRight, slideDown, staggerCards, highlight };
 };

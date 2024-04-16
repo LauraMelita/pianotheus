@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { useCollectionContext } from '../../context/CollectionContext';
 import { usePlayerContext } from '../../context/PlayerContext';
 
 import Player from './components/Player';
@@ -11,21 +12,14 @@ import VolumeBar from './components/VolumeBar';
 import './AudioPlayer.scss';
 
 const AudioPlayer = ({ data }) => {
-  const { isPlaying, play, pause, activeSong } = usePlayerContext();
+  const { isClassical } = useCollectionContext();
+  const { isPlaying, pause, handlePlayPause, activeSong } = usePlayerContext();
 
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [playbackProgress, setPlaybackProgress] = useState(0);
-  const [volume, setVolume] = useState(0.3);
+  const [volume, setVolume] = useState(0.5);
   const [repeat, setRepeat] = useState(false);
-
-  const handlePlayPause = () => {
-    if (isPlaying) {
-      pause();
-    } else {
-      play();
-    }
-  };
 
   const handleOnEnded = () => {
     setCurrentTime(0);
@@ -35,7 +29,7 @@ const AudioPlayer = ({ data }) => {
   return (
     <div className='player'>
       <Player
-        src={activeSong?.audio}
+        src={activeSong?.audioUrl}
         volume={volume}
         isPlaying={isPlaying}
         currentTime={currentTime}
@@ -44,11 +38,14 @@ const AudioPlayer = ({ data }) => {
         onLoadedData={(e) => setDuration(e.target.duration)}
         onEnded={handleOnEnded}
       />
+
       <Track
-        title={activeSong?.score}
+        title={activeSong?.title}
+        work={activeSong?.work}
         artist={data.composer}
-        cover={data.composerImg}
+        cover={isClassical ? data.composerImg : data.poster}
       />
+
       <div className='player__actions'>
         <Controls
           isPlaying={isPlaying}
@@ -56,20 +53,23 @@ const AudioPlayer = ({ data }) => {
           repeat={repeat}
           setRepeat={setRepeat}
         />
+
         <ProgressBar
-          value={playbackProgress}
+          value={[playbackProgress]}
           min={0}
           max={duration}
-          onInput={(e) => setCurrentTime(e.target.value)}
-          setCurrentTime={setCurrentTime}
-          playbackProgress={playbackProgress}
+          onChange={(e) => setCurrentTime(...e)}
+          handleBackward={() => setCurrentTime(playbackProgress - 15)}
+          handleForward={() => setCurrentTime(playbackProgress + 15)}
         />
       </div>
+
       <VolumeBar
         value={volume}
         min={0}
         max={1}
-        onChange={(e) => setVolume(+e.target.value)}
+        step={0.1}
+        onChange={(e) => setVolume(...e)}
         toggleMute={() => setVolume(volume === 0 ? 1 : 0)}
       />
     </div>

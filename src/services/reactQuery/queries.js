@@ -6,9 +6,11 @@ import {
 } from '@tanstack/react-query';
 
 import { useCollectionContext } from '../../context/CollectionContext.jsx';
-import { siteConfig } from '../../utils/config.js';
+import { useFile } from '../../hooks/useFile.js';
 
+import { siteConfig } from '../../utils/config.js';
 import { QUERY_KEYS } from './queryKeys';
+
 import {
   createUserAccount,
   signInUser,
@@ -16,12 +18,8 @@ import {
   createDocument,
   getDocument,
   getInfiniteCollection,
-  downloadFile,
 } from '../firebase/api';
-import { getImdbData, getRawgData } from '../axios/api';
 import { sendEmail } from '../emailjs/api.js';
-
-import { formatDate } from '../../utils/formatting.js';
 
 // ============================================================
 // AUTH QUERIES
@@ -250,48 +248,26 @@ export const useGetDetails = (collection, currentPath) => {
   });
 };
 
-export const useGetImdbData = (imdbId, data) => {
-  return useQuery({
-    queryKey: [QUERY_KEYS.IMDB_DATA, imdbId],
-    enabled: data?.imdbId != null,
-    queryFn: () => getImdbData(imdbId),
-  });
-};
-
-export const useGetRawgData = (rawgId, path, data) => {
-  return useQuery({
-    queryKey: [QUERY_KEYS.RAWG_DATA, rawgId, path],
-    enabled: data?.rawgId != null,
-    queryFn: () => getRawgData(rawgId, path),
-    select: (data) => {
-      const details = data[0].data;
-      const screenshots = data[1].data.results.map(
-        (screenshot) => screenshot.image
-      );
-
-      return {
-        description: details.description_raw,
-        released: formatDate(details.released),
-        playtime: details.playtime,
-        genres: details.genres,
-        platforms: details.platforms,
-        rating: details.rating,
-        developers: details.developers,
-        website: details.website,
-        screenshots,
-      };
-    },
-  });
-};
-
 // ============================================================
 // FILE QUERIES
 // ============================================================
 
-export const useDownloadFile = (filePath, fileName, extension) => {
+export const useDownloadFile = (fileName, fileExtension) => {
+  const { downloadFile } = useFile();
+
   return useQuery({
-    queryKey: [QUERY_KEYS.DOWNLOAD_FILE, filePath, fileName, extension],
-    queryFn: () => downloadFile(filePath, fileName, extension),
+    queryKey: [QUERY_KEYS.DOWNLOAD_FILE, fileName, fileExtension],
+    queryFn: () => downloadFile(fileName, fileExtension),
+    enabled: false,
+  });
+};
+
+export const useOpenFileInNewWindow = (fileName, fileExtension) => {
+  const { openFileInNewWindow } = useFile();
+
+  return useQuery({
+    queryKey: [QUERY_KEYS.OPEN_FILE_IN_NEW_WINDOW, fileName, fileExtension],
+    queryFn: () => openFileInNewWindow(fileName, fileExtension),
     enabled: false,
   });
 };

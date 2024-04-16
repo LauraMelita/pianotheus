@@ -29,7 +29,7 @@ const PosterCard = ({
         {scores.map((score, index) => (
           <li key={index}>
             <Svg icon='midi-text' />
-            <span>{score.score}</span>
+            <span>{score.title}</span>
           </li>
         ))}
       </ul>
@@ -57,6 +57,7 @@ const PosterCard = ({
                 title={composer}
                 width={30}
                 height={30}
+                borderRadius='50%'
               >
                 <span>{composer}</span>
               </Badge>

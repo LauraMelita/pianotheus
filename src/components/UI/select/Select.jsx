@@ -17,7 +17,7 @@ const Select = forwardRef(
         >
           <RadixSelect.Value placeholder={label} aria-label={value} />
           <RadixSelect.Icon className='select__icon'>
-            <Svg icon='chevron-down' />
+            <Svg icon='chevron-down' aria-hidden />
           </RadixSelect.Icon>
         </RadixSelect.Trigger>
 

@@ -1,0 +1,90 @@
+.details {
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .poster {
+    max-width: 250px;
+    overflow: hidden;
+    border-radius: var(--global-border-radius);
+  }
+
+  .genres {
+    display: flex;
+    gap: calc(var(--global-gap) / 2);
+
+    > li {
+      padding: 5px 10px;
+      border: 2px solid var(--accent-color-200);
+      border-radius: calc(var(--global-border-radius) * 2);
+      font-size: var(--fs-50);
+    }
+  }
+
+  .content-rating {
+    align-self: baseline;
+    padding: 0.06em 4px 0.15em;
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--fs-50);
+  }
+
+  .esrb {
+    display: flex;
+    gap: calc(var(--global-gap) / 2);
+  }
+
+  .platform-icons {
+    display: flex;
+    gap: calc(var(--global-gap) / 2);
+    align-items: center;
+
+    svg {
+      color: var(--accent-color-200);
+
+      &.icon__pc {
+        width: 14px;
+        height: 14px;
+      }
+
+      &.icon__mac {
+        width: 13px;
+        height: 16px;
+      }
+
+      &.icon__playstation {
+        width: 19px;
+        height: 14px;
+      }
+
+      &.icon__xbox {
+        width: 14px;
+        height: 14px;
+      }
+
+      &.icon__nintendo {
+        width: 19px;
+        height: 14px;
+      }
+    }
+  }
+
+  .production-companies {
+    display: flex;
+    gap: 10px;
+    max-width: 10%;
+
+    img {
+      max-height: 30px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+}

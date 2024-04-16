@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { useSendEmail } from '../../../services/reactQuery/queries';
 import { contactValidation } from '../../../services/zod/validation';
 
+import Social from '../../../components/UI/social/Social';
 import { Form } from '../../../components/UI/form/Form';
 import TextInput from '../../../components/UI/form/elements/TextInput';
 import TextAreaInput from '../../../components/UI/form/elements/TextAreaInput';
@@ -40,38 +41,48 @@ const ContactForm = ({ toggleModal }) => {
   };
 
   return (
-    <Form className='contact' onSubmit={handleSubmit(onSendEmail)}>
-      <TextInput
-        label='Name'
-        type='text'
-        name='name'
-        register={register}
-        errors={errors}
-      />
-      <TextInput
-        label='Email'
-        type='text'
-        name='email'
-        register={register}
-        errors={errors}
-      />
-      <TextInput
-        label='Subject'
-        type='text'
-        name='subject'
-        register={register}
-        errors={errors}
-      />
-      <TextAreaInput
-        label='Message'
-        name='message'
-        rows={4}
-        register={register}
-        errors={errors}
-      />
-      <SubmitButton btnText='Send email' isSubmitting={isSubmitting} />
-      <Alert severity='error'>{errors.root && errors.root.message}</Alert>
-    </Form>
+    <div className='contact__form'>
+      <div>
+        <span>
+          Got a question? I'd love to hear from you. Fill out the form and I'll
+          be in touch as soon as possible.
+        </span>
+        <Social />
+      </div>
+
+      <Form onSubmit={handleSubmit(onSendEmail)}>
+        <TextInput
+          label='Name'
+          type='text'
+          name='name'
+          register={register}
+          errors={errors}
+        />
+        <TextInput
+          label='Email'
+          type='text'
+          name='email'
+          register={register}
+          errors={errors}
+        />
+        <TextInput
+          label='Subject'
+          type='text'
+          name='subject'
+          register={register}
+          errors={errors}
+        />
+        <TextAreaInput
+          label='Message'
+          name='message'
+          rows={4}
+          register={register}
+          errors={errors}
+        />
+        <SubmitButton btnText='Submit' isSubmitting={isSubmitting} />
+        <Alert severity='error'>{errors.root && errors.root.message}</Alert>
+      </Form>
+    </div>
   );
 };
 

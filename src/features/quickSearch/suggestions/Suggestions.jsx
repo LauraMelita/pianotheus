@@ -8,6 +8,7 @@ import './Suggestions.scss';
 const Suggestions = forwardRef(
   (
     {
+      suggestionRef,
       suggestions,
       searchQuery,
       active,
@@ -51,22 +52,22 @@ const Suggestions = forwardRef(
     };
 
     const renderScores = ({ scores }) =>
-      scores.map(({ score }, index) => {
-        const searchQueryIncludesScore = score
-          .toLowerCase()
+      scores.map(({ title }, index) => {
+        const searchQueryIncludesScore = title
+          ?.toLowerCase()
           .includes(searchQuery);
 
         if (searchQueryIncludesScore)
           return (
             <li key={index}>
               <Svg icon='midi-text' />
-              <span>{score}</span>
+              <span>{title}</span>
             </li>
           );
       });
 
     return (
-      <ul className='suggestions' ref={ref}>
+      <ul className='suggestions' ref={suggestionRef}>
         {suggestions.map((suggestion, index) => {
           return (
             <li

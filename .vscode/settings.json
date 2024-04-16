@@ -1,7 +1,7 @@
 {
   "cSpell.words": [
     "apikey",
-    "esbr",
+    "esrb",
     "firestore",
     "imdb",
     "mantine",
@@ -10,8 +10,10 @@
     "OMDB",
     "parallax",
     "pianotheus",
+    "Playbar",
     "searchbar",
     "tanstack",
+    "TMDB",
     "toastify"
   ]
 }

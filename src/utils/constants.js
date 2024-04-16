@@ -5,9 +5,17 @@ export const API = {
   RAWG: 'https://rawg.io/api',
 };
 
-export const EXTENSION = {
-  MIDI: 'mid',
-  PDF: 'pdf',
+export const MEDIA_URLS = {
+  THEMOVIEDB_IMAGE_PATH: 'https://image.tmdb.org/t/p/original',
+};
+
+export const FILE_TYPES = {
+  midi: {
+    extension: 'mid',
+  },
+  sheetMusic: {
+    extension: 'pdf',
+  },
 };
 
 export const FORM = {

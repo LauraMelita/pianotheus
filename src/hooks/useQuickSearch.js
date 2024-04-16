@@ -67,7 +67,7 @@ export const useQuickSearch = (searchKeys) => {
           ) ||
           // Data matches a score title
           suggestion.scores.some((score) =>
-            score.score?.toLowerCase().includes(searchQuery.trim())
+            score.title?.toLowerCase().includes(searchQuery.trim())
           )
       );
 

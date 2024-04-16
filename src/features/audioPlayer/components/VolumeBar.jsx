@@ -2,8 +2,9 @@ import React from 'react';
 
 import Button from '../../../components/UI/button/Button';
 import Svg from '../../../components/UI/svg/Svg';
+import Slider from '../../../components/UI/slider/Slider';
 
-const VolumeBar = ({ value, min, max, onChange, toggleMute }) => {
+const VolumeBar = ({ value, min, max, step, onChange, toggleMute }) => {
   const volumeIcon =
     value === 0
       ? 'volume-mute'
@@ -17,12 +18,11 @@ const VolumeBar = ({ value, min, max, onChange, toggleMute }) => {
         <Svg icon={volumeIcon} />
       </Button>
 
-      <input
-        type='range'
-        step='any'
-        value={value}
+      <Slider
+        value={[value]}
         min={min}
         max={max}
+        step={step}
         onChange={onChange}
       />
     </div>

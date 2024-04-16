@@ -65,3 +65,30 @@ export const parsePxToNumber = (value) => +value.replace('px', '');
 
 export const formatTime = (time) =>
   `${Math.floor(time / 60)}:${`0${Math.floor(time % 60)}`.slice(-2)}`;
+
+export const formatFileName = (title) => {
+  return title
+    .toLowerCase()
+    .replace(/,/g, '') // Remove commas
+    .replace(/\.|:/g, '') // Remove periods and colons
+    .replace(/[\s]+/g, '_') // Replace spaces with underscores
+    .replace(/[\(\)]/g, ''); // Remove parentheses
+};
+
+export const slugify = (text) => {
+  return text
+    .toLowerCase()
+    .replace(/ /g, '-') // Replace all white spaces with dashes
+    .replace(/[^\w-]+/g, ''); // Remove all special characters
+};
+
+export const convertMinutesToHoursAndMinutes = (minutes) => {
+  // Calculate the number of hours
+  const hours = Math.floor(minutes / 60);
+
+  // Calculate the remaining minutes after subtracting the hours
+  const remainingMinutes = minutes % 60;
+
+  // Return an object containing hours and remaining minutes
+  return { hours, minutes: remainingMinutes };
+};
