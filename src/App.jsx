@@ -30,7 +30,7 @@ const App = () => {
         </Route>
         <Route element={<AppLayout />}>
           <Route path='/' element={<HomePage />} />
-          {CollectionRoutes()}
+          <Route path='/:collection/*' element={<CollectionRoutes />} />
           <Route path='*' element={<ErrorPage code='404' />} />
         </Route>
       </Routes>
