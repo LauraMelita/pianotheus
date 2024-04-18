@@ -44,6 +44,21 @@ export const useAnimations = () => {
     },
   };
 
+  const fadeAndSlide = {
+    initial: {
+      y: 10,
+      opacity: 0,
+    },
+    enter: {
+      y: 0,
+      opacity: 1,
+    },
+    exit: {
+      y: -10,
+      opacity: 0,
+    },
+  };
+
   const staggerCards = {
     hidden: {
       opacity: 0,
@@ -69,5 +84,12 @@ export const useAnimations = () => {
     },
   };
 
-  return { showHide, slideRight, slideDown, staggerCards, highlight };
+  return {
+    showHide,
+    slideRight,
+    slideDown,
+    staggerCards,
+    highlight,
+    fadeAndSlide,
+  };
 };

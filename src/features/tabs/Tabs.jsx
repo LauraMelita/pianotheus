@@ -1,34 +1,30 @@
-import React from 'react';
-import * as RadixTabs from '@radix-ui/react-tabs';
+import React, { useState } from 'react';
+
+import TabsList from './elements/TabsList';
+import TabsContent from './elements/TabsContent';
 
 import './Tabs.scss';
 
-const Tabs = ({ defaultValue, tabs, padding = 20 }) => {
+const Tabs = ({ tabs, padding = 15 }) => {
+  const [currentTab, setCurrentTab] = useState(tabs[0]);
+
+  const handleSelectTab = (e, tab) => {
+    e.preventDefault();
+    setCurrentTab(tab);
+  };
+
+  const isSelected = (tab) => currentTab.name === tab.name;
+
   return (
-    <RadixTabs.Root className='tabs' defaultValue={defaultValue}>
-      <RadixTabs.List
-        className='tabs__list'
-        style={{ padding: `${padding}px 0` }}
-      >
-        {tabs.map(({ value, name }, index) => (
-          <div key={index}>
-            <RadixTabs.Trigger className='tabs__trigger' value={value}>
-              {name}
-              <div
-                className='tabs__indicator'
-                aria-hidden
-                style={{ bottom: `-${padding}px` }}
-              />
-            </RadixTabs.Trigger>
-          </div>
-        ))}
-      </RadixTabs.List>
-      {tabs.map(({ value, content }, index) => (
-        <RadixTabs.Content key={index} className='tabs__content' value={value}>
-          {content}
-        </RadixTabs.Content>
-      ))}
-    </RadixTabs.Root>
+    <div className='tabs'>
+      <TabsList
+        tabs={tabs}
+        padding={padding}
+        isSelected={isSelected}
+        handleSelectTab={handleSelectTab}
+      />
+      <TabsContent currentTab={currentTab} />
+    </div>
   );
 };
 
