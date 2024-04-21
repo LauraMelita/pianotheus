@@ -14,9 +14,7 @@ const Providers = () => {
   return (
     <ProtectedRoute>
       <CollectionProvider>
-        <PlayerProvider>
-          <Outlet />
-        </PlayerProvider>
+        <Outlet />
       </CollectionProvider>
     </ProtectedRoute>
   );
@@ -36,7 +34,14 @@ const CollectionRoutes = () => {
       <Routes>
         <Route element={<Providers />}>
           <Route index element={<CollectionPage />} />
-          <Route path={`:${routeParam}`} element={<ScoresPage />} />
+          <Route
+            path={`:${routeParam}`}
+            element={
+              <PlayerProvider>
+                <ScoresPage />{' '}
+              </PlayerProvider>
+            }
+          />
           <Route path='*' element={<ErrorPage code='404' />} />
         </Route>
       </Routes>
