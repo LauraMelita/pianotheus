@@ -2,9 +2,9 @@ import React from 'react';
 
 import TabIndicator from './TabIndicator';
 
-const TabsList = ({ tabs, padding, isSelected, handleSelectTab }) => {
+const TabsList = ({ tabs, tabItemHeight, isSelected, handleSelectTab }) => {
   return (
-    <ul className='tabs__list' style={{ padding: `${padding}px 0` }}>
+    <ul className='tabs__list' style={{ padding: `${tabItemHeight}px 0` }}>
       {tabs.map((tab) => {
         const isActive = isSelected(tab);
 
@@ -16,7 +16,7 @@ const TabsList = ({ tabs, padding, isSelected, handleSelectTab }) => {
             <button onClick={(e) => handleSelectTab(e, tab)}>
               {tab.label}
             </button>
-            {isActive && <TabIndicator padding={padding} />}
+            {isActive && <TabIndicator tabItemHeight={tabItemHeight} />}
           </li>
         );
       })}

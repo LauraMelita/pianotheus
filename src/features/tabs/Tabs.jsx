@@ -5,7 +5,7 @@ import TabsContent from './elements/TabsContent';
 
 import './Tabs.scss';
 
-const Tabs = ({ tabs, padding = 15 }) => {
+const Tabs = ({ tabs, tabItemHeight = 15, isPortal, portalId }) => {
   const [currentTab, setCurrentTab] = useState(tabs[0]);
 
   const handleSelectTab = (e, tab) => {
@@ -19,11 +19,16 @@ const Tabs = ({ tabs, padding = 15 }) => {
     <div className='tabs'>
       <TabsList
         tabs={tabs}
-        padding={padding}
+        tabItemHeight={tabItemHeight}
         isSelected={isSelected}
         handleSelectTab={handleSelectTab}
       />
-      <TabsContent currentTab={currentTab} />
+
+      <TabsContent
+        isPortal={isPortal}
+        portalId={portalId}
+        currentTab={currentTab}
+      />
     </div>
   );
 };

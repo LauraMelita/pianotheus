@@ -3,26 +3,34 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import { useAnimations } from '../../../hooks/useAnimations';
 
-const TabsContent = ({ currentTab }) => {
+import Portal from '../../../components/portal/Portal';
+
+const AnimatedTabContent = ({ currentTab, fadeAndSlide }) => (
+  <div className='tabs__content'>
+    <AnimatePresence mode='wait'>
+      <motion.div
+        key={currentTab.name}
+        variants={fadeAndSlide}
+        initial='initial'
+        animate='enter'
+        exit='exit'
+        transition={{ duration: 0.3 }}
+      >
+        {currentTab && currentTab.content}
+      </motion.div>
+    </AnimatePresence>
+  </div>
+);
+
+const TabsContent = ({ currentTab, isPortal, portalId }) => {
   const { fadeAndSlide } = useAnimations();
 
-  return (
-    <div className='tabs__content'>
-      <AnimatePresence mode='wait'>
-        <motion.div
-          key={currentTab.name} // The key is required for the animation
-          variants={fadeAndSlide}
-          initial='initial'
-          animate='enter'
-          exit='exit'
-          transition={{
-            duration: 0.3,
-          }}
-        >
-          {currentTab && currentTab.content}
-        </motion.div>
-      </AnimatePresence>
-    </div>
+  return isPortal ? (
+    <Portal portalId={portalId}>
+      <AnimatedTabContent currentTab={currentTab} fadeAndSlide={fadeAndSlide} />
+    </Portal>
+  ) : (
+    <AnimatedTabContent currentTab={currentTab} fadeAndSlide={fadeAndSlide} />
   );
 };
 
