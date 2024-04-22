@@ -3,48 +3,41 @@ import React, { useState } from 'react';
 const ReadMore = ({ text, maxAmountOfWords = 37 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const textArray = text.split(' ');
-  const canCollapse = textArray.length > maxAmountOfWords;
+  const words = text.split(' ');
+  const canCollapse = words.length > maxAmountOfWords;
 
-  const VisibleText = () => {
-    const visibleText = canCollapse
-      ? textArray.slice(0, maxAmountOfWords).join(' ')
+  const toggleExpansion = () => setIsExpanded((prev) => !prev);
+
+  // If collapsing is possible and `isExpanded` is false, show only part of the text. Otherwise show the entire text.
+  const visibleText =
+    canCollapse && !isExpanded
+      ? words.slice(0, maxAmountOfWords).join(' ') + '...'
       : text;
 
-    if (isExpanded) {
-      return <span>{visibleText}</span>;
-    } else {
-      return <span>{visibleText}...</span>;
-    }
-  };
+  // Only show hidden text when collapsing is possible and `isExpanded` is true
+  const hiddenText =
+    canCollapse && isExpanded ? words.slice(maxAmountOfWords).join(' ') : '';
+  // The fallback empty string avoids undefined or null values that might cause errors during rendering.
 
-  const HiddenText = () => {
-    const hiddenText = textArray.slice(maxAmountOfWords).join(' ');
-
-    if (canCollapse && isExpanded) return <span>{hiddenText}</span>;
-  };
-
-  const ShowMoreLess = () => {
-    return (
-      <span
-        onClick={() => setIsExpanded((prev) => !prev)}
-        style={{
-          cursor: 'pointer',
-          marginLeft: '5px',
-          color: 'var(--accent-color-100)',
-          textDecoration: 'underline',
-        }}
-      >
-        {isExpanded ? 'show less' : 'read more'}
-      </span>
-    );
-  };
+  const ShowMoreLessButton = () => (
+    <span
+      onClick={toggleExpansion}
+      style={{
+        cursor: 'pointer',
+        marginLeft: '5px',
+        color: 'var(--accent-color-100)',
+        textDecoration: 'underline',
+      }}
+    >
+      {isExpanded ? 'show less' : 'read more'}
+    </span>
+  );
 
   return (
     <p>
-      <VisibleText />
-      <HiddenText />
-      <ShowMoreLess />
+      <span>{visibleText}</span>
+      {isExpanded && <span>{hiddenText}</span>}
+      {canCollapse && <ShowMoreLessButton />}
     </p>
   );
 };
