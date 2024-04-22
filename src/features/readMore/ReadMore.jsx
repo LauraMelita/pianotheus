@@ -1,43 +1,55 @@
 import React, { useState } from 'react';
 
-const ReadMore = ({ text, maxAmountOfWords = 37 }) => {
+const ReadMore = ({ text, maxWords = 35 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const words = text.split(' ');
-  const canCollapse = words.length > maxAmountOfWords;
+  const canCollapse = words.length > maxWords;
+  const isFullText = words.length <= maxWords;
 
-  const toggleExpansion = () => setIsExpanded((prev) => !prev);
+  const toggleExpanded = () => setIsExpanded((prev) => !prev);
 
-  // If collapsing is possible and `isExpanded` is false, show only part of the text. Otherwise show the entire text.
-  const visibleText =
-    canCollapse && !isExpanded
-      ? words.slice(0, maxAmountOfWords).join(' ') + '...'
-      : text;
+  // Determine the visible portion of the text
+  const VisibleText = () => {
+    const visibleText = canCollapse ? words.slice(0, maxWords).join(' ') : text;
 
-  // Only show hidden text when collapsing is possible and `isExpanded` is true
-  const hiddenText =
-    canCollapse && isExpanded ? words.slice(maxAmountOfWords).join(' ') : '';
-  // The fallback empty string avoids undefined or null values that might cause errors during rendering.
+    if (isExpanded) {
+      return <span>{visibleText}</span>;
+    } else {
+      return <span>{visibleText}...</span>;
+    }
+  };
 
-  const ShowMoreLessButton = () => (
-    <span
-      onClick={toggleExpansion}
-      style={{
-        cursor: 'pointer',
-        marginLeft: '5px',
-        color: 'var(--accent-color-100)',
-        textDecoration: 'underline',
-      }}
-    >
-      {isExpanded ? 'show less' : 'read more'}
-    </span>
-  );
+  // Hidden portion of the text, displayed when expanded
+  const HiddenText = () => {
+    const hiddenText = words.slice(maxWords).join(' ');
 
-  return (
+    if (canCollapse && isExpanded) return <span>&nbsp;{hiddenText}</span>;
+  };
+
+  const ShowMoreLess = () => {
+    return (
+      <span
+        onClick={toggleExpanded}
+        style={{
+          cursor: 'pointer',
+          marginLeft: '5px',
+          color: 'var(--accent-color-100)',
+          textDecoration: 'underline',
+        }}
+      >
+        {isExpanded ? 'show less' : 'read more'}
+      </span>
+    );
+  };
+
+  return isFullText ? (
+    <p>{text}</p>
+  ) : (
     <p>
-      <span>{visibleText}</span>
-      {isExpanded && <span>{hiddenText}</span>}
-      {canCollapse && <ShowMoreLessButton />}
+      <VisibleText />
+      <HiddenText />
+      <ShowMoreLess />
     </p>
   );
 };
