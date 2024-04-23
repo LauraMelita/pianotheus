@@ -30,7 +30,8 @@ html {
     }
   }
 
-  .table__container {
+  .table,
+  .scroller {
     &::-webkit-scrollbar {
       &-thumb {
         background-clip: padding-box;

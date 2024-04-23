@@ -1,0 +1,40 @@
+.scroller {
+  overscroll-behavior-inline: contain;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 10%; // controls size of non grouped items
+
+  &:not(.grouped) {
+    gap: var(--global-gap);
+  }
+
+  .scroller__group {
+    display: grid;
+    grid-template-rows: min-content;
+    gap: calc(var(--global-gap) / 2);
+    justify-items: center;
+    padding: calc(var(--global-gap) / 2) 0;
+  }
+
+  &.inline-snap {
+    scroll-snap-type: inline mandatory;
+
+    > * {
+      scroll-snap-align: start;
+    }
+  }
+
+  // Styles for grouped content
+  &.grouped {
+    grid-auto-columns: 79%; // controls size of grouped items
+
+    .scroller__group {
+      grid-auto-flow: column;
+
+      .scroller__item {
+        display: grid;
+        justify-items: center;
+      }
+    }
+  }
+}
