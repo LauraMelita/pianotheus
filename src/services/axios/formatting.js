@@ -9,9 +9,6 @@ export const formatOmdbMovieData = (omdbData) => {
   return {
     year: omdbData.Year,
     rated: omdbData.Rated,
-    director: omdbData.Director,
-    writer: omdbData.Writer,
-    actors: omdbData.Actors,
     plot: omdbData.Plot,
     awards: omdbData.Awards,
     country: omdbData.Country,
@@ -27,7 +24,7 @@ export const formatOmdbSeriesData = (omdbData) => {
   return {
     year: omdbData.Year,
     rated: omdbData.Rated,
-    runtime,
+    runtime: Number.isNaN(runtime) ? null : runtime,
     actors: omdbData.Actors,
     awards: omdbData.Awards,
     country: omdbData.Country,
@@ -46,14 +43,12 @@ export const formatTmdbMovieData = (tmdbData) => {
 
   const genres = tmdbData.genres.map((genre) => genre.name);
 
-  const productionCompanies = tmdbData.production_companies.map(
-    (productionCompany) => ({
-      logo:
-        productionCompany.logo_path &&
-        `${MEDIA_URLS.THEMOVIEDB_IMAGE_PATH}${productionCompany.logo_path}`,
-      name: productionCompany.name,
-    })
-  );
+  const productionCompanies = tmdbData.production_companies
+    .filter((company) => company.logo_path) // Include only companies with logo_path
+    .map((company) => ({
+      logo: `${MEDIA_URLS.THEMOVIEDB_IMAGE_PATH}${company.logo_path}`,
+      name: company.name,
+    }));
 
   const spokenLanguages = tmdbData.spoken_languages.map(
     (language) => language.name
@@ -66,7 +61,7 @@ export const formatTmdbMovieData = (tmdbData) => {
     tagline: tmdbData.tagline,
     released: tmdbData.release_date,
     runtime: tmdbData.runtime,
-    website: tmdbData.homepage,
+    website: tmdbData.homepage ? tmdbData.homepage : null,
     spokenLanguages,
     productionCompanies,
   };
@@ -79,12 +74,11 @@ export const formatTmdSeriesData = (tmdbData) => {
   const genres = tmdbData.genres.map((genre) => genre.name);
 
   const productionCompanies = tmdbData.production_companies.map(
-    (productionCompany) => ({
-      logo:
-        productionCompany.logo_path &&
-        `${MEDIA_URLS.THEMOVIEDB_IMAGE_PATH}${productionCompany.logo_path}`,
-      name: productionCompany.name,
-    })
+    (productionCompany) =>
+      productionCompany.logo_path && {
+        logo: `${MEDIA_URLS.THEMOVIEDB_IMAGE_PATH}${productionCompany.logo_path}`,
+        name: productionCompany.name,
+      }
   );
 
   const spokenLanguages = tmdbData.spoken_languages.map(
@@ -118,6 +112,48 @@ export const formatTmdbScreenshotData = (tmdbScreenshotsData) => {
   return {
     screenshots,
   };
+};
+
+// ============================================================
+// TMDB CREDITS
+// ============================================================
+
+export const formatTmdbMovieCreditsData = (tmdbCreditsData) => {
+  const actors = tmdbCreditsData.cast.slice(0, 10).map((actor) => ({
+    name: actor.name,
+    character: actor.character,
+    profileImage: `${MEDIA_URLS.THEMOVIEDB_IMAGE_PATH}${actor.profile_path}`,
+  }));
+
+  const directors = tmdbCreditsData.crew
+    .filter((crewMember) => crewMember.job === 'Director')
+    .map((director) => ({
+      name: director.name,
+      profileImage: `${MEDIA_URLS.THEMOVIEDB_IMAGE_PATH}${director.profile_path}`,
+    }));
+
+  const uniqueWriters = {};
+
+  tmdbCreditsData.crew
+    .filter((crewMember) => crewMember.department === 'Writing')
+    .forEach((writer) => {
+      uniqueWriters[writer.name] = {
+        name: writer.name,
+        profileImage: `${MEDIA_URLS.THEMOVIEDB_IMAGE_PATH}${writer.profile_path}`,
+      };
+    });
+
+  return { actors, directors, writers: Object.values(uniqueWriters) };
+};
+
+export const formatTmdbSeriesCreditsData = (tmdbCreditsData) => {
+  const actors = tmdbCreditsData.cast.slice(0, 10).map((actor) => ({
+    name: actor.name,
+    character: actor.character,
+    profileImage: `${MEDIA_URLS.THEMOVIEDB_IMAGE_PATH}${actor.profile_path}`,
+  }));
+
+  return { actors };
 };
 
 // ============================================================
