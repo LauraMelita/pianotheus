@@ -1,0 +1,10 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+
+  > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}

@@ -1,0 +1,12 @@
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--global-gap) / 2);
+
+  li {
+    padding: 0.3em 0.85em;
+    border-radius: 2em;
+    border: 2px solid var(--text-color-secondary);
+    font-size: var(--fs-50);
+  }
+}

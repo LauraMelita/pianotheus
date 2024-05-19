@@ -89,6 +89,12 @@
         <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />
         <path d="M11 11h2v6h-2zm0-4h2v2h-2z" />
     </symbol>
+    <symbol id="icon-skull"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor">
+        <path d="M12 2C5.505 2 2 6.637 2 11c0 2.129 1.009 3.979 3 5.508V21h3v-3h2v3h4v-3h2v3h3v-4.493c1.991-1.528 3-3.379 3-5.507 0-4.363-3.505-9-10-9zM8 13c-1.121 0-2-1.098-2-2.5S6.879 8 8 8s2 1.098 2 2.5S9.121 13 8 13zm8 0c-1.121 0-2-1.098-2-2.5S14.879 8 16 8s2 1.098 2 2.5-.879 2.5-2 2.5z" />
+    </symbol>
     <symbol id="icon-menu"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -616,26 +622,6 @@
             fill="currentColor"
             viewBox="0 0 24 24">
         <path d="M8 7h3v10H8zm5 0h3v10h-3z" />
-    </symbol>
-    <symbol id="icon-pause-circle"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round">
-        <circle cx="12"
-                cy="12"
-                r="10" />
-        <line x1="10"
-              y1="15"
-              x2="10"
-              y2="9" />
-        <line x1="14"
-              y1="15"
-              x2="14"
-              y2="9" />
     </symbol>
     <symbol id="icon-stop"
             xmlns="http://www.w3.org/2000/svg"

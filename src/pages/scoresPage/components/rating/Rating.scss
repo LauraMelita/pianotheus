@@ -1,0 +1,10 @@
+.rating {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+
+  &__source {
+    font-size: var(--fs-50);
+  }
+}
