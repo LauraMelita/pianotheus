@@ -33,6 +33,8 @@ const Pagination = ({
   const handleNextPage = () => nextPage();
   const handlePageChange = (pageNumber) => setPageIndex(pageNumber);
 
+  if (totalPages === 1) return;
+
   return (
     <div className='pagination'>
       <PaginationButton
