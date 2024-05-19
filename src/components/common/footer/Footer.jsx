@@ -65,6 +65,16 @@ const Footer = () => {
             </a>
           </li>
           <li>
+            <a
+              href='https://developer.themoviedb.org'
+              target='_blank'
+              rel='noreferrer'
+            >
+              TMDB
+              <Svg icon='external-link' variant='small' />
+            </a>
+          </li>
+          <li>
             <a href='https://rawg.io/apidocs' target='_blank' rel='noreferrer'>
               Rawg
               <Svg icon='external-link' variant='small' />

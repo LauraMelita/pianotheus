@@ -12,7 +12,7 @@ export const useAnimations = () => {
         duration: 3,
       },
     },
-    hidden: {
+    hide: {
       opacity: 0,
       display: 'none',
     },
@@ -44,6 +44,21 @@ export const useAnimations = () => {
     },
   };
 
+  const fadeAndSlide = {
+    initial: {
+      y: 10,
+      opacity: 0,
+    },
+    enter: {
+      y: 0,
+      opacity: 1,
+    },
+    exit: {
+      y: -10,
+      opacity: 0,
+    },
+  };
+
   const staggerCards = {
     hidden: {
       opacity: 0,
@@ -52,6 +67,20 @@ export const useAnimations = () => {
     visible: (index) => ({
       opacity: 1,
       scale: 1,
+      transition: {
+        delay: 0.05 * index,
+      },
+    }),
+  };
+
+  const staggerReveal = {
+    initial: {
+      opacity: 0,
+      y: 100,
+    },
+    animate: (index) => ({
+      opacity: 1,
+      y: 0,
       transition: {
         delay: 0.05 * index,
       },
@@ -69,5 +98,13 @@ export const useAnimations = () => {
     },
   };
 
-  return { showHide, slideRight, slideDown, staggerCards, highlight };
+  return {
+    showHide,
+    slideRight,
+    slideDown,
+    staggerCards,
+    staggerReveal,
+    highlight,
+    fadeAndSlide,
+  };
 };

@@ -1,6 +1,44 @@
+@import '../../styles/mixins.scss';
+
 .scores {
   position: relative;
   z-index: 0;
+
+  .hero {
+    background-position: left 15vw top 5%;
+    // background-position: 22% 50%; // mobile
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .hero__content {
+      width: var(--content-max-width);
+      margin-inline: auto;
+
+      .breadcrumbs {
+        padding: calc(var(--global-padding) * 2) 0;
+      }
+    }
+  }
+
+  .tabs {
+    margin-top: 30px;
+
+    .tabs__list {
+      width: var(--content-max-width);
+      margin-inline: auto;
+    }
+
+    .tabs__content {
+      padding: 40px 0;
+      background: var(--black-4);
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+
+      > * {
+        width: var(--content-max-width);
+        margin-inline: auto;
+      }
+    }
+  }
 
   .player__container {
     position: sticky;
@@ -8,8 +46,22 @@
     z-index: 1000;
     bottom: 0;
     right: 0;
-    background: linear-gradient(180deg, var(--black-6) 0%, var(--black-7) 83%);
-    border-bottom: 1px solid var(--navbar-border-color);
+
+    // glass effect
+    background: linear-gradient(
+      360deg,
+      rgb(37, 33, 33),
+      rgba(255, 255, 255, 0)
+    );
+    backdrop-filter: blur(10px);
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 12px;
+
+    .close-btn {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      @include iconButton();
+    }
 
     .player {
       width: var(--content-max-width);

@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { BackgroundImage } from '../../../components/UI/image/BackgroundImage';
 import Button from '../../../components/UI/button/Button';
+import GlowEffect from '../../../components/UI/animation/glow/GlowEffect';
 
-import AboutImg from '../../../assets/images/about.png';
 import './About.scss';
 
 const About = () => {
@@ -34,9 +33,11 @@ const About = () => {
             compositions, and let's bring the piano to life, one key at a time.
           </p>
         </div>
-        <Button variant='primary'>Get Started</Button>
+        <Button className='glow-effect' variant='primary'>
+          Get Started
+          <GlowEffect borderRadius='20px' />
+        </Button>
       </div>
-      {/* <BackgroundImage className='about__image' url={AboutImg} /> */}
     </div>
   );
 };

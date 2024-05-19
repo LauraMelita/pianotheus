@@ -19,6 +19,16 @@ export const tmdbSeriesUrl = (tmdbId) =>
   `${API.THEMOVIEDB}/3/tv/${tmdbId}?api_key=${process.env.REACT_APP_THEMOVIEDB_API_KEY}`;
 
 // ============================================================
+// TMDB CREDITS
+// ============================================================
+
+export const tmdbMovieCreditsUrl = (tmdbId) =>
+  `${API.THEMOVIEDB}/3/movie/${tmdbId}/credits?api_key=${process.env.REACT_APP_THEMOVIEDB_API_KEY}`;
+
+export const tmdbSeriesCreditsUrl = (tmdbId) =>
+  `${API.THEMOVIEDB}/3/tv/${tmdbId}/credits?api_key=${process.env.REACT_APP_THEMOVIEDB_API_KEY}`;
+
+// ============================================================
 // TMDB SCREENSHOTS
 // ============================================================
 

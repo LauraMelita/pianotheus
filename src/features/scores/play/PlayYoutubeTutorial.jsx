@@ -6,7 +6,7 @@ import Svg from '../../../components/UI/svg/Svg';
 import Video from '../../../components/UI/video/Video';
 
 const PlayYoutubeTutorial = ({ title, videoKey }) => {
-  if (!videoKey) return <span className='score__status'>N/A</span>;
+  if (!videoKey) return;
 
   return (
     <Modal
@@ -15,11 +15,10 @@ const PlayYoutubeTutorial = ({ title, videoKey }) => {
       triggerComponent={
         <Button className='tutorial__btn'>
           <Svg icon='youtube' />
-          {/* <span>Play Tutorial</span> */}
         </Button>
       }
     >
-      <Video title={title} videoKey={videoKey} />
+      <Video title={title} videoKey={videoKey} autoPlay />
     </Modal>
   );
 };

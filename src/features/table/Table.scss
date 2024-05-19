@@ -1,16 +1,13 @@
 .table {
-  min-height: 300px;
   max-width: 100%;
   overflow-x: auto;
   display: flex;
   flex-direction: column;
-  gap: calc(var(--global-gap) / 2);
-  padding: calc(var(--global-padding) / 2);
-  border-radius: calc(var(--global-padding) / 2);
+  gap: calc(var(--global-gap));
 
-  .table__controls {
+  .table__header {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
 
     .search-bar {
       min-width: 33%;

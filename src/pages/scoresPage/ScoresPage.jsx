@@ -7,10 +7,12 @@ import { useGetDetails } from '../../services/reactQuery/queries';
 
 import Spinner from '../../components/UI/spinner/Spinner';
 import ErrorPage from '../errorPage/ErrorPage';
-import Backdrop from '../../components/UI/image/Backdrop';
+import Hero from './hero/Hero';
 import Breadcrumbs from '../../features/breadcrumbs/Breadcrumbs';
-import CategoryDetails from './details/CategoryDetails';
-import ScoresTable from './table/ScoresTable';
+import Details from './hero/details/Details';
+import Tabs from '../../features/tabs/Tabs';
+import ScoresTable from './tabsContent/table/ScoresTable';
+import Overview from './tabsContent/overview/Overview';
 import Playbar from './playbar/Playbar';
 
 import './ScoresPage.scss';
@@ -37,12 +39,26 @@ const ScoresPage = () => {
     );
   }
 
+  const tabs = [
+    {
+      name: 'scores',
+      label: 'Scores',
+      content: <ScoresTable data={data} />,
+    },
+    {
+      name: 'overview',
+      label: 'Overview',
+      content: <Overview data={data} />,
+    },
+  ];
+
   return (
     <main className='scores'>
-      <Backdrop image={data.backdrop} height='50%' />
-      <Breadcrumbs currentPage={isClassical ? data.composer : data.title} />
-      <CategoryDetails collection={collection} data={data} />
-      <ScoresTable data={data} />
+      <Hero image={data.backdrop}>
+        <Breadcrumbs currentPage={isClassical ? data.composer : data.title} />
+        <Details data={data} />
+      </Hero>
+      <Tabs className='full-width' tabs={tabs} />
       <Playbar data={data} />
     </main>
   );

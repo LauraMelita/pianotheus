@@ -1,0 +1,28 @@
+.esrb {
+  display: grid;
+  grid-template-columns: [svg] 37px [label] 1fr;
+  align-items: center;
+  gap: 10px;
+
+  a {
+    img {
+      aspect-ratio: 60/91;
+    }
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    .esrb__rating {
+      color: var(--text-color-secondary);
+      text-transform: uppercase;
+      font-size: var(--fs-0);
+    }
+
+    .esrb__descriptor {
+      font-size: var(--fs-50);
+      color: var(--text-color-primary);
+    }
+  }
+}

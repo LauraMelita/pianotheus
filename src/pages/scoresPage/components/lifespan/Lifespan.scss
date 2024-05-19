@@ -1,0 +1,15 @@
+.lifespan {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .birth,
+  .death {
+    display: flex;
+    gap: 20px;
+
+    span {
+      color: var(--text-color-secondary);
+    }
+  }
+}
