@@ -12,7 +12,7 @@ export const useAnimations = () => {
         duration: 3,
       },
     },
-    hidden: {
+    hide: {
       opacity: 0,
       display: 'none',
     },
@@ -73,6 +73,20 @@ export const useAnimations = () => {
     }),
   };
 
+  const staggerReveal = {
+    initial: {
+      opacity: 0,
+      y: 100,
+    },
+    animate: (index) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.05 * index,
+      },
+    }),
+  };
+
   const highlight = {
     inactive: {
       opacity: 0.6,
@@ -89,6 +103,7 @@ export const useAnimations = () => {
     slideRight,
     slideDown,
     staggerCards,
+    staggerReveal,
     highlight,
     fadeAndSlide,
   };
