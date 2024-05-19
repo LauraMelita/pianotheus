@@ -13,7 +13,7 @@ const Trailer = ({ title, videoKey }) => {
       isBackgroundOverlay
       triggerComponent={<Thumbnail videoKey={videoKey} />}
     >
-      <Video title={title} videoKey={videoKey} />
+      <Video title={title} videoKey={videoKey} autoPlay />
     </Modal>
   );
 };
