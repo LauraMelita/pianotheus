@@ -81,6 +81,11 @@ export const useAudioPlayer = () => {
     switchSong(songIndex);
   };
 
+  const isOnlyOnePlayableSong = (songs) => {
+    const songsWithAudioUrl = songs.filter((song) => song.audioUrl);
+    return songsWithAudioUrl.length === 1;
+  };
+
   // ============================================================
   // PROGRESS BAR
   // ============================================================
@@ -184,6 +189,7 @@ export const useAudioPlayer = () => {
     handleSkipForward,
     handleVolumeChange,
     toggleMute,
+    isOnlyOnePlayableSong,
 
     // Playbar
     closePlaybar,

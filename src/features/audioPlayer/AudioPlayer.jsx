@@ -3,15 +3,15 @@ import React from 'react';
 import { useCollectionContext } from '../../context/CollectionContext';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 
-import Player from './components/Player';
-import Track from './components/Track';
-import Controls from './components/Controls';
-import ProgressBar from './components/ProgressBar';
-import VolumeBar from './components/VolumeBar';
+import Player from './elements/player/Player';
+import Track from './elements/track/Track';
+import Controls from './elements/controls/Controls';
+import ProgressBar from './elements/progress/ProgressBar';
+import VolumeBar from './elements/volume/VolumeBar';
 
 import './AudioPlayer.scss';
 
-const AudioPlayer = ({ data: { composer, composerImg, poster } }) => {
+const AudioPlayer = ({ data: { scores, composer, composerImg, poster } }) => {
   const { isClassical } = useCollectionContext();
   const {
     audioRef,
@@ -33,7 +33,10 @@ const AudioPlayer = ({ data: { composer, composerImg, poster } }) => {
     handleSkipForward,
     handleVolumeChange,
     toggleMute,
+    isOnlyOnePlayableSong,
   } = useAudioPlayer();
+
+  const disablePrevNextButtons = isOnlyOnePlayableSong(scores);
 
   return (
     <div className='player'>
@@ -61,6 +64,7 @@ const AudioPlayer = ({ data: { composer, composerImg, poster } }) => {
           isPlaying={isPlaying}
           togglePlayPause={togglePlayPause}
           handleNextTrack={handleNextTrack}
+          disablePrevNextButtons={disablePrevNextButtons}
         />
 
         <ProgressBar

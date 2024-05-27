@@ -1,0 +1,25 @@
+.progress {
+  display: flex;
+  gap: calc(var(--global-gap) / 2);
+  align-items: center;
+
+  .backward__btn,
+  .forward__btn {
+    svg {
+      height: 16px;
+      width: 16px;
+
+      &:hover {
+        color: var(--text-color-primary);
+      }
+    }
+  }
+
+  span {
+    font-size: var(--fs-50);
+  }
+
+  .slider {
+    height: 20px;
+  }
+}

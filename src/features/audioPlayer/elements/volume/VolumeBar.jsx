@@ -1,8 +1,10 @@
 import React, { memo } from 'react';
 
-import Button from '../../../components/UI/button/Button';
-import Svg from '../../../components/UI/svg/Svg';
-import Slider from '../../../components/UI/slider/Slider';
+import Button from '../../../../components/UI/button/Button';
+import Svg from '../../../../components/UI/svg/Svg';
+import Slider from '../../../../components/UI/slider/Slider';
+
+import './VolumeBar.scss';
 
 const VolumeBar = memo(
   ({ volume, min, max, step, handleVolumeChange, toggleMute }) => {

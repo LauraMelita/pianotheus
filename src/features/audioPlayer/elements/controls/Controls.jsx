@@ -1,7 +1,9 @@
 import React, { memo } from 'react';
 
-import Button from '../../../components/UI/button/Button';
-import Svg from '../../../components/UI/svg/Svg';
+import Button from '../../../../components/UI/button/Button';
+import Svg from '../../../../components/UI/svg/Svg';
+
+import './Controls.scss';
 
 const Controls = memo(
   ({
@@ -11,6 +13,7 @@ const Controls = memo(
     isPlaying,
     togglePlayPause,
     handleNextTrack,
+    disablePrevNextButtons,
   }) => {
     return (
       <div className='controls'>
@@ -21,7 +24,11 @@ const Controls = memo(
           <Svg icon='repeat' />
         </Button>
 
-        <Button className='previous__btn' onClick={handlePreviousTrack}>
+        <Button
+          className='previous__btn'
+          onClick={handlePreviousTrack}
+          disabled={disablePrevNextButtons}
+        >
           <Svg icon='skip-previous' />
         </Button>
 
@@ -33,7 +40,11 @@ const Controls = memo(
           <Svg icon={isPlaying ? 'pause' : 'play'} />
         </Button>
 
-        <Button className='next__btn' onClick={handleNextTrack}>
+        <Button
+          className='next__btn'
+          onClick={handleNextTrack}
+          disabled={disablePrevNextButtons}
+        >
           <Svg icon='skip-next' />
         </Button>
       </div>
