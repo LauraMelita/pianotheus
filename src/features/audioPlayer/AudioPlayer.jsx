@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useCollectionContext } from '../../context/CollectionContext';
-import { usePlayerContext } from '../../context/PlayerContext';
+import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 
 import Player from './components/Player';
 import Track from './components/Track';
@@ -11,66 +11,75 @@ import VolumeBar from './components/VolumeBar';
 
 import './AudioPlayer.scss';
 
-const AudioPlayer = ({ data }) => {
+const AudioPlayer = ({ data: { composer, composerImg, poster } }) => {
   const { isClassical } = useCollectionContext();
-  const { isPlaying, pause, handlePlayPause, activeSong } = usePlayerContext();
-
-  const [duration, setDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [playbackProgress, setPlaybackProgress] = useState(0);
-  const [volume, setVolume] = useState(0.5);
-  const [repeat, setRepeat] = useState(false);
-
-  const handleOnEnded = () => {
-    setCurrentTime(0);
-    pause();
-  };
+  const {
+    audioRef,
+    activeSong,
+    isPlaying,
+    repeat,
+    songProgress,
+    duration,
+    volume,
+    togglePlayPause,
+    handleOnLoaded,
+    handlePlaytimeChange,
+    handleOnEnded,
+    toggleRepeat,
+    handlePreviousTrack,
+    handleNextTrack,
+    handleProgressBarChange,
+    handleSkipBackward,
+    handleSkipForward,
+    handleVolumeChange,
+    toggleMute,
+  } = useAudioPlayer();
 
   return (
     <div className='player'>
       <Player
+        audioRef={audioRef}
         src={activeSong?.audioUrl}
-        volume={volume}
-        isPlaying={isPlaying}
-        currentTime={currentTime}
         repeat={repeat}
-        onTimeUpdate={(e) => setPlaybackProgress(e.target.currentTime)}
-        onLoadedData={(e) => setDuration(e.target.duration)}
-        onEnded={handleOnEnded}
+        handleOnLoaded={handleOnLoaded}
+        handlePlaytimeChange={handlePlaytimeChange}
+        handleOnEnded={handleOnEnded}
       />
 
       <Track
         title={activeSong?.title}
         work={activeSong?.work}
-        artist={data.composer}
-        cover={isClassical ? data.composerImg : data.poster}
+        artist={composer}
+        cover={isClassical ? composerImg : poster}
       />
 
       <div className='player__actions'>
         <Controls
-          isPlaying={isPlaying}
-          handlePlayPause={handlePlayPause}
           repeat={repeat}
-          setRepeat={setRepeat}
+          toggleRepeat={toggleRepeat}
+          handlePreviousTrack={handlePreviousTrack}
+          isPlaying={isPlaying}
+          togglePlayPause={togglePlayPause}
+          handleNextTrack={handleNextTrack}
         />
 
         <ProgressBar
-          value={[playbackProgress]}
+          songProgress={songProgress}
           min={0}
           max={duration}
-          onChange={(e) => setCurrentTime(...e)}
-          handleBackward={() => setCurrentTime(playbackProgress - 15)}
-          handleForward={() => setCurrentTime(playbackProgress + 15)}
+          handleProgressBarChange={handleProgressBarChange}
+          handleBackward={handleSkipBackward}
+          handleForward={handleSkipForward}
         />
       </div>
 
       <VolumeBar
-        value={volume}
+        volume={volume}
         min={0}
         max={1}
         step={0.1}
-        onChange={(e) => setVolume(...e)}
-        toggleMute={() => setVolume(volume === 0 ? 1 : 0)}
+        handleVolumeChange={handleVolumeChange}
+        toggleMute={toggleMute}
       />
     </div>
   );

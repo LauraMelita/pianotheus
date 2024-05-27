@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import Badge from '../../../components/UI/badge/Badge';
 
-const Track = ({ title, work, artist, cover }) => {
+const Track = memo(({ title, work, artist, cover }) => {
   return (
     <div className='track'>
       <Badge
@@ -19,6 +19,6 @@ const Track = ({ title, work, artist, cover }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Track;
