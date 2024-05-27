@@ -13,7 +13,8 @@ import Details from './hero/details/Details';
 import Tabs from '../../features/tabs/Tabs';
 import ScoresTable from './tabsContent/table/ScoresTable';
 import Overview from './tabsContent/overview/Overview';
-import Playbar from './playbar/Playbar';
+import StickyPlaybar from './stickyPlaybar/StickyPlaybar';
+import AudioPlayer from '../../features/audioPlayer/AudioPlayer';
 
 import './ScoresPage.scss';
 
@@ -59,7 +60,9 @@ const ScoresPage = () => {
         <Details data={data} />
       </Hero>
       <Tabs className='full-width' tabs={tabs} />
-      <Playbar data={data} />
+      <StickyPlaybar>
+        <AudioPlayer data={data} />
+      </StickyPlaybar>
     </main>
   );
 };

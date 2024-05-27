@@ -1,5 +1,3 @@
-@import '../../styles/mixins.scss';
-
 .scores {
   position: relative;
   z-index: 0;
@@ -37,35 +35,6 @@
         width: var(--content-max-width);
         margin-inline: auto;
       }
-    }
-  }
-
-  .player__container {
-    position: sticky;
-    width: 100%;
-    z-index: 1000;
-    bottom: 0;
-    right: 0;
-
-    // glass effect
-    background: linear-gradient(
-      360deg,
-      rgb(37, 33, 33),
-      rgba(255, 255, 255, 0)
-    );
-    backdrop-filter: blur(10px);
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 12px;
-
-    .close-btn {
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      @include iconButton();
-    }
-
-    .player {
-      width: var(--content-max-width);
-      margin: auto;
     }
   }
 }
