@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useGetAllCollections } from '../services/reactQuery/queries';
 import { useMobileMenuContext } from '../context/MobileMenuContext';
+import { useAudioPlayer } from '../hooks/useAudioPlayer';
 
 import { convertToPath } from '../utils/formatting';
 
@@ -13,6 +14,7 @@ export const useQuickSearch = (searchKeys) => {
       drawer: { close: closeDrawer },
     },
   } = useMobileMenuContext();
+  const { closePlaybar } = useAudioPlayer();
 
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchInput, setSearchInput] = useState('');
@@ -106,6 +108,7 @@ export const useQuickSearch = (searchKeys) => {
 
     closeDrawer();
     clearSearch();
+    closePlaybar();
     navigate(`/${convertToPath(category)}/${path}`);
   };
 
