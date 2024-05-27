@@ -1,22 +1,17 @@
 import React from 'react';
 
-import { usePlayerContext } from '../../../../../../context/PlayerContext';
+import { useAudioPlayer } from '../../../../../../hooks/useAudioPlayer';
 
 import Svg from '../../../../../../components/UI/svg/Svg';
 import Button from '../../../../../../components/UI/button/Button';
 import SoundWaves from '../../../../../../components/UI/animation/waves/SoundWaves';
 import Tooltip from '../../../../../../components/UI/tooltip/Tooltip';
 
-const PlayAudioButton = ({ score, index }) => {
-  const { selectSong, play, isActiveSongPlaying } = usePlayerContext();
+const PlayAudioButton = ({ score, scoreIndex, scores }) => {
+  const { handlePlaySong, isActiveSongPlaying } = useAudioPlayer();
 
   const isPlaying = isActiveSongPlaying(score.title);
   const hasAudio = score.audioUrl;
-
-  const handleClick = async () => {
-    selectSong(score, index);
-    play();
-  };
 
   const AudioButton = () => {
     return !hasAudio ? (
@@ -29,7 +24,7 @@ const PlayAudioButton = ({ score, index }) => {
     ) : (
       <Button
         className='play-midi__btn'
-        onClick={handleClick}
+        onClick={() => handlePlaySong(score, scoreIndex, scores)}
         whileHover={{ scale: 1.1 }}
       >
         <Svg icon='play' />
