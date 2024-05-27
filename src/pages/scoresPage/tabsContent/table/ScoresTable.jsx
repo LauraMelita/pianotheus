@@ -18,7 +18,13 @@ const ScoresTable = ({ data }) => {
       header: () => {
         return <HeadPhonesIcon />;
       },
-      cell: ({ row: { original: score } }) => <PlayAudioButton score={score} />,
+      cell: ({ row }) => (
+        <PlayAudioButton
+          score={row.original}
+          scoreIndex={+row.id}
+          scores={data.scores}
+        />
+      ),
     },
     {
       header: 'Title',
@@ -51,7 +57,7 @@ const ScoresTable = ({ data }) => {
       ),
     },
     {
-      header: 'Tutorial',
+      header: 'Youtube Tutorial',
       cell: ({ row: { original: score } }) => (
         <div className='score__actions'>
           <PlayYoutubeTutorial title={score.title} videoKey={score.videoKey} />
