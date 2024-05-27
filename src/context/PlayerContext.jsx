@@ -1,61 +1,62 @@
 import { createContext, useState, useContext } from 'react';
 
 const PlayerContext = createContext({
-  isPlaying: false,
   currentSongs: [],
   activeSong: {},
   currentIndex: 0,
-  isActive: false,
-  setCurrentSongs: () => {},
+  showPlaybar: false,
+  isPlaying: false,
+  setShowPlaybar: () => {},
   play: () => {},
   pause: () => {},
-  handlePlayPause: () => {},
-  setSelectedSong: () => {},
-  isActiveSongPlaying: () => {},
+  togglePlayPause: () => {},
+  selectSong: () => {},
+  resetActiveSong: () => {},
+  switchSong: () => {},
 });
 
 export const PlayerProvider = ({ children }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [currentSongs, setCurrentSongs] = useState([]);
   const [activeSong, setActiveSong] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isActive, setIsActive] = useState(false);
+  const [showPlaybar, setShowPlaybar] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const play = () => setIsPlaying(true);
-
   const pause = () => setIsPlaying(false);
+  const togglePlayPause = () => setIsPlaying((prev) => !prev);
 
-  const handlePlayPause = () => {
-    if (isPlaying) {
-      pause();
-    } else {
-      play();
-    }
-  };
-
-  const selectSong = (song, index) => {
+  const selectSong = (song, songIndex, songs) => {
     setActiveSong(song);
-    setCurrentIndex(index);
-    setIsActive(true);
+    setCurrentSongs(songs);
+    setCurrentIndex(songIndex);
   };
 
-  const isActiveSongPlaying = (songTitle) =>
-    songTitle === activeSong.title && isPlaying;
+  const resetActiveSong = () => {
+    setActiveSong({});
+    setCurrentIndex(0);
+  };
+
+  const switchSong = (songIndex) => {
+    setActiveSong(currentSongs[songIndex]);
+    setCurrentIndex(songIndex);
+  };
 
   return (
     <PlayerContext.Provider
       value={{
-        isPlaying,
         currentSongs,
         activeSong,
         currentIndex,
-        isActive,
-        setCurrentSongs,
+        showPlaybar,
+        isPlaying,
+        setShowPlaybar,
         play,
         pause,
-        handlePlayPause,
+        togglePlayPause,
         selectSong,
-        isActiveSongPlaying,
+        resetActiveSong,
+        switchSong,
       }}
     >
       {children}
