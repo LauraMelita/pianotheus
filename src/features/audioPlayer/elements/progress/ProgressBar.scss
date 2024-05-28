@@ -1,3 +1,5 @@
+@import '../../../../styles/breakpoints.scss';
+
 .progress {
   display: flex;
   gap: calc(var(--global-gap) / 2);
@@ -21,5 +23,18 @@
 
   .slider {
     height: 20px;
+  }
+
+  @include mobile {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+
+    .slider {
+      .slider__range {
+        background-color: var(--accent-color-100);
+      }
+    }
   }
 }

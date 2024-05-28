@@ -1,9 +1,22 @@
+@import '../../styles/breakpoints.scss';
+
 .player {
   display: grid;
-  grid-template-columns: [track] 350px [controls] 6fr [volume] 1fr;
+  grid-template-columns: [track] 2fr [controls] 6fr [volume] 1.5fr;
   gap: calc(var(--global-gap) * 2);
   padding: var(--global-padding) 0;
   align-items: end;
+
+  @include tablet {
+    grid-template-columns: [track] 2fr [controls] 4fr [volume] 1.5fr;
+  }
+
+  @include mobile {
+    position: relative;
+    grid-template-columns: [track] 5fr [controls] auto;
+    align-items: center;
+    padding: calc(var(--global-padding) / 2) 0;
+  }
 
   .player__actions {
     display: flex;

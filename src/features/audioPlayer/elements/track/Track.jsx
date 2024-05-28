@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { useElementSize } from '@mantine/hooks';
 
+import { useResponsive } from '../../../../hooks/useResponsive';
 import { useAnimations } from '../../../../hooks/useAnimations';
 
 import Badge from '../../../../components/UI/badge/Badge';
@@ -11,11 +12,10 @@ import './Track.scss';
 const Track = memo(({ title, work, artist, cover }) => {
   const { ref: containerRef, width: containerWidth } = useElementSize();
   const { ref: textRef, width: textWidth } = useElementSize();
+  const { isMobile } = useResponsive();
   const { marquee } = useAnimations();
 
-  console.log('track render');
-
-  const coverSize = 56;
+  const coverSize = isMobile ? 40 : 56;
   const gap = 10;
   const speed = 40;
 

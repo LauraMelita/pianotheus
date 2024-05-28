@@ -1,3 +1,5 @@
+@import '../../../../styles/breakpoints.scss';
+
 .controls {
   display: flex;
   justify-content: center;
@@ -36,5 +38,9 @@
         color: var(--text-color-primary);
       }
     }
+  }
+
+  @include mobile {
+    align-self: flex-end;
   }
 }
