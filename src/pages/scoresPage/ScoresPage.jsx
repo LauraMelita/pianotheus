@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
+import { useLocation } from 'react-router-dom';
 import { useDocumentTitle } from '@mantine/hooks';
 
 import { useCollectionContext } from '../../context/CollectionContext';
 import { useGetDetails } from '../../services/reactQuery/queries';
+import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 
 import Spinner from '../../components/UI/spinner/Spinner';
 import ErrorPage from '../errorPage/ErrorPage';
@@ -20,13 +22,19 @@ import './ScoresPage.scss';
 
 const ScoresPage = () => {
   const params = useParams();
+  const { pathname } = useLocation();
   const { collection, routeParam, isClassical } = useCollectionContext();
   const collectionParam = params[routeParam];
+  const { closePlaybar } = useAudioPlayer();
 
   const { data, isLoading, isError, error } = useGetDetails(
     collection,
     collectionParam
   );
+
+  useEffect(() => {
+    closePlaybar();
+  }, [pathname]);
 
   useDocumentTitle(data?.[routeParam]);
 
