@@ -46,7 +46,7 @@ const Track = memo(({ title, work, artist, cover }) => {
           variants={marquee(position, duration)}
           animate='animate'
         >
-          {work && `${work} - `} {title}
+          {work && `${work}: `} {title}
         </motion.span>
         <span className='track__artist'>{artist}</span>
       </div>
