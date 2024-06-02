@@ -19,3 +19,5 @@ export const splitArray = (array, number) => {
 
   return groups;
 };
+
+export const isObjectEmpty = (obj) => Object.keys(obj).length === 0;
