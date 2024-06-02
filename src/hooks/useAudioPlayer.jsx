@@ -137,6 +137,10 @@ export const useAudioPlayer = () => {
     setShowPlaybar(false);
   };
 
+  const handlePauseSong = () => {
+    if (isPlaying) pause();
+  };
+
   // ============================================================
   // SYNCHRONIZATION:
   // Keeps the audio HTML element in sync with the state
@@ -196,6 +200,7 @@ export const useAudioPlayer = () => {
 
     // Play Button
     handlePlaySong,
+    handlePauseSong,
     isActiveSongPlaying,
   };
 };
