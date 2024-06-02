@@ -1,0 +1,12 @@
+.volume {
+  display: flex;
+  gap: calc(var(--global-gap) / 2);
+  align-items: center;
+
+  button {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

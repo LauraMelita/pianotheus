@@ -2,7 +2,6 @@ import React from 'react';
 import { Routes, Route, Outlet, useParams } from 'react-router-dom';
 
 import { CollectionProvider } from '../context/CollectionContext';
-import { PlayerProvider } from '../context/PlayerContext';
 import { siteConfig } from '../utils/config';
 
 import ProtectedRoute from '../features/authentication/routing/ProtectedRoute';
@@ -34,14 +33,7 @@ const CollectionRoutes = () => {
       <Routes>
         <Route element={<Providers />}>
           <Route index element={<CollectionPage />} />
-          <Route
-            path={`:${routeParam}`}
-            element={
-              <PlayerProvider>
-                <ScoresPage />{' '}
-              </PlayerProvider>
-            }
-          />
+          <Route path={`:${routeParam}`} element={<ScoresPage />} />
           <Route path='*' element={<ErrorPage code='404' />} />
         </Route>
       </Routes>

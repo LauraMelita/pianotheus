@@ -1,13 +1,30 @@
+@import '../../styles/breakpoints.scss';
+
 .player {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
+  display: grid;
+  grid-template-columns: [track] 2fr [controls] 6fr [volume] 1.5fr;
   gap: calc(var(--global-gap) * 2);
   padding: var(--global-padding) 0;
+  align-items: end;
 
-  // Global styles for the buttons and their icons
-  button {
+  @include tablet {
+    grid-template-columns: [track] 2fr [controls] 4fr [volume] 1.5fr;
+  }
+
+  @include mobile {
+    position: relative;
+    grid-template-columns: [track] 5fr [controls] auto;
+    align-items: center;
+    padding: calc(var(--global-padding) / 2) 0;
+  }
+
+  .player__actions {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  > * button {
     display: flex;
     align-items: center;
     background: none;
@@ -16,116 +33,6 @@
 
     svg {
       color: var(--text-color-secondary);
-    }
-  }
-
-  .track {
-    display: flex;
-    flex-direction: row;
-    gap: calc(var(--global-gap) / 2);
-
-    .badge {
-      img {
-        border-radius: 10%;
-      }
-    }
-
-    .track__info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      .track__title {
-        font-weight: var(--fw-semi-bold);
-      }
-
-      .track__artist {
-        color: var(--text-color-secondary);
-      }
-    }
-  }
-
-  &__actions {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-
-    .controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: calc(var(--global-gap) / 2);
-
-      .repeat__btn {
-        svg {
-          height: 24px;
-          width: 24px;
-        }
-
-        &.enabled {
-          svg {
-            color: var(--accent-color-100);
-          }
-        }
-      }
-
-      .previous__btn,
-      .next__btn {
-        svg {
-          height: 32px;
-          width: 32px;
-
-          &:hover {
-            color: var(--text-color-primary);
-          }
-        }
-      }
-
-      .play-pause__btn {
-        svg {
-          height: 40px;
-          width: 40px;
-
-          &:hover {
-            color: var(--text-color-primary);
-          }
-        }
-      }
-    }
-
-    .progress {
-      display: flex;
-      gap: calc(var(--global-gap) / 2);
-      align-items: center;
-
-      .backward__btn,
-      .forward__btn {
-        svg {
-          height: 16px;
-          width: 16px;
-
-          &:hover {
-            color: var(--text-color-primary);
-          }
-        }
-      }
-
-      span {
-        font-size: var(--fs-50);
-      }
-    }
-  }
-
-  .volume {
-    display: flex;
-    gap: calc(var(--global-gap) / 2);
-    width: 10em;
-
-    button {
-      svg {
-        width: 22px;
-        height: 22px;
-      }
     }
   }
 }

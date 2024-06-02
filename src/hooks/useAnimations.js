@@ -98,6 +98,21 @@ export const useAnimations = () => {
     },
   };
 
+  const marquee = (position, duration) => ({
+    animate: {
+      x: [0, position],
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: 'mirror',
+          duration,
+          repeatDelay: 2,
+          ease: 'linear',
+        },
+      },
+    },
+  });
+
   return {
     showHide,
     slideRight,
@@ -106,5 +121,6 @@ export const useAnimations = () => {
     staggerReveal,
     highlight,
     fadeAndSlide,
+    marquee,
   };
 };

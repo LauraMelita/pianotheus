@@ -1,0 +1,46 @@
+@import '../../../../styles/breakpoints.scss';
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: calc(var(--global-gap) / 2);
+
+  .repeat__btn {
+    svg {
+      height: 24px;
+      width: 24px;
+    }
+
+    &.enabled {
+      svg {
+        color: var(--accent-color-100);
+      }
+    }
+  }
+
+  .previous__btn,
+  .next__btn {
+    svg {
+      height: 32px;
+      width: 32px;
+    }
+  }
+
+  .play-pause__btn {
+    border-radius: 50%;
+
+    svg {
+      height: 40px;
+      width: 40px;
+
+      &:hover {
+        color: var(--text-color-primary);
+      }
+    }
+  }
+
+  @include mobile {
+    align-self: flex-end;
+  }
+}

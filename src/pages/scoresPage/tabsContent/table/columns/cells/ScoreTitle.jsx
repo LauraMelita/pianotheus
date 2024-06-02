@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { usePlayerContext } from '../../../../../../context/PlayerContext';
+import { useAudioPlayer } from '../../../../../../hooks/useAudioPlayer';
 
 const ScoreTitle = ({ title, work }) => {
-  const { isActiveSongPlaying } = usePlayerContext();
+  const { isActiveSongPlaying } = useAudioPlayer();
 
   const isActive = isActiveSongPlaying(title);
 

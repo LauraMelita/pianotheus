@@ -1,0 +1,40 @@
+@import '../../../../styles/breakpoints.scss';
+
+.progress {
+  display: flex;
+  gap: calc(var(--global-gap) / 2);
+  align-items: center;
+
+  .backward__btn,
+  .forward__btn {
+    svg {
+      height: 16px;
+      width: 16px;
+
+      &:hover {
+        color: var(--text-color-primary);
+      }
+    }
+  }
+
+  span {
+    font-size: var(--fs-50);
+  }
+
+  .slider {
+    height: 20px;
+  }
+
+  @include mobile {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+
+    .slider {
+      .slider__range {
+        background-color: var(--accent-color-100);
+      }
+    }
+  }
+}
