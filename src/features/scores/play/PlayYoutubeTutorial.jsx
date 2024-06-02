@@ -1,19 +1,26 @@
 import React from 'react';
 
+import { useAudioPlayer } from '../../../hooks/useAudioPlayer';
+
 import Modal from '../../../components/UI/modal/Modal';
 import Button from '../../../components/UI/button/Button';
 import Svg from '../../../components/UI/svg/Svg';
 import Video from '../../../components/UI/video/Video';
 
 const PlayYoutubeTutorial = ({ title, videoKey }) => {
-  if (!videoKey) return;
+  const { handlePauseSong } = useAudioPlayer();
 
   return (
     <Modal
       className='youtube'
       isBackgroundOverlay
       triggerComponent={
-        <Button className='tutorial__btn'>
+        <Button
+          className='tutorial__btn'
+          onClick={handlePauseSong}
+          disabled={!videoKey}
+          whileHover={{ scale: 1.1 }}
+        >
           <Svg icon='youtube' />
         </Button>
       }
