@@ -15,5 +15,8 @@
     "tanstack",
     "TMDB",
     "toastify"
-  ]
+  ],
+  "files.associations": {
+    "*.svg": "html"
+  }
 }
