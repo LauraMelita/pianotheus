@@ -1,0 +1,10 @@
+.skeleton {
+  &__item {
+    background: linear-gradient(
+      -90deg,
+      var(--black-1) 0%,
+      var(--black-0) 50%,
+      var(--black-1) 100%
+    );
+  }
+}

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { useCollectionContext } from '../../../context/CollectionContext';
+import { useCollectionContext } from '../../../../context/CollectionContext';
 
-import ComposerCard from './card/composer/ComposerCard';
-import PosterCard from './card/poster/PosterCard';
+import ComposerCard from '../card/composer/ComposerCard';
+import PosterCard from '../card/poster/PosterCard';
 
 const CollectionItems = ({ data }) => {
   const { isClassical } = useCollectionContext();

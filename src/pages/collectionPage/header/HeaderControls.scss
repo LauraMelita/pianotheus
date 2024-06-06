@@ -1,0 +1,52 @@
+@import '../../../styles/breakpoints.scss';
+
+.collection__header {
+  background: linear-gradient(
+    0deg,
+    var(--layout-background-color) 0%,
+    var(--black-7) 83%
+  );
+
+  header {
+    width: var(--content-max-width);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: var(--global-gap);
+    padding-top: calc(var(--global-padding) * 2);
+
+    h2 {
+      width: fit-content;
+    }
+
+    .search__controls {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: var(--global-gap);
+
+      .search-bar {
+        width: 50%;
+      }
+
+      .filters {
+        display: flex;
+        gap: var(--global-gap);
+      }
+
+      @include mobile {
+        flex-direction: column;
+        gap: var(--global-gap);
+
+        .search-bar {
+          width: 100%;
+        }
+
+        .filters {
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+}

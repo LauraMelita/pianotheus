@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useCollectionContext } from '../../../context/CollectionContext';
+import { useCollectionContext } from '../../../../context/CollectionContext';
 
 const CollectionList = ({ type, children, ...props }) => {
   const { isClassical } = useCollectionContext();
