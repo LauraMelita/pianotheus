@@ -104,27 +104,6 @@ export const useGetInfiniteCollection = (resultsPerPage) => {
   });
 };
 
-export const useSearchCollection = (searchTerm) => {
-  const {
-    collection,
-    routeParam: orderBy,
-    searchKeys,
-  } = useCollectionContext();
-
-  return useQuery({
-    queryKey: [QUERY_KEYS.SEARCH_COLLECTION, searchTerm],
-    queryFn: () => getCollection(collection, orderBy),
-    select: (data) =>
-      data.filter((document) =>
-        searchKeys.some((field) =>
-          document[field].toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      ),
-    staleTime: Infinity,
-    enabled: false,
-  });
-};
-
 export const useGetCollectionFilters = () => {
   const {
     collection,
@@ -157,62 +136,42 @@ export const useGetCollectionFilters = () => {
   });
 };
 
-export const useFilterCollection = (selectedFilters) => {
-  const { collection, routeParam: orderBy } = useCollectionContext();
+export const useSearchFilterCollection = (searchTerm, filters) => {
+  const {
+    collection,
+    routeParam: orderBy,
+    searchKeys,
+  } = useCollectionContext();
 
   return useQuery({
-    queryKey: [QUERY_KEYS.FILTER_COLLECTION, selectedFilters],
+    queryKey: [
+      QUERY_KEYS.SEARCH_FILTER_COLLECTION,
+      collection,
+      searchTerm,
+      filters,
+    ],
     queryFn: () => getCollection(collection, orderBy),
     select: (data) => {
-      const filteredResults = data.filter((document) => {
-        const matchesAllFilters = Object.keys(selectedFilters).every((key) => {
-          const documentValue = document[key].toLowerCase();
-          const filterValue = selectedFilters[key].toLowerCase();
-          return documentValue.includes(filterValue);
+      return data.filter((document) => {
+        // Check if the document matches the search term
+        const matchesSearch = searchKeys.some((field) =>
+          document[field].toLowerCase().includes(searchTerm.toLowerCase())
+        );
+
+        // Check if the document matches the selected filters
+        const matchesFilters = Object.entries(filters).every(([key, value]) => {
+          if (!value) return true; // If filter value is empty, skip filtering for this key
+          return document[key].toLowerCase() === value.toLowerCase();
         });
 
-        return matchesAllFilters;
+        // Return true if the document matches both the search term and the selected filters
+        return matchesSearch && matchesFilters;
       });
-
-      return filteredResults;
     },
     staleTime: Infinity,
     enabled: false,
   });
 };
-
-// export const useSearchFilterCollection = (searchParams) => {
-//   const {
-//     collection,
-//     routeParam: orderBy,
-//     searchKeys,
-//   } = useCollectionContext();
-
-//   return useQuery({
-//     queryKey: [QUERY_KEYS.SEARCH_FILTER_COLLECTION, searchParams],
-//     queryFn: () => getCollection(collection, orderBy),
-//     select: (data) => {
-//       const results = data.filter((document) =>
-//         Object.entries(searchParams).every(([key, value]) => {
-//           if (key === 'q') {
-//             // If the key is 'q', check for matches in searchKeys
-//             return searchKeys.some((searchKey) =>
-//               document[searchKey].toLowerCase().includes(value.toLowerCase())
-//             );
-//           } else {
-//             // For other keys, check the usual inclusion
-//             return document[key].toLowerCase().includes(value.toLowerCase());
-//           }
-//         })
-//       );
-
-//       console.log(results);
-//       return results;
-//     },
-//     staleTime: Infinity,
-//     enabled: false,
-//   });
-// };
 
 // ============================================================
 // DOCUMENT QUERIES

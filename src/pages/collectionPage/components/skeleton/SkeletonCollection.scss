@@ -1,0 +1,43 @@
+.skeleton {
+  &.posters {
+    .poster__card {
+      height: 324px;
+      margin-bottom: 5px;
+    }
+
+    .poster__title {
+      gap: 5px;
+
+      div {
+        &:first-child {
+          height: var(--fs-100);
+          border-radius: 0.25rem;
+        }
+
+        &:last-child {
+          height: var(--fs-50);
+          width: 50%;
+          border-radius: 0.25rem;
+        }
+      }
+    }
+  }
+
+  &.composers {
+    .composer {
+      .skeleton__item {
+        &:first-child {
+          height: 176px;
+          width: 176px;
+          border-radius: 50%;
+        }
+
+        &:last-child {
+          height: var(--fs-50);
+          width: 50%;
+          border-radius: 0.25rem;
+        }
+      }
+    }
+  }
+}

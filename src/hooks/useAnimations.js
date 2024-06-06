@@ -62,13 +62,14 @@ export const useAnimations = () => {
   const staggerCards = {
     hidden: {
       opacity: 0,
-      scale: 0.9,
+      // scale: 0.9,
     },
     visible: (index) => ({
       opacity: 1,
-      scale: 1,
+      // scale: 1,
       transition: {
-        delay: 0.05 * index,
+        // delay: 0.05 * index,
+        transition: 0.7,
       },
     }),
   };
@@ -113,6 +114,16 @@ export const useAnimations = () => {
     },
   });
 
+  const pulsate = {
+    opacity: [1, 0.5, 1],
+    transition: {
+      duration: 2,
+      ease: 'easeInOut',
+      repeat: Infinity,
+      repeatType: 'loop',
+    },
+  };
+
   return {
     showHide,
     slideRight,
@@ -122,5 +133,6 @@ export const useAnimations = () => {
     highlight,
     fadeAndSlide,
     marquee,
+    pulsate,
   };
 };

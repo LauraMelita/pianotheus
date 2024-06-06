@@ -1,25 +1,30 @@
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import CollectionList from '../collection/CollectionList';
-import CollectionItems from '../collection/CollectionItems';
+import CollectionList from '../components/collection/CollectionList';
+import CollectionItems from '../components/collection/CollectionItems';
 
-const InfiniteResults = ({ data, fetchNextPage, hasNextPage }) => {
+import SkeletonCollection from '../components/skeleton/SkeletonCollection';
+
+const InfiniteResults = ({ data, isLoading, fetchNextPage, hasNextPage }) => {
   const { ref: loadMoreRef, inView } = useInView();
 
   useEffect(() => {
     if (inView) fetchNextPage();
   }, [inView]);
 
+  if (isLoading) return <SkeletonCollection />;
   return (
     <>
-      <CollectionList id='infinite-results'>
+      <CollectionList>
         {data?.pages.map((pageData, index) => (
           <CollectionItems key={`page-${index}`} data={pageData} />
         ))}
       </CollectionList>
 
-      {hasNextPage && <div ref={loadMoreRef} />}
+      {hasNextPage && (
+        <div className='load-more__indicator' ref={loadMoreRef} />
+      )}
     </>
   );
 };

@@ -1,31 +1,21 @@
 import React from 'react';
 
 import Spinner from '../../../components/UI/spinner/Spinner';
-import CollectionList from '../collection/CollectionList';
-import CollectionItems from '../collection/CollectionItems';
+import CollectionList from '../components/collection/CollectionList';
+import CollectionItems from '../components/collection/CollectionItems';
 import NoResults from '../../../features/search/noResults/NoResults';
 
-const SearchResults = ({
-  isSearchFetching,
-  isSearchLoading,
-  data,
-  searchTerm,
-  clearSearch,
-}) => {
-  const searchResults = data && data.length > 0;
+const SearchResults = ({ data, isLoading, searchTerm, clearResults }) => {
+  const hasResults = data?.length > 0;
 
-  if (isSearchFetching || isSearchLoading) return <Spinner type='circle' />;
+  if (isLoading) return <Spinner type='circle' />;
 
-  return searchResults ? (
-    <CollectionList id='search-results'>
+  return hasResults ? (
+    <CollectionList>
       <CollectionItems data={data} />
     </CollectionList>
   ) : (
-    <NoResults
-      searchTerm={searchTerm}
-      hasSearchSuggestions
-      clearSearch={clearSearch}
-    />
+    <NoResults searchTerm={searchTerm} clearSearch={clearResults} />
   );
 };
 
