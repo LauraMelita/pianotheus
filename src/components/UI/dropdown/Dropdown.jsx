@@ -15,6 +15,7 @@ const DropdownMenu = forwardRef(
       isModal,
       triggerComponent,
       triggerOffset,
+      align, // Options: 'start' | 'end' | 'center'
       children,
     },
     ref
@@ -36,6 +37,7 @@ const DropdownMenu = forwardRef(
               className ? `${className} dropdown-menu` : 'dropdown-menu'
             }
             sideOffset={triggerOffset}
+            align={align}
           >
             {children}
           </Dropdown.Content>
@@ -46,7 +48,7 @@ const DropdownMenu = forwardRef(
 );
 
 const DropdownItem = forwardRef(
-  ({ className, disabled, onSelect, children }, ref) => {
+  ({ className, disabled, onSelect, children, ...props }, ref) => {
     return (
       <>
         <Dropdown.Item
@@ -58,6 +60,7 @@ const DropdownItem = forwardRef(
           }
           disabled={disabled}
           onSelect={onSelect}
+          {...props}
         >
           {children}
         </Dropdown.Item>
