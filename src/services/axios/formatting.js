@@ -61,7 +61,7 @@ export const formatTmdbMovieData = (tmdbData) => {
     tagline: tmdbData.tagline,
     released: tmdbData.release_date,
     runtime: tmdbData.runtime,
-    website: tmdbData.homepage ? tmdbData.homepage : null,
+    website: tmdbData.homepage || null,
     spokenLanguages,
     productionCompanies,
   };
@@ -94,7 +94,7 @@ export const formatTmdSeriesData = (tmdbData) => {
     episodes: tmdbData.number_of_episodes,
     firstAirDate: tmdbData.first_air_date,
     genres,
-    website: tmdbData.homepage,
+    website: tmdbData.homepage || null,
     spokenLanguages,
     productionCompanies,
   };
@@ -175,7 +175,7 @@ export const formatRawgData = (rawgData) => {
     platforms,
     rating: rawgData.rating,
     developers,
-    website: rawgData.website,
+    website: rawgData.website || null,
   };
 };
 
