@@ -9,7 +9,7 @@ import CarouselIndicators from './elements/CarouselIndicators';
 
 import './Carousel.scss';
 
-const Carousel = ({ items }) => {
+const Carousel = ({ items, aspectRatio }) => {
   const {
     currentSlideIndex,
     setCurrentSlideIndex,
@@ -32,6 +32,7 @@ const Carousel = ({ items }) => {
         <CarouselButton icon='chevron-left' onClick={slideBackward} />
         <CarouselSlide
           slides={items}
+          aspectRatio={aspectRatio}
           slideBackward={slideBackward}
           slideForward={slideForward}
           currentSlideIndex={currentSlideIndex}
