@@ -1,0 +1,22 @@
+.info-popup {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  pointer-events: none;
+
+  svg {
+    pointer-events: auto;
+    cursor: pointer;
+    width: 17px;
+    height: 17px;
+    color: var(--accent-color-100);
+  }
+}
+
+.dropdown-menu__item {
+  &.info-popup__content {
+    > * {
+      color: var(--text-color-secondary);
+    }
+  }
+}
