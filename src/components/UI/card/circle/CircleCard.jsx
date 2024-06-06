@@ -4,20 +4,10 @@ import * as Avatar from '@radix-ui/react-avatar';
 
 import './CircleCard.scss';
 
-const CircleCard = ({
-  path,
-  cardWidth,
-  cardHeight,
-  fallbackDelay = 600,
-  title,
-  image,
-}) => {
+const CircleCard = ({ path, fallbackDelay = 600, title, image }) => {
   return (
     <Avatar.Root>
-      <div
-        className='circle-card'
-        style={{ height: `${cardHeight}px`, width: `${cardWidth}px` }}
-      >
+      <div className='circle-card'>
         <Link to={path}>
           <Avatar.Image src={image} alt={title} />
         </Link>
