@@ -16,10 +16,10 @@ const Pagination = ({
   pagination: { pageIndex, pageSize },
   data,
 }) => {
-  const isFirstPage = pageIndex === 0;
+  // const isFirstPage = pageIndex === 0;
   const hasPreviousPage = getCanPreviousPage();
   const hasNextPage = getCanNextPage();
-  const isLastPage = pageIndex === Math.ceil(data.length / pageSize) - 1;
+  // const isLastPage = pageIndex === Math.ceil(data.length / pageSize) - 1;
 
   const currentPage = pageIndex + 1;
   const totalPages = Math.ceil(data.length / pageSize);
@@ -37,11 +37,11 @@ const Pagination = ({
 
   return (
     <div className='pagination'>
-      <PaginationButton
+      {/* <PaginationButton
         icon='double-chevron-left'
         onClick={() => handlePageChange(0)}
         disabled={isFirstPage}
-      />
+      /> */}
       <PaginationButton
         icon='chevron-left'
         onClick={handlePreviousPage}
@@ -57,11 +57,11 @@ const Pagination = ({
         onClick={handleNextPage}
         disabled={!hasNextPage}
       />
-      <PaginationButton
+      {/* <PaginationButton
         icon='double-chevron-right'
         onClick={() => handlePageChange(totalPages - 1)}
         disabled={isLastPage}
-      />
+      /> */}
     </div>
   );
 };
