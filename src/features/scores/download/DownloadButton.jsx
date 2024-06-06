@@ -7,9 +7,9 @@ import Button from '../../../components/UI/button/Button';
 import Svg from '../../../components/UI/svg/Svg';
 
 import { FILE_TYPES } from '../../../utils/constants';
+import ScoreStatus from '../../../pages/scoresPage/tabsContent/table/columns/cells/ScoreStatus';
 
 const DownloadButton = ({ score: { status, title, gsFileName }, fileType }) => {
-  const fileStatus = status[fileType];
   const fileName = gsFileName ? gsFileName : title;
   const fileExtension = FILE_TYPES[fileType].extension;
 
@@ -18,20 +18,21 @@ const DownloadButton = ({ score: { status, title, gsFileName }, fileType }) => {
     fileExtension
   );
 
-  if (fileStatus === 'upcoming')
-    return <span className='score__status'>Coming Soon</span>;
+  const fileIsUpcoming = status[fileType] === 'upcoming';
+  const fileIsUnavailable = status[fileType] === 'unavailable';
 
-  if (fileStatus === 'unavailable')
-    return <span className='score__status'>Unavailable</span>;
-
-  return (
+  return fileIsUpcoming || fileIsUnavailable ? (
+    <ScoreStatus
+      isUpcoming={fileIsUpcoming}
+      isUnavailable={fileIsUnavailable}
+    />
+  ) : (
     <Button
       className='download__btn'
       onClick={() => downloadFile()}
       disabled={isFetching}
     >
       {isFetching ? <Spinner type='dotted' /> : <Svg icon='download' />}
-      {/* <span>Download</span> */}
     </Button>
   );
 };

@@ -21,7 +21,6 @@ const ViewPDFButton = ({ score }) => {
       disabled={isFetching}
     >
       {isFetching ? <Spinner type='dotted' /> : <Svg icon='pdf' />}
-      {/* <span>Preview</span> */}
     </Button>
   ) : null;
 };
