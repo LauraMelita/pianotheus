@@ -47,7 +47,7 @@ const Screenshots = ({ screenshots, count = 6 }) => {
       isBackgroundOverlay
       triggerComponent={<Preview />}
     >
-      <Carousel items={screenshots} />
+      <Carousel items={screenshots} aspectRatio='16 / 9' />
     </Modal>
   );
 };
