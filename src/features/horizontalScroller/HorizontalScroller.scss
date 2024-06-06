@@ -1,22 +1,18 @@
 .scroller {
+  overflow-x: auto;
   overscroll-behavior-inline: contain;
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 10%; // controls size of non grouped items
 
-  &:not(.grouped) {
-    gap: var(--global-gap);
+  // Item size control:
+  // grid-auto-columns: 75%;
+  grid-auto-columns: max-content;
+
+  &.scrollbar-hidden {
+    overflow-x: hidden;
   }
 
-  .scroller__group {
-    display: grid;
-    grid-template-rows: min-content;
-    gap: calc(var(--global-gap) / 2);
-    justify-items: center;
-    padding: calc(var(--global-gap) / 2) 0;
-  }
-
-  &.inline-snap {
+  &.scroll-snap {
     scroll-snap-type: inline mandatory;
 
     > * {
@@ -24,17 +20,17 @@
     }
   }
 
-  // Styles for grouped content
-  &.grouped {
-    grid-auto-columns: 79%; // controls size of grouped items
+  .scroller__group {
+    display: grid;
+    grid-template-rows: min-content;
+    grid-auto-flow: column;
+    gap: calc(var(--global-gap) / 2);
+    justify-items: center;
 
-    .scroller__group {
-      grid-auto-flow: column;
-
-      .scroller__item {
-        display: grid;
-        justify-items: center;
-      }
+    .scroller__item {
+      display: grid;
+      justify-items: center;
+      gap: calc(var(--global-gap) / 4);
     }
   }
 }

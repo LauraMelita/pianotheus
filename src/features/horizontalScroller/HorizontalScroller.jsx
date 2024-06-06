@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { useInView } from 'framer-motion';
 
 import { splitArray } from '../../utils/helpers';
 
@@ -8,14 +9,22 @@ const HorizontalScroller = ({
   className,
   data,
   children,
-  isGrouped,
   numberOfGroups,
-  isScrollbarHidden = false,
-  isSnapsInline = false,
+  isScrollbarHidden = true,
+  isSnaps = true,
+  itemGap,
 }) => {
   const scrollerRef = useRef(null);
+  const scrollerItemRef = useRef(null);
+  const isInView = useInView(scrollerItemRef, {
+    amount: 1, // The last scroller item needs to be 100% in view.
+  });
 
   const groups = splitArray(data, numberOfGroups);
+  const lastElement = groups.length - 1;
+  const maskRight = !isInView
+    ? 'linear-gradient(90deg, transparent, #fff 0%, #fff 95%, transparent)'
+    : 'unset';
 
   useEffect(() => {
     const handleMouseWheel = (event) => {
@@ -40,28 +49,30 @@ const HorizontalScroller = ({
   return (
     <div
       ref={scrollerRef}
+      tabIndex='0'
       className={`scroller 
       ${className}
-      ${isSnapsInline && 'inline-snap'} 
-      ${isGrouped && 'grouped'}`}
-      tabIndex='0'
-      style={{ overflowX: isScrollbarHidden ? 'hidden' : 'auto' }}
+      ${isSnaps && 'scroll-snap'} 
+      ${isScrollbarHidden && 'scrollbar-hidden'}
+      `}
+      style={{
+        gap: itemGap,
+        mask: maskRight,
+      }}
     >
-      {isGrouped
-        ? groups.map((group, index) => (
-            <div key={index} className='scroller__group'>
-              {group.map((item, itemIndex) => (
-                <div key={itemIndex} className='scroller__item'>
-                  {children(item)}
-                </div>
-              ))}
-            </div>
-          ))
-        : data.map((item, index) => (
-            <div key={index} className='scroller__group'>
+      {groups.map((group, index) => (
+        <div key={index} className='scroller__group' style={{ gap: itemGap }}>
+          {group.map((item, itemIndex) => (
+            <div
+              key={itemIndex}
+              ref={index === lastElement ? scrollerItemRef : null}
+              className='scroller__item'
+            >
               {children(item)}
             </div>
           ))}
+        </div>
+      ))}
     </div>
   );
 };
