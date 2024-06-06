@@ -15,7 +15,6 @@ const MovieOverview = ({ data }) => {
       {(isTablet || isMobile) && (
         <Description text={data.plot} maxWords={30} header='Plot' />
       )}
-
       <Cast actors={data.actors} />
       <Metadata
         country={data.country}
