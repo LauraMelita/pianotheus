@@ -34,6 +34,7 @@ const UserMenu = () => {
       isModal={false}
       triggerComponent={<div className='user-button'><UserBadge /></div>}
       triggerOffset={distanceFromTrigger}
+      align='end'
     >
       <DropdownItem disabled><UserProfile/></DropdownItem>
       <DropdownItem onSelect={toggleTheme}><ToggleThemeMode/></DropdownItem>
