@@ -7,7 +7,18 @@ import Svg from '../svg/Svg';
 import './Select.scss';
 
 const Select = forwardRef(
-  ({ label, value, onChange, children, ...props }, ref) => {
+  (
+    {
+      label,
+      value,
+      onChange,
+      align = 'end',
+      side = 'bottom',
+      children,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <RadixSelect.Root value={value} onValueChange={onChange} {...props}>
         <RadixSelect.Trigger
@@ -24,7 +35,9 @@ const Select = forwardRef(
         <RadixSelect.Content
           className='select__content'
           position='popper'
+          align={align}
           sideOffset={2}
+          side={side}
         >
           <Scrollbar>
             <RadixSelect.Viewport asChild>
