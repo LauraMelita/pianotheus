@@ -22,16 +22,18 @@
   }
 }
 
-.header {
+.heading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin-bottom: 20px;
+  padding-left: 0.75rem;
   font-family: var(--ff-tertiary);
   font-weight: var(--fw-bold);
+  line-height: 0.76;
   letter-spacing: 4px;
   text-transform: uppercase;
-}
-
-.gradient-text {
-  display: inline;
-  align-self: start;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   background-image: linear-gradient(
@@ -39,6 +41,17 @@
     var(--text-color-primary) 69%,
     var(--accent-color-100) 90%
   );
+
+  &::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 4px;
+    margin-top: -1px;
+    margin-left: -0.75rem;
+    background: var(--accent-color-100);
+    border-radius: 10px;
+  }
 }
 
 .glow-effect {

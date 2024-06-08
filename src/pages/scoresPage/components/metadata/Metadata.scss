@@ -1,19 +1,37 @@
 .metadata {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 
-  .production-companies {
+  > div {
     display: flex;
+    flex-direction: column;
     gap: 10px;
-    max-width: 10%;
 
-    img {
-      max-height: 30px;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      filter: invert(50%);
+    span {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+
+      svg {
+        width: 16px;
+        height: 16px;
+        color: var(--text-color-secondary);
+      }
+    }
+
+    .production-companies {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+
+      img {
+        object-fit: contain;
+        aspect-ratio: 1;
+        width: auto;
+        max-width: 50px;
+        filter: invert(100%);
+      }
     }
   }
 }

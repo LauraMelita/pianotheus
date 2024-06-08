@@ -10,7 +10,7 @@ const HeaderControls = ({ children }) => {
   return (
     <div className='collection__header full-width'>
       <header>
-        <h2 className='header gradient-text'>{collectionTitle}</h2>
+        <h2 className='heading'>{collectionTitle}</h2>
         <div className='search__controls'>{children}</div>
       </header>
     </div>

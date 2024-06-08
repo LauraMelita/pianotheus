@@ -5,7 +5,7 @@ import ReadMore from '../../../../features/readMore/ReadMore';
 const Description = ({ text, maxWords, header }) => {
   return header ? (
     <div>
-      <h4>{header}</h4>
+      <h3 className='heading'>{header}</h3>
       <ReadMore text={text} maxWords={maxWords} />
     </div>
   ) : (
