@@ -1,94 +1,66 @@
 .poster_card-inner {
   position: absolute;
   width: 100%;
-  // background: linear-gradient(0deg, rgba(#000, 0.9) 85%, transparent);
+  display: grid;
+  grid-template-columns: auto [badge] 1fr [details];
+  gap: calc(var(--global-gap) / 2);
+  padding: calc(var(--global-padding) / 2);
   background: rgba(#000, 0.9);
+  // background: linear-gradient(0deg, rgba(#000, 0.9) 85%, transparent);
 
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 20px;
-
-  .composer {
-    .badge {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: calc(var(--global-gap) / 2);
-
-      img {
-        border: 2px solid var(--gray-9);
-      }
-
-      span {
-        font-size: var(--fs-50);
-        color: var(--gray-1);
-      }
-    }
-  }
-
-  .stats {
+  > div {
     display: flex;
     flex-direction: column;
+    gap: calc(var(--global-gap) / 4);
 
-    > div {
-      &:not(.separator) {
-        display: flex;
-        margin-bottom: 5px;
-        font-size: var(--fs-50);
-        color: var(--text-color-secondary);
-      }
+    span {
+      font-size: var(--fs-50);
+      color: var(--text-color-secondary);
     }
 
-    ul {
+    .stats {
       display: flex;
       justify-content: space-between;
       align-items: center;
 
-      li {
+      &__total-tracks {
+        font-size: var(--fs-50);
+        color: var(--text-color-secondary);
+
+        span {
+          color: var(--accent-color-100);
+        }
+      }
+
+      &__available-files {
         display: flex;
-        gap: 8px;
         align-items: center;
+        gap: calc(var(--global-gap) / 4);
 
         svg {
           color: var(--text-color-secondary);
 
           &.icon__midi-text {
-            width: 28px;
-            height: 28px;
-          }
-
-          &.icon__pdf-text {
             width: 24px;
             height: 24px;
           }
 
+          &.icon__pdf-text {
+            width: 21px;
+            height: 21px;
+          }
+
           &.icon__youtube {
-            width: 18px;
-            height: 18px;
+            width: 15px;
+            height: 15px;
           }
         }
 
-        span {
-          color: var(--accent-color-100);
-          font-size: var(--fs-50);
+        .separator {
+          border: 1px solid var(--gray-shade-10);
+          height: var(--fs-50);
         }
       }
-
-      .separator {
-        border: 1px solid var(--gray-shade-10);
-        height: var(--fs-50);
-      }
-    }
-  }
-
-  button {
-    align-self: center;
-    padding: 5px 8px;
-
-    &:hover {
-      background-color: var(--accent-color-100);
-      color: #000;
     }
   }
 }
