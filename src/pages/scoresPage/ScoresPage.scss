@@ -2,6 +2,11 @@
   position: relative;
   z-index: 0;
 
+  .spinner {
+    align-self: center;
+    margin-inline: auto;
+  }
+
   .hero {
     background-position: left 15vw top 5%;
     // background-position: 22% 50%; // mobile
