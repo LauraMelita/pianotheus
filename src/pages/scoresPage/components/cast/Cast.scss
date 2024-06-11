@@ -1,17 +1,20 @@
 .cast {
-  .scroller__group {
-    img {
-      inline-size: 100%;
-      width: 60px;
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
+  --size: 100px;
 
-    span {
-      text-align: center;
-      font-size: var(--fs-50);
-      color: var(--text-color-secondary);
-    }
+  img {
+    inline-size: 100%;
+    width: var(--size);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 2px solid var(--gray-shade-70);
+    box-shadow: 4px 4px 8px hsl(0, 0%, 0%, 0.2);
+    filter: contrast(110%);
+  }
+
+  span {
+    text-align: center;
+    font-size: var(--fs-50);
+    color: var(--text-color-secondary);
+    max-width: var(--size);
   }
 }

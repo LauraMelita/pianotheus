@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../../../components/UI/button/Button';
 import Svg from '../../../../components/UI/svg/Svg';
 
-import './BackButton.scss';
-
 const BackButton = () => {
   const navigate = useNavigate();
 
@@ -14,14 +12,8 @@ const BackButton = () => {
   };
 
   return (
-    <Button
-      variant='navigation'
-      className='back__btn'
-      onClick={goToPrevPageHandler}
-    >
-      <span className='circle' aria-hidden>
-        <Svg icon='chevron-left' />
-      </span>
+    <Button variant='primary' onClick={goToPrevPageHandler}>
+      <Svg icon='chevron-left' width={18} height={18} />
     </Button>
   );
 };

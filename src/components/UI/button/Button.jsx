@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 
 import './Button.scss';
 
+// Variants: primary, secondary, link, icon, ghost
+
 const Button = forwardRef(
   ({ className, href, variant, children, ...props }, ref) => {
     const combinedClassName = `${className || ''} ${variant || ''}`.trim();
@@ -11,7 +13,7 @@ const Button = forwardRef(
       return (
         <motion.a
           ref={ref}
-          className={combinedClassName}
+          className={`btn__link ${combinedClassName}`}
           href={href}
           {...props}
         >

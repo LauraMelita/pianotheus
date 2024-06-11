@@ -7,6 +7,7 @@
 
   .table__header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
 
     .search-bar {
@@ -40,7 +41,7 @@
     tbody {
       tr {
         &:hover {
-          background-color: hsla(0, 0%, 100%, 0.1);
+          background-color: hsla(0, 0%, 30%, 0.1);
         }
       }
     }

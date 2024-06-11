@@ -13,7 +13,7 @@ const ToggleThemeMode = ({ onClick }) => {
   const switchTheme = capitalize(theme === 'dark' ? 'light' : 'dark');
 
   return (
-    <Button className='toggle-theme-btn' variant='icon-text' onClick={onClick}>
+    <Button className='toggle-theme-btn' variant='link' onClick={onClick}>
       <Svg icon={theme === 'dark' ? 'sun' : 'moon'} />
       {switchTheme} Mode
     </Button>

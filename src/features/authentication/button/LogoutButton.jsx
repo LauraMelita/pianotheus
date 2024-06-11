@@ -19,7 +19,7 @@ const LogoutButton = () => {
     }
   };
   return (
-    <Button className='logout-btn' variant='icon-text' onClick={handleLogOut}>
+    <Button className='logout-btn' variant='link' onClick={handleLogOut}>
       <Svg icon='logout' />
       Sign Out
     </Button>

@@ -4,12 +4,13 @@ import Image from '../../../components/UI/image/Image';
 
 const CarouselSlide = ({
   slides,
+  aspectRatio,
   slideBackward,
   slideForward,
   currentSlideIndex,
 }) => {
   return (
-    <div className='carousel__slides'>
+    <div className='carousel__slides' style={{ aspectRatio }}>
       <div
         className='carousel__navigation backward'
         onClick={slideBackward}
@@ -26,7 +27,10 @@ const CarouselSlide = ({
           className='carousel__slide'
           src={slide}
           alt='carousel slide'
-          style={{ transform: `translateX(-${currentSlideIndex * 100}%)` }}
+          style={{
+            transform: `translateX(-${currentSlideIndex * 100}%)`,
+            aspectRatio,
+          }}
         />
       ))}
     </div>

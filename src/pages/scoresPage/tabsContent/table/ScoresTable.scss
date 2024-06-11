@@ -2,19 +2,26 @@
   table {
     td {
       &:nth-child(1) {
-        width: 2.2%;
+        width: 2.7%;
       }
 
       &:nth-child(2) {
         width: 33%;
       }
 
+      &:nth-child(6) {
+        width: 9%;
+
+        .score__actions {
+          justify-content: center;
+        }
+      }
+
       .play-midi__btn {
+        height: 22px;
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 22px;
-        width: 22px;
         border-radius: 50%;
         border: none;
         background-color: var(--accent-color-100);
@@ -45,19 +52,18 @@
 
       .score__level {
         display: flex;
-        gap: 5px;
+        gap: calc(var(--global-gap) / 4);
 
         svg {
-          height: 16px;
           width: 16px;
+          height: 16px;
           color: var(--gray-7);
           filter: drop-shadow(0 1px 1px var(--black-5));
         }
       }
 
       .score__status {
-        font-size: var(--fs-50);
-        color: var(--text-color-secondary);
+        color: var(--gray-7);
       }
 
       .score__actions {
@@ -66,32 +72,27 @@
       }
 
       .download__btn,
-      .view-pdf__btn,
-      .tutorial__btn {
+      .view-pdf__btn {
         height: 36px;
         width: 56px;
+      }
+
+      .tutorial__btn {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: calc(var(--global-gap) / 4);
-        padding: 6px 16px;
-        background: var(--layout-background-color);
-        border: var(--global-border-width) solid var(--accent-color-200);
-        border-radius: calc(var(--global-border-radius) * 2);
-        color: var(--text-color-primary);
-
-        &:hover {
-          color: var(--accent-color-100);
-
-          svg {
-            color: var(--accent-color-100);
-          }
-        }
+        background: transparent;
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 10px;
 
         svg {
-          width: 20px;
-          height: 20px;
-          color: var(--text-color-primary);
+          width: 30px;
+          height: 25px;
+          color: var(--accent-color-100);
+        }
+
+        &.disabled {
+          svg {
+            color: var(--gray-7);
+          }
         }
       }
     }

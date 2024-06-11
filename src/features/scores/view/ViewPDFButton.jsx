@@ -17,11 +17,11 @@ const ViewPDFButton = ({ score }) => {
   return score.status.sheetMusic === 'uploaded' ? (
     <Button
       className='view-pdf__btn'
+      variant='primary'
       onClick={() => openFileInNewWindow()}
       disabled={isFetching}
     >
       {isFetching ? <Spinner type='dotted' /> : <Svg icon='pdf' />}
-      {/* <span>Preview</span> */}
     </Button>
   ) : null;
 };

@@ -101,15 +101,6 @@ form {
       font-size: var(--fs-50);
     }
   }
-
-  button {
-    &[type='submit'] {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: var(--global-gap);
-    }
-  }
 }
 
 .form-error {

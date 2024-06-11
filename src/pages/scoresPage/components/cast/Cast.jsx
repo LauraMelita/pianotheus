@@ -7,17 +7,10 @@ import './Cast.scss';
 
 const Cast = ({ actors }) => {
   return (
-    <>
-      <h4>Top Cast</h4>
-      <HorizontalScroller
-        className='cast'
-        data={actors}
-        isScrollbarHidden
-        isSnapsInline
-        isGrouped
-        numberOfGroups={2}
-      >
-        {({ name, profileImage, character }) => (
+    <div className='cast'>
+      <h3 className='heading'>Top Cast</h3>
+      <HorizontalScroller data={actors} numberOfGroups={2} itemGap={60}>
+        {({ name, profileImage }) => (
           <>
             <Image
               src={profileImage}
@@ -25,11 +18,10 @@ const Cast = ({ actors }) => {
               fallbackImage='https://www.shutterstock.com/image-vector/unknown-male-person-illustration-600nw-182014895.jpg'
             />
             <span>{name}</span>
-            <span>{character}</span>
           </>
         )}
       </HorizontalScroller>
-    </>
+    </div>
   );
 };
 

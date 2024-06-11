@@ -9,7 +9,7 @@ const About = () => {
   return (
     <div className='about'>
       <div className='about__content'>
-        <h2 className='header gradient-text'>About Pianotheus</h2>
+        <h2 className='heading'>About Pianotheus</h2>
         <div>
           <p>
             Welcome to Pianotheus, your go-to platform for unlocking the world

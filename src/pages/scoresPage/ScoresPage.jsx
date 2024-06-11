@@ -38,8 +38,6 @@ const ScoresPage = () => {
 
   useDocumentTitle(data?.[routeParam]);
 
-  if (isLoading) return <Spinner type='circle' />;
-
   if (isError) {
     return error.message.includes('not-found') ? (
       <ErrorPage code='404' />
@@ -63,14 +61,22 @@ const ScoresPage = () => {
 
   return (
     <main className='scores'>
-      <Hero image={data.backdrop}>
-        <Breadcrumbs currentPage={isClassical ? data.composer : data.title} />
-        <Details data={data} />
-      </Hero>
-      <Tabs className='full-width' tabs={tabs} />
-      <StickyPlaybar>
-        <AudioPlayer data={data} />
-      </StickyPlaybar>
+      {isLoading ? (
+        <Spinner type='circle' />
+      ) : (
+        <>
+          <Hero image={data.backdrop}>
+            <Breadcrumbs
+              currentPage={isClassical ? data.composer : data.title}
+            />
+            <Details data={data} />
+          </Hero>
+          <Tabs className='full-width' tabs={tabs} />
+          <StickyPlaybar>
+            <AudioPlayer data={data} />
+          </StickyPlaybar>
+        </>
+      )}
     </main>
   );
 };

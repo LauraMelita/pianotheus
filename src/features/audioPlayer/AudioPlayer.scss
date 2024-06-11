@@ -34,5 +34,17 @@
     svg {
       color: var(--text-color-secondary);
     }
+
+    &:hover {
+      svg {
+        color: var(--text-color-primary);
+      }
+    }
+
+    &:disabled {
+      svg {
+        color: var(--gray-7);
+      }
+    }
   }
 }

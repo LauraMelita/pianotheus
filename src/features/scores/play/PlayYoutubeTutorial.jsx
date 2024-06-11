@@ -10,15 +10,19 @@ import Video from '../../../components/UI/video/Video';
 const PlayYoutubeTutorial = ({ title, videoKey }) => {
   const { handlePauseSong } = useAudioPlayer();
 
-  return (
+  return !videoKey ? (
+    <span className='tutorial__btn disabled'>
+      <Svg icon='youtube' />
+    </span>
+  ) : (
     <Modal
       className='youtube'
       isBackgroundOverlay
+      closeBtnVariant='ghost'
       triggerComponent={
         <Button
           className='tutorial__btn'
           onClick={handlePauseSong}
-          disabled={!videoKey}
           whileHover={{ scale: 1.1 }}
         >
           <Svg icon='youtube' />

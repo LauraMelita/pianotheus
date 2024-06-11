@@ -51,7 +51,7 @@
       // bottom
       &:last-child {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: flex-end;
         flex-wrap: wrap;
         gap: var(--global-gap);

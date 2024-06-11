@@ -148,7 +148,9 @@ export const useAudioPlayer = () => {
 
   useEffect(() => {
     if (isPlaying) {
-      audioRef.current?.play();
+      audioRef.current?.play().catch((error) => {
+        console.error('Error playing the audio:', error);
+      });
     } else {
       audioRef.current?.pause();
     }

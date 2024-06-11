@@ -1,8 +1,7 @@
 .pagination {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  gap: calc(var(--global-gap) / 4);
+  gap: calc(var(--global-gap) / 2);
 
   button {
     display: flex;
@@ -31,7 +30,8 @@
 
     &.active {
       background-color: var(--accent-color-100);
-      color: var(--black-6);
+      color: var(--layout-background-color);
+      font-weight: var(--fw-bold);
     }
 
     &:disabled {
@@ -43,6 +43,6 @@
 
   .pagination__numbers {
     display: flex;
-    gap: calc(var(--global-gap) / 4);
+    gap: calc(var(--global-gap) / 2);
   }
 }

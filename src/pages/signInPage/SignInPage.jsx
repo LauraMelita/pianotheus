@@ -45,7 +45,7 @@ const SignInPage = () => {
     <main className='sign-in'>
       <div className='container'>
         <div>
-          <h2 className='header gradient-text'>Log in to Pianotheus</h2>
+          <h2 className='heading'>Log in to Pianotheus</h2>
           <p className='redirect'>
             Don't have an account? <Link to='/register'>Sign up</Link>
           </p>

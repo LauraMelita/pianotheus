@@ -61,6 +61,9 @@ const Table = ({
           onChange={handleSearch}
           clearSearch={handleClearSearch}
         />
+        {!isSearching && (
+          <Pagination data={data} tableData={table} pagination={pagination} />
+        )}
       </div>
       {hasSearchResults ? (
         <table>
@@ -69,9 +72,6 @@ const Table = ({
         </table>
       ) : (
         <NoResults searchTerm={searchTerm} clearSearch={handleClearSearch} />
-      )}
-      {!isSearching && (
-        <Pagination data={data} tableData={table} pagination={pagination} />
       )}
     </div>
   );

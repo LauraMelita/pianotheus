@@ -11,6 +11,7 @@ const Trailer = ({ title, videoKey }) => {
     <Modal
       className='youtube'
       isBackgroundOverlay
+      closeBtnVariant='ghost'
       triggerComponent={<Thumbnail videoKey={videoKey} />}
     >
       <Video title={title} videoKey={videoKey} autoPlay />
