@@ -32,7 +32,7 @@ const VideoGameDetails = ({ data }) => {
           </div>
           <Rating source='Metacritic' value={data.rating} maxValue={5} />
         </div>
-        <div>
+        <div style={{ justifyContent: 'space-between' }}>
           {!isMobile && (
             <Esrb
               rating={data.esrb.rating}

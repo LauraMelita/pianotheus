@@ -33,12 +33,12 @@ const MovieDetails = ({ data }) => {
             {(isDesktop || isLaptop) && (
               <Description text={data.plot} maxWords={70} />
             )}
+            <Tagline tagline={data.tagline} />
             <Crew directors={data.directors} writers={data.writers} />
           </div>
           <Rating source='IMDb' value={data.imdbRating} maxValue={10} />
         </div>
         <div>
-          <Tagline tagline={data.tagline} />
           <Genres genres={data.genres} />
         </div>
       </div>
