@@ -29,4 +29,5 @@ export const FORM = {
 export const GLOBAL_STYLES = {
   TRANSPARENT_COLOR: 'var(--transparent-color)',
   BACKGROUND_COLOR: 'var(--layout-background-color)',
+  NAVBAR_HEIGHT: 'var(--navbar-height)',
 };

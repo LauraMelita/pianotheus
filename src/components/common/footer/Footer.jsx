@@ -2,7 +2,6 @@ import React from 'react';
 import { HashLink } from 'react-router-hash-link';
 
 import { useScrollToTop } from '../../../hooks/useScrollToTop';
-import { useCreateCSSRootVariable } from '../../../hooks/useCreateCSSRootVariable';
 
 import Svg from '../../UI/svg/Svg';
 import Separator from '../../UI/separator/Separator';
@@ -18,11 +17,6 @@ import './Footer.scss';
 
 const Footer = () => {
   const { handlePageScroll } = useScrollToTop();
-  const elementRef = useCreateCSSRootVariable(
-    'footer-height',
-    'offsetHeight',
-    'px'
-  );
 
   const QuickLinks = () => {
     return (
@@ -124,7 +118,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className='footer' ref={elementRef}>
+    <footer className='footer'>
       <div className='footer__wrapper'>
         <div className='footer__top'>
           <QuickLinks />

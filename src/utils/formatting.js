@@ -1,3 +1,7 @@
+// ============================================================
+// STRINGS
+// ============================================================
+
 export const convertToPath = (str) =>
   str.toLowerCase().replaceAll(' ', '-').replaceAll(':', '');
 
@@ -11,6 +15,35 @@ export const capitalize = (str) => {
   return str.replace(str[0], str[0].toUpperCase());
 };
 
+export const slugify = (text) => {
+  return text
+    .toLowerCase()
+    .replace(/ /g, '-') // Replace all white spaces with dashes
+    .replace(/[^\w-]+/g, ''); // Remove all special characters
+};
+
+// ============================================================
+// TIME
+// ============================================================
+
+export const formatTime = (time) =>
+  `${Math.floor(time / 60)}:${`0${Math.floor(time % 60)}`.slice(-2)}`;
+
+export const convertMinutesToHoursAndMinutes = (minutes) => {
+  // Calculate the number of hours
+  const hours = Math.floor(minutes / 60);
+
+  // Calculate the remaining minutes after subtracting the hours
+  const remainingMinutes = minutes % 60;
+
+  // Return an object containing hours and remaining minutes
+  return { hours, minutes: remainingMinutes };
+};
+
+// ============================================================
+// DATES
+// ============================================================
+
 export const formatDate = (dateToFormat) => {
   const date = new Date(dateToFormat);
 
@@ -23,21 +56,9 @@ export const formatDate = (dateToFormat) => {
   return date.toLocaleDateString('en-US', options);
 };
 
-export const convertHexToRGB = (hexColor) =>
-  hexColor
-    .replace(
-      /^#?([a-f\d])([a-f\d])([a-f\d])$/i,
-      (m, r, g, b) => '#' + r + r + g + g + b + b
-    )
-    .substring(1)
-    .match(/.{2}/g)
-    .map((x) => parseInt(x, 16));
-
-export const extractRgbValues = (rgbColor) =>
-  rgbColor
-    .replace(/[^\d,]/g, '')
-    .split(',')
-    .join(', ');
+// ============================================================
+// FILES
+// ============================================================
 
 export const bytesToMegabytes = (bytes) => bytes / (1024 * 1024);
 
@@ -54,18 +75,6 @@ export const fileExtensionsList = (fileTypes) => {
   return formatList(fileExtensions);
 };
 
-export const getRootStyleValue = (variable) => {
-  const root = document.documentElement;
-  const style = getComputedStyle(root);
-
-  return style.getPropertyValue(variable);
-};
-
-export const parsePxToNumber = (value) => +value.replace('px', '');
-
-export const formatTime = (time) =>
-  `${Math.floor(time / 60)}:${`0${Math.floor(time % 60)}`.slice(-2)}`;
-
 export const formatFileName = (title) => {
   return title
     .toLowerCase()
@@ -75,20 +84,59 @@ export const formatFileName = (title) => {
     .replace(/[\(\)]/g, ''); // Remove parentheses
 };
 
-export const slugify = (text) => {
-  return text
-    .toLowerCase()
-    .replace(/ /g, '-') // Replace all white spaces with dashes
-    .replace(/[^\w-]+/g, ''); // Remove all special characters
+// ============================================================
+// STYLES
+// ============================================================
+
+// Fetches the value of a CSS variable from the :root scope
+export const getCSSVariableValue = (CSSVariable) => {
+  const root = document.documentElement;
+  const style = getComputedStyle(root);
+
+  return style.getPropertyValue(CSSVariable);
 };
 
-export const convertMinutesToHoursAndMinutes = (minutes) => {
-  // Calculate the number of hours
-  const hours = Math.floor(minutes / 60);
+// Parses a pixel value to a number
+export const parsePixelValue = (pixelValue) => +pixelValue.replace('px', '');
 
-  // Calculate the remaining minutes after subtracting the hours
-  const remainingMinutes = minutes % 60;
-
-  // Return an object containing hours and remaining minutes
-  return { hours, minutes: remainingMinutes };
+// Extracts the name of a CSS variable from var(--variableName) to --variableName
+export const extractVariableName = (CSSVariable) => {
+  if (
+    typeof CSSVariable === 'string' &&
+    CSSVariable.startsWith('var(') &&
+    CSSVariable.endsWith(')')
+  ) {
+    // Extract the variable name inside 'var()'
+    return CSSVariable.slice(4, -1).trim();
+  }
+  // Return the original string if it doesn't match 'var(--variable-name)' format
+  return CSSVariable;
 };
+
+export const parseCSSVariableToNumber = (CSSVariable) => {
+  const variable = extractVariableName(CSSVariable);
+  const value = getCSSVariableValue(variable);
+  const valueNumber = parsePixelValue(value);
+
+  return valueNumber;
+};
+
+// ============================================================
+// COLORS
+// ============================================================
+
+export const convertHexToRGB = (hexColor) =>
+  hexColor
+    .replace(
+      /^#?([a-f\d])([a-f\d])([a-f\d])$/i,
+      (m, r, g, b) => '#' + r + r + g + g + b + b
+    )
+    .substring(1)
+    .match(/.{2}/g)
+    .map((x) => parseInt(x, 16));
+
+export const extractRgbValues = (rgbColor) =>
+  rgbColor
+    .replace(/[^\d,]/g, '')
+    .split(',')
+    .join(', ');

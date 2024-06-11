@@ -1,7 +1,10 @@
 .navbar {
+  z-index: var(--z-index-navbar);
+  position: sticky;
+  top: 0;
+  height: var(--navbar-height);
   padding: var(--global-padding) 0;
-  background: var(--navbar-background-color);
-  border-bottom: 1px solid var(--navbar-border-color);
+  // border-bottom: 1px solid var(--navbar-border-color);
 
   .navbar__wrapper {
     display: flex;

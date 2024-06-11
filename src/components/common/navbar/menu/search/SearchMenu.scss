@@ -12,6 +12,7 @@
 
 .search-menu__overlay {
   inset: 0;
+  z-index: var(--z-index-max);
 
   .search-menu__content {
     .quick-search {

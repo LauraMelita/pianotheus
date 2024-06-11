@@ -1,4 +1,5 @@
 import React from 'react';
+import { useElementSize } from '@mantine/hooks';
 
 import { useThemeContext } from '../../../../context/ThemeContext';
 import { useUserContext } from '../../../../context/AuthContext';
@@ -12,28 +13,24 @@ import UserProfile from '../profile/UserProfile';
 import ToggleThemeMode from '../../../themeMode/ToggleThemeMode';
 import LogoutButton from '../../button/LogoutButton';
 
-import {
-  getRootStyleValue,
-  parsePxToNumber,
-} from '../../../../utils/formatting';
+import { parseCSSVariableToNumber } from '../../../../utils/formatting';
+import { GLOBAL_STYLES } from '../../../../utils/constants';
 
 const UserMenu = () => {
+  const { ref: authBtnRef, height: authBtnHeight } = useElementSize();
   const { toggleTheme } = useThemeContext();
   const { signOutUser } = useUserContext();
 
-  const NAVBAR_HEIGHT = parsePxToNumber(getRootStyleValue('--navbar-height'));
-  const AUTH_BTN_HEIGHT = parsePxToNumber(
-    getRootStyleValue('--auth-btn-height')
-  );
-  const distanceFromTrigger = (NAVBAR_HEIGHT - AUTH_BTN_HEIGHT) / 2;
+  const navbarHeight = parseCSSVariableToNumber(GLOBAL_STYLES.NAVBAR_HEIGHT);
+  const triggerOffset = (navbarHeight - authBtnHeight) / 2;
 
   // prettier-ignore
   return (
     <DropdownMenu
       className='user__dropdown-menu'
       isModal={false}
-      triggerComponent={<div className='user-button'><UserBadge /></div>}
-      triggerOffset={distanceFromTrigger}
+      triggerComponent={<div ref={authBtnRef} className='user-button'><UserBadge /></div>}
+      triggerOffset={triggerOffset}
       align='end'
     >
       <DropdownItem disabled><UserProfile/></DropdownItem>
