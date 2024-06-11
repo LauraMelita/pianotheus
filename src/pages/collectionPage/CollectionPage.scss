@@ -10,6 +10,11 @@
     align-items: center;
     padding: var(--content-padding);
 
+    .spinner {
+      align-self: center;
+      margin-inline: auto;
+    }
+
     .posters,
     .composers {
       height: fit-content;

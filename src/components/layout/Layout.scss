@@ -35,16 +35,5 @@
         grid-column: full-width;
       }
     }
-
-    .spinner {
-      align-self: center;
-      margin-inline: auto;
-    }
-  }
-
-  main {
-    &:not(.home, .scores, .sign-in, .sign-up, .collection) {
-      padding: var(--content-padding);
-    }
   }
 }
