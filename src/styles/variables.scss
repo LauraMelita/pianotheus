@@ -6,6 +6,9 @@
   // ============================================================
   --overlay: rgb(0 0 0 / 0.6);
 
+  --z-index-max: 999; // The absolute highest z-index, nothing should appear above this
+  --z-index-navbar: 998; // The z-index for the navbar, ensures it stays on top of most content
+
   --scrollbar-background-color: var(--gray-1);
   --scrollbar-color: var(--gray-7);
   --scrollbar-width: 10px;
@@ -17,6 +20,8 @@
   --global-gap: 20px;
   --global-border-width: 2px;
   --global-border-radius: 10px;
+
+  --navbar-height: 80px;
 
   --accent-color-100: var(--green-0);
   --accent-color-200: var(--green-1);

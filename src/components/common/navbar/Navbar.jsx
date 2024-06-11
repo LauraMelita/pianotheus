@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-import { useResponsive } from '../../../hooks/useResponsive';
 import { useUserContext } from '../../../context/AuthContext';
-import { useCreateCSSRootVariable } from '../../../hooks/useCreateCSSRootVariable';
+import { useStyles } from '../../../hooks/useStyles';
+import { useResponsive } from '../../../hooks/useResponsive';
 
 import Image from '../../UI/image/Image';
 import Separator from '../../UI/separator/Separator';
@@ -18,13 +19,9 @@ import PianotheusLogo from '../../../assets/images/logo.svg';
 import './Navbar.scss';
 
 const Navbar = () => {
-  const { isMobile, isDesktop } = useResponsive();
   const { user } = useUserContext();
-  const elementRef = useCreateCSSRootVariable(
-    'navbar-height',
-    'offsetHeight',
-    'px'
-  );
+  const { navbarBackgroundColor } = useStyles();
+  const { isMobile, isDesktop } = useResponsive();
 
   const Logo = () => (
     <Link to='/'>
@@ -50,7 +47,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className='navbar' ref={elementRef}>
+    <motion.nav
+      className='navbar'
+      style={{ backgroundColor: navbarBackgroundColor }}
+    >
       <div className='navbar__wrapper'>
         <div className='navbar__logo'>
           {!isDesktop && <NavigationMenu />}
@@ -59,7 +59,7 @@ const Navbar = () => {
         <NavbarLinks />
         <NavbarActions />
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
