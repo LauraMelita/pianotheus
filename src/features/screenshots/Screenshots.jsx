@@ -45,6 +45,7 @@ const Screenshots = ({ screenshots, count = 6 }) => {
     <Modal
       className='screenshots'
       isBackgroundOverlay
+      closeBtnVariant='ghost'
       triggerComponent={<Preview />}
     >
       <Carousel items={screenshots} aspectRatio='16 / 9' />

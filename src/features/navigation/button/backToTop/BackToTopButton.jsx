@@ -34,14 +34,8 @@ const BackToTopButton = () => {
 
   return (
     showButton && (
-      <Button
-        variant='navigation'
-        className='back-to-top__btn'
-        onClick={scrollToTop}
-      >
-        <span className='circle' aria-hidden>
-          <Svg icon='chevron-up' />
-        </span>
+      <Button className='back-to-top__btn' onClick={scrollToTop}>
+        <Svg icon='chevron-up' />
       </Button>
     )
   );

@@ -17,6 +17,7 @@ const ViewPDFButton = ({ score }) => {
   return score.status.sheetMusic === 'uploaded' ? (
     <Button
       className='view-pdf__btn'
+      variant='primary'
       onClick={() => openFileInNewWindow()}
       disabled={isFetching}
     >

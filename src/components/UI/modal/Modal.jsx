@@ -8,12 +8,16 @@ import { GLOBAL_STYLES } from '../../../utils/constants';
 
 import './Modal.scss';
 
-const ModalContent = ({ className, children }) => {
+const ModalContent = ({ className, closeBtnVariant, children }) => {
   return (
     <Dialog.Content className={className ? `${className} modal` : 'modal'}>
       <div className='modal__content'>
         <Dialog.Close asChild>
-          <Button className='modal__close-btn' aria-label='close'>
+          <Button
+            className='modal__close-btn'
+            variant={closeBtnVariant}
+            aria-label='close'
+          >
             <Svg icon='close' />
           </Button>
         </Dialog.Close>
@@ -29,6 +33,7 @@ const Modal = ({
   onOpenChange,
   triggerComponent,
   isBackgroundOverlay = false,
+  closeBtnVariant = 'icon',
   children,
 }) => {
   return (
@@ -43,7 +48,11 @@ const Modal = ({
             background: isBackgroundOverlay && GLOBAL_STYLES.BACKGROUND_COLOR,
           }}
         />
-        <ModalContent className={className} children={children} />
+        <ModalContent
+          className={className}
+          closeBtnVariant={closeBtnVariant}
+          children={children}
+        />
       </Dialog.Portal>
     </Dialog.Root>
   );

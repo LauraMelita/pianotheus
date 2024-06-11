@@ -29,6 +29,7 @@ const DownloadButton = ({ score: { status, title, gsFileName }, fileType }) => {
   ) : (
     <Button
       className='download__btn'
+      variant='primary'
       onClick={() => downloadFile()}
       disabled={isFetching}
     >

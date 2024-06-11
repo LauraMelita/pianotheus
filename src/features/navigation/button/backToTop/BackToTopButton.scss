@@ -3,10 +3,22 @@
   z-index: 1000;
   bottom: calc(var(--global-padding) * 2);
   right: calc(var(--global-padding) * 2);
-  transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
+  background: transparent;
+  border-radius: 50%;
+  border: var(--global-border-width) solid var(--accent-color-200);
+  color: var(--text-color-primary);
 
   svg {
     width: 32px;
     height: 32px;
+  }
+
+  &:hover,
+  &:active {
+    background-color: var(--accent-color-100);
+
+    svg {
+      color: var(--black-7);
+    }
   }
 }

@@ -23,7 +23,12 @@ const StickyPlaybar = ({ children }) => {
       animate={showPlaybar ? 'show' : 'hide'}
     >
       {!isMobile && (
-        <Button onClick={closePlaybar} className='close-btn' aria-label='close'>
+        <Button
+          onClick={closePlaybar}
+          className='close-btn'
+          variant='icon'
+          aria-label='close'
+        >
           <Svg icon='close' />
         </Button>
       )}
