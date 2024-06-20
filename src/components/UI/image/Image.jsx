@@ -14,7 +14,6 @@ const Image = forwardRef(
         className={className && className}
         src={src}
         alt={alt}
-        loading='lazy'
         onError={handleLoadError}
         {...props}
       />
