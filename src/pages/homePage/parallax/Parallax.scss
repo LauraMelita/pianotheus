@@ -1,0 +1,38 @@
+@import '../../../styles/breakpoints.scss';
+
+.parallax {
+  mask-image: linear-gradient(rgba(18, 18, 18, 1) 60%, transparent);
+
+  &__introduction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: var(--global-gap);
+      max-width: 50%;
+      text-align: center;
+
+      @include mobile {
+        max-width: 70%;
+      }
+
+      h1 {
+        font-size: var(--fs-600);
+
+        @media (max-width: 1205px) {
+          line-height: 110%;
+        }
+      }
+
+      h4 {
+        font-size: var(--fs-200);
+        font-weight: var(--fs-regular);
+      }
+    }
+  }
+}

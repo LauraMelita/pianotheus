@@ -6,6 +6,7 @@ import { GLOBAL_STYLES } from '../../../utils/constants';
 const BackgroundImage = ({
   className,
   zIndex,
+  opacity,
   inset,
   translateY,
   translateX,
@@ -42,6 +43,7 @@ const BackgroundImage = ({
       className={className ? className : 'bg-image'}
       style={{
         zIndex,
+        opacity,
         inset,
         y: translateY,
         x: translateX,
