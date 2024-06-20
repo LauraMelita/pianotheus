@@ -109,11 +109,40 @@ const Footer = () => {
     );
   };
 
+  const Contributions = () => {
+    return (
+      <div className='footer__contributions'>
+        <span className='footer__title'>Contributions</span>
+        <ul>
+          <li>
+            <a
+              href='https://www.linkedin.com/in/lilit-voskerchyan-5229ba16b'
+              target='_blank'
+              rel='noreferrer'
+            >
+              Design Consulting
+              <Svg icon='external-link' variant='small' />
+            </a>
+          </li>
+        </ul>
+      </div>
+    );
+  };
+
   const Copyright = () => {
     return (
       <div className='copyright'>
         <span>© {currentYear} Pianotheus</span>
       </div>
+    );
+  };
+
+  const Disclaimer = () => {
+    return (
+      <span className='disclaimer'>
+        Disclaimer | Music files are for showcasing development skills and are
+        not owned or claimed by this site.
+      </span>
     );
   };
 
@@ -125,6 +154,7 @@ const Footer = () => {
           <About />
           <APIs />
           <Downloads />
+          <Contributions />
         </div>
         <Separator type='radial' orientation='horizontal' />
         <div className='footer__bottom'>
@@ -132,6 +162,7 @@ const Footer = () => {
             <Image src={Logo} alt='Pianotheus logo' width={80} />
             <Copyright />
           </div>
+          <Disclaimer />
           <Social />
         </div>
       </div>
