@@ -12,8 +12,7 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    align-self: center;
-    gap: var(--global-gap);
+    gap: calc(var(--global-gap) * 1.5);
     padding-top: calc(var(--global-padding) * 2);
 
     h2 {
