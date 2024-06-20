@@ -25,7 +25,7 @@ const Footer = () => {
         <NavigationLinks
           className='footer__links'
           shouldRenderIcons={false}
-          onClick={(e) => handlePageScroll(e)}
+          onClick={handlePageScroll}
         />
       </div>
     );
@@ -37,7 +37,7 @@ const Footer = () => {
         <span className='footer__title'>Pianotheus</span>
         <ul>
           <li>
-            <HashLink to='/#about' onClick={(e) => handlePageScroll(e)}>
+            <HashLink smooth to='/#about'>
               About
             </HashLink>
           </li>

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useMobileMenuContext } from '../../../../../context/MobileMenuContext';
+import { useScrollToTop } from '../../../../../hooks/useScrollToTop';
 import { useAnimations } from '../../../../../hooks/useAnimations';
 
 import MobileMenu from '../../../../../features/mobile/menu/MobileMenu';
@@ -12,7 +13,13 @@ import './NavigationMenu.scss';
 const NavigationMenu = () => {
   //prettier-ignore
   const { menus: { slider: { open, toggle, close } } } = useMobileMenuContext();
+  const { handlePageScroll } = useScrollToTop();
   const { slideRight } = useAnimations();
+
+  const handleNavigationLinkClick = (e) => {
+    close();
+    handlePageScroll(e);
+  };
 
   return (
     <MobileMenu
@@ -28,7 +35,7 @@ const NavigationMenu = () => {
       <NavigationLinks
         className='navigation-menu__links'
         shouldRenderIcons={true}
-        onClick={close}
+        onClick={(e) => handleNavigationLinkClick(e)}
       />
     </MobileMenu>
   );

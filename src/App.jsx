@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import Layout from './components/layout/Layout';
 import AuthLayout from './components/layout/auth/AuthLayout';
@@ -15,11 +15,10 @@ import { useDocumentTitle } from './hooks/useDocumentTitle';
 import { useScrollToTop } from './hooks/useScrollToTop';
 
 const App = () => {
-  const { pathname } = useLocation();
-  const { useRestoreScrollToTop } = useScrollToTop();
+  const { useScrollOnPathChange } = useScrollToTop();
 
   useDocumentTitle();
-  useRestoreScrollToTop(pathname);
+  useScrollOnPathChange();
 
   return (
     <Layout>
