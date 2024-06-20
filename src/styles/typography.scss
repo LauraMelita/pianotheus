@@ -1,21 +1,22 @@
 @font-face {
-  font-family: 'Right Grotesk Tall Regular';
-  src: local('RightGrotesk-TallRegular'),
-    url('../assets/fonts/RightGrotesk-TallRegular.otf') format('opentype');
+  font-family: 'Right Grotesk Tight Medium';
+  src: local('tightMedium'),
+    url('../assets/fonts/rightGrotesk/tightMedium.otf') format('opentype');
 }
 
 @font-face {
-  font-family: 'Right Grotesk Tight Medium';
-  src: local('RightGrotesk-TightMedium'),
-    url('../assets/fonts/RightGrotesk-TightMedium.otf') format('opentype');
+  font-family: 'Zuume Rough Bold';
+  src: local('bold'),
+    url('../assets/fonts/zuumeRough/bold.otf') format('opentype');
 }
 
 // prettier-ignore
 :root {
   --ff-primary: 'Lato', sans-serif;
   --ff-secondary: 'Lustria', serif;
-  --ff-tertiary: 'Right Grotesk Tight Medium';
-
+  --ff-tertiary: 'Right Grotesk Tight Medium'; 
+  --ff-quaternary: 'Zuume Rough Bold';
+  
   --fw-regular: 400;
   --fw-semi-bold: 600;
   --fw-bold: 700;
@@ -23,10 +24,11 @@
   --fs-0: 0.75rem; // 12px
   --fs-50: 0.9rem; // 14px
   --fs-100: 1rem; // 16px
-  --fs-200: clamp(1.2rem, calc(1.07rem + .63vw), 1.56rem); // 25px  → 20px
+  --fs-200: clamp(1.125rem, calc(0.875rem + 0.71vw), 1.375rem); // 18px to 22px
   --fs-300: clamp(1.44rem, calc(1.26rem + .89vw), 1.95rem); // 31px → 24px
   --fs-400: clamp(1.73rem, calc(1.48rem + 1.24vw), 2.44rem); // 39px → 29px
   --fs-500: clamp(2.07rem, calc(1.73rem + 1.7vw), 3.05rem); // 49px → 35px
+  --fs-600: clamp(3.125rem, calc(2.67rem + 2.11vw), 5.125rem); // 82px -> 60px
 }
 
 h1 {
