@@ -1,0 +1,50 @@
+@import '../../../../styles/breakpoints.scss';
+
+.tips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--global-gap);
+
+  @include mobile {
+    grid-template-columns: auto;
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--global-gap) / 2);
+    padding: var(--global-padding);
+    border: 2px solid var(--gray-shade-10);
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 12px;
+    border-radius: var(--global-border-radius);
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: calc(var(--global-gap) / 4);
+
+      svg {
+        color: var(--accent-color-100);
+
+        &.icon__slow {
+          width: 30px;
+          height: 30px;
+        }
+
+        &.icon__patience {
+          width: 24px;
+          height: 24px;
+        }
+
+        &.icon__piano {
+          width: 23px;
+          height: 23px;
+        }
+      }
+    }
+
+    p {
+      color: var(--text-color-secondary);
+    }
+  }
+}
