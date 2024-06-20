@@ -5,7 +5,14 @@ import TabsContent from './elements/TabsContent';
 
 import './Tabs.scss';
 
-const Tabs = ({ className, tabs, tabItemHeight = 10, isPortal, portalId }) => {
+const Tabs = ({
+  className,
+  tabs,
+  tabItemHeight = 10,
+  hasPortal = false,
+  portalId,
+  renderPortalContent,
+}) => {
   const [currentTab, setCurrentTab] = useState(tabs[0]);
 
   const handleSelectTab = (e, tab) => {
@@ -16,7 +23,7 @@ const Tabs = ({ className, tabs, tabItemHeight = 10, isPortal, portalId }) => {
   const isSelected = (tab) => currentTab.name === tab.name;
 
   return (
-    <section className={className ? `tabs ${className}` : 'tabs'}>
+    <div className={className ? `tabs ${className}` : 'tabs'}>
       <TabsList
         tabs={tabs}
         tabItemHeight={tabItemHeight}
@@ -24,13 +31,13 @@ const Tabs = ({ className, tabs, tabItemHeight = 10, isPortal, portalId }) => {
         handleSelectTab={handleSelectTab}
       />
 
-      {/* The tabs content can be portaled */}
       <TabsContent
-        isPortal={isPortal}
+        hasPortal={hasPortal}
         portalId={portalId}
         currentTab={currentTab}
+        renderPortalContent={renderPortalContent}
       />
-    </section>
+    </div>
   );
 };
 
