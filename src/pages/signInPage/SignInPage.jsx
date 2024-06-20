@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
+import { useUserContext } from '../../context/AuthContext';
 import { useSignInUser } from '../../services/reactQuery/queries';
 import { signInValidation } from '../../services/zod/validation';
 
@@ -14,7 +15,10 @@ import SubmitButton from '../../components/UI/form/elements/SubmitButton';
 import ContactModal from '../../features/contact/ContactModal';
 import { BackgroundImage } from '../../components/UI/image/BackgroundImage';
 
+import AuthBackground from '../../assets/images/authentication/auth__bg.jpg';
+
 const SignInPage = () => {
+  const { user: authenticatedUser } = useUserContext();
   const navigate = useNavigate();
 
   const { mutateAsync: signInUser } = useSignInUser();
@@ -41,11 +45,13 @@ const SignInPage = () => {
     }
   };
 
+  if (authenticatedUser) return <Navigate to='/' />;
+
   return (
     <main className='sign-in'>
       <div className='container'>
         <div>
-          <h2 className='heading'>Log in to Pianotheus</h2>
+          <h2 className='heading heading-grad'>Log in to Pianotheus</h2>
           <p className='redirect'>
             Don't have an account? <Link to='/register'>Sign up</Link>
           </p>
@@ -69,8 +75,13 @@ const SignInPage = () => {
         </div>
       </div>
       <BackgroundImage
-        url='https://atthemoviesshop.com/cdn/shop/files/unbreakable-vinyl-soundtrack-atm_460x@2x.webp'
-        backgroundPosition='100% 100%'
+        url={AuthBackground}
+        gradient={{
+          type: 'linear',
+          direction: '270deg',
+          transparentPosition: '65%',
+          bgPosition: '100%',
+        }}
       />
     </main>
   );

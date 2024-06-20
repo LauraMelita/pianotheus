@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
+import { useUserContext } from '../../context/AuthContext';
 import { useCreateUserAccount } from '../../services/reactQuery/queries';
 import { signUpValidation } from '../../services/zod/validation';
 
@@ -14,9 +15,10 @@ import SubmitButton from '../../components/UI/form/elements/SubmitButton';
 import Alert from '../../components/UI/alert/Alert';
 import { BackgroundImage } from '../../components/UI/image/BackgroundImage';
 
-import Image from '../../assets/images/sign-up.jpg';
+import AuthBackground from '../../assets/images/authentication/auth__bg.jpg';
 
 const RegisterPage = () => {
+  const { user: authenticatedUser } = useUserContext();
   const navigate = useNavigate();
 
   const {
@@ -53,11 +55,13 @@ const RegisterPage = () => {
     }
   };
 
+  if (authenticatedUser) return <Navigate to='/' />;
+
   return (
     <main className='sign-up'>
       <div className='container'>
         <div>
-          <h2 className='heading'>Create an account</h2>
+          <h2 className='heading heading-grad'>Create an account</h2>
           <p className='redirect'>
             Already have an account? <Link to='/sign-in'>Sign in</Link>
           </p>
@@ -94,7 +98,7 @@ const RegisterPage = () => {
         </div>
       </div>
       <BackgroundImage
-        url={Image}
+        url={AuthBackground}
         gradient={{
           type: 'linear',
           direction: '270deg',
