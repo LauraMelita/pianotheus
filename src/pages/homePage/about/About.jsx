@@ -1,44 +1,46 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
-import Button from '../../../components/UI/button/Button';
-import GlowEffect from '../../../components/UI/animation/glow/GlowEffect';
+import { useAnimations } from '../../../hooks/useAnimations';
+
+import { siteConfig } from '../../../utils/config';
+
+import Svg from '../../../components/UI/svg/Svg';
 
 import './About.scss';
 
 const About = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.3, once: true });
+  const { reveal } = useAnimations();
+  const aboutCards = siteConfig.home.about;
+
   return (
-    <div className='about'>
-      <div className='about__content'>
-        <h2 className='heading'>About Pianotheus</h2>
-        <div>
-          <p>
-            Welcome to Pianotheus, your go-to platform for unlocking the world
-            of piano melodies without the need for traditional sheet music. As
-            the founder and curator of this platform, let me share a bit about
-            the inspiration behind Pianotheus.
-          </p>
-          <br />
-          <p>
-            Pianotheus is born out of my passion for both web development and
-            the piano. Being a self-taught pianist myself, I understand the
-            challenges faced by those who aspire to learn the piano later in
-            life. Pianotheus is more than just a collection of MIDI files; it's
-            a testament to the belief that music knows no age limit. Here,
-            you'll find a wealth of resources to aid your piano learning
-            journey, even if you've never read a sheet of music before.
-          </p>
-          <br />
-          <p>
-            Join me on this musical adventure, immerse yourself in timeless
-            compositions, and let's bring the piano to life, one key at a time.
-          </p>
-        </div>
-        <Button className='glow-effect' variant='primary'>
-          Get Started
-          <GlowEffect borderRadius='20px' />
-        </Button>
-      </div>
-    </div>
+    <motion.div
+      ref={ref}
+      className='about'
+      initial='hidden'
+      animate={isInView ? 'visible' : 'hidden'}
+      transition={{ staggerChildren: 0.2 }}
+    >
+      <motion.h1 className='heading' variants={reveal}>
+        About
+      </motion.h1>
+      <ul className='about__cards'>
+        {aboutCards.map((card) => (
+          <motion.li key={card.title} variants={reveal}>
+            <div className='icon-bg'>
+              <Svg icon={card.icon} />
+            </div>
+            <div>
+              <h4>{card.title}</h4>
+              <span>{card.subtitle}</span>
+              <p>{card.content}</p>
+            </div>
+          </motion.li>
+        ))}
+      </ul>
+    </motion.div>
   );
 };
 
