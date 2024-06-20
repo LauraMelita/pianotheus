@@ -95,7 +95,7 @@ export const siteConfig = {
             path: '/#categories',
             isHashLink: true,
           },
-          image: null,
+          image: 'explore.gif',
         },
         {
           label: 'Download',
