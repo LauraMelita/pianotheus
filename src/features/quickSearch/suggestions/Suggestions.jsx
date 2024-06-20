@@ -51,6 +51,18 @@ const Suggestions = forwardRef(
         return <span className='suggestion__composer'>{composer}</span>;
     };
 
+    const renderWork = ({ scores }) => {
+      const scoreWithWork = scores.find((score) =>
+        score.work?.toLowerCase().includes(searchQuery)
+      );
+
+      return (
+        scoreWithWork && (
+          <span className='suggestion__work'>{`${scoreWithWork.work}`}</span>
+        )
+      );
+    };
+
     const renderScores = ({ scores }) =>
       scores.map(({ title }, index) => {
         const searchQueryIncludesScore = title
@@ -80,6 +92,7 @@ const Suggestions = forwardRef(
               <div className='suggestion__details'>
                 {renderTitle(suggestion)}
                 {renderComposer(suggestion)}
+                {renderWork(suggestion)}
                 <ul className='suggestion__scores'>
                   {renderScores(suggestion)}
                 </ul>

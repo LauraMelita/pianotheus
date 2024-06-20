@@ -1,38 +1,26 @@
 import React from 'react';
 
 import Parallax from './parallax/Parallax';
-import Categories from './categories/Categories';
-import Quote from '../../components/UI/quote/Quote';
+import UserGuide from './userGuide/UserGuide';
 import About from './about/About';
+import Categories from './categories/Categories';
 
 import './HomePage.scss';
 
 const HomePage = () => {
   return (
     <main className='home'>
-      <section className='full-width'>
+      <section id='parallax' className='full-width'>
         <Parallax />
       </section>
-      <section id='about'>
+      <section id='user-guide'>
+        <UserGuide />
+      </section>
+      <section id='about' className='full-width'>
         <About />
       </section>
-      <section>
+      <section id='categories'>
         <Categories />
-      </section>
-      <section>
-        <Quote
-          text={`<p>
-            Prometheus stole fire from the gods. We are each the heirs of that
-            divine spark.
-            <br />
-            Used wisely, the spark fuels one's journey and lights the way.
-            <br />
-            Treated carelessly, the spark consumes its owner and everything in its
-            path.
-          </p>`}
-          author='Thomas Lloyd Qualls'
-          source='Painted Oxen'
-        />
       </section>
     </main>
   );

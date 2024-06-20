@@ -42,6 +42,11 @@
         color: var(--text-color-secondary);
       }
 
+      .suggestion__work {
+        font-size: var(--fs-50);
+        color: var(--text-color-secondary);
+      }
+
       .suggestion__scores {
         li {
           display: flex;

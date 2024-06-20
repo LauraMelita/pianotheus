@@ -1,36 +1,45 @@
 import React from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 
 import { useAnimations } from '../../../hooks/useAnimations';
 
+import TabReveal from './TabReveal';
 import Portal from '../../../components/portal/Portal';
 
-const AnimatedTabContent = ({ currentTab, fadeAndSlide }) => (
-  <div className='tabs__content'>
-    <AnimatePresence mode='wait'>
-      <motion.div
-        key={currentTab.name}
-        variants={fadeAndSlide}
-        initial='initial'
-        animate='enter'
-        exit='exit'
-        transition={{ duration: 0.3 }}
-      >
-        {currentTab && currentTab.content}
-      </motion.div>
-    </AnimatePresence>
-  </div>
-);
+const TabsContent = ({
+  currentTab,
+  hasPortal,
+  portalId,
+  renderPortalContent,
+}) => {
+  const { fadeAndSlide, fadeInOut } = useAnimations();
 
-const TabsContent = ({ currentTab, isPortal, portalId }) => {
-  const { fadeAndSlide } = useAnimations();
+  return (
+    <>
+      <div className='tabs__content'>
+        <TabReveal
+          animationKey={currentTab.name}
+          animation={fadeAndSlide}
+          duration={0.3}
+        >
+          {currentTab && currentTab.content}
+        </TabReveal>
+      </div>
 
-  return isPortal ? (
-    <Portal portalId={portalId}>
-      <AnimatedTabContent currentTab={currentTab} fadeAndSlide={fadeAndSlide} />
-    </Portal>
-  ) : (
-    <AnimatedTabContent currentTab={currentTab} fadeAndSlide={fadeAndSlide} />
+      {/* If hasPortal is true, render additional tabs content inside of a portal */}
+      {hasPortal && (
+        <Portal portalId={portalId}>
+          <div className='tabs__content'>
+            <TabReveal
+              animationKey={currentTab.name}
+              animation={fadeInOut}
+              duration={0.1}
+            >
+              {renderPortalContent && renderPortalContent(currentTab)}
+            </TabReveal>
+          </div>
+        </Portal>
+      )}
+    </>
   );
 };
 

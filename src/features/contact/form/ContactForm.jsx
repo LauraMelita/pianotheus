@@ -30,13 +30,9 @@ const ContactForm = ({ toggleModal }) => {
       await sendEmail(formData);
       reset();
       toggleModal();
-      toast.success('Thank you for reaching out!', {
-        hideProgressBar: true,
-      });
+      toast.success('Thank you for reaching out!', {});
     } catch (error) {
-      toast.error(error.message, {
-        hideProgressBar: true,
-      });
+      toast.error(error.message, {});
     }
   };
 
@@ -49,7 +45,6 @@ const ContactForm = ({ toggleModal }) => {
         </span>
         <Social />
       </div>
-
       <Form onSubmit={handleSubmit(onSendEmail)}>
         <TextInput
           label='Name'

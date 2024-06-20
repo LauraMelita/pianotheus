@@ -54,7 +54,7 @@ const Metadata = ({
 }) => {
   return (
     <div className='metadata'>
-      <h3 className='heading'>Details</h3>
+      <h3 className='heading heading-lb'>Details</h3>
       <div>
         {firstAirDate && (
           <span>

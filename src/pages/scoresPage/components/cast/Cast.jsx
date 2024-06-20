@@ -8,7 +8,7 @@ import './Cast.scss';
 const Cast = ({ actors }) => {
   return (
     <div className='cast'>
-      <h3 className='heading'>Top Cast</h3>
+      <h3 className='heading heading-lb'>Top Cast</h3>
       <HorizontalScroller data={actors} numberOfGroups={2} itemGap={60}>
         {({ name, profileImage }) => (
           <>

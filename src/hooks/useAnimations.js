@@ -59,6 +59,18 @@ export const useAnimations = () => {
     },
   };
 
+  const fadeInOut = {
+    initial: {
+      opacity: 0,
+    },
+    enter: {
+      opacity: 1,
+    },
+    exit: {
+      opacity: 0,
+    },
+  };
+
   const staggerCards = {
     hidden: {
       opacity: 0,
@@ -72,6 +84,20 @@ export const useAnimations = () => {
         transition: 0.7,
       },
     }),
+  };
+
+  const reveal = {
+    hidden: {
+      opacity: 0,
+      y: 75,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
   };
 
   const staggerReveal = {
@@ -129,9 +155,11 @@ export const useAnimations = () => {
     slideRight,
     slideDown,
     staggerCards,
+    reveal,
     staggerReveal,
     highlight,
     fadeAndSlide,
+    fadeInOut,
     marquee,
     pulsate,
   };

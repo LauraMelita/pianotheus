@@ -1,0 +1,58 @@
+@import '../../../styles/breakpoints.scss';
+
+.user-guide {
+  .heading {
+    margin-top: 4px;
+  }
+
+  .instructions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(var(--global-gap) * 2);
+
+    @media (max-width: 1024px) {
+      grid-template-columns: auto;
+    }
+
+    [id='instructions__video'] {
+      overflow: hidden;
+      border: 2px solid var(--gray-shade-10);
+      box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 12px;
+      border-radius: var(--global-border-radius);
+      aspect-ratio: 16/9;
+
+      img {
+        aspect-ratio: 16/9;
+      }
+    }
+
+    .instructions__steps {
+      display: flex;
+      flex-direction: column;
+      gap: var(--global-gap);
+
+      .heading {
+        align-self: unset;
+      }
+
+      .tabs {
+        gap: var(--global-gap);
+
+        .tabs__list {
+          font-size: var(--fs-50);
+          border-bottom: 1px solid var(--gray-shade-10);
+
+          @include mobile {
+            justify-content: space-between;
+
+            .tabs__item {
+              button {
+                padding: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

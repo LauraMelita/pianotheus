@@ -1,0 +1,29 @@
+.video-preview {
+  position: relative;
+  overflow: hidden;
+
+  &__inner {
+    z-index: 2;
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  video {
+    z-index: 0;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    video {
+      z-index: 1;
+      opacity: 1;
+    }
+  }
+}

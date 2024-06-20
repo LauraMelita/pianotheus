@@ -4,44 +4,34 @@ import { useLocation } from 'react-router-dom';
 export const useScrollToTop = () => {
   const { pathname } = useLocation();
 
-  const scrollToTop = () => window.scrollTo(0, 0);
-
-  const setScrollBehaviorToAuto = () =>
-    document.documentElement.style.setProperty('--scroll-behavior', 'auto');
-
-  const setScrollBehaviorToSmooth = () =>
-    document.documentElement.style.setProperty('--scroll-behavior', 'smooth');
-
-  const useRestoreScrollToTop = (currentPathname) => {
-    useLayoutEffect(() => {
-      const pathContainsHashlink = window.location.href.includes('#');
-
-      if (pathContainsHashlink) return;
-
-      setScrollBehaviorToAuto();
-      const timeout = setTimeout(() => scrollToTop(), 0);
-
-      return () => {
-        clearTimeout(timeout);
-      };
-    }, [currentPathname]);
+  const scrollToTop = (behaviorType) => {
+    window.scrollTo({
+      top: 0,
+      behavior: behaviorType,
+    });
   };
 
-  const handlePageScroll = (e) => {
-    const navlink = e.target.href;
-    const samePage = navlink.includes(pathname);
+  // Whenever the pathname changes, scroll to top with auto behavior
+  const useScrollOnPathChange = () => {
+    useLayoutEffect(() => {
+      scrollToTop('auto');
+    }, [pathname]);
+  };
 
-    if (samePage) {
-      setScrollBehaviorToSmooth();
-      setTimeout(() => scrollToTop(), 0);
+  // Whenever a nav link is clicked, scroll to top, and if the same link is clicked, scroll smoothly, else, scroll with auto behavior
+  const handlePageScroll = (e) => {
+    const onSamePage = e.target.href.includes(pathname);
+
+    if (onSamePage) {
+      scrollToTop('smooth');
     } else {
-      setScrollBehaviorToAuto();
+      scrollToTop('auto');
     }
   };
 
   return {
     scrollToTop,
-    useRestoreScrollToTop,
+    useScrollOnPathChange,
     handlePageScroll,
   };
 };
