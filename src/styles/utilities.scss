@@ -1,3 +1,7 @@
+// ============================================================
+// GLOBAL
+// ============================================================
+
 .show {
   display: block;
 }
@@ -6,6 +10,10 @@
 .sr-only {
   display: none;
 }
+
+// ============================================================
+// LAYOUT
+// ============================================================
 
 .stack {
   display: grid;
@@ -22,18 +30,25 @@
   }
 }
 
+// ============================================================
+// HEADING
+// ============================================================
+
+// General heading styling
 .heading {
   position: relative;
   display: flex;
   align-items: center;
   width: fit-content;
-  margin-bottom: 20px;
-  padding-left: 0.75rem;
   font-family: var(--ff-tertiary);
   font-weight: var(--fw-bold);
   line-height: 0.76;
   letter-spacing: 4px;
   text-transform: uppercase;
+}
+
+// Gradient text for heading
+.heading-grad {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   background-image: linear-gradient(
@@ -41,6 +56,11 @@
     var(--text-color-primary) 69%,
     var(--accent-color-100) 90%
   );
+}
+
+// Left border for heading
+.heading-lb {
+  padding-left: 0.75rem;
 
   &::before {
     content: '';
@@ -52,8 +72,4 @@
     background: var(--accent-color-100);
     border-radius: 10px;
   }
-}
-
-.glow-effect {
-  position: relative;
 }

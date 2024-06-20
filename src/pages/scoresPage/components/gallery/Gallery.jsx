@@ -8,7 +8,7 @@ import './Gallery.scss';
 const Gallery = ({ title, trailer, screenshots }) => {
   return (
     <div className='gallery'>
-      <h3 className='heading'>Gallery</h3>
+      <h3 className='heading heading-lb'>Gallery</h3>
       <div>
         <Trailer title={title} videoKey={trailer} />
         <Screenshots screenshots={screenshots} />
