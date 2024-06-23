@@ -34,7 +34,7 @@ const ScoresPage = () => {
 
   useEffect(() => {
     closePlaybar();
-  }, [pathname]);
+  }, [pathname, closePlaybar]);
 
   useDocumentTitle(data?.[routeParam]);
 

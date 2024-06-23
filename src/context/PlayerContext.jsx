@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useCallback, useContext } from 'react';
 
 const PlayerContext = createContext({
   currentSongs: [],
@@ -6,6 +6,7 @@ const PlayerContext = createContext({
   currentIndex: 0,
   showPlaybar: false,
   isPlaying: false,
+  repeat: false,
   setShowPlaybar: () => {},
   play: () => {},
   pause: () => {},
@@ -13,6 +14,7 @@ const PlayerContext = createContext({
   selectSong: () => {},
   resetActiveSong: () => {},
   switchSong: () => {},
+  toggleRepeat: () => {},
 });
 
 export const PlayerProvider = ({ children }) => {
@@ -21,26 +23,34 @@ export const PlayerProvider = ({ children }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showPlaybar, setShowPlaybar] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [repeat, setRepeat] = useState(false);
 
-  const play = () => setIsPlaying(true);
-  const pause = () => setIsPlaying(false);
-  const togglePlayPause = () => setIsPlaying((prev) => !prev);
+  const play = useCallback(() => setIsPlaying(true), []);
+  const pause = useCallback(() => setIsPlaying(false), []);
+  const togglePlayPause = useCallback(() => setIsPlaying((prev) => !prev), []);
 
-  const selectSong = (song, songIndex, songs) => {
+  const toggleRepeat = useCallback(() => {
+    setRepeat((prev) => !prev);
+  }, []);
+
+  const selectSong = useCallback((song, songIndex, songs) => {
     setActiveSong(song);
     setCurrentSongs(songs);
     setCurrentIndex(songIndex);
-  };
+  }, []);
 
-  const resetActiveSong = () => {
+  const resetActiveSong = useCallback(() => {
     setActiveSong({});
     setCurrentIndex(0);
-  };
+  }, []);
 
-  const switchSong = (songIndex) => {
-    setActiveSong(currentSongs[songIndex]);
-    setCurrentIndex(songIndex);
-  };
+  const switchSong = useCallback(
+    (songIndex) => {
+      setActiveSong(currentSongs[songIndex]);
+      setCurrentIndex(songIndex);
+    },
+    [currentSongs]
+  );
 
   return (
     <PlayerContext.Provider
@@ -50,6 +60,7 @@ export const PlayerProvider = ({ children }) => {
         currentIndex,
         showPlaybar,
         isPlaying,
+        repeat,
         setShowPlaybar,
         play,
         pause,
@@ -57,6 +68,7 @@ export const PlayerProvider = ({ children }) => {
         selectSong,
         resetActiveSong,
         switchSong,
+        toggleRepeat,
       }}
     >
       {children}
