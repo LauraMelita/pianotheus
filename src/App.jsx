@@ -12,13 +12,11 @@ import ErrorPage from './pages/errorPage/ErrorPage';
 import Toaster from './components/UI/toaster/Toaster';
 
 import { useDocumentTitle } from './hooks/useDocumentTitle';
-import { useScrollToTop } from './hooks/useScrollToTop';
+import { useScrollRestoration } from './hooks/useScrollRestoration';
 
 const App = () => {
-  const { useScrollOnPathChange } = useScrollToTop();
-
   useDocumentTitle();
-  useScrollOnPathChange();
+  useScrollRestoration();
 
   return (
     <Layout>

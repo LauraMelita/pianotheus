@@ -81,7 +81,7 @@ export const formatFileName = (title) => {
     .replace(/,/g, '') // Remove commas
     .replace(/\.|:/g, '') // Remove periods and colons
     .replace(/[\s]+/g, '_') // Replace spaces with underscores
-    .replace(/[\(\)]/g, ''); // Remove parentheses
+    .replace(/[()]/g, ''); // Remove parentheses
 };
 
 // ============================================================

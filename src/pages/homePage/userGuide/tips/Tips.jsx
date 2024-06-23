@@ -3,8 +3,6 @@ import { motion, useInView } from 'framer-motion';
 
 import { useAnimations } from '../../../../hooks/useAnimations';
 
-import Svg from '../../../../components/UI/svg/Svg';
-
 import './Tips.scss';
 
 const Tips = ({ tips }) => {
@@ -22,10 +20,7 @@ const Tips = ({ tips }) => {
     >
       {tips.map(({ title, tip, icon }, index) => (
         <motion.li key={index} variants={reveal}>
-          <span>
-            {/* <Svg icon={icon} /> */}
-            {title}
-          </span>
+          <span>{title}</span>
           <p>{tip}</p>
         </motion.li>
       ))}

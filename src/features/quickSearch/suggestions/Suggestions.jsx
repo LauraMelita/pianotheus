@@ -63,20 +63,16 @@ const Suggestions = forwardRef(
       );
     };
 
-    const renderScores = ({ scores }) =>
-      scores.map(({ title }, index) => {
-        const searchQueryIncludesScore = title
-          ?.toLowerCase()
-          .includes(searchQuery);
-
-        if (searchQueryIncludesScore)
-          return (
-            <li key={index}>
-              <Svg icon='midi-text' />
-              <span>{title}</span>
-            </li>
-          );
-      });
+    const renderScores = ({ scores }) => {
+      return scores
+        .filter(({ title }) => title?.toLowerCase().includes(searchQuery))
+        .map(({ title }, index) => (
+          <li key={index}>
+            <Svg icon='midi-text' />
+            <span>{title}</span>
+          </li>
+        ));
+    };
 
     return (
       <ul className='suggestions' ref={suggestionRef}>

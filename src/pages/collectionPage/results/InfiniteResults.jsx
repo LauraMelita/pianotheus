@@ -11,7 +11,7 @@ const InfiniteResults = ({ data, isLoading, fetchNextPage, hasNextPage }) => {
 
   useEffect(() => {
     if (inView) fetchNextPage();
-  }, [inView]);
+  }, [inView, fetchNextPage]);
 
   if (isLoading) return <SkeletonCollection />;
   return (
