@@ -14,6 +14,7 @@ const UserBadge = () => {
       <BackgroundImage
         className='user__badge avatar'
         url={user.photoURL}
+        backgroundPosition='center'
       ></BackgroundImage>
     );
   };
