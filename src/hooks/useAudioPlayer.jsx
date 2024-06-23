@@ -1,5 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
-
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { usePlayerContext } from '../context/PlayerContext';
 
 export const useAudioPlayer = () => {
@@ -9,7 +8,6 @@ export const useAudioPlayer = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [songProgress, setSongProgress] = useState(0);
   const [volume, setVolume] = useState(0.5);
-  const [repeat, setRepeat] = useState(false);
 
   const {
     currentSongs,
@@ -17,6 +15,7 @@ export const useAudioPlayer = () => {
     currentIndex,
     showPlaybar,
     isPlaying,
+    repeat,
     setShowPlaybar,
     play,
     pause,
@@ -24,122 +23,114 @@ export const useAudioPlayer = () => {
     selectSong,
     resetActiveSong,
     switchSong,
+    toggleRepeat,
   } = usePlayerContext();
 
   // ============================================================
   // AUDIO PLAYER
   // ============================================================
 
-  const handleOnLoaded = (e) => {
+  const handleOnLoaded = useCallback((e) => {
     setDuration(e.target.duration);
-  };
+  }, []);
 
-  const handlePlaytimeChange = (e) => {
-    // The event fires when:
-    // a) the play time of the media changes
-    // b) the media is playing
-    // c) the user moves the play position
+  const handlePlaytimeChange = useCallback((e) => {
     setSongProgress(e.target.currentTime);
-  };
+  }, []);
 
-  const handleOnEnded = () => {
+  const handleOnEnded = useCallback(() => {
     setCurrentTime(0);
     pause();
-  };
+  }, [pause]);
 
   // ============================================================
   // CONTROLS
   // ============================================================
 
-  const toggleRepeat = () => {
-    setRepeat((prev) => !prev);
-  };
-
-  const handlePreviousTrack = () => {
+  const handlePreviousTrack = useCallback(() => {
     let songIndex = currentIndex;
 
     do {
-      // If the current index is 0, go to the last array element, else decrement the index by 1.
       songIndex = songIndex === 0 ? currentSongs.length - 1 : songIndex - 1;
-
-      // Continue looping while the song at the current index has no audioUrl and it is not the same as the original current index.
     } while (!currentSongs[songIndex]?.audioUrl && songIndex !== currentIndex);
 
     switchSong(songIndex);
-  };
+  }, [currentIndex, currentSongs, switchSong]);
 
-  const handleNextTrack = () => {
+  const handleNextTrack = useCallback(() => {
     let songIndex = currentIndex;
 
     do {
-      // Increment the index by 1 and loop back to the start of the array if needed.
       songIndex = (songIndex + 1) % currentSongs.length;
-
-      // Continue looping while the song at the current index has no audioUrl and it is not the same as the original current index.
     } while (!currentSongs[songIndex]?.audioUrl && songIndex !== currentIndex);
 
     switchSong(songIndex);
-  };
+  }, [currentIndex, currentSongs, switchSong]);
 
-  const isOnlyOnePlayableSong = (songs) => {
+  const isOnlyOnePlayableSong = useCallback((songs) => {
     const songsWithAudioUrl = songs.filter((song) => song.audioUrl);
     return songsWithAudioUrl.length === 1;
-  };
+  }, []);
 
   // ============================================================
   // PROGRESS BAR
   // ============================================================
 
-  const handleProgressBarChange = (value) => {
+  const handleProgressBarChange = useCallback((value) => {
     setCurrentTime(...value);
-  };
+  }, []);
 
-  const handleSkipBackward = () => {
+  const handleSkipBackward = useCallback(() => {
     setCurrentTime(songProgress - 15);
-  };
+  }, [songProgress]);
 
-  const handleSkipForward = () => {
+  const handleSkipForward = useCallback(() => {
     setCurrentTime(songProgress + 15);
-  };
+  }, [songProgress]);
 
   // ============================================================
   // VOLUME
   // ============================================================
 
-  const handleVolumeChange = (value) => {
+  const handleVolumeChange = useCallback((value) => {
     setVolume(...value);
-  };
+  }, []);
 
-  const toggleMute = () => {
-    setVolume(volume === 0 ? 0.5 : 0);
-  };
+  const toggleMute = useCallback(() => {
+    setVolume((prevVolume) => (prevVolume === 0 ? 0.5 : 0));
+  }, []);
 
   // ============================================================
   // PLAY BUTTON (TABLE)
   // ============================================================
 
-  const handlePlaySong = (song, songIndex, currentSongs) => {
-    if (!showPlaybar) setShowPlaybar(true);
-    selectSong(song, songIndex, currentSongs);
-    play();
-  };
+  const handlePlaySong = useCallback(
+    (song, songIndex, currentSongs) => {
+      if (!showPlaybar) setShowPlaybar(true);
+      selectSong(song, songIndex, currentSongs);
+      play();
+    },
+    [showPlaybar, setShowPlaybar, selectSong, play]
+  );
 
-  const isActiveSongPlaying = (songTitle) =>
-    songTitle === activeSong.title && isPlaying;
+  const isActiveSongPlaying = useCallback(
+    (songTitle) => songTitle === activeSong.title && isPlaying,
+    [activeSong.title, isPlaying]
+  );
 
   // ============================================================
   // STICKY PLAYBAR
   // ============================================================
 
-  const closePlaybar = () => {
+  const closePlaybar = useCallback(() => {
     resetActiveSong();
     handleOnEnded();
     setShowPlaybar(false);
-  };
+  }, [resetActiveSong, handleOnEnded, setShowPlaybar]);
 
-  const handlePauseSong = () => {
+  const handlePauseSong = useCallback(() => {
     if (isPlaying) pause();
-  };
+  }, [isPlaying, pause]);
 
   // ============================================================
   // SYNCHRONIZATION:
@@ -174,6 +165,8 @@ export const useAudioPlayer = () => {
     showPlaybar,
     isPlaying,
     togglePlayPause,
+    repeat,
+    toggleRepeat,
 
     // Ref
     audioRef,
@@ -181,13 +174,11 @@ export const useAudioPlayer = () => {
     // Audio Player
     currentTime,
     songProgress,
-    repeat,
     duration,
     volume,
     handleOnLoaded,
     handlePlaytimeChange,
     handleOnEnded,
-    toggleRepeat,
     handlePreviousTrack,
     handleNextTrack,
     handleProgressBarChange,

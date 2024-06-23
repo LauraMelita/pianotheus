@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import {
@@ -24,7 +24,7 @@ export const useSearchFilter = () => {
   const searchBarPlaceholder = `Search by ${formatList(searchKeys)}`;
 
   const handleSearch = (e) => setSearchValue(e.target.value);
-  const clearSearch = () => setSearchValue('');
+  const clearSearch = useCallback(() => setSearchValue(''), []);
 
   // ============================================================
   // FILTER
@@ -33,7 +33,7 @@ export const useSearchFilter = () => {
 
   const hasSelectedFilters = !isObjectEmpty(selectedFilters);
 
-  const handleSelectOption = (value, filterKey) => {
+  const handleSelectOption = useCallback((value, filterKey) => {
     setSelectedFilters((prev) => {
       if (value === 'all') {
         const { [filterKey]: _, ...rest } = prev;
@@ -45,9 +45,9 @@ export const useSearchFilter = () => {
         };
       }
     });
-  };
+  }, []);
 
-  const clearFilters = () => setSelectedFilters({});
+  const clearFilters = useCallback(() => setSelectedFilters({}), []);
 
   // ============================================================
   // QUERIES
@@ -66,10 +66,10 @@ export const useSearchFilter = () => {
 
   const shouldShowSearchResults = !!searchValue || hasSelectedFilters;
 
-  const clearSearchAndFilters = () => {
+  const clearSearchAndFilters = useCallback(() => {
     clearSearch();
     clearFilters();
-  };
+  }, [clearSearch, clearFilters]);
 
   // ============================================================
   // USEFFECTS
@@ -78,13 +78,19 @@ export const useSearchFilter = () => {
   // Clear the search and the filters on route change
   useEffect(() => {
     clearSearchAndFilters();
-  }, [pathname]);
+  }, [pathname, clearSearchAndFilters]);
 
   // Search the collection whenever the debounced search value or selected filters change
   // searchCollection() could be called on button click instead
   useEffect(() => {
     if (!!searchValue || hasSelectedFilters) searchCollection();
-  }, [debouncedSearchValue, selectedFilters]);
+  }, [
+    debouncedSearchValue,
+    selectedFilters,
+    hasSelectedFilters,
+    searchCollection,
+    searchValue,
+  ]);
 
   return {
     searchValue,
