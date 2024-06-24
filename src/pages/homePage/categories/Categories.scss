@@ -44,6 +44,10 @@
 
         .category__title {
           display: none;
+
+          @include mobile {
+            display: flex;
+          }
         }
       }
     }

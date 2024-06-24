@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import { useUserContext } from '../../../context/AuthContext';
+import { useMobileMenuContext } from '../../../context/MobileMenuContext';
 import { useStyles } from '../../../hooks/useStyles';
 import { useResponsive } from '../../../hooks/useResponsive';
 
@@ -20,8 +21,15 @@ import './Navbar.scss';
 
 const Navbar = () => {
   const { user } = useUserContext();
+  const {
+    menus: {
+      slider: { open: isNavigationMenuOpen },
+    },
+  } = useMobileMenuContext();
   const { navbarBackgroundColor } = useStyles();
   const { isMobile, isDesktop } = useResponsive();
+
+  console.log(isNavigationMenuOpen);
 
   const Logo = () => (
     <Link to='/'>
@@ -39,7 +47,7 @@ const Navbar = () => {
   const NavbarActions = () => {
     return (
       <div className='navbar__actions'>
-        {isMobile ? <SearchMenu /> : <QuickSearch />}
+        {user && (isMobile ? <SearchMenu /> : <QuickSearch />)}
         <Separator type='border' orientation='vertical' />
         {user ? <UserMenu /> : <LoginButton />}
       </div>
@@ -49,7 +57,11 @@ const Navbar = () => {
   return (
     <motion.nav
       className='navbar'
-      style={{ backgroundColor: navbarBackgroundColor }}
+      style={{
+        backgroundColor: isNavigationMenuOpen
+          ? 'rgb(0, 0, 0)'
+          : navbarBackgroundColor,
+      }}
     >
       <div className='navbar__wrapper'>
         <div className='navbar__logo'>
