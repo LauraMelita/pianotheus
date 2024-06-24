@@ -23,10 +23,10 @@ const Parallax = () => {
       <Aurora hexColors={['#13FFAA', '#CE84CF', '#DD335C']} />
       <BackgroundImage
         url={Moon}
-        backgroundSize={isTablet || isMobile ? '7em' : '15em'}
+        backgroundSize={isTablet || isMobile ? '6em' : '15em'}
         backgroundPosition='10% 10%'
-        translateY={useSpeed(0.1)}
-        translateX={useSpeed(0.1)}
+        translateY={useSpeed(0.3)}
+        translateX={useSpeed(0.3)}
       />
       <Introduction />
     </motion.div>

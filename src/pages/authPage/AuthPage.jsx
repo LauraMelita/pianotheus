@@ -30,6 +30,7 @@ const AuthPage = ({ role }) => {
   const { user: authenticatedUser } = useUserContext();
   const { isDesktop } = useResponsive();
 
+  // 0.8 and 0.9 refer to the --content-max-width global variable
   const marginInline = `calc((100vw - (100vw * ${isDesktop ? 0.8 : 0.9})) / 2)`;
 
   const components = {
