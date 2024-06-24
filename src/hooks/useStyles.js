@@ -30,7 +30,18 @@ export const useStyles = () => {
   
     url(${image}`;
 
-  return { navbarBackgroundColor, heroBackground };
+  const authBackground = (image) =>
+    `linear-gradient(270deg,
+        ${GLOBAL_STYLES.TRANSPARENT_COLOR}, 60%,
+        ${GLOBAL_STYLES.BACKGROUND_COLOR}),
+
+      linear-gradient(0deg,
+        ${GLOBAL_STYLES.TRANSPARENT_COLOR}, 60%,
+        ${GLOBAL_STYLES.BACKGROUND_COLOR}),
+        
+      url(${image}`;
+
+  return { navbarBackgroundColor, heroBackground, authBackground };
 };
 
 // ============================================================
