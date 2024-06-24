@@ -1,18 +1,25 @@
-.sign-in,
-.sign-up {
-  min-height: 100dvh;
-  display: grid;
-  grid-template-columns: [left] 1fr [right] 1fr;
+@import '../../styles/breakpoints.scss';
 
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.auth {
+  section {
+    display: grid;
+    grid-template-columns: 45% 1fr;
 
-    > div {
+    @include mobile {
+      grid-template-columns: unset;
+
+      .auth__img {
+        display: none;
+      }
+    }
+
+    .auth__login,
+    .auth__register {
       display: flex;
       flex-direction: column;
+      align-self: center;
       gap: var(--global-gap);
+      margin-block: 40px;
 
       .redirect {
         color: var(--text-color-secondary);
@@ -27,7 +34,7 @@
       }
 
       .modal__trigger {
-        text-align: center;
+        align-self: center;
 
         .contact__btn {
           font-size: var(--fs-50);
