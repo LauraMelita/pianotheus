@@ -9,7 +9,7 @@ const AuthLayout = () => {
     <>
       <AuthNavbar />
       <Outlet />
-      <Footer withQuickLinks={false} />
+      <Footer />
     </>
   );
 };
