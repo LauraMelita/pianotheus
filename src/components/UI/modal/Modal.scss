@@ -1,4 +1,4 @@
-@import '../../../styles/mixins.scss';
+@import '../../../styles/breakpoints.scss';
 
 .overlay {
   position: fixed;
@@ -17,6 +17,18 @@
   transform: translate(-50%, -50%);
   animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 
+  @include laptop {
+    min-width: 80%;
+  }
+
+  @include tablet {
+    min-width: 80%;
+  }
+
+  @include mobile {
+    min-width: 100%;
+  }
+
   .modal__content {
     .modal__close-btn {
       position: absolute;
@@ -31,34 +43,65 @@
 
     .modal__content {
       .contact__form {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--global-gap);
         padding: var(--global-padding);
         background: var(--black-6);
-        border-radius: calc(var(--global-border-radius) * 2);
         border: calc(var(--global-border-width) * 2) solid
           var(--accent-color-100);
+        border-radius: calc(var(--global-border-radius) * 2);
 
-        > div {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
+        h4 {
+          margin-top: 2px;
+          margin-bottom: 20px;
+        }
 
-          .social {
+        .contact__form__container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: var(--global-gap);
+
+          > div {
             display: flex;
-            justify-content: center;
-            gap: var(--global-gap);
+            flex-direction: column;
+
+            span {
+              color: var(--text-color-secondary);
+            }
+
+            img {
+              max-width: 60%;
+              align-self: center;
+              margin-block: auto;
+            }
+          }
+
+          form {
+            button {
+              width: 50%;
+            }
+          }
+
+          @include mobile {
+            grid-template-columns: unset;
+
+            > div {
+              display: none;
+            }
+
+            form {
+              gap: calc(var(--global-gap) / 2);
+
+              button {
+                align-self: center;
+              }
+            }
           }
         }
 
-        form {
-          padding: 20px 40px;
-          border-radius: calc(var(--global-border-radius) * 2);
-
-          button {
-            width: 50%;
-          }
+        .social {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          gap: var(--global-gap);
         }
       }
     }

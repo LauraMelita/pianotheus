@@ -14,7 +14,10 @@ export const signUpValidation = z.object({
       (value) => isValueSafe(value),
       'HTML or script tags are not allowed'
     ),
-  email: z.string().email('Email is not valid'),
+  email: z
+    .string()
+    .min(1, { message: 'Email is required' })
+    .email('Email is not valid'),
   password: z
     .string()
     .min(
@@ -43,7 +46,10 @@ export const signUpValidation = z.object({
 });
 
 export const signInValidation = z.object({
-  email: z.string().email('Email is not valid'),
+  email: z
+    .string()
+    .min(1, { message: 'Email is required' })
+    .email('Email is not valid'),
   password: z
     .string()
     .min(
@@ -64,7 +70,10 @@ export const contactValidation = z.object({
       (value) => isValueSafe(value),
       'HTML or script tags are not allowed'
     ),
-  email: z.string().email('Email is not valid'),
+  email: z
+    .string()
+    .min(1, { message: 'Email is required' })
+    .email('Email is not valid'),
   subject: z
     .string()
     .refine(
@@ -73,6 +82,7 @@ export const contactValidation = z.object({
     ),
   message: z
     .string()
+    .min(1, { message: 'Message is required' })
     .max(
       FORM.MAX_MESSAGE_LENGTH,
       `Message cannot exceed ${FORM.MAX_MESSAGE_LENGTH} characters`

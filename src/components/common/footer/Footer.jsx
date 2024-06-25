@@ -15,7 +15,7 @@ import { currentYear } from '../../../utils/helpers';
 import Logo from '../../../assets/images/logo.svg';
 import './Footer.scss';
 
-const Footer = ({ withQuickLinks = true }) => {
+const Footer = () => {
   const { handlePageScroll } = useScrollToTop();
 
   const QuickLinks = () => {
@@ -150,7 +150,7 @@ const Footer = ({ withQuickLinks = true }) => {
     <footer className='footer'>
       <div className='footer__wrapper'>
         <div className='footer__top'>
-          {withQuickLinks && <QuickLinks />}
+          <QuickLinks />
           <About />
           <APIs />
           <Downloads />
