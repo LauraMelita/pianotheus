@@ -1,3 +1,5 @@
+@import '../../styles/breakpoints.scss';
+
 .collection {
   display: grid;
   grid-template-rows:
@@ -5,9 +7,7 @@
     [section] 1fr;
 
   section {
-    min-height: 100%;
     display: grid;
-    align-items: center;
     padding: var(--content-padding);
 
     .spinner {
@@ -21,8 +21,15 @@
       display: grid;
       justify-content: center;
       gap: calc(var(--global-gap) * 2);
-      // grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
-      grid-template-columns: repeat(auto-fit, var(--card-width));
+      grid-template-columns: repeat(auto-fit, 220px);
+
+      @include laptop {
+        grid-template-columns: repeat(auto-fit, 195px);
+      }
+
+      @include mobile {
+        grid-template-columns: repeat(auto-fit, 1fr);
+      }
     }
 
     .load-more__indicator {
