@@ -29,8 +29,6 @@ const Navbar = () => {
   const { navbarBackgroundColor } = useStyles();
   const { isMobile, isDesktop } = useResponsive();
 
-  console.log(isNavigationMenuOpen);
-
   const Logo = () => (
     <Link to='/'>
       <Image src={PianotheusLogo} alt='pianotheus logo' />

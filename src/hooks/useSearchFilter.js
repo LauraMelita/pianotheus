@@ -9,19 +9,21 @@ import { useCollectionContext } from '../context/CollectionContext';
 import { useDebounce } from './useDebounce';
 
 import { isObjectEmpty } from '../utils/helpers';
-import { formatList } from '../utils/formatting';
+import { formatListAndCapitalize } from '../utils/formatting';
 
 export const useSearchFilter = () => {
   const { pathname } = useLocation();
-  const { searchKeys } = useCollectionContext();
+  const { searchKeys, title: collectionTitle } = useCollectionContext();
 
   // ============================================================
   // SEARCH
   // ============================================================
   const [searchValue, setSearchValue] = useState('');
 
-  const debouncedSearchValue = useDebounce(searchValue, 500);
-  const searchBarPlaceholder = `Search by ${formatList(searchKeys)}`;
+  const debouncedSearchValue = useDebounce(searchValue, 700);
+  const searchBarPlaceholder = `Search ${collectionTitle} by ${formatListAndCapitalize(
+    searchKeys
+  )}`;
 
   const handleSearch = (e) => setSearchValue(e.target.value);
   const clearSearch = useCallback(() => setSearchValue(''), []);

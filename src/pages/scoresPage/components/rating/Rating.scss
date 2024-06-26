@@ -1,3 +1,5 @@
+@import '../../../../styles/breakpoints.scss';
+
 .rating {
   display: flex;
   flex-direction: column;
@@ -6,5 +8,9 @@
 
   &__source {
     font-size: var(--fs-50);
+
+    @include mobile {
+      font-size: var(--fs-0);
+    }
   }
 }

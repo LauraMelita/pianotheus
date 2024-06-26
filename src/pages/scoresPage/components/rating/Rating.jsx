@@ -11,12 +11,12 @@ const Rating = ({ source, value, maxValue }) => {
 
   return (
     <div className='rating'>
-      <span>{source}</span>
+      <span className='rating__source'>{source}</span>
       <CircularProgressBar
         value={value}
         maxValue={maxValue}
-        width={isDesktop || isLaptop ? 65 : 55}
-        height={isDesktop || isLaptop ? 65 : 55}
+        width={isDesktop || isLaptop ? 65 : 50}
+        height={isDesktop || isLaptop ? 65 : 50}
       />
     </div>
   );
