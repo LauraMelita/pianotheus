@@ -49,7 +49,7 @@ export const formatDate = (dateToFormat) => {
 
   const options = {
     day: 'numeric',
-    month: 'long',
+    month: 'short',
     year: 'numeric',
   };
 
@@ -65,6 +65,14 @@ export const bytesToMegabytes = (bytes) => bytes / (1024 * 1024);
 export const formatList = (arr) => {
   const listFormatter = new Intl.ListFormat('en-us');
   return listFormatter.format(arr);
+};
+
+export const formatListAndCapitalize = (arr) => {
+  const listFormatter = new Intl.ListFormat('en-us');
+
+  const capitalizedArr = arr.map((element) => capitalize(element));
+
+  return listFormatter.format(capitalizedArr);
 };
 
 export const fileExtensionsList = (fileTypes) => {

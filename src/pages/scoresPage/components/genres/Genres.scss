@@ -1,3 +1,5 @@
+@import '../../../../styles/breakpoints.scss';
+
 .genres {
   display: flex;
   flex-wrap: wrap;
@@ -10,5 +12,10 @@
     border-radius: 20px;
     font-size: var(--fs-50);
     line-height: 20px;
+
+    @include mobile {
+      padding: 3px 6px;
+      font-size: var(--fs-0);
+    }
   }
 }
