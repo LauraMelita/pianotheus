@@ -14,7 +14,9 @@ const SearchBar = forwardRef(
 
     return (
       <div ref={ref} className='search-bar'>
-        <Svg icon='search' />
+        <div className='search-icon__container'>
+          <Svg icon='search' />
+        </div>
         <Input
           type='text'
           placeholder={placeholder}
