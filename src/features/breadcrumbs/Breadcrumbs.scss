@@ -1,3 +1,5 @@
+@import '../../styles/breakpoints.scss';
+
 .breadcrumbs {
   display: flex;
   gap: calc(var(--global-gap) / 4);
@@ -15,6 +17,12 @@
 
       &:last-child {
         color: var(--text-color-primary);
+
+        @include mobile {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
       }
     }
   }

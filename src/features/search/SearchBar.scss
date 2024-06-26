@@ -1,6 +1,6 @@
 .search-bar {
-  height: fit-content;
-  display: flex;
+  display: grid;
+  grid-template-columns: [search] 1fr [input] 8fr [close] 1fr;
   align-items: center;
   background-color: var(--input-border-color);
   border: var(--global-border-width) solid var(--input-border-color);
@@ -10,15 +10,18 @@
     border: var(--global-border-width) solid var(--input-focus-color);
   }
 
+  .search-icon__container {
+    display: flex;
+    justify-content: center;
+  }
+
   .icon__search,
   .icon__close {
-    margin: 0 calc(var(--global-margin) / 1.5);
     height: 19px;
     width: 19px;
   }
 
   input {
-    flex-grow: 1;
     padding: 8px 10px;
     background-color: transparent;
     border: none;

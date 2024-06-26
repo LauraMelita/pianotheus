@@ -1,16 +1,29 @@
 @import '../../../../styles/breakpoints.scss';
 
 .details {
-  display: grid;
-  grid-template-columns: [poster] 300px [details] 2fr;
-  gap: 40px;
+  --poster-size: 300px;
+  --gap: 40px;
 
   @include tablet {
-    grid-template-columns: [poster] 200px [details] 2fr;
+    --poster-size: 200px;
+    --gap: 40px;
   }
 
   @include mobile {
-    grid-template-columns: [poster] 200px [details] 2fr;
+    --poster-size: 120px;
+    --gap: 20px;
+  }
+
+  display: grid;
+  grid-template-columns: [poster] var(--poster-size) [details] 2fr;
+  gap: var(--gap);
+
+  @media (max-width: 470px) {
+    grid-template-columns: unset;
+
+    &__poster {
+      display: none;
+    }
   }
 
   &__poster {
@@ -31,19 +44,19 @@
         justify-content: space-between;
         gap: var(--global-gap);
 
-        @include mobile {
-          flex-wrap: wrap;
-        }
-
         .details__header {
           display: flex;
           flex-direction: column;
           gap: var(--global-gap);
         }
 
-        .rating {
-          @include mobile {
-            margin-inline: auto;
+        @include mobile {
+          gap: calc(var(--global-gap) / 2);
+
+          .details__header {
+            .crew {
+              display: none;
+            }
           }
         }
       }
@@ -55,6 +68,10 @@
         align-items: flex-end;
         flex-wrap: wrap;
         gap: var(--global-gap);
+
+        @include mobile {
+          justify-content: flex-start;
+        }
       }
     }
   }

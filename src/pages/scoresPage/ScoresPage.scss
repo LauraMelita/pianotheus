@@ -1,6 +1,9 @@
+@import '../../styles/breakpoints.scss';
+
 .scores {
   position: relative;
   z-index: 0;
+  min-height: 50vh;
 
   .spinner {
     align-self: center;
@@ -9,9 +12,14 @@
 
   .hero {
     background-position: left 15vw top 5%;
-    // background-position: 22% 50%; // mobile
     background-size: cover;
     background-repeat: no-repeat;
+
+    @include mobile {
+      background-position: 50% 50%;
+      border-image: linear-gradient(hsl(0240 0% 0% / 0.3), hsl(0 0% 7% / 0.6))
+        fill 1;
+    }
 
     .hero__content {
       width: var(--content-max-width);

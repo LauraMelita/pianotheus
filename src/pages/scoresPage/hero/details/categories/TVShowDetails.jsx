@@ -12,7 +12,7 @@ import Tagline from '../../../components/tagline/Tagline';
 import Genres from '../../../components/genres/Genres';
 
 const TVShowDetails = ({ data }) => {
-  const { isDesktop, isLaptop } = useResponsive();
+  const { isDesktop, isLaptop, isMobile } = useResponsive();
 
   return (
     <div className='details'>
@@ -22,9 +22,11 @@ const TVShowDetails = ({ data }) => {
           <div className='details__header'>
             <Title title={data.title} originalTitle={data.originalName} />
             <Spec items={[data.year, data.rated, `${data.runtime} min`]} />
-            <span>
-              {data.seasons} Seasons - {data.episodes} Episodes
-            </span>
+            {!isMobile && (
+              <span>
+                {data.seasons} Seasons - {data.episodes} Episodes
+              </span>
+            )}
             {(isDesktop || isLaptop) && (
               <Description text={data.plot} maxWords={70} />
             )}

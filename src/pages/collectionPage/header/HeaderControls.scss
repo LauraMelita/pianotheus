@@ -1,11 +1,7 @@
 @import '../../../styles/breakpoints.scss';
 
 .collection__header {
-  background: linear-gradient(
-    0deg,
-    var(--layout-background-color) 0%,
-    var(--black-7) 83%
-  );
+  background-color: hsl(0, 0%, 3%);
 
   header {
     width: var(--content-max-width);
@@ -13,10 +9,11 @@
     display: flex;
     flex-direction: column;
     gap: calc(var(--global-gap) * 1.5);
-    padding-top: calc(var(--global-padding) * 2);
+    padding: calc(var(--global-padding) * 2) 0;
 
     h2 {
       width: fit-content;
+      align-self: center;
     }
 
     .search__controls {
@@ -26,7 +23,7 @@
       gap: var(--global-gap);
 
       .search-bar {
-        width: 50%;
+        width: 33%;
       }
 
       .filters {
@@ -43,7 +40,11 @@
         }
 
         .filters {
-          justify-content: flex-end;
+          justify-content: center;
+
+          @include mobile {
+            justify-content: flex-end;
+          }
         }
       }
     }
