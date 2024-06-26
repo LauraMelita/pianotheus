@@ -7,7 +7,7 @@ export const useStyles = () => {
 
   const navbarBackgroundColor = useTransform(
     scrollYProgress,
-    [0, 0.1],
+    [0, 0.01],
     ['rgba(0, 0, 0, 0)', 'rgb(0, 0, 0)']
   );
 
