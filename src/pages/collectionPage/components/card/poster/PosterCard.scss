@@ -1,3 +1,5 @@
+@import '../../../../../styles/breakpoints.scss';
+
 .poster {
   display: flex;
   flex-direction: column;
@@ -5,25 +7,28 @@
 
   &__card {
     overflow: hidden;
-    height: 100%;
-    min-height: 330px;
     position: relative;
     border: 2px solid var(--border-color);
     border-radius: var(--global-border-radius);
     box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 12px;
+    aspect-ratio: 40/57;
 
     a {
       height: 100%;
 
       > img {
-        height: 100%;
-        aspect-ratio: 2 / 3;
+        min-height: 100%;
+        aspect-ratio: 40/57;
       }
 
       &:hover {
         .poster_card-inner {
           bottom: 0;
           top: auto;
+
+          @include mobile {
+            display: none;
+          }
         }
       }
     }
