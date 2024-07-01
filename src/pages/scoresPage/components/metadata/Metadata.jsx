@@ -77,7 +77,11 @@ const Metadata = ({
             <Svg icon='awards' /> {awards}
           </span>
         )}
-        {platforms && <span>Platforms: {formatList(platforms)}</span>}
+        {platforms && (
+          <span>
+            <Svg icon='platforms' /> {formatList(platforms)}
+          </span>
+        )}
         {/* {website && <Website link={website} />} */}
         {/* {productionCompanies && (
           <ProductionCompanies companies={productionCompanies} />
