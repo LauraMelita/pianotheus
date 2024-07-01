@@ -25,8 +25,8 @@ const Screenshots = ({ screenshots, count = 6 }) => {
             <Image
               src={screenshot}
               alt='screenshot'
-              whileHover={{ scale: 1.2 }}
-              transition={{ duration: 0.6 }}
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.2 }}
             />
           </li>
         ))}

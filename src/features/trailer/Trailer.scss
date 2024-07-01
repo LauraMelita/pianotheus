@@ -1,10 +1,15 @@
 @import '../../styles/breakpoints.scss';
 
 .thumbnail {
+  flex-grow: 1;
   position: relative;
   overflow: hidden;
   border-radius: var(--global-border-radius);
   cursor: pointer;
+
+  img {
+    min-height: 100%;
+  }
 
   button {
     z-index: 1;
