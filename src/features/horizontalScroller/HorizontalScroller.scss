@@ -1,5 +1,6 @@
+@import '../../styles/breakpoints.scss';
+
 .scroller {
-  overflow-x: auto;
   overscroll-behavior-inline: contain;
   display: grid;
   grid-auto-flow: column;
@@ -7,10 +8,6 @@
   // Item size control:
   // grid-auto-columns: 75%;
   grid-auto-columns: max-content;
-
-  &.scrollbar-hidden {
-    overflow-x: hidden;
-  }
 
   &.scroll-snap {
     scroll-snap-type: inline mandatory;
@@ -31,6 +28,10 @@
       display: grid;
       justify-items: center;
       gap: calc(var(--global-gap) / 4);
+
+      @include mobile {
+        padding-bottom: 10px;
+      }
     }
   }
 }
