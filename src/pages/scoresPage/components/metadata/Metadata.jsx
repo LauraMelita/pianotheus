@@ -79,9 +79,9 @@ const Metadata = ({
         )}
         {platforms && <span>Platforms: {formatList(platforms)}</span>}
         {/* {website && <Website link={website} />} */}
-        {productionCompanies && (
+        {/* {productionCompanies && (
           <ProductionCompanies companies={productionCompanies} />
-        )}
+        )} */}
       </div>
     </div>
   );
