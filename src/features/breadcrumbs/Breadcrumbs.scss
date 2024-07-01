@@ -13,6 +13,10 @@
         &:hover {
           color: var(--text-color-primary);
         }
+
+        @include mobile {
+          white-space: nowrap;
+        }
       }
 
       &:last-child {
