@@ -15,9 +15,7 @@ const TVShowOverview = ({ data }) => {
       {(isTablet || isMobile) && (
         <Description text={data.plot} maxWords={30} header='Plot' />
       )}
-
       <Cast actors={data.actors} />
-
       <Metadata
         firstAirDate={data.firstAirDate}
         country={data.country}
@@ -26,7 +24,6 @@ const TVShowOverview = ({ data }) => {
         awards={data.awards}
         website={data.website}
       />
-
       <Gallery
         title={data.title}
         trailer={data.trailer}

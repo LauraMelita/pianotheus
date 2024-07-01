@@ -1,3 +1,5 @@
+@import '../../../../styles/breakpoints.scss';
+
 .cast {
   --size: 100px;
 
@@ -16,5 +18,9 @@
     font-size: var(--fs-50);
     color: var(--text-color-secondary);
     max-width: var(--size);
+
+    @include mobile {
+      font-size: var(--fs-0);
+    }
   }
 }

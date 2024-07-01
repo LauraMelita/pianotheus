@@ -30,10 +30,17 @@
   }
 
   .modal__content {
+    position: relative;
+
     .modal__close-btn {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 4vh;
+      right: 2vw;
+
+      @include mobile {
+        top: 12vh;
+        right: 6vw;
+      }
     }
   }
 
@@ -118,9 +125,16 @@
 
       .video {
         overflow: hidden;
-        height: 50%;
-        width: 50%;
+        min-height: 100%;
+        min-width: 60vw;
         border-radius: var(--global-border-radius);
+        object-fit: cover;
+
+        @include mobile {
+          @media only screen and (orientation: portrait) {
+            min-width: 100%;
+          }
+        }
 
         iframe {
           min-height: 100%;

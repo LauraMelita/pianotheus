@@ -1,3 +1,5 @@
+@import '../../styles/mixins.scss';
+
 .preview {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -8,6 +10,10 @@
     position: relative;
     border-radius: var(--global-border-radius);
     cursor: pointer;
+
+    img {
+      aspect-ratio: 1;
+    }
   }
 
   .view-all {
@@ -22,9 +28,11 @@
     span {
       z-index: 1;
       position: absolute;
-      inset: 0;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
-      align-self: center;
       text-transform: uppercase;
       font-size: var(--fs-0);
       font-weight: var(--fw-bold);
@@ -33,12 +41,7 @@
 
     &:hover {
       img {
-        filter: contrast(0%);
-        opacity: 1;
-      }
-
-      span {
-        color: var(--black-7);
+        opacity: 0.5;
       }
     }
   }

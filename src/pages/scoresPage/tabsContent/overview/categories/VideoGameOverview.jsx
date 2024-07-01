@@ -15,15 +15,12 @@ const VideoGameOverview = ({ data }) => {
       {(isTablet || isMobile) && (
         <Description text={data.description} maxWords={30} header='Summary' />
       )}
-
       <Metadata platforms={data.platforms} website={data.website} />
-
       <Gallery
         title={data.title}
         trailer={data.trailer}
         screenshots={data.screenshots}
       />
-
       {isMobile && (
         <Esrb
           rating={data.esrb.rating}

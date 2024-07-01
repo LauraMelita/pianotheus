@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { useInView } from 'framer-motion';
 
+import { useResponsive } from '../../hooks/useResponsive';
+
 import { splitArray } from '../../utils/helpers';
 
 import './HorizontalScroller.scss';
@@ -10,10 +12,10 @@ const HorizontalScroller = ({
   data,
   children,
   numberOfGroups,
-  isScrollbarHidden = true,
   isSnaps = true,
   itemGap,
 }) => {
+  const { isLaptop, isDesktop } = useResponsive();
   const scrollerRef = useRef(null);
   const scrollerItemRef = useRef(null);
   const isInView = useInView(scrollerItemRef, {
@@ -50,14 +52,12 @@ const HorizontalScroller = ({
     <div
       ref={scrollerRef}
       tabIndex='0'
-      className={`scroller 
-      ${className}
-      ${isSnaps && 'scroll-snap'} 
-      ${isScrollbarHidden && 'scrollbar-hidden'}
-      `}
+      className={`scroller ${className} ${isSnaps && 'scroll-snap'}`}
       style={{
         gap: itemGap,
         mask: maskRight,
+        // Hide the scrollbar on desktop and laptop
+        overflowX: isDesktop || isLaptop ? 'hidden' : 'auto',
       }}
     >
       {groups.map((group, index) => (
