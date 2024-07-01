@@ -1,0 +1,16 @@
+@import '../../../../styles/breakpoints.scss';
+
+.era {
+  align-self: flex-start;
+  display: inline-block;
+  padding: 5px 10px;
+  border: 2px solid var(--text-color-secondary);
+  border-radius: 20px;
+  font-size: var(--fs-50);
+  line-height: 20px;
+
+  @include mobile {
+    padding: 3px 6px;
+    font-size: var(--fs-0);
+  }
+}
