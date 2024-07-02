@@ -34,13 +34,8 @@
 
     .modal__close-btn {
       position: absolute;
-      top: 4vh;
-      right: 2vw;
-
-      @include mobile {
-        top: 12vh;
-        right: 6vw;
-      }
+      top: 2vh;
+      right: 2vh;
     }
   }
 
@@ -116,8 +111,8 @@
 
   &.youtube {
     .modal__content {
-      min-width: 100vw;
-      min-height: 100vh;
+      min-width: 100dvw;
+      min-height: 100dvh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -148,8 +143,8 @@
   &.screenshots {
     .modal__content {
       position: relative;
-      min-width: 100vw;
-      min-height: 100vh;
+      min-height: 100dvh;
+      min-width: 100dvw;
       padding: var(--global-padding);
 
       display: flex;
