@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -14,6 +14,7 @@ import SubmitButton from '../../../components/UI/form/elements/SubmitButton';
 import ContactModal from '../../../features/contact/ContactModal';
 
 const Login = ({ withAuthSuggestion }) => {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const { mutateAsync: signInUser } = useSignInUser();
 
@@ -31,7 +32,7 @@ const Login = ({ withAuthSuggestion }) => {
     try {
       await signInUser(formData);
       reset();
-      navigate('/');
+      navigate(pathname);
     } catch (error) {
       setError('root', {
         message: error.message,
