@@ -4,8 +4,9 @@ import { useResponsive } from '../../../../../hooks/useResponsive';
 
 import Description from '../../../components/description/Description';
 import Cast from '../../../components/cast/Cast';
-import Gallery from '../../../components/gallery/Gallery';
 import Metadata from '../../../components/metadata/Metadata';
+import Gallery from '../../../components/gallery/Gallery';
+import ProductionCompanies from '../../../components/productionCompanies/ProductionCompanies';
 
 const MovieOverview = ({ data }) => {
   const { isTablet, isMobile } = useResponsive();
@@ -13,7 +14,7 @@ const MovieOverview = ({ data }) => {
   return (
     <div className='overview'>
       {(isTablet || isMobile) && (
-        <Description text={data.plot} maxWords={30} header='Plot' />
+        <Description text={data.plot} maxWords={70} header='Plot' />
       )}
       <Cast actors={data.actors} />
       <Metadata
@@ -29,6 +30,7 @@ const MovieOverview = ({ data }) => {
         trailer={data.trailer}
         screenshots={data.screenshots}
       />
+      <ProductionCompanies companies={data.productionCompanies} />
     </div>
   );
 };
