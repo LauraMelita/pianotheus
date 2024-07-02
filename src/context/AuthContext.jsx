@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { getCurrentUser, signOutUser } from '../services/firebase/api';
 
@@ -7,12 +8,18 @@ const AuthContext = createContext({
   isAuthenticating: false,
   setUser: () => {},
   setIsAuthenticating: () => {},
-  signOutUser: () => {},
+  logOut: () => {},
 });
 
 export const AuthProvider = ({ children }) => {
+  const navigate = useNavigate();
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [user, setUser] = useState(null);
+
+  const logOut = () => {
+    signOutUser();
+    navigate('/');
+  };
 
   useEffect(() => {
     const authListener = getCurrentUser((currentUser) => {
@@ -30,7 +37,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         user,
         setUser,
-        signOutUser,
+        logOut,
       }}
     >
       {!isAuthenticating && children}

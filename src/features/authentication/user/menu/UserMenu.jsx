@@ -16,7 +16,7 @@ import { GLOBAL_STYLES } from '../../../../utils/constants';
 
 const UserMenu = () => {
   const { ref: authBtnRef, height: authBtnHeight } = useElementSize();
-  const { signOutUser } = useUserContext();
+  const { logOut } = useUserContext();
 
   const navbarHeight = parseCSSVariableToNumber(GLOBAL_STYLES.NAVBAR_HEIGHT);
   const triggerOffset = (navbarHeight - authBtnHeight) / 2;
@@ -31,7 +31,7 @@ const UserMenu = () => {
       align='end'
     >
       <DropdownItem disabled><UserProfile/></DropdownItem>
-      <DropdownItem onSelect={signOutUser}><LogoutButton/></DropdownItem>
+      <DropdownItem onSelect={logOut}><LogoutButton/></DropdownItem>
     </DropdownMenu>
   );
 };
