@@ -1,0 +1,26 @@
+@import '../../../../styles/breakpoints.scss';
+
+.production-companies {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--global-gap);
+
+  img {
+    object-fit: contain;
+    aspect-ratio: 1;
+    width: auto;
+    max-width: 4%;
+    filter: invert(100%);
+  }
+
+  @include mobile {
+    justify-content: center;
+    gap: calc(var(--global-gap) / 2);
+
+    img {
+      max-width: 50px;
+    }
+  }
+}

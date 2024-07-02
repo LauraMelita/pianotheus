@@ -13,7 +13,7 @@ const VideoGameOverview = ({ data }) => {
   return (
     <div className='overview'>
       {(isTablet || isMobile) && (
-        <Description text={data.description} maxWords={30} header='Summary' />
+        <Description text={data.description} maxWords={70} header='Summary' />
       )}
       <Metadata platforms={data.platforms} website={data.website} />
       <Gallery

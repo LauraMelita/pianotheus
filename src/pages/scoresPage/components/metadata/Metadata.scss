@@ -5,12 +5,12 @@
   > div {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: calc(var(--global-gap) / 2);
 
     span {
       display: grid;
       grid-template-columns: auto 1fr;
-      gap: 5px;
+      gap: calc(var(--global-gap) / 2);
       align-items: flex-start;
 
       svg {
@@ -18,21 +18,18 @@
         width: 20px;
         height: 20px;
         color: var(--text-color-secondary);
+
+        &.icon__external-link {
+          margin: 5px 0 0 4px;
+          width: 13px;
+          height: 13px;
+        }
       }
-    }
 
-    .production-companies {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      align-items: center;
-
-      img {
-        object-fit: contain;
-        aspect-ratio: 1;
-        width: auto;
-        max-width: 50px;
-        filter: invert(100%);
+      a {
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

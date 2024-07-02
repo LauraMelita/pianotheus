@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Image from '../../../../components/UI/image/Image';
-// import Button from '../../../../components/UI/button/Button';
 import Svg from '../../../../components/UI/svg/Svg';
 
 import { formatList, formatDate } from '../../../../utils/formatting';
@@ -19,36 +17,12 @@ const SpokenLanguages = ({ languages }) => {
   );
 };
 
-const ProductionCompanies = ({ companies }) => {
-  return (
-    <div className='production-companies'>
-      {companies.map(({ name, logo }, index) => {
-        return logo && <Image key={index} src={logo} alt={name} />;
-      })}
-    </div>
-  );
-};
-
-// const Website = ({ link }) => {
-//   return (
-//     <Button
-//       className='official-website'
-//       href={link}
-//       target='_blank'
-//       rel='noreferrer'
-//     >
-//       Official Website
-//     </Button>
-//   );
-// };
-
 const Metadata = ({
   firstAirDate,
   country,
   languages,
   boxOffice,
   awards,
-  productionCompanies,
   platforms,
   website,
 }) => {
@@ -82,10 +56,14 @@ const Metadata = ({
             <Svg icon='platforms' /> {formatList(platforms)}
           </span>
         )}
-        {/* {website && <Website link={website} />} */}
-        {/* {productionCompanies && (
-          <ProductionCompanies companies={productionCompanies} />
-        )} */}
+        {website && (
+          <span>
+            <Svg icon='external-link' />{' '}
+            <a href={website} target='_blank' rel='noreferrer'>
+              Official Website
+            </a>
+          </span>
+        )}
       </div>
     </div>
   );
