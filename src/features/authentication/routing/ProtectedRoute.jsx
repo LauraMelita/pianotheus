@@ -1,12 +1,11 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
-
 import { useUserContext } from '../../../context/AuthContext';
+import AuthPage from '../../../pages/authPage/AuthPage';
 
 const ProtectedRoute = ({ children }) => {
   const { user: authenticatedUser } = useUserContext();
 
-  if (!authenticatedUser) return <Navigate to='/sign-in' />;
+  if (!authenticatedUser) return <AuthPage role='login' />;
 
   return children;
 };
