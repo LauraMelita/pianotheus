@@ -2,10 +2,13 @@
 
 .auth {
   section {
+    min-height: calc(100vh - var(--navbar-height));
+
     display: grid;
     grid-template-columns: 45% 1fr;
 
     @include mobile {
+      min-height: initial;
       grid-template-columns: unset;
 
       .auth__img {
