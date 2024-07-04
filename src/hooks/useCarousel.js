@@ -1,11 +1,8 @@
-import { useState } from 'react';
 import { debounce } from 'lodash';
 
 const SCROLL_WHEEL_DELAY = 100;
 
-export const useCarousel = (items) => {
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-
+export const useCarousel = (items, setCurrentSlideIndex) => {
   const slideBackward = () => {
     setCurrentSlideIndex((prevIndex) =>
       prevIndex === 0 ? items.length - 1 : prevIndex - 1
@@ -34,8 +31,6 @@ export const useCarousel = (items) => {
   }, SCROLL_WHEEL_DELAY);
 
   return {
-    currentSlideIndex,
-    setCurrentSlideIndex,
     slideBackward,
     slideForward,
     handleKeyDown,

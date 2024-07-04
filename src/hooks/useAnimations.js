@@ -116,7 +116,7 @@ export const useAnimations = () => {
 
   const highlight = {
     inactive: {
-      opacity: 0.6,
+      opacity: 0.3,
       filter: 'brightness(1)',
     },
     active: {

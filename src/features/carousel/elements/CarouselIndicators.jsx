@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { useResponsive } from '../../../hooks/useResponsive';
 import { useAnimations } from '../../../hooks/useAnimations';
 
 import Button from '../../../components/UI/button/Button';
@@ -11,11 +10,10 @@ const CarouselIndicators = ({
   currentSlideIndex,
   setCurrentSlideIndex,
 }) => {
-  const { isMobile } = useResponsive();
   const { highlight } = useAnimations();
 
   return (
-    <div className={`carousel__indicators ${isMobile ? 'mobile' : ''}`}>
+    <div className='carousel__indicators'>
       {slides.map((item, index) => {
         const isActive = index === currentSlideIndex;
         return (
@@ -25,9 +23,9 @@ const CarouselIndicators = ({
             onClick={() => setCurrentSlideIndex(index)}
             variants={highlight}
             initial='inactive'
-            animate={isActive && 'active'}
+            animate={isActive ? 'active' : 'inactive'}
           >
-            {!isMobile && <Image src={item} alt='preview' />}
+            <Image src={item} alt='screenshot indicator' />
           </Button>
         );
       })}
