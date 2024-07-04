@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFocusTrap } from '@mantine/hooks';
 
+import { useResponsive } from '../../hooks/useResponsive';
 import { useCarousel } from '../../hooks/useCarousel';
 
 import CarouselButton from './elements/CarouselButton';
@@ -9,16 +10,16 @@ import CarouselIndicators from './elements/CarouselIndicators';
 
 import './Carousel.scss';
 
-const Carousel = ({ items, aspectRatio }) => {
-  const {
-    currentSlideIndex,
-    setCurrentSlideIndex,
-    slideBackward,
-    slideForward,
-    handleKeyDown,
-    handleMouseWheel,
-  } = useCarousel(items);
+const Carousel = ({
+  items,
+  currentSlideIndex,
+  setCurrentSlideIndex,
+  aspectRatio,
+}) => {
   const focusTrapRef = useFocusTrap();
+  const { isMobile, isTablet } = useResponsive();
+  const { slideBackward, slideForward, handleKeyDown, handleMouseWheel } =
+    useCarousel(items, setCurrentSlideIndex);
 
   return (
     <div
@@ -41,11 +42,13 @@ const Carousel = ({ items, aspectRatio }) => {
       </div>
 
       <div>
-        <CarouselIndicators
-          slides={items}
-          currentSlideIndex={currentSlideIndex}
-          setCurrentSlideIndex={setCurrentSlideIndex}
-        />
+        {!(isMobile || isTablet) && (
+          <CarouselIndicators
+            slides={items}
+            currentSlideIndex={currentSlideIndex}
+            setCurrentSlideIndex={setCurrentSlideIndex}
+          />
+        )}
       </div>
     </div>
   );
