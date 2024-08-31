@@ -2,10 +2,11 @@ import React from 'react';
 
 import InfoPopup from '../../../../../../features/infoPopup/InfoPopup';
 
-const ScoreStatus = ({ isUpcoming, isUnavailable }) => {
-  if (isUnavailable) return <span className='score__status'>---</span>;
+const ScoreStatus = ({ status }) => {
+  if (status === 'unavailable')
+    return <span className='score__status'>---</span>;
 
-  if (isUpcoming)
+  if (status === 'upcoming')
     return (
       <InfoPopup className='score__status' title='Coming Soon'>
         <p>

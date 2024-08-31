@@ -1,7 +1,11 @@
 import React, { cloneElement, forwardRef } from 'react';
 import * as Dropdown from '@radix-ui/react-dropdown-menu';
+import * as Dialog from '@radix-ui/react-dialog';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 import Separator from '../separator/Separator';
+import Button from '../button/Button';
+import Svg from '../svg/Svg';
 
 import './Dropdown.scss';
 
@@ -16,7 +20,9 @@ const DropdownMenu = forwardRef(
       triggerComponent,
       triggerOffset,
       align, // Options: 'start' | 'end' | 'center'
+      alignOffset,
       children,
+      ...props
     },
     ref
   ) => {
@@ -38,6 +44,8 @@ const DropdownMenu = forwardRef(
             }
             sideOffset={triggerOffset}
             align={align}
+            alignOffset={alignOffset}
+            {...props}
           >
             {children}
           </Dropdown.Content>
@@ -70,4 +78,61 @@ const DropdownItem = forwardRef(
   }
 );
 
-export { DropdownMenu, DropdownItem };
+const DropdownModalItem = forwardRef(
+  (
+    {
+      className,
+      onOpenChange,
+      modalTrigger,
+      onSelect,
+      closeBtnVariant = 'ghost',
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <Dialog.Root onOpenChange={onOpenChange}>
+        <Dialog.Trigger asChild>
+          <Dropdown.Item
+            ref={ref}
+            className='dropdown-menu__item'
+            onSelect={(e) => {
+              e.preventDefault();
+              onSelect && onSelect();
+            }}
+            {...props}
+          >
+            {modalTrigger}
+          </Dropdown.Item>
+        </Dialog.Trigger>
+
+        <Dialog.Portal container={document.getElementById('portals')}>
+          <Dialog.Overlay className='overlay' />
+          <Dialog.Content
+            className={className ? `${className} modal` : 'modal'}
+            aria-describedby={undefined}
+          >
+            <div className='modal__content'>
+              <VisuallyHidden>
+                <Dialog.Title />
+              </VisuallyHidden>
+              <Dialog.Close asChild>
+                <Button
+                  className='modal__close-btn'
+                  variant={closeBtnVariant}
+                  aria-label='close'
+                >
+                  <Svg icon='close' />
+                </Button>
+              </Dialog.Close>
+              {children}
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+    );
+  }
+);
+
+export { DropdownMenu, DropdownItem, DropdownModalItem };
