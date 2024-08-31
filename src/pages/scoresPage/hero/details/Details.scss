@@ -4,6 +4,10 @@
   --poster-size: 300px;
   --gap: 40px;
 
+  display: grid;
+  grid-template-columns: [poster] var(--poster-size) [details] 2fr;
+  gap: var(--gap);
+
   @include tablet {
     --poster-size: 200px;
     --gap: 40px;
@@ -13,10 +17,6 @@
     --poster-size: 120px;
     --gap: 20px;
   }
-
-  display: grid;
-  grid-template-columns: [poster] var(--poster-size) [details] 2fr;
-  gap: var(--gap);
 
   @media (max-width: 470px) {
     grid-template-columns: unset;

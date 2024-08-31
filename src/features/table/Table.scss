@@ -52,14 +52,24 @@
     }
 
     tbody {
-      tr {
-        @include hover {
-          background-color: hsla(0, 0%, 30%, 0.1);
+      td {
+        &:first-child {
+          border-radius: 6px 0 0 6px;
         }
 
-        &:has([aria-expanded='true']) {
-          background-color: hsla(0, 0%, 30%, 0.3);
+        &:last-child {
+          border-radius: 0 6px 6px 0;
         }
+      }
+    }
+
+    tr {
+      @include hover {
+        background-color: hsla(0, 0%, 30%, 0.1);
+      }
+
+      &:has([aria-expanded='true']) {
+        background-color: hsla(0, 0%, 30%, 0.1);
       }
     }
   }
