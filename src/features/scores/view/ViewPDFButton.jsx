@@ -6,15 +6,21 @@ import Spinner from '../../../components/UI/spinner/Spinner';
 import Svg from '../../../components/UI/svg/Svg';
 import Button from '../../../components/UI/button/Button';
 
-const ViewPDFButton = ({ score }) => {
-  const fileName = score.gsFileName ? score.gsFileName : score.title;
+import { FILE_TYPES } from '../../../utils/constants';
+import { getFileName } from '../../../utils/helpers';
 
+const ViewPDFButton = ({ score, isDropdownItem }) => {
   const { isFetching, refetch: openFileInNewWindow } = useOpenFileInNewWindow(
-    fileName,
+    getFileName(score),
     'pdf'
   );
 
-  return score.status.sheetMusic === 'uploaded' ? (
+  return isDropdownItem ? (
+    <span onClick={() => openFileInNewWindow()}>
+      <Svg icon='pdf' />
+      Preview {FILE_TYPES.sheetMusic.label}
+    </span>
+  ) : (
     <Button
       className='view-pdf__btn'
       variant='primary'
@@ -23,7 +29,7 @@ const ViewPDFButton = ({ score }) => {
     >
       {isFetching ? <Spinner type='dotted' /> : <Svg icon='pdf' />}
     </Button>
-  ) : null;
+  );
 };
 
 export default ViewPDFButton;

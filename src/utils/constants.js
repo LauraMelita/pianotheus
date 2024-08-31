@@ -11,9 +11,11 @@ export const MEDIA_URLS = {
 
 export const FILE_TYPES = {
   midi: {
+    label: 'MIDI',
     extension: 'mid',
   },
   sheetMusic: {
+    label: 'Sheet',
     extension: 'pdf',
   },
 };
