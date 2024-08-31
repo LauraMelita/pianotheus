@@ -1,20 +1,13 @@
+@import '../../../../styles/breakpoints.scss';
+
 .scores-list {
   table {
     td {
+      // ============================================================
+      // PLAY BUTTON
+      // ============================================================
       &:nth-child(1) {
         width: 2.7%;
-      }
-
-      &:nth-child(2) {
-        width: 33%;
-      }
-
-      &:nth-child(6) {
-        width: 9%;
-
-        .score__actions {
-          justify-content: center;
-        }
       }
 
       .play-midi__btn {
@@ -39,9 +32,24 @@
         }
       }
 
+      // ============================================================
+      // TITLE
+      // ============================================================
+      &:nth-child(2) {
+        width: 33%;
+
+        @include mobileAndTablet {
+          width: 50%;
+        }
+      }
+
       .score__title {
         &.active {
           color: var(--accent-color-100);
+        }
+
+        @include mobile {
+          font-size: var(--fs-50);
         }
       }
 
@@ -49,6 +57,10 @@
         font-size: var(--fs-50);
         color: var(--text-color-secondary);
       }
+
+      // ============================================================
+      // DIFFICULTY LEVEL
+      // ============================================================
 
       .score__level {
         display: flex;
@@ -59,22 +71,43 @@
           height: 16px;
           color: var(--gray-7);
           filter: drop-shadow(0 1px 1px var(--black-5));
+
+          @include mobile {
+            width: 14px;
+            height: 14px;
+          }
         }
       }
 
-      .score__status {
-        color: var(--gray-7);
-      }
+      // ============================================================
+      // SCORE ACTIONS
+      // ============================================================
 
       .score__actions {
         display: flex;
         gap: calc(var(--global-gap) / 2);
       }
 
+      .score__status {
+        color: var(--gray-7);
+      }
+
       .download__btn,
       .view-pdf__btn {
         height: 36px;
         width: 56px;
+      }
+
+      // ============================================================
+      // TUTORIAL
+      // ============================================================
+
+      &:nth-child(6) {
+        width: 9%;
+
+        .score__actions {
+          justify-content: center;
+        }
       }
 
       .tutorial__btn {
@@ -93,6 +126,73 @@
           svg {
             color: var(--gray-7);
           }
+        }
+      }
+
+      // ============================================================
+      // MOBILE: SCORE MENU BUTTON
+      // ============================================================
+
+      &:has(.score__menu) {
+        .score__menu {
+          display: flex;
+          justify-content: flex-end;
+
+          > div {
+            .more-button {
+              background: transparent;
+              border: none;
+
+              svg {
+                width: 25px;
+                height: 25px;
+                color: var(--accent-color-100);
+              }
+            }
+
+            &[aria-expanded='true'] {
+              .more-button {
+                svg {
+                  color: var(--gray-7);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// ============================================================
+// MOBILE: SCORE MENU DROPDOWN
+// ============================================================
+
+.scores-menu__dropdown-menu {
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 12px;
+
+  .dropdown-menu__item {
+    span {
+      display: flex;
+      align-items: center;
+      gap: calc(var(--global-gap) / 4);
+
+      svg {
+        color: var(--text-color-secondary);
+
+        &.icon__download {
+          width: 18px;
+          height: 18px;
+        }
+
+        &.icon__pdf {
+          width: 16px;
+          height: 16px;
+        }
+
+        &.icon__youtube-plain {
+          width: 21px;
+          height: 21px;
         }
       }
     }

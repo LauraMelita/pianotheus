@@ -1,3 +1,12 @@
+// Hover styles excluding touchscreen devices
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
 @mixin lineHeightCrop($line-height) {
   &::before {
     content: '';

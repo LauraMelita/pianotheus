@@ -1,4 +1,5 @@
 @import '../../styles/breakpoints.scss';
+@import '../../styles/mixins.scss';
 
 .table {
   max-width: 100%;
@@ -52,8 +53,12 @@
 
     tbody {
       tr {
-        &:hover {
+        @include hover {
           background-color: hsla(0, 0%, 30%, 0.1);
+        }
+
+        &:has([aria-expanded='true']) {
+          background-color: hsla(0, 0%, 30%, 0.3);
         }
       }
     }

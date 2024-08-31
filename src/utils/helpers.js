@@ -21,3 +21,6 @@ export const splitArray = (array, number) => {
 };
 
 export const isObjectEmpty = (obj) => Object.keys(obj).length === 0;
+
+export const getFileName = (score) =>
+  score.gsFileName ? score.gsFileName : score.title;
