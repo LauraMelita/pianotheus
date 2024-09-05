@@ -1,4 +1,5 @@
 {
+  "scm.showHistoryGraph": false,
   "cSpell.words": [
     "apikey",
     "esrb",
@@ -14,7 +15,8 @@
     "searchbar",
     "tanstack",
     "TMDB",
-    "toastify"
+    "toastify",
+    "lazyload"
   ],
   "files.associations": {
     "*.svg": "html"

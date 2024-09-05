@@ -13,7 +13,7 @@ const Forbidden = ({ code }) => {
   useDocumentTitle('Error 403 (Forbidden)');
 
   return (
-    <div className={`${code}`}>
+    <div className={code}>
       <div className='error__images stack'>
         <BackgroundImage
           url={Gandalf}

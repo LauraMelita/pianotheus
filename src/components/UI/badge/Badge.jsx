@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import Image from '../image/Image';
 
@@ -11,7 +12,7 @@ const Badge = ({
   ...props
 }) => {
   return (
-    <div className={className ? `${className} badge` : 'badge'}>
+    <div className={classNames(className, 'badge')}>
       <Image
         src={image}
         alt={`${title} badge`}

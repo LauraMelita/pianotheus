@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import classNames from 'classnames';
 
 import { GLOBAL_STYLES } from '../../../utils/constants';
 
@@ -40,7 +41,7 @@ const BackgroundImage = ({
 
   return (
     <motion.div
-      className={className ? className : 'bg-image'}
+      className={classNames(className, 'bg-image')}
       style={{
         zIndex,
         opacity,

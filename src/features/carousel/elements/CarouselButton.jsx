@@ -11,7 +11,7 @@ const CarouselButton = ({ icon, onClick }) => {
 
   if (!isMobile)
     return (
-      <Button className={`carousel__btn`} onClick={onClick}>
+      <Button className='carousel__btn' onClick={onClick}>
         <motion.span className='circle' aria-hidden>
           <Svg icon={icon} />
         </motion.span>

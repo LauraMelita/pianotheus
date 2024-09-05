@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import classNames from 'classnames';
 
 import Image from '../../../components/UI/image/Image';
 import Svg from '../../../components/UI/svg/Svg';
@@ -79,7 +80,10 @@ const Suggestions = forwardRef(
         {suggestions.map((suggestion, index) => {
           return (
             <li
-              className={`suggestion ${index === active ? 'active' : ''}`}
+              // prettier-ignore
+              className={classNames('suggestion', {
+                'active': index === active,
+              })}
               key={index}
               onClick={() => handleSuggestionClick(suggestion)}
               onMouseEnter={() => handleSuggestionHover(index)}

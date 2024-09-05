@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import { motion } from 'framer-motion';
+import classNames from 'classnames';
 
 const Image = forwardRef(
   ({ className, src, alt, fallbackImage, ...props }, ref) => {
@@ -11,7 +12,7 @@ const Image = forwardRef(
     return (
       <motion.img
         ref={ref}
-        className={className && className}
+        className={classNames(className)}
         src={src}
         alt={alt}
         onError={handleLoadError}

@@ -12,7 +12,7 @@ const NotFound = ({ code }) => {
   useDocumentTitle('Error 404 (Not Found)');
 
   return (
-    <div className={`${code}`}>
+    <section className={code}>
       <div className='error__images stack'>
         <BackgroundImage
           url={Wall}
@@ -41,7 +41,7 @@ const NotFound = ({ code }) => {
           <Link to='/'>Back to home page</Link>
         </Button>
       </div>
-    </div>
+    </section>
   );
 };
 

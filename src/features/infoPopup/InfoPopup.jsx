@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import {
   DropdownMenu,
@@ -13,7 +14,7 @@ const InfoPopup = ({ className, title, children }) => {
     <DropdownMenu
       isModal={false}
       triggerComponent={
-        <div className={`${className} info-popup `}>
+        <div className={classNames(className, 'info-popup')}>
           <span>{title}</span>
           <Svg icon='info' />
         </div>

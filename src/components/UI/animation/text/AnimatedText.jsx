@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import classNames from 'classnames';
 
 import './AnimatedText.scss';
 
@@ -35,7 +36,7 @@ const AnimatedText = ({
   };
 
   return (
-    <h1 className={className ? `${className} animated-text` : 'animated-text'}>
+    <h1 className={classNames(className, 'animated-text')}>
       <ScreenReaderText />
       <motion.div
         ref={textContainerRef}

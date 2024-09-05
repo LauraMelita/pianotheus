@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import { motion } from 'framer-motion';
+import classNames from 'classnames';
 
 import './Button.scss';
 
@@ -7,13 +8,13 @@ import './Button.scss';
 
 const Button = forwardRef(
   ({ className, href, variant, children, ...props }, ref) => {
-    const combinedClassName = `${className || ''} ${variant || ''}`.trim();
+    const classes = classNames(className, variant);
 
     if (href)
       return (
         <motion.a
           ref={ref}
-          className={`btn__link ${combinedClassName}`}
+          className={classNames('btn__link', classes)}
           href={href}
           {...props}
         >
@@ -22,7 +23,7 @@ const Button = forwardRef(
       );
 
     return (
-      <motion.button ref={ref} className={combinedClassName} {...props}>
+      <motion.button ref={ref} className={classes} {...props}>
         {children}
       </motion.button>
     );

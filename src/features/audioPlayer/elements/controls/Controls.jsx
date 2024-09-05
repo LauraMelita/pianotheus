@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import classNames from 'classnames';
 
 import { useResponsive } from '../../../../hooks/useResponsive';
 
@@ -19,6 +20,11 @@ const Controls = memo(
   }) => {
     const { isMobile } = useResponsive();
 
+    // prettier-ignore
+    const repeatBtnClasses = classNames('repeat__btn', {
+      'enabled': repeat,
+    });
+
     return (
       <div className='controls'>
         {isMobile ? (
@@ -31,10 +37,7 @@ const Controls = memo(
           </Button>
         ) : (
           <>
-            <Button
-              className={`repeat__btn ${repeat ? 'enabled' : ''}`}
-              onClick={toggleRepeat}
-            >
+            <Button className={repeatBtnClasses} onClick={toggleRepeat}>
               <Svg icon='repeat' />
             </Button>
 

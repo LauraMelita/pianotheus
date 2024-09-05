@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import TabIndicator from './TabIndicator';
 
@@ -11,7 +12,10 @@ const TabsList = ({ tabs, tabItemHeight, isSelected, handleSelectTab }) => {
         return (
           <li
             key={tab.name}
-            className={`tabs__item ${isActive ? 'active' : ''}`}
+            // prettier-ignore
+            className={classNames('tabs__item', {
+              'active': isActive,
+            })}
           >
             <button onClick={(e) => handleSelectTab(e, tab)}>
               {tab.label}

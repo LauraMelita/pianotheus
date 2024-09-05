@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import classNames from 'classnames';
 import { useFocusTrap, useMergedRef } from '@mantine/hooks';
 
 import './Form.scss';
@@ -8,11 +9,7 @@ const Form = forwardRef(({ className, onSubmit, children }, ref) => {
   const mergedRef = useMergedRef(ref, focusTrapRef);
 
   return (
-    <form
-      className={className && className}
-      ref={mergedRef}
-      onSubmit={onSubmit}
-    >
+    <form className={classNames(className)} ref={mergedRef} onSubmit={onSubmit}>
       {children}
     </form>
   );
@@ -20,10 +17,7 @@ const Form = forwardRef(({ className, onSubmit, children }, ref) => {
 
 const FormGroup = forwardRef(({ className, children }, ref) => {
   return (
-    <div
-      className={className ? `form-group ${className}` : `form-group`}
-      ref={ref}
-    >
+    <div className={classNames(className, 'form-group')} ref={ref}>
       {children}
     </div>
   );

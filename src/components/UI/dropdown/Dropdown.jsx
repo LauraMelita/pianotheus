@@ -2,6 +2,7 @@ import React, { cloneElement, forwardRef } from 'react';
 import * as Dropdown from '@radix-ui/react-dropdown-menu';
 import * as Dialog from '@radix-ui/react-dialog';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import classNames from 'classnames';
 
 import Separator from '../separator/Separator';
 import Button from '../button/Button';
@@ -39,9 +40,7 @@ const DropdownMenu = forwardRef(
         <Dropdown.Portal container={document.getElementById('portals')}>
           <Dropdown.Content
             ref={ref}
-            className={
-              className ? `${className} dropdown-menu` : 'dropdown-menu'
-            }
+            className={classNames(className, 'dropdown-menu')}
             sideOffset={triggerOffset}
             align={align}
             alignOffset={alignOffset}
@@ -61,11 +60,7 @@ const DropdownItem = forwardRef(
       <>
         <Dropdown.Item
           ref={ref}
-          className={
-            className
-              ? `${className} dropdown-menu__item`
-              : 'dropdown-menu__item'
-          }
+          className={classNames(className, 'dropdown-menu__item')}
           disabled={disabled}
           onSelect={onSelect}
           {...props}
@@ -110,7 +105,7 @@ const DropdownModalItem = forwardRef(
         <Dialog.Portal container={document.getElementById('portals')}>
           <Dialog.Overlay className='overlay' />
           <Dialog.Content
-            className={className ? `${className} modal` : 'modal'}
+            className={classNames(className, 'modal')}
             aria-describedby={undefined}
           >
             <div className='modal__content'>

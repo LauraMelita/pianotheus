@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import Button from '../../../../components/UI/button/Button';
 
@@ -8,7 +9,8 @@ const PaginationNumbers = ({ pageNumbers, currentPage, handlePageChange }) => {
       {pageNumbers?.map((pageNumber) => (
         <Button
           key={pageNumber}
-          className={currentPage === pageNumber ? 'active' : ''}
+          // prettier-ignore
+          className={classNames({ 'active': currentPage === pageNumber })}
           onClick={() => handlePageChange(pageNumber - 1)}
         >
           {pageNumber}

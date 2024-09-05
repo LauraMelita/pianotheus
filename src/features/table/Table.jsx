@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import classNames from 'classnames';
 import {
   useReactTable,
   getCoreRowModel,
@@ -53,7 +54,7 @@ const Table = ({
   const isSearching = searchTerm !== '';
 
   return (
-    <div className={`${className || ''} table`}>
+    <div className={classNames(className, 'table')}>
       <div className='table__header'>
         <SearchBar
           placeholder={searchBarPlaceholder}

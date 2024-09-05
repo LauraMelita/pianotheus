@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import classNames from 'classnames';
 
 import Button from '../button/Button';
 import Svg from '../svg/Svg';
@@ -37,7 +38,7 @@ const Modal = forwardRef(
           />
           <Dialog.Content
             ref={ref}
-            className={className ? `${className} modal` : 'modal'}
+            className={classNames(className, 'modal')}
             aria-describedby={undefined}
           >
             <div className='modal__content'>
