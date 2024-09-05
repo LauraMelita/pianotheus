@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFocusTrap } from '@mantine/hooks';
+import classNames from 'classnames';
 
 import { useResponsive } from '../../hooks/useResponsive';
 import { useQuickSearch } from '../../hooks/useQuickSearch';
@@ -36,7 +37,7 @@ const QuickSearch = ({ className, searchKeys = ['title', 'composer'] }) => {
   return (
     <div
       ref={isMobile ? focusTrapRef : null}
-      className={className ? `quick-search ${className}` : `quick-search`}
+      className={classNames(className, 'quick-search')}
     >
       <SearchBar
         dataIsLoading={isLoading}

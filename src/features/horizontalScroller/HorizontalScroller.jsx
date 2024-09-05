@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useInView } from 'framer-motion';
+import classNames from 'classnames';
 
 import { useResponsive } from '../../hooks/useResponsive';
 
@@ -20,6 +21,10 @@ const HorizontalScroller = ({
   const scrollerItemRef = useRef(null);
   const isInView = useInView(scrollerItemRef, {
     amount: 1, // The last scroller item needs to be 100% in view.
+  });
+
+  const classes = classNames('scroller', className, {
+    'scroll-snap': isSnaps,
   });
 
   const groups = splitArray(data, numberOfGroups);
@@ -52,7 +57,7 @@ const HorizontalScroller = ({
     <div
       ref={scrollerRef}
       tabIndex='0'
-      className={`scroller ${className} ${isSnaps && 'scroll-snap'}`}
+      className={classes}
       style={{
         gap: itemGap,
         mask: maskRight,

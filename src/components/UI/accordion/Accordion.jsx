@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import * as RadixAccordion from '@radix-ui/react-accordion';
+import classNames from 'classnames';
 
 import Svg from '../svg/Svg';
 
@@ -16,7 +17,7 @@ const Accordion = ({
 }) => {
   return (
     <RadixAccordion.Root
-      className={`${className} accordion`}
+      className={classNames(className, 'accordion')}
       type={type}
       value={value}
       defaultValue={defaultValue}

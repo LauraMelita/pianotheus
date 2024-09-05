@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import classNames from 'classnames';
 
 import TabsList from './elements/TabsList';
 import TabsContent from './elements/TabsContent';
@@ -23,7 +24,7 @@ const Tabs = ({
   const isSelected = (tab) => currentTab.name === tab.name;
 
   return (
-    <div className={className ? `tabs ${className}` : 'tabs'}>
+    <div className={classNames('tabs', className)}>
       <TabsList
         tabs={tabs}
         tabItemHeight={tabItemHeight}

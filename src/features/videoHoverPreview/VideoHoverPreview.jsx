@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { AdvancedVideo, lazyload } from '@cloudinary/react';
+import classNames from 'classnames';
 
 import { cld } from '../../services/cloudinary/config';
 
@@ -22,7 +23,7 @@ const VideoHoverPreview = ({ className, videoId, aspectRatio, children }) => {
 
   return (
     <div
-      className={`${className} video-preview`}
+      className={classNames(className, 'video-preview')}
       style={{ aspectRatio }}
       onMouseOver={playVideo}
       onMouseOut={pauseVideo}

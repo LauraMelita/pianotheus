@@ -13,7 +13,7 @@ const InternalServer = ({ code, message }) => {
   useDocumentTitle('Error 500 (Internal Server Error)');
 
   return (
-    <div className={`${code}`}>
+    <div className={code}>
       <div className='error__images stack'>
         <BackgroundImage
           url={Batman}

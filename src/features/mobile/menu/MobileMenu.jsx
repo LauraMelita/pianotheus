@@ -44,7 +44,7 @@ const MobileMenu = ({
     //prettier-ignore
     <motion.div
       ref={closeOnOutsideClick ? menuRef : null}
-      className={`${className}`}
+      className={className}
       animate={showMenu ? 'open' : 'closed'}
     >
       {componentTrigger}
